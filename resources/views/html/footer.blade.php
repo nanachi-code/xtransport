@@ -1,9 +1,32 @@
+<!-- kopa-area-->
+<section class="kopa__area kopa__area--09">
+    <div class="container">
+        <div class="widget kopa__social style--02">
+            <div class="widget-title style--10">
+                <h4 class="primary__title">social links:</h4>
+            </div>
+            <!-- widget title-->
+            <div class="widget-content">
+                <ul>
+                    <li><a href="#"><i class="fa fa-facebook"></i>Share</a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i>Tweet</a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i>+1</a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i>Share</a></li>
+                </ul>
+            </div>
+            <!-- widget content-->
+        </div>
+        <!-- kopa social-->
+    </div>
+    <!-- container-->
+</section>
+<!-- kopa-area-->
 <section class="kopa__bottomSidebar">
     <div class="container">
         <div class="row row__custom">
             <div class="col-xs-12 col-sm-3 kopa__reveal">
                 <div class="widget kopa__about style--03">
-                    <div class="widget-content"><a href="home-01.html"><img src="images/fixed/logo01.png" alt=""></a>
+                    <div class="widget-content"><a href="home-01.html"><img src="{{asset('images/fixed/logo01.png')}}" alt=""></a>
                         <p>TAGOKING International maintains three warehouse operations in strategically located shipping centers. We have over.</p>
                     </div>
                     <!-- widget content-->

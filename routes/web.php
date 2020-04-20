@@ -16,8 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/user/profile', "UserController@userProfile");
+Route::get('/user/profile', "UserController@userProfile")->middleware('auth');
+Route::post('user/profile/update/{id}', "UserController@userProfileUpdate")->middleware("auth");;
+Route::post("changePassword", "UserController@changePassword")->middleware("auth");;
+
 
 Auth::routes();
+Route::get('logout', function () {
+    Auth::logout();
+    return redirect('/login');
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
