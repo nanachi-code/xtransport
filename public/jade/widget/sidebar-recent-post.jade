@@ -1,0 +1,26 @@
+- var titleRecentPost = "Recent Post"
+- var loopRecent = 3
+
+section.widget.kopa__recentPost.style--01
+	.widget-title
+		block titleRecentPost
+			h3.primary__title #{titleRecentPost}
+
+		.kopa__line--dotted.style--02
+			span.kopa__line--dotted--small.kopa__line--dotted--dark
+			span.kopa__line--dotted--small.kopa__line--dotted--gray
+			span.kopa__line--dotted--small.kopa__line--dotted--light
+			span.kopa__line--dotted--wide
+		// kopa line dotted
+	// widget title
+
+	.widget-content
+		ul
+			block loopRecent
+				- for ( var i = 1; i <= loopRecent; i++ )
+					li
+						a(href="#"): img(src="http://placehold.it/70x70", alt="")
+						h5.entry__title.style--03: a(href="#") Trucking - Company of the Year 2014
+						span.entry-date 19/01/2016
+	// widget content
+// kopa recent post

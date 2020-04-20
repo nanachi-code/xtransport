@@ -1,0 +1,27 @@
+include ../base/mixin
+- var elementPreTitle = 'Element'
+- var elementTitle = 'Accordion'
+- var imgTopPage = 'http://placehold.it/870x380'
+
+.widget.kopa__topPage.style--01
+	.kopa__topPage--left
+		.widget-title.style--07.text--white
+			h3.primary__title
+				block title-element
+					| #{elementTitle}
+		// widget title
+
+		+breadcrumb01(elementPreTitle, elementTitle)
+
+		.kopa__topPage__back.text--white
+			a(href='#')
+				i.fa.fa-long-arrow-right
+				| back
+		// kopa topPage back
+	// kopa topPage left
+
+	.kopa__topPage--right
+		block imgTopPage
+			img(src='#{imgTopPage}', alt='')
+	// kopa topPage right
+// kopa topPage

@@ -1,0 +1,43 @@
+section.widget.woocommerce.widget_shopping_cart
+	.widget-title
+		h3.primary__title Cart
+
+		.kopa__line--dotted.style--02
+			span.kopa__line--dotted--small.kopa__line--dotted--dark
+			span.kopa__line--dotted--small.kopa__line--dotted--gray
+			span.kopa__line--dotted--small.kopa__line--dotted--light
+			span.kopa__line--dotted--wide
+		// kopa line dotted
+	// widget title
+
+	.widget_shopping_cart_content
+		ul.cart_list.product_list_widget
+			li.mini_cart_item
+				a(href="#").remove x
+				a(href="#")
+					img(src="http://placehold.it/80x80", alt="").attachment-shop_thumbnail.size-shop_thumbnail.wp-post-image
+					| Woo Single #2&nbsp;
+				span.quantity 1 x
+					span.amount $2.00
+			li.mini_cart_item
+				a(href="#").remove x
+				a(href="#")
+					img(src="http://placehold.it/80x80", alt="").attachment-shop_thumbnail.size-shop_thumbnail.wp-post-image
+					|Woo Single #2&nbsp;
+				span.quantity 1 x
+					span.amount $2.00
+			li.mini_cart_item
+				a(href="#").remove x
+				a(href="#")
+					img(src="http://placehold.it/80x80", alt="").attachment-shop_thumbnail.size-shop_thumbnail.wp-post-image
+					|Woo Single #2&nbsp;
+				span.quantity 1 x
+					span.amount $2.00
+		p.total
+			strong Subtotal:
+			span.amount $14.00
+		p.buttons
+			a(href="#").button.wc-forward View Cart
+			a(href="#").button.checkout.wc-forward Checkout
+	// widget shopping cart content
+// widget shopping cart

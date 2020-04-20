@@ -1,0 +1,20 @@
+section.widget.widget_rss
+	.widget-title
+		h3.primary__title RSS
+
+		.kopa__line--dotted.style--02
+			span.kopa__line--dotted--small.kopa__line--dotted--dark
+			span.kopa__line--dotted--small.kopa__line--dotted--gray
+			span.kopa__line--dotted--small.kopa__line--dotted--light
+			span.kopa__line--dotted--wide
+		// kopa line dotted
+	// widget title
+
+	ul
+		- for ( var i = 1; i <= 4; i++ )
+			li
+				a(href="#").rsswidget Show the Latest Featured Image from Featured Content
+				span.rss-date April 1, 2016
+				.rssSummary For the latest ThemeShaper remake, we added Featured Content to Twenty Sixteen. That’s standard, but our design called for not showing the featured image of every post, but only the latest post. That image serves as a backdrop to our collection of featured posts, which can be from one to three posts at a time. […]
+				cite David A. Kennedy
+// widget rss

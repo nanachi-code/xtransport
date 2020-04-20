@@ -1,0 +1,27 @@
+section.widget.widget_pages
+	.widget-title
+		h3.primary__title Pages
+
+		.kopa__line--dotted.style--02
+			span.kopa__line--dotted--small.kopa__line--dotted--dark
+			span.kopa__line--dotted--small.kopa__line--dotted--gray
+			span.kopa__line--dotted--small.kopa__line--dotted--light
+			span.kopa__line--dotted--wide
+		// kopa line dotted
+	// widget title
+	
+	ul
+		li.page_item
+			a(href="#") aciform
+			| (1)
+			ul.children
+				- for ( var i = 1; i <= 4; i++ )
+					li.page_item
+						a(href="#") sub
+						| (1)
+		- for ( var i = 1; i <= 4; i++ )
+			li.page_item
+				a(href="#") aciform
+				| (1)
+	
+// widget page

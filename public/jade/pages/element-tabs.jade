@@ -1,0 +1,110 @@
+extends ../layer/home
+
+prepend title-element
+	- var elementTitle = 'Tabs'
+
+prepend body
+	- var ClassBody = 'kopa-sub-page'
+
+block head-base
+	include ../include/head
+
+block header-area
+	include ../main/header-01
+
+block area-01
+	section.kopa__area.kopa__area--noSpace
+		.container
+			include ../widget/top-page
+		// container
+	// kopa-area
+
+block area-02
+	section.kopa__area.kopa__area--08
+		.container
+			.widget
+				.widget-title.style--08
+					h2.primary__title #{elementTitle}
+
+					.kopa__line--dotted.style--02
+						span.kopa__line--dotted--small.kopa__line--dotted--dark
+						span.kopa__line--dotted--small.kopa__line--dotted--gray
+						span.kopa__line--dotted--small.kopa__line--dotted--light
+						span.kopa__line--dotted--wide
+					// kopa line dotted
+
+					p.text__title Transcargo makes business flow. As one of the world’s leading non-asset-based supply chain management companies, we design and implemenindustry-leading solutions in both freight management.Over 42,000 dedicated employees, working in 17 regional clusters around the globe, deliver operational excellence — to provide viable answers to the most challenging supply chain questions.
+				// widget title
+			// widget
+
+			.row
+				.col-xs-12.col-sm-6
+					.widget
+						.widget-title.style--09
+							h3.primary__title Style 1
+						// widget title
+
+						.widget-content
+							include ../widget/tab-01
+						// widget content
+					// widget
+				// col
+				
+				.col-xs-12.col-sm-6
+					.widget
+						.widget-title.style--09
+							h3.primary__title Style 2
+						// widget title
+
+						.widget-content
+							include ../widget/tab-02
+						// widget content
+					// widget
+				// col
+			// row
+
+			.row.row-custom-02
+				.col-xs-12
+					.widget
+						.widget-title.style--09
+							h3.primary__title Style 3
+						// widget title
+
+						.widget-content
+							include ../widget/tab-03
+						// widget content
+					// widget
+				// col
+			// row
+
+			.row.row-custom-02
+				.col-xs-12
+					.widget
+						.widget-title.style--09
+							h3.primary__title Style 4
+						// widget title
+
+						.widget-content
+							include ../widget/tab-04
+						// widget content
+					// widget
+				// col
+			// row
+		// container
+	// kopa-area
+
+block area-03
+	section.kopa__area.kopa__area--09
+		.container
+			include ../widget/social-02
+		// container
+	// kopa-area
+
+block bottom-sidebar
+	include ../main/bottom-sidebar-01
+
+block footer-area
+	include ../main/footer
+
+block js-base
+	include ../include/js

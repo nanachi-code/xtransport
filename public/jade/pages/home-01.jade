@@ -1,0 +1,75 @@
+extends ../layer/home
+
+block head-base
+	include ../include/head
+
+block header-area
+	include ../main/header-01
+
+block area-01
+	section.kopa__area.kopa__area--noSpace
+		include ../main/main-slider-01
+	// kopa-area
+
+block area-02
+	section.kopa__area.kopa__area--noSpace.kopa__area--01
+		.container
+			include ../widget/service-01
+		// container
+	// kopa-area
+
+block area-03
+	section.kopa__area
+		.container
+			include ../widget/about-01
+		// container
+	// kopa-area
+
+block area-04
+	section.kopa__area.kopa__area--02.kopa__parallax
+		.container
+			include ../widget/service-02
+		// container
+	// kopa area
+
+block area-05
+	section.kopa__area.kopa__area--03
+		.container
+			include ../widget/news-01
+		// container
+	// kopa area
+
+block area-06
+	section.kopa__area.kopa__area--noSpace.kopa__area--04
+		include ../widget/about-02
+	// kopa-area
+
+block area-07
+	section.kopa__area.kopa__area--05
+		.container
+			include ../widget/contact-client
+		// container
+	// kopa-area
+
+block area-08
+	section.kopa__area
+		.container
+			include ../widget/slider-brand-01
+		// container
+	// kopa-area
+
+block area-09
+	section.kopa__area.kopa__area--06
+		.container
+			include ../widget/slider-quote-01
+		// container
+	// kopa-area
+
+block bottom-sidebar
+	include ../main/bottom-sidebar-01
+
+block footer-area
+	include ../main/footer
+
+block js-base
+	include ../include/js

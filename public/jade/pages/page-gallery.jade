@@ -1,0 +1,44 @@
+extends ../layer/home
+
+prepend title-element
+	- var elementPreTitle = 'Pages'
+	- var elementTitle = 'Gallery'
+
+prepend body
+	- var ClassBody = 'kopa-sub-page'
+
+block head-base
+	include ../include/head
+
+block header-area
+	include ../main/header-01
+
+block area-01
+	section.kopa__area.kopa__area--noSpace
+		.container
+			include ../widget/top-page
+		// container
+	// kopa-area
+
+block area-02
+	section.kopa__area.kopa__area--08
+		.container
+			include ../widget/gallery
+		// container
+	// kopa-area
+
+block area-03
+	section.kopa__area.kopa__area--09
+		.container
+			include ../widget/social-02
+		// container
+	// kopa-area
+
+block bottom-sidebar
+	include ../main/bottom-sidebar-01
+
+block footer-area
+	include ../main/footer
+
+block js-base
+	include ../include/js

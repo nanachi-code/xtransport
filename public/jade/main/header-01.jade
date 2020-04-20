@@ -1,0 +1,185 @@
+header.kopa__header.style--01
+	.kopa__header--top
+		.container
+			.row
+				.col-xs-12.col-sm-12.col-md-5.pull-right
+					.kopa__header--right
+						.kopa__header__country.pull-left
+							.active
+								img(src='images/flag/flag01.jpg', alt="")
+								i.fa.fa-angle-down
+							.widget.widget_polylang
+								ul
+									li.lang-item: a(href='#'): img(src='images/flag/flag01.jpg', alt="")
+									li.lang-item: a(href='#'): img(src='images/flag/flag02.jpg', alt="")
+							// polylang
+						// header country
+
+						.kopa__header__office.pull-left
+							.active
+								img(src='images/icon/global.png', alt="")
+								span London Office
+							ul
+								li: a(href='#') London Office
+								li: a(href='#') Berlin Office
+								li: a(href='#') Newyork Office
+								li: a(href='#') Hanoi Office
+						// header office
+
+						.kopa__header__email.pull-left
+							a(href='page-request.html')
+								i.fa.fa-envelope-o
+								| Request a quote
+						// header email
+
+						include nav-mobile
+					// header right
+				// col
+
+				.col-xs-12.col-md-3
+					.kopa__header__logo
+						a(href="home-01.html"): img(src="images/fixed/logo01.png", alt="")
+					// kopa logo
+				// col
+			// row
+		// container
+	// kopa header top
+
+	.kopa__header--bottom
+		.container
+			.row
+				.col-xs-12.col-sm-8.col-md-8.hidden-xs.hidden-sm
+					.kopa__header__mainMenu.style--01
+						ul.sf-menu
+							li
+								a(href='home-01.html') Home
+								ul
+									li: a(href='home-01.html') Home 1
+									li: a(href='home-02.html') Home 2
+							li
+								a(href='element-accordion.html') Element
+								.sf-mega.col-xs-12
+									.container
+										.row
+											.sf-mega-section.col-md-3
+												include ../widget/service-08
+											// col
+
+											.sf-mega-section.col-md-2
+												ul.sub-menu
+													li: a(href="element-accordion.html") Accordion
+													li: a(href="element-alerts.html") Alerts
+													li: a(href="element-button.html") Button
+													li: a(href="element-client-logo.html") Client Logo
+													li: a(href="element-countdown.html") Count Down
+													li: a(href="element-dropcaps.html") Dropcaps
+													li: a(href="element-event.html") Event
+													li: a(href="element-heading.html") Heading
+													li: a(href="element-hightlight.html") Hightlight
+											// col
+
+											.sf-mega-section.col-md-2
+												ul.sub-menu
+													li: a(href="element-icon.html") Icon
+													li: a(href="element-list.html") List
+													li: a(href="element-pricing-table.html") Pricing Table
+													li: a(href="element-quote.html") Quote
+													li: a(href="element-skill-bar.html") Skill Bar
+													li: a(href="element-table.html") Table
+													li: a(href="element-tabs.html") Tabs
+													li: a(href="element-widget-default.html") Widget Default
+											// col
+
+											.sf-mega-section.col-md-4.pull-right
+												include ../widget/article-header
+											// col
+										// row
+									// container
+								// sf mega
+							li
+								a(href='#') Pages
+								.sf-mega.col-xs-12
+									.container
+										.row
+											.sf-mega-section.col-md-3
+												include ../widget/service-08
+											// col
+
+											.sf-mega-section.col-md-2
+												ul.sub-menu
+													li: a(href="page-about.html") About
+													li: a(href="page-career.html") Career
+													li: a(href="page-contact.html") Contact
+													li: a(href="page-customer-service.html") Customer Service
+													li: a(href="page-gallery.html") Gallery
+													li: a(href="page-incoterm.html") Incoterm
+											// col
+
+											.sf-mega-section.col-md-2
+												ul.sub-menu
+													li: a(href="page-our-company.html") Our Company
+													li: a(href="page-our-team.html") Our Team
+													li: a(href="page-our-team-single.html") Our Team Single
+													li: a(href="page-request.html") Request
+													li: a(href="page-service.html") Service
+													li: a(href="page-service-list.html") Service List
+											// col
+
+											.sf-mega-section.col-md-4.pull-right
+												include ../widget/article-header
+											// col
+										// row
+									// container
+								// sf mega
+							li
+								a(href='blog-full-width.html') Blog
+								ul
+									li: a(href='blog-full-width.html') Blog Full Width
+									li: a(href='blog-list.html') Blog List
+									li: a(href='blog-masonry.html') Blog Masonry
+									li: a(href='single-blog-01.html') Blog Single 01
+									li: a(href='single-blog-02.html') Blog Single 02
+							li
+								a(href='shop-01') Shop
+								ul
+									li: a(href='shop-01.html') Shop 01
+									li: a(href='shop-02.html') Shop 02
+									li: a(href='shop-single.html') Shop Single
+									li: a(href='shop-cart.html') Shop Cart
+									li: a(href='shop-checkout.html') Shop Check Out
+									li: a(href='shop-order-received.html') Shop Order Received
+							li: a(href='page-contact.html') Contacts
+					// kopa header mainMenu
+				
+				.col-xs-12.col-sm-12.col-md-4
+					.kopa__header--bottom--right
+						#sb-search.kopa__header__search.sb-search
+							form
+								input.sb-search-input(placeholder="Search...", type="text", value="", name="search")
+								button.search-submit(type="submit"): span.sb-icon-search.fa.fa-search
+						// kopa header search
+
+						.kopa__header--bottom--right__list
+							ul
+								li
+									a(href='#') our company
+										i.fa.fa-chevron-down
+									ul
+										li: a(href='#') sub menu 1
+										li: a(href='#') sub menu 2
+										li: a(href='#') sub menu 3
+						// kopa header bottom right list
+
+						.kopa__header--bottom--right__list
+							ul
+								li
+									a(href='#') Help centre
+										i.fa.fa-chevron-down
+									ul
+										li: a(href='#') sub menu 1
+										li: a(href='#') sub menu 2
+										li: a(href='#') sub menu 3
+						// kopa header bottom right list
+					// kopa header bottom right
+	// kopa header bottom
+// kopa__header

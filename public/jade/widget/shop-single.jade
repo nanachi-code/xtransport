@@ -1,0 +1,274 @@
+.product.type-product
+	span.onsale Sale!
+	.images
+		a(href="#").woocommerce-main-image.zoom: img(src="http://placehold.it/570x620", alt="")
+	// images
+
+	.summary.entry-summary
+		h1.product_title.entry-title Woo Single #2
+
+		.woocommerce-product-rating
+			.star-rating
+				span(style="width:90%")
+					strong.rating 4.5
+					|out of
+					span 5
+					|base on
+					span.rating 2
+					|customer ratings
+			// star rating
+			a.woocommerce-review-link (
+				span.count 2
+				|customer reviews)
+		// woocommerce product rating
+
+		div
+			p.price
+				del: span.amount $48
+				ins: span.amount $32
+
+		div
+			p Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+
+		form(action="/").cart
+			.quantity
+				input(type="number", step="1", min="1", name="quantity", value="1").input-text.qty.text
+			button.single_add_to_cart_button.button.alt Add to cart
+
+		.product_meta
+			span.sku_wrapper SKU:
+				span.sku #5657568
+			span.posted_in Categories:
+				a(href="#") Music,
+				a(href="#") Singles
+			span.tagged_as Tags:
+				a(href="#") Clother,
+				a(href="#") Gloves,
+				a(href="#") T-shirt
+	// summary
+
+	.kopa__tab.style--06
+		ul.nav.nav-tabs.responsive(role='tablist')
+			li.active(role='presentation')
+				a(href='#kopa__tab--21', aria-controls='kopa__tab--21', role='tab', data-toggle='tab') Description
+
+			li(role='presentation')
+				a(href='#kopa__tab--22', aria-controls='kopa__tab--22', role='tab', data-toggle='tab') Reviews (0)
+		// nav tabs
+
+		.tab-content.responsive
+			.tab-pane.fade.in.active#kopa__tab--21(role='tabpanel')
+				h2 Product Description
+				p Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+			// tab pane
+
+			.tab-pane.fade.in#kopa__tab--22(role='tabpanel')
+				#reviews
+					#comments
+						h2 2 reviews for Woo Single #1
+						ol.commentlist
+							li.comment
+								.comment_container
+									img(src="http://placehold.it/67x67", alt="")
+									p.meta
+										strong joker
+										time(datetime="2016-04-16") April 16, 2016
+									.star-rating
+										span(style="width:100%")
+											strong 5
+											| out of 5
+									// star rating
+									.description
+										p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum ipsam sit ex aliquam modi magnam suscipit vel neque autem explicabo ea possimus consequuntur rerum nulla quam quis consequatur, libero doloremque.
+									// description
+								// comment container
+							// comment
+
+							li.comment
+								.comment_container
+									img(src="http://placehold.it/67x67", alt="")
+									p.meta
+										strong joker
+										time(datetime="2016-04-16") April 16, 2016
+									.star-rating
+										span(style="width:80%")
+											strong 5
+											| out of 5
+									// star rating
+									.description
+										p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum ipsam sit ex aliquam modi magnam suscipit vel neque autem explicabo ea possimus consequuntur rerum nulla quam quis consequatur, libero doloremque.
+									// description
+								// comment container
+							// comment
+					// comments
+
+					#review_form_wrapper
+						#review_form
+							.comment-respond
+								h3.comment-reply-title Add your reviews
+								form(action="/").comment-form
+									.row
+										.col-xs-12.col-sm-6
+											p.comment-form-author
+												label Name
+													span.required *
+												input(type="text", placeholder="NAME *")
+
+											p.comment-form-email
+												label Email
+													span.required *
+												input(type="email", placeholder="EMAIL *")
+
+											.comment-form-rating
+												label Your Rating
+												p.stars
+													span
+														a(href="#").star-1 1
+												p.stars
+													span
+														a(href="#").star-1 1
+														a(href="#").star-2 2
+												p.stars
+													span
+														a(href="#").star-1 1
+														a(href="#").star-2 2
+														a(href="#").star-3 3
+												p.stars
+													span
+														a(href="#").star-1 1
+														a(href="#").star-2 2
+														a(href="#").star-3 3
+														a(href="#").star-4 4
+												p.stars
+													span
+														a(href="#").star-1 1
+														a(href="#").star-2 2
+														a(href="#").star-3 3
+														a(href="#").star-4 4
+														a(href="#").star-5 5
+												select
+													option Rate…
+													option Perfect
+													option Good
+													option Average
+													option Not that bad
+													option Very Poor
+										// col
+
+										.col-xs-12.col-sm-6
+											p.comment-form-comment
+												label Your Review
+												textarea#comment(placeholder="COMMENT")
+
+											p.form-submit
+												input(type="submit", value="Submit").submit
+										// col
+									// row
+								// comment-form
+							// comment respond
+						// review form
+					// review form wrapper
+				// reviews
+			// tab pane
+		// tab content
+	// kopa tab
+	
+	.kopa__productRelated.style--01
+		.widget-title
+			h3.primary__title Realated post
+
+			.kopa__line--dotted.style--02
+				span.kopa__line--dotted--small.kopa__line--dotted--dark
+				span.kopa__line--dotted--small.kopa__line--dotted--gray
+				span.kopa__line--dotted--small.kopa__line--dotted--light
+				span.kopa__line--dotted--wide
+			// kopa line dotted
+		// widget title
+
+		.widget-content
+			.row
+				.col-xs-12.col-sm-3
+					article.entry-item
+						.entry-thumb
+							a(href="#"): img(src="http://placehold.it/270x340", alt="")
+							.kopa__shopItem__icon.new
+								span new
+							// kopa shop item icon
+						// entry thumb
+
+						.entry-content
+							h5: a(href="#") This is product name
+							.kopa__shopItem__rating
+								- for( var i = 0; i < 5; i++ )
+									i.fa.fa-star-o
+							// kopa shop item raing
+							del £32
+							ins £22
+							a.btn.btn--md.btn--curve.btn__color--primary(href='#') buy Know
+						// entry content
+					// entry item
+				// col
+
+				.col-xs-12.col-sm-3
+					article.entry-item
+						.entry-thumb
+							a(href="#"): img(src="http://placehold.it/270x340", alt="")
+							.kopa__shopItem__icon.sale
+								span sale
+							// kopa shop item icon
+						// entry thumb
+
+						.entry-content
+							h5: a(href="#") This is product name
+							.kopa__shopItem__rating
+								- for( var i = 0; i < 5; i++ )
+									i.fa.fa-star-o
+							// kopa shop item raing
+							del £32
+							ins £22
+							a.btn.btn--md.btn--curve.btn__color--primary(href='#') buy Know
+						// entry content
+					// entry item
+				// col
+
+				.col-xs-12.col-sm-3
+					article.entry-item
+						.entry-thumb
+							a(href="#"): img(src="http://placehold.it/270x340", alt="")
+						// entry thumb
+
+						.entry-content
+							h5: a(href="#") This is product name
+							.kopa__shopItem__rating
+								- for( var i = 0; i < 5; i++ )
+									i.fa.fa-star-o
+							// kopa shop item raing
+							del £48
+							ins £32
+							a.btn.btn--md.btn--curve.btn__color--primary(href='#') buy Know
+						// entry content
+					// entry item
+				// col
+
+				.col-xs-12.col-sm-3
+					article.entry-item
+						.entry-thumb
+							a(href="#"): img(src="http://placehold.it/270x340", alt="")
+						// entry thumb
+
+						.entry-content
+							h5: a(href="#") This is product name
+							.kopa__shopItem__rating
+								- for( var i = 0; i < 5; i++ )
+									i.fa.fa-star-o
+							// kopa shop item raing
+							del £52
+							ins £46
+							a.btn.btn--md.btn--curve.btn__color--primary(href='#') buy Know
+						// entry content
+					// entry item
+				// col
+			// row
+		// widget content
+	// kopa product related
+// product

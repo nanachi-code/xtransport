@@ -1,0 +1,9 @@
+/*
+ * jQuery  Menu Plugin - v1.7.7
+ * Copyright (c) 2015 
+ *
+ * Dual licensed under the MIT and GPL licenses:
+ *  http://www.opensource.org/licenses/mit-license.php
+ *  http://www.gnu.org/licenses/gpl.html
+ */
+.sf-mega-section,.sf-menu,.sf-menu>li{float:left}.sf-menu{position:relative;margin:0 0 1em;padding:0;list-style:none;width:100%}.sf-menu .sf-mega{position:absolute;display:none;top:100%;z-index:99}.sf-menu li.sfHover>.sf-mega,.sf-menu li:hover>.sf-mega,.sf-menu>li>a{display:block}.sf-menu>li>a{position:relative}

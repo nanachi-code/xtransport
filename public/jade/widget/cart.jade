@@ -1,0 +1,54 @@
+article.page.type-page
+	header.entry-header
+		h1.entry-title Cart
+	// entry header
+
+	.entry-content
+		.woocommerce
+			form(action="/", method="post")
+				table.shop_table.shop_table_responsive.cart
+					thead
+						tr
+							th.product-remove &nbsp;
+							th.product-thumbnail &nbsp;
+							th.product-name Product
+							th.product-price Price
+							th.product-quantity Quantity
+							th.product-subtotal Total
+					tbody
+						tr.cart_item
+							td.product-remove: a(href="#").remove ×
+							td.product-thumbnail: a(href="#"): img(src="http://placehold.it/270x340", alt="")
+							td.product-name: a(href="#") Woo Single #1
+							td.product-price: span.amount $32
+							td.product-quantity: .quantity: input(type="number", min="1", value="1").input-text.qty.text
+							td.product-subtotal: span.amount $32
+						tr
+							td(colspan="6")
+								.coupon
+									label Coupon:
+									input(type="text", placeholder="Coupon code").input-text
+									input(type="submit", value="Apply Coupon").button
+								// coupon
+
+								input(type="submit", value="Update Cart").button
+
+			.cart-collaterals
+				.cart_totals
+					h2 Cart Totals
+					table.shop_table.shop_table_responsive
+						tbody
+							tr.cart-subtotal
+								th Subtotal
+								td: span.amount $32
+							tr.order-total
+								td Total
+								td: strong: span.amount $32
+					.wc-proceed-to-checkout
+						a(href="#").checkout-button.button.alt.wc-forward Proceed to Checkout
+					// wc proceed to checkout
+				// cart totals 
+			// cart collaterals
+		// woocommerce
+	// entry content
+// page

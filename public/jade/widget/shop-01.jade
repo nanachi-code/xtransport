@@ -1,0 +1,89 @@
+.kopa__shopFilter
+	.row
+		.col-xs-12.col-sm-6.col-md-3
+			form(action="/", method="get").woocommerce-ordering
+				select.orderby(name="orderby")
+					option(value="menu_order", selected="selected") Default sorting
+					option(value="popularity") Sort by popularity
+					option(value="rating") Sort by average rating
+					option(value="date") Sort by newness
+					option(value="price") Sort by price: low to high
+					option(value="price-desc") Sort by price: high to low
+			// woocommerce ordering
+		// col
+
+		.col-xs-12.col-sm-6.col-md-3.pull-right
+			p.woocommerce-result-count Showing all 1 results
+		// col
+	// row
+// kopa shop filter
+
+.kopa__shopItem
+	.row
+		.col-xs-12.col-sm-3
+			article.entry-item
+				.entry-thumb
+					a(href="#"): img(src="http://placehold.it/270x340", alt="")
+					.kopa__shopItem__icon.new
+						span new
+					// kopa shop item icon
+				// entry thumb
+
+				.entry-content
+					h5: a(href="#") This is product name
+					.kopa__shopItem__rating
+						- for( var i = 0; i < 5; i++ )
+							i.fa.fa-star-o
+					// kopa shop item raing
+					del £32
+					ins £22
+					a.btn.btn--md.btn--curve.btn__color--primary(href='#') buy Know
+				// entry content
+			// entry item
+		// col
+
+		.col-xs-12.col-sm-3
+			article.entry-item
+				.entry-thumb
+					a(href="#"): img(src="http://placehold.it/270x340", alt="")
+					.kopa__shopItem__icon.sale
+						span sale
+					// kopa shop item icon
+				// entry thumb
+
+				.entry-content
+					h5: a(href="#") This is product name
+					.kopa__shopItem__rating
+						- for( var i = 0; i < 5; i++ )
+							i.fa.fa-star-o
+					// kopa shop item raing
+					del £32
+					ins £22
+					a.btn.btn--md.btn--curve.btn__color--primary(href='#') buy Know
+				// entry content
+			// entry item
+		// col
+
+		- for( var j = 3; j <= 8; j++ )
+			.col-xs-12.col-sm-3
+				article.entry-item
+					.entry-thumb
+						a(href="#"): img(src="http://placehold.it/270x340", alt="")
+					// entry thumb
+
+					.entry-content
+						h5: a(href="#") This is product name
+						.kopa__shopItem__rating
+							- for( var i = 0; i < 5; i++ )
+								i.fa.fa-star-o
+						// kopa shop item raing
+						del £32
+						ins £22
+						a.btn.btn--md.btn--curve.btn__color--primary(href='#') buy Know
+					// entry content
+				// entry item
+			// col
+	// row
+
+	include pagination-01
+// kopa shop item

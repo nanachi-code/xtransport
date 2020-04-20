@@ -1,0 +1,184 @@
+article.page.type-page
+	header.entry-header
+		h1.entry-title Checkout
+	// entry header
+
+	.entry-content
+		.woocommerce
+			.woocommerce-info Returning customer? 
+				a(href="#").showlogin Click here to login
+			// woocommerce info
+
+			form(action="/").login
+				p If you have shopped with us before, please enter your details in the boxes below. If you are a new customer, please proceed to the Billing &amp; Shipping section.
+
+				p.form-row.form-row-first
+					label Username or email
+						span.required *
+					input(type="text").input-text
+
+				p.form-row.form-row-last
+					label Password
+						span.required *
+					input(type="password").input-text
+
+				p.clear
+
+				p.form-row
+					input(type="submit", value="Login").button
+					label.inline
+						input(type="checkbox")
+						| Remember me
+
+				p.lost_password
+					a(href="#") Lost your password?
+
+			.woocommerce-info Have a coupon? 
+				a(href="#").showcoupon Click here to enter your code
+			// woocommerce info
+
+			form(action="/").checkout_coupon
+				p.form-row.form-row-first
+					input(type="text", placeholder="Coupon code").input-text
+
+				p.form-row.form-row-last
+					input(type="submit", value="Apply Coupon").button
+
+			form(action="/").checkout.woocommerce-checkout
+				.col2-set
+					.col-1
+						.woocommerce-billing-fields
+							h3 Billing Details
+
+							p.form-row.form-row.form-row-first.validate-required
+								label First Name 
+									abbr.required *
+								input(type="text").input-text
+
+							p.form-row.form-row.form-row-last.validate-required
+								label First Name 
+									abbr.required *
+								input(type="text").input-text
+
+							p.clear
+
+							p.form-row.form-row.form-row-wide
+								label Company Name 
+								input(type="text").input-text
+
+							p.form-row.form-row.form-row-first.validate-required
+								label Email Address 
+									abbr.required *
+								input(type="text").input-text
+
+							p.form-row.form-row.form-row-last.validate-required
+								label Phone 
+									abbr.required *
+								input(type="text").input-text
+
+							p.clear
+
+							p.form-row.form-row.form-row-wide
+								label Country 
+									abbr.required *
+								span.select2-container.country_to_state.country_select
+									a(href="#").select2-choice
+										span.select2-chosen United States (US)
+										abbr.select2-search-choice-close
+										span.select2-arrow: b
+
+							p.form-row.form-row.form-row-wide
+								label Address 
+									abbr.required *
+								input(type="text", placeholder="Street address").input-text
+
+							p.form-row.form-row.form-row-wide
+								input(type="text", placeholder="Apartment, suite, unit etc. (optional)").input-text
+
+							p.form-row.form-row.form-row-wide
+								label Town / City 
+									abbr.required *
+								input(type="text").input-text
+
+							p.form-row.form-row.form-row-first.validate-required
+								label State 
+									abbr.required *
+								span.select2-container.country_to_state.country_select
+									a(href="#").select2-choice
+										span.select2-chosen Select an option…
+										abbr.select2-search-choice-close
+										span.select2-arrow: b
+
+							p.form-row.form-row.form-row-last.validate-required
+								label ZIP 
+									abbr.required *
+								input(type="text").input-text
+
+							p.clear
+
+							p.form-row.form-row-wide.create-account
+								input(type="checkbox").input-checkbox
+								label.checkbox Create an account?
+						// woocommerce-billing-fields
+					// col-1
+
+					.col-2
+						.woocommerce-shipping-fields
+							h3 Additional Information
+							p.form-row.form-row.notes
+								label Order Notes
+								textarea.input-text(placeholder="Notes about your order, e.g. special notes for delivery.")
+						// woocommerce-shipping-fields
+					// col-2
+				// col2 set
+
+				h3 Your order
+
+				.woocommerce-checkout-review-order
+					table.shop_table.woocommerce-checkout-review-order-table
+						thead
+							tr
+								th.product-name Product
+								th.product-total Total
+						tbody
+							tr.cart_item
+								td.product-name Woo Single #1&nbsp;
+									strong.product-quantity × 1
+								td.product-total
+									span.amount $32
+						tfoot
+							tr.cart-subtotal
+								th Subtotal
+								td: span.amount $32
+							tr.order-total
+								th Total
+								td: strong: span.amount $32
+					// shop_table
+
+					.woocommerce-checkout-payment#payment
+						ul.wc_payment_methods.payment_methods.methods
+							li.wc_payment_method.payment_method_bacs
+								input(type="radio").input-radio
+								label Direct Bank Transfer
+								.payment_box.payment_method_bacs
+									p Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.
+
+							li.wc_payment_method.payment_method_cheque
+								input(type="radio").input-radio
+								label Cheque Payment
+								.payment_box.payment_method_cheque
+									p Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.
+
+							li.wc_payment_method.payment_method_cod
+								input(type="radio").input-radio
+								label Cash on Delivery
+								.payment_box.payment_method_cod
+									p Pay with cash upon delivery.
+						.form-row.place-order
+							input(type="submit", value="Place order").button.alt#place_order
+					// woocommerce-checkout-payment
+				// woocommerce-checkout-review-order
+			// woocommerce-checkout
+		// woocommerce
+	// entry content
+// page

@@ -1,0 +1,20 @@
+section.widget.kopa__gallery.style--01
+	.widget-title
+		h3.primary__title our gallery
+
+		.kopa__line--dotted.style--02
+			span.kopa__line--dotted--small.kopa__line--dotted--dark
+			span.kopa__line--dotted--small.kopa__line--dotted--gray
+			span.kopa__line--dotted--small.kopa__line--dotted--light
+			span.kopa__line--dotted--wide
+		// kopa line dotted
+	// widget title
+	
+	.widget-content
+		.row
+			- for ( var i = 1; i <= 6; i++ )
+				.col-xs-4: a(href="#"): img(src="http://placehold.it/80x80", alt="")
+				// col
+		// row
+	// widget content
+// kopa gallery

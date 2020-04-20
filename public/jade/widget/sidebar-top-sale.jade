@@ -1,0 +1,29 @@
+section.widget.kopa__topSale.style--01
+	.widget-title
+		h3.primary__title Top sale
+
+		.kopa__line--dotted.style--02
+			span.kopa__line--dotted--small.kopa__line--dotted--dark
+			span.kopa__line--dotted--small.kopa__line--dotted--gray
+			span.kopa__line--dotted--small.kopa__line--dotted--light
+			span.kopa__line--dotted--wide
+		// kopa line dotted
+	// widget title
+
+	.widget-content
+		ul
+			- for ( var i = 9; i <= 13; i++ )
+				li
+					if i < 10
+						a(href="#"): img(src="http://placehold.it/80x80", alt="")
+					else
+						a(href="#"): img(src="http://placehold.it/80x80", alt="")
+					h5.entry__title.style--03: a(href="#") This is product name
+					.kopa__shopItem__rating
+						- for( var j = 0; j < 5; j++ )
+							i.fa.fa-star-o
+					// kopa shop item raing
+					del £32
+					ins £22
+	// widget content
+// kopa top sale
