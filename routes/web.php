@@ -17,17 +17,15 @@ Route::get('/', function () {
     return view('layout');
 });
 
-Route::prefix('/catalog')->group(function ()
-{
-    Route::get('/all','mainpage\CategoryController@allItems');
+Route::prefix('/catalog')->group(function () {
+    Route::get('/all', 'Main\CategoryController@allItems');
 
-    Route::get('/{id}','mainpage\CategoryController@cateItems');
+    Route::get('/{id}', 'Main\CategoryController@cateItems');
 });
 
-Route::prefix('/blogs')->group(function ()
-{
-    Route::get('/all','mainpage\CategoryController@allPosts');
-    Route::get('/{id}','mainpage\CategoryController@catePosts');
+Route::prefix('/blogs')->group(function () {
+    Route::get('/all', 'Main\CategoryController@allPosts');
+    Route::get('/{id}', 'Main\CategoryController@catePosts');
 });
 
 Route::get('/user/profile', "UserController@userProfile")->middleware('auth');
@@ -45,7 +43,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group([
     'prefix' => 'admin',
-
 ], function () {
 
     //* Category Post
@@ -81,5 +78,4 @@ Route::group([
 
         Route::post('/{id}/update', 'Admin\CategoryProductController@updateCategory');
     });
-
 });
