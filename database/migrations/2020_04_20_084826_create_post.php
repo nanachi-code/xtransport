@@ -29,7 +29,7 @@ class CreatePost extends Migration
             $table->string('status', 20)->default('publish');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('category_post_id')->references('id')->on('category_post');
+            $table->foreign('category_post_id')->references('id')->on('post_category');
         });
     }
 

@@ -18,11 +18,6 @@ class CreateCategory extends Migration
             $table->string('name', 191)->unique();
             $table->timestamps();
         });
-        Schema::create('category_post', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name', 191)->unique();
-            $table->timestamps();
-        });
     }
 
     /**
@@ -33,6 +28,5 @@ class CreateCategory extends Migration
     public function down()
     {
         Schema::dropIfExists('category_product');
-        Schema::dropIfExists('category_post');
     }
 }
