@@ -28,9 +28,13 @@ Route::prefix('/blogs')->group(function () {
     Route::get('/{id}', 'Main\CategoryController@catePosts');
 });
 
-Route::get('/user/profile', "UserController@userProfile")->middleware('auth');
-Route::post('user/profile/update/{id}', "UserController@userProfileUpdate")->middleware("auth");;
-Route::post("changePassword", "UserController@changePassword")->middleware("auth");;
+Route::prefix('/user')->group(function ()
+{
+    Route::get('/profile', "UserController@userProfile")->middleware('auth');
+    Route::post('/profile/update/{id}', "UserController@userProfileUpdate")->middleware("auth");;
+    Route::post("/changePassword", "UserController@changePassword")->middleware("auth");;
+
+});
 
 
 Auth::routes();
@@ -73,6 +77,12 @@ Route::group([
         Route::get('/{id}/restore', 'Admin\PostController@restorePost');
     });
 
+    Route::get('/', function () {
+        return redirect('/admin/dashboard');
+    });
+
+    Route::get('/dashboard', 'Admin\DashboardController@renderDashboard');
+
     //* Category Post
     Route::prefix('category-post')->group(function () {
         Route::get('/', function () {
@@ -105,5 +115,26 @@ Route::group([
         Route::get('/{id}/delete', 'Admin\CategoryProductController@deleteCategory');
 
         Route::post('/{id}/update', 'Admin\CategoryProductController@updateCategory');
+    });
+
+    //* User
+    Route::prefix('user')->group(function () {
+        Route::get('/', function () {
+            return redirect('/admin/user/all');
+        });
+
+        Route::get('/all', 'Admin\UserController@renderArchiveUser');
+
+        Route::get('/new', 'Admin\UserController@renderNewUser');
+
+        Route::post('/new', 'Admin\UserController@createUser');
+
+        Route::get('/{id}', 'Admin\UserController@renderSingleUser');
+
+        Route::post('/{id}/update', 'Admin\UserController@updateUser');
+
+        Route::get('/{id}/disable', 'Admin\UserController@disableUser');
+
+        Route::get('/{id}/restore', 'Admin\UserController@restoreUser');
     });
 });

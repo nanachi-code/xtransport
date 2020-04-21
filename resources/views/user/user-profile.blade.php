@@ -153,7 +153,7 @@
     <script type="text/javascript">
         $("#submit-password").bind("click", function () {
             $.ajax({
-                url: "{{url("changePassword")}}",
+                url: "{{url("user/changePassword")}}",
                 method: "POST",
                 data: {
                     _token: $("input[name=_token]").val(),

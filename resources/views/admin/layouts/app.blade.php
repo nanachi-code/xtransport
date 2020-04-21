@@ -496,7 +496,7 @@
                             </div>
                             <ul>
                                 <li>
-                                    <a href="users_profile_big.html">
+                                    <a href="{{url('admin/user',Auth::user()->id)}}">
                                         <i class="os-icon os-icon-user-male-circle2"></i><span>Profile</span>
                                     </a>
                                 </li>
