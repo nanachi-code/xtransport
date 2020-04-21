@@ -14,8 +14,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layout');
 });
+
+Route::prefix('/catalog')->group(function ()
+{
+    Route::get('/all','mainpage\CategoryController@allItems');
+
+    Route::get('/{id}','mainpage\CategoryController@cateItems');
+});
+
+Route::prefix('/blogs')->group(function ()
+{
+    Route::get('/all','mainpage\CategoryController@allPosts');
+    Route::get('/{id}','mainpage\CategoryController@catePosts');
+});
+
 Route::get('/user/profile', "UserController@userProfile")->middleware('auth');
 Route::post('user/profile/update/{id}', "UserController@userProfileUpdate")->middleware("auth");;
 Route::post("changePassword", "UserController@changePassword")->middleware("auth");;
@@ -28,3 +42,44 @@ Route::get('logout', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group([
+    'prefix' => 'admin',
+
+], function () {
+
+    //* Category Post
+    Route::prefix('category-post')->group(function () {
+        Route::get('/', function () {
+            return redirect('/admin/category-post/all');
+        });
+
+        Route::get('/all', 'Admin\CategoryPostController@renderArchiveCategory');
+
+        Route::post('/new', 'Admin\CategoryPostController@createCategory');
+
+        Route::get('/{id}', 'Admin\CategoryPostController@renderSingleCategory');
+
+        Route::get('/{id}/delete', 'Admin\CategoryPostController@deleteCategory');
+
+        Route::post('/{id}/update', 'Admin\CategoryPostController@updateCategory');
+    });
+
+    //* Category Product
+    Route::prefix('category-product')->group(function () {
+        Route::get('/', function () {
+            return redirect('/admin/category-product/all');
+        });
+
+        Route::get('/all', 'Admin\CategoryProductController@renderArchiveCategory');
+
+        Route::post('/new', 'Admin\CategoryProductController@createCategory');
+
+        Route::get('/{id}', 'Admin\CategoryProductController@renderSingleCategory');
+
+        Route::get('/{id}/delete', 'Admin\CategoryProductController@deleteCategory');
+
+        Route::post('/{id}/update', 'Admin\CategoryProductController@updateCategory');
+    });
+
+});

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Coffee shop Admin Dashboard</title>
+    <title>TransportX Admin Dashboard</title>
     <meta charset="utf-8" />
     <meta content="ie=edge" http-equiv="x-ua-compatible" />
     <meta content="template language" name="keywords" />
@@ -428,7 +428,7 @@
                 <div class="logo-w">
                     <a class="logo" href="{{ url('/') }}">
                         <div class="logo-label">
-                            Coffee shop
+                            TransportX
                         </div>
                     </a>
                 </div>

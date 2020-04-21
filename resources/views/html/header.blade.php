@@ -5,18 +5,22 @@
                 <div class="col-xs-12 col-sm-12 col-md-5 pull-right">
                     <div class="kopa__header--right">
                         <div class="kopa__header__country pull-left">
-                            <div class="active"><img src="{{asset('images/flag/flag01.jpg')}}" alt=""><i class="fa fa-angle-down"></i></div>
+                            <div class="active"><img src="{{asset('images/flag/flag01.jpg')}}" alt=""><i
+                                    class="fa fa-angle-down"></i></div>
                             <div class="widget widget_polylang">
                                 <ul>
-                                    <li class="lang-item"><a href="#"><img src="{{asset('images/flag/flag01.jpg')}}" alt=""></a></li>
-                                    <li class="lang-item"><a href="#"><img src="{{asset('images/flag/flag02.jpg')}}" alt=""></a></li>
+                                    <li class="lang-item"><a href="#"><img src="{{asset('images/flag/flag01.jpg')}}"
+                                                alt=""></a></li>
+                                    <li class="lang-item"><a href="#"><img src="{{asset('images/flag/flag02.jpg')}}"
+                                                alt=""></a></li>
                                 </ul>
                             </div>
                             <!-- polylang-->
                         </div>
                         <!-- header country-->
                         <div class="kopa__header__office pull-left">
-                            <div class="active"><img src="{{asset('images/icon/global.png')}}" alt=""><span>London Office</span></div>
+                            <div class="active"><img src="{{asset('images/icon/global.png')}}" alt=""><span>London
+                                    Office</span></div>
                             <ul>
                                 <li><a href="#">London Office</a></li>
                                 <li><a href="#">Berlin Office</a></li>
@@ -25,7 +29,8 @@
                             </ul>
                         </div>
                         <!-- header office-->
-                        <div class="kopa__header__email pull-left"><a href="page-request.html"><i class="fa fa-envelope-o"></i>Request a quote</a></div>
+                        <div class="kopa__header__email pull-left"><a href="page-request.html"><i
+                                    class="fa fa-envelope-o"></i>Request a quote</a></div>
                         <!-- header email-->
                         <div class="kopa__mobileMenu hidden-md hidden-lg">
                             <div class="kopa__mobileMenu__iconBar"><span></span><span></span><span></span>
@@ -85,7 +90,8 @@
                 </div>
                 <!-- col-->
                 <div class="col-xs-12 col-md-3">
-                    <div class="kopa__header__logo"><a href="home-01.html"><img src="{{asset('images/fixed/logo01.png')}}" alt=""></a></div>
+                    <div class="kopa__header__logo"><a href="home-01.html"><img
+                                src="{{asset('images/fixed/logo01.png')}}" alt=""></a></div>
                     <!-- kopa logo-->
                 </div>
                 <!-- col-->
@@ -120,7 +126,10 @@
                                                     <div class="widget-content">
                                                         <article class="entry-item">
                                                             <div class="entry-content">
-                                                                <p>Discover all TNT's solutions to ship your parcel in the easiest way</p><a href="#" class="btn btn--md btn--curve btn__color--primary">view more<i class="fa fa-angle-right"></i></a>
+                                                                <p>Discover all TNT's solutions to ship your parcel in
+                                                                    the easiest way</p><a href="#"
+                                                                    class="btn btn--md btn--curve btn__color--primary">view
+                                                                    more<i class="fa fa-angle-right"></i></a>
                                                             </div>
                                                             <!-- entry content-->
                                                         </article>
@@ -157,10 +166,13 @@
                                                 <div class="widget kopa__articleHeader style--01">
                                                     <div class="widget-content">
                                                         <article class="entry-item">
-                                                            <div class="entry-thumb"><a href="#"><img src="http://placehold.it/370x210" alt=""></a></div>
+                                                            <div class="entry-thumb"><a href="#"><img
+                                                                        src="http://placehold.it/370x210" alt=""></a>
+                                                            </div>
                                                             <!-- entry thumb-->
                                                             <div class="entry-content">
-                                                                <h5><a href="#">Quality and Performance at the right price</a></h5>
+                                                                <h5><a href="#">Quality and Performance at the right
+                                                                        price</a></h5>
                                                             </div>
                                                             <!-- entry content-->
                                                         </article>
@@ -178,23 +190,30 @@
                                 </div>
                                 <!-- sf mega-->
                             </li>
-                            <li><a href="blog-full-width.html">Blog</a>
+                            <li><a href="{{url('/blogs/all')}}">Blog</a>
                                 <ul>
-                                    <li><a href="blog-full-width.html">Blog Full Width</a></li>
-                                    <li><a href="blog-list.html">Blog List</a></li>
-                                    <li><a href="blog-masonry.html">Blog Masonry</a></li>
-                                    <li><a href="single-blog-01.html">Blog Single 01</a></li>
-                                    <li><a href="single-blog-02.html">Blog Single 02</a></li>
+                                    <li><a href="{{url('/blogs/all')}}">All blogs</a></li>
+                                    @php
+                                    $post_cate = \App\PostCategory::all();
+                                    @endphp
+                                    @isset($post_cate)
+                                    @foreach($post_cate as $c)
+                                    <li><a href="{{url('/blogs/'.$c->id)}}">{{$c->name}}</a></li>
+                                    @endforeach
+                                    @endisset
                                 </ul>
                             </li>
-                            <li><a href="shop-01">Shop</a>
+                            <li><a href="{{url('/catalog/all')}}">Catalog</a>
                                 <ul>
-                                    <li><a href="shop-01.html">Shop 01</a></li>
-                                    <li><a href="shop-02.html">Shop 02</a></li>
-                                    <li><a href="shop-single.html">Shop Single</a></li>
-                                    <li><a href="shop-cart.html">Shop Cart</a></li>
-                                    <li><a href="shop-checkout.html">Shop Check Out</a></li>
-                                    <li><a href="shop-order-received.html">Shop Order Received</a></li>
+                                    <li><a href="{{url('/catalog/all')}}">All items</a></li>
+                                    @php
+                                    $product_cate = \App\ProductCategory::all();
+                                    @endphp
+                                    @isset($product_cate)
+                                    @foreach ($product_cate as $c)
+                                    <li><a href="{{url('/catalog/'.$c->id)}}">{{$c->name}}</a></li>
+                                    @endforeach
+                                    @endisset
                                 </ul>
                             </li>
                             <li><a href="page-contact.html">Contacts</a></li>
@@ -206,8 +225,10 @@
                     <div class="kopa__header--bottom--right">
                         <div id="sb-search" class="kopa__header__search sb-search">
                             <form>
-                                <input placeholder="Search..." type="text" value="" name="search" class="sb-search-input">
-                                <button type="submit" class="search-submit"><span class="sb-icon-search fa fa-search"></span></button>
+                                <input placeholder="Search..." type="text" value="" name="search"
+                                    class="sb-search-input">
+                                <button type="submit" class="search-submit"><span
+                                        class="sb-icon-search fa fa-search"></span></button>
                             </form>
                         </div>
                         <!-- kopa header search-->
