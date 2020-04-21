@@ -437,22 +437,28 @@
                 <div class="logged-user-w avatar-inline">
                     <div class="logged-user-i">
                         <div class="avatar-w">
+                            @if (Auth::check())
                             @if (\Auth::user()->avatar)
                             <img src="{{ asset("uploads/".\Auth::user()->avatar) }}"
                                 class="input-preview img-responsive">
                             @else
                             <img src="{{ asset('images/default/no-image.jpg') }}" class="input-preview img-responsive">
                             @endif
+                            @endif
                         </div>
                         <div class="logged-user-info-w">
                             <div class="logged-user-name">
+                                @if (Auth::check())
                                 {{ \Auth::user()->name }}
+                                @endif
                             </div>
                             <div class="logged-user-role">
+                                @if (Auth::check())
                                 @if (\Auth::user()->role == "admin")
                                 Admin
                                 @elseif (\Auth::user()->role == "super_admin")
                                 Super Admin
+                                @endif
                                 @endif
                             </div>
                         </div>
@@ -462,6 +468,7 @@
                         <div class="logged-user-menu color-style-bright">
                             <div class="logged-user-avatar-info">
                                 <div class="avatar-w">
+                                    @if (Auth::check())
                                     @if (\Auth::user()->avatar)
                                     <img src="{{ asset("uploads/".\Auth::user()->avatar) }}"
                                         class="input-preview img-responsive">
@@ -469,14 +476,19 @@
                                     <img src="{{ asset('images/default/no-image.jpg') }}"
                                         class="input-preview img-responsive">
                                     @endif
+                                    @endif
                                 </div>
                                 <div class="logged-user-info-w">
+                                    @if (Auth::check())
                                     <div class="logged-user-name">
                                         {{ \Auth::user()->name }}
                                     </div>
+                                    @endif
+                                    @if (Auth::check())
                                     <div class="logged-user-role">
                                         {{ \Auth::user()->role }}
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="bg-icon">
@@ -522,6 +534,7 @@
                             <span>Gallery</span>
                         </a>
                     </li>
+
                     {{-- Blog --}}
                     <li class="sub-header">
                         <span>Blog</span>
@@ -558,6 +571,7 @@
                             <span>Post category</span>
                         </a>
                     </li>
+
                     {{-- Product --}}
                     <li class="sub-header">
                         <span>Product</span>
@@ -586,6 +600,7 @@
                             <span>Product category</span>
                         </a>
                     </li>
+
                     {{-- User --}}
                     <li class="sub-header">
                         <span>User</span>
@@ -603,24 +618,6 @@
                             </div>
                             <span>New user</span>
                         </a>
-                    </li>
-
-                    <li class="sub-header">
-                        <span>Order</span>
-                    </li>
-                    <li>
-                        <a href="{{ url('/admin/order/all') }}">
-                            <div class="icon-w">
-                                <i class="icon-basket-loaded"></i>
-                            </div>
-                            <span>All orders</span>
-                        </a>
-                        {{-- <a href="{{ url('/admin/order/new') }}">
-                        <div class="icon-w">
-                            <i class="icon-basket"></i>
-                        </div>
-                        <span>New order</span>
-                        </a> --}}
                     </li>
                 </ul>
             </div>
@@ -640,6 +637,7 @@
                         <div class="logged-user-w">
                             <div class="logged-user-i">
                                 <div class="avatar-w">
+                                    @if (Auth::check())
                                     @if (\Auth::user()->avatar)
                                     <img src="{{ asset("uploads/".\Auth::user()->avatar) }}"
                                         class="input-preview img-responsive">
@@ -647,10 +645,12 @@
                                     <img src="{{ asset('images/default/no-image.jpg') }}"
                                         class="input-preview img-responsive">
                                     @endif
+                                    @endif
                                 </div>
                                 <div class="logged-user-menu color-style-bright">
                                     <div class="logged-user-avatar-info">
                                         <div class="avatar-w">
+                                            @if (Auth::check())
                                             @if (\Auth::user()->avatar)
                                             <img src="{{ asset("uploads/".\Auth::user()->avatar) }}"
                                                 class="input-preview img-responsive">
@@ -658,14 +658,19 @@
                                             <img src="{{ asset('images/default/no-image.jpg') }}"
                                                 class="input-preview img-responsive">
                                             @endif
+                                            @endif
                                         </div>
                                         <div class="logged-user-info-w">
+                                            @if (Auth::check())
                                             <div class="logged-user-name">
                                                 {{ \Auth::user()->name }}
                                             </div>
+                                            @endif
+                                            @if (Auth::check())
                                             <div class="logged-user-role">
                                                 {{ \Auth::user()->role }}
                                             </div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="bg-icon">
@@ -692,7 +697,11 @@
                     {{-- END - Top Menu Controls --}}
                 </div>
                 {{-- END - Top Bar --}}
+
+                {{-- START - Content --}}
                 @yield('content')
+                {{-- END - Content --}}
+
                 {{-- START - Color Scheme Toggler --}}
                 <div class="floated-colors-btn second-floated-btn">
                     <div class="os-toggler-w">

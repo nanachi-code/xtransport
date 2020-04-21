@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\ProductCategory;
+use App\CategoryProduct;
 use Illuminate\Http\Request;
 
 class CategoryProductController extends Controller
@@ -11,7 +11,7 @@ class CategoryProductController extends Controller
     public function renderArchiveCategory()
     {
         $p = [
-            'categories' => ProductCategory::all()
+            'categories' => CategoryProduct::all()
         ];
 
         return view('admin/archive-category-product')->with($p);
@@ -20,15 +20,19 @@ class CategoryProductController extends Controller
     public function renderSingleCategory($id)
     {
         $p = [
-            'category' => ProductCategory::where('id', $id)->first()
+            'category' => CategoryProduct::where('id', $id)->first()
         ];
 
-        return view('admin/single-category-product')->with($p);
+        if ($p["category"]) {
+            return view('admin/single-category-product')->with($p);
+        } else {
+            return redirect('admin/category-product');
+        }
     }
 
     public function createCategory(Request $request)
     {
-        $category = new ProductCategory;
+        $category = new CategoryProduct;
         $category->name = $request->get('name');
         try {
             $category->save();
@@ -49,7 +53,7 @@ class CategoryProductController extends Controller
 
     public function deleteCategory($id)
     {
-        $category = ProductCategory::find($id);
+        $category = CategoryProduct::find($id);
         try {
             $category->delete();
         } catch (\Throwable $th) {
@@ -61,8 +65,7 @@ class CategoryProductController extends Controller
     public function updateCategory(Request $request, $id)
     {
         try {
-            ProductCategory::find($id)
-                ->update($request->all());
+            CategoryProduct::find($id)->update($request->all());
         } catch (\Exception $e) {
             throw $e;
         }

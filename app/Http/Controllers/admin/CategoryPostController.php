@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\PostCategory;
+use App\CategoryPost;
 
 class CategoryPostController extends Controller
 {
     public function renderArchiveCategory()
     {
         $p = [
-            'categories' => PostCategory::all()
+            'categories' => CategoryPost::all()
         ];
 
         return view('admin/archive-category-post')->with($p);
@@ -20,7 +20,7 @@ class CategoryPostController extends Controller
     public function renderSingleCategory($id)
     {
         $p = [
-            'category' => PostCategory::where('id', $id)->first()
+            'category' => CategoryPost::where('id', $id)->first()
         ];
 
         return view('admin/single-category-post')->with($p);
@@ -28,7 +28,7 @@ class CategoryPostController extends Controller
 
     public function createCategory(Request $request)
     {
-        $category = new PostCategory;
+        $category = new CategoryPost;
         $category->name = $request->get('name');
         try {
             $category->save();
@@ -49,7 +49,7 @@ class CategoryPostController extends Controller
 
     public function deleteCategory($id)
     {
-        $category = PostCategory::find($id);
+        $category = CategoryPost::find($id);
         try {
             $category->delete();
         } catch (\Throwable $th) {
@@ -61,7 +61,7 @@ class CategoryPostController extends Controller
     public function updateCategory(Request $request, $id)
     {
         try {
-            PostCategory::find($id)
+            CategoryPost::find($id)
                 ->update($request->all());
         } catch (\Exception $e) {
             throw $e;

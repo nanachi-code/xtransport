@@ -13,12 +13,12 @@ class CreateCategory extends Migration
      */
     public function up()
     {
-        Schema::create('product_category', function (Blueprint $table) {
+        Schema::create('category_product', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 191)->unique();
             $table->timestamps();
         });
-        Schema::create('post_category', function (Blueprint $table) {
+        Schema::create('category_post', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 191)->unique();
             $table->timestamps();
@@ -32,7 +32,7 @@ class CreateCategory extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_category');
-        Schema::dropIfExists('post_category');
+        Schema::dropIfExists('category_product');
+        Schema::dropIfExists('category_post');
     }
 }

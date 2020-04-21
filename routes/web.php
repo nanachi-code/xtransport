@@ -41,9 +41,37 @@ Route::get('logout', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//* Admin
 Route::group([
     'prefix' => 'admin',
 ], function () {
+    //* Dashboard
+    Route::get('/', function () {
+        return redirect('/admin/dashboard');
+    });
+
+    Route::get('/dashboard', 'Admin\DashboardController@renderDashboard');
+
+    //* Post
+    Route::prefix('post')->group(function () {
+        Route::get('/', function () {
+            return redirect('/admin/post/all');
+        });
+
+        Route::get('/all', 'Admin\PostController@renderArchivePost');
+
+        Route::get('/new', 'Admin\PostController@renderNewPost');
+
+        Route::post('/new', 'Admin\PostController@createPost');
+
+        Route::get('/{id}', 'Admin\PostController@renderSinglePost');
+
+        Route::post('/{id}/update', 'Admin\PostController@updatePost');
+
+        Route::get('/{id}/delete', 'Admin\PostController@deletePost');
+
+        Route::get('/{id}/restore', 'Admin\PostController@restorePost');
+    });
 
     //* Category Post
     Route::prefix('category-post')->group(function () {
