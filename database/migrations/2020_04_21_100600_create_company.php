@@ -15,13 +15,13 @@ class CreateCompany extends Migration
     {
         Schema::create('company', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->unique();
-            $table->string('phone', 191)->nullable()->default(null);
+            $table->string('name',191)->unique();
+            $table->string('phone', 191)->unique();
             $table->string('email', 191)->unique();
-            $table->string('address')->nullable()->default(null);
+            $table->string('address');
             $table->string('logo')->nullable();
             $table->string('status', 20)->default('active');
-            $table->bigInteger('post_id')->unsigned();
+            $table->bigInteger('post_id')->unsigned()->nullable();
             $table->foreign('post_id')->references('id')->on('post');
             $table->timestamps();
         });

@@ -48,6 +48,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //* Admin
 Route::group([
     'prefix' => 'admin',
+
 ], function () {
     //* Dashboard
     Route::get('/', function () {
@@ -136,5 +137,26 @@ Route::group([
         Route::get('/{id}/disable', 'Admin\UserController@disableUser');
 
         Route::get('/{id}/restore', 'Admin\UserController@restoreUser');
+    });
+
+    // Company
+    Route::prefix('company')->group(function () {
+        Route::get('/', function () {
+            return redirect('/admin/company/all');
+        });
+
+        Route::get('/all', 'Admin\CompanyController@renderArchiveCompany');
+
+        Route::get('/new', 'Admin\CompanyController@renderNewCompany');
+
+        Route::post('/new', 'Admin\CompanyController@createCompany');
+
+        Route::get('/{id}', 'Admin\CompanyController@renderSingleCompany');
+
+        Route::post('/{id}/update', 'Admin\CompanyController@updateCompany');
+
+        Route::get('/{id}/disable', 'Admin\CompanyController@disableCompany');
+
+        Route::get('/{id}/restore', 'Admin\CompanyController@restoreCompany');
     });
 });

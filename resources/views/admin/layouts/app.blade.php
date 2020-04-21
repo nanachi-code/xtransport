@@ -619,6 +619,25 @@
                             <span>New user</span>
                         </a>
                     </li>
+
+                    {{-- Company --}}
+                    <li class="sub-header">
+                        <span>Company</span>
+                    </li>
+                    <li>
+                        <a href="{{ url('/admin/company/all') }}">
+                            <div class="icon-w">
+                                <i class="icon-docs"></i>
+                            </div>
+                            <span>All companies</span>
+                        </a>
+                        <a href="{{ url('/admin/company/new') }}">
+                            <div class="icon-w">
+                                <i class="icon-note"></i>
+                            </div>
+                            <span>New company</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             {{-- END - Main Menu --}}
