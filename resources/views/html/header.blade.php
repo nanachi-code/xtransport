@@ -216,7 +216,7 @@
                                     @endisset
                                 </ul>
                             </li>
-                            <li><a href="page-contact.html">Contacts</a></li>
+                            <li><a href="{{url('/contact')}}">Contacts</a></li>
                         </ul>
                     </nav>
                     <!-- kopa header mainMenu-->
