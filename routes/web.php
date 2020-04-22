@@ -35,7 +35,7 @@ Route::prefix('/user')->group(function ()
     Route::post("/changePassword", "UserController@changePassword")->middleware("auth");;
 
 });
-
+Route::get('/contact', 'Main\ContactController@contact');
 
 Auth::routes();
 Route::get('logout', function () {
