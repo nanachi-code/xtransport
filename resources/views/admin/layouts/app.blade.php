@@ -496,9 +496,11 @@
                             </div>
                             <ul>
                                 <li>
+                                    @if (Auth::check())
                                     <a href="{{url('admin/user',Auth::user()->id)}}">
                                         <i class="os-icon os-icon-user-male-circle2"></i><span>Profile</span>
                                     </a>
+                                    @endif
                                 </li>
                                 <li>
                                     <a href="{{ url('/logout') }}">

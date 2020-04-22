@@ -118,6 +118,27 @@ Route::group([
         Route::post('/{id}/update', 'Admin\CategoryProductController@updateCategory');
     });
 
+    //* Product
+    Route::prefix('product')->group(function () {
+        Route::get('/', function () {
+            return redirect('/admin/product/all');
+        });
+
+        Route::get('/all', 'Admin\ProductController@renderArchiveProduct');
+
+        Route::get('/new', 'Admin\ProductController@renderNewProduct');
+
+        Route::post('/new', 'Admin\ProductController@createProduct');
+
+        Route::get('/{id}', 'Admin\ProductController@renderSingleProduct');
+
+        Route::get('/{id}/delete', 'Admin\ProductController@deleteProduct');
+
+        Route::post('/{id}/update', 'Admin\ProductController@updateProduct');
+
+        Route::post('/{id}/restore', 'Admin\ProductController@restoreProduct');
+    });
+
     //* User
     Route::prefix('user')->group(function () {
         Route::get('/', function () {
