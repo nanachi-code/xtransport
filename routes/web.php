@@ -31,11 +31,16 @@ Route::prefix('/blogs')->group(function () {
 Route::prefix('/user')->group(function ()
 {
     Route::get('/profile', "UserController@userProfile")->middleware('auth');
-    Route::post('/profile/update/{id}', "UserController@userProfileUpdate")->middleware("auth");;
-    Route::post("/changePassword", "UserController@changePassword")->middleware("auth");;
+    Route::post('/profile/update/{id}', "UserController@userProfileUpdate")->middleware("auth");
+    Route::post("/changePassword", "UserController@changePassword")->middleware("auth");
 
 });
-Route::get('/contact', 'Main\ContactController@contact');
+Route::prefix('/contact')->group(function ()
+{
+    Route::get('/', 'Main\ContactController@contact');
+    Route::post('/feedback', "Main\ContactController@contactFeedback");
+});
+
 
 Auth::routes();
 Route::get('logout', function () {
@@ -179,5 +184,18 @@ Route::group([
         Route::get('/{id}/disable', 'Admin\CompanyController@disableCompany');
 
         Route::get('/{id}/restore', 'Admin\CompanyController@restoreCompany');
+    });
+    //* Feedback Post
+    Route::prefix('feedback')->group(function () {
+        Route::get('/', function () {
+            return redirect('/admin/feedback/all');
+        });
+
+        Route::get('/all', 'Admin\ContactFeedbackController@renderArchiveFeedback');
+
+        Route::get('/{id}', 'Admin\ContactFeedbackController@renderSingleFeedback');
+
+        Route::get('/{id}/delete', 'Admin\ContactFeedbackController@deleteFeedback');
+
     });
 });

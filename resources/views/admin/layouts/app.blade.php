@@ -640,6 +640,18 @@
                             <span>New company</span>
                         </a>
                     </li>
+                    {{-- Feedback --}}
+                    <li class="sub-header">
+                        <span>Feedback</span>
+                    </li>
+                    <li>
+                        <a href="{{ url('/admin/feedback/all') }}">
+                            <div class="icon-w">
+                                <i class="icon-docs"></i>
+                            </div>
+                            <span>Feedback</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             {{-- END - Main Menu --}}

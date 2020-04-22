@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title',"Blogs")
+@section('title',"Contact")
 
 @section('location')
     <section class="kopa__area kopa__area--noSpace">
@@ -51,17 +51,18 @@
                             <div class="kopa_formContact style--01">
                                 <div class="wpcf7">
                                     <div class="screen-reader-response"></div>
-                                    <form action="/" method="post" novalidate="novalidate" class="wpcf7-form">
+                                    <form action="{{url("/contact/feedback")}}" method="post" class="wpcf7-form">
+                                        @csrf
                                         <p><span class="wpcf7-form-control-wrap your-name">
-                            <input type="text" placeholder="Name *" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"></span></p>
+                            <input type="text" name="name" placeholder="Name *" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"></span></p>
                                         <p><span class="wpcf7-form-control-wrap your-email">
-                            <input type="email" placeholder="Email *" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email"></span></p>
+                            <input type="email" name="email" placeholder="Email *" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email"></span></p>
                                         <p><span class="wpcf7-form-control-wrap your-subject">
-                            <input type="text" placeholder="Website url" class="wpcf7-form-control wpcf7-text"></span></p>
+                            <input type="text" name="website_url" placeholder="Website url" class="wpcf7-form-control wpcf7-text"></span></p>
                                         <p><span class="wpcf7-form-control-wrap your-message">
-                            <textarea placeholder="Comment" class="wpcf7-form-control wpcf7-textarea"></textarea></span></p>
+                            <textarea placeholder="Comment" name="comment" class="wpcf7-form-control wpcf7-textarea"></textarea></span></p>
                                         <p>
-                                            <input type="submit" value="post comment" class="wpcf7-form-control wpcf7-submit btn btn--md btn--curve btn__color--primary">
+                                            <button type="submit" id="contact-feedback" class="wpcf7-form-control wpcf7-submit btn btn--md btn--curve btn__color--primary">Send Feedback</button>
                                         </p>
                                     </form>
                                 </div>
@@ -80,4 +81,47 @@
         </div>
         <!-- container-->
     </section>
+@endsection
+@section('script')
+    <script type="text/javascript">
+        $("#contact-feedback").submit(function (e) {
+            e.preventDefault();
+            let form = $(this);
+            $.ajax({
+                type: "POST",
+                url: form.attr("action"),
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                success: (res) => {
+                    form.find(".alert-dismissible").remove();
+                    form.prepend(`
+                    <div class="alert alert-success alert-dismissible fade" role="alert">
+                        <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        ${res.message}
+                    </div>`);
+                    setTimeout(() => {
+                        form.find(".alert-dismissible").remove();
+                    }, 3000);
+                    console.log(res);
+                },
+                error: (e) => {
+                    form.find(".alert-dismissible");
+                    form.prepend(`
+                    <div class="alert alert-danger alert-dismissible fade" role="alert">
+                        <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        ${e.responseJSON.message}
+                    </div>`);
+                    setTimeout(() => {
+                        form.find(".alert-dismissible").remove();
+                    }, 3000);
+                    console.log(e.responseJSON);
+                },
+            });
+        });
+    </script>
 @endsection
