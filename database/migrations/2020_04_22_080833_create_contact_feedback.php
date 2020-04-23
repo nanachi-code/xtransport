@@ -15,11 +15,10 @@ class CreateContactFeedback extends Migration
     {
         Schema::create('contact_feedback', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->unique();
-            $table->string('email', 191)->unique();
+            $table->string('name');
+            $table->string('email', 191);
             $table->string('website_url')->nullable()->default(null);
             $table->string('comment', 191)->nullable()->default(null);
-            $table->rememberToken();
             $table->timestamps();
         });
     }
