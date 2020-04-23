@@ -542,7 +542,9 @@ $(function () {
         $("#add-image-modal").modal("toggle");
     });
 
-    $("#add-image-modal #gallery-list .gallery-item").click(function (e) {
+    $("#add-image-modal #gallery-list").on("click", ".gallery-item", function (
+        e
+    ) {
         e.preventDefault();
         let imgURL = $(this).find("img").attr("src");
 
@@ -600,7 +602,7 @@ $(function () {
         console.log(_p);
     });
 
-    $("#gallery-list .gallery-item").click(function (e) {
+    $("#gallery-list").on("click", ".gallery-item", function (e) {
         e.preventDefault();
         let imgURL = $(this).find("img").attr("src"),
             imgFilename = $(this).find("img").attr("data-filename"),
@@ -682,15 +684,19 @@ $(function () {
         $("#set-thumbnail-modal").modal("toggle");
     });
 
-    $("#set-thumbnail-modal #gallery-list .gallery-item").click(function (e) {
-        e.preventDefault();
-        let filename = $(this).find("img").attr("data-filename"),
-            imgURL = $(this).find("img").attr("src");
+    $("#set-thumbnail-modal #gallery-list").on(
+        "click",
+        ".gallery-item",
+        function (e) {
+            e.preventDefault();
+            let filename = $(this).find("img").attr("data-filename"),
+                imgURL = $(this).find("img").attr("src");
 
-        $("#thumbnail-preview").attr("src", imgURL);
-        $("input[name='thumbnail']").val(filename);
-        $("#set-thumbnail-modal").modal("hide");
-    });
+            $("#thumbnail-preview").attr("src", imgURL);
+            $("input[name='thumbnail']").val(filename);
+            $("#set-thumbnail-modal").modal("hide");
+        }
+    );
 
     $("#remove-thumbnail").click(function (e) {
         e.preventDefault();
