@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\CheckAdmin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,7 +51,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //* Admin
 Route::group([
     'prefix' => 'admin',
-
+    'middleware' => ['auth', CheckAdmin::class]
 ], function () {
     //* Dashboard
     Route::get('/', function () {
