@@ -241,9 +241,11 @@
                             <ul>
                                 @if (Auth::check())
                                 <li>
+                                    @if (Auth::check())
                                     <a href="{{url('admin/user',Auth::user()->id)}}">
                                         <i class="os-icon os-icon-user-male-circle2"></i><span>Profile</span>
                                     </a>
+                                    @endif
                                 </li>
                                 <li>
                                     <a href="{{ url('/logout') }}">
@@ -366,6 +368,37 @@
                                 <i class="icon-user-follow"></i>
                             </div>
                             <span>New user</span>
+                        </a>
+                    </li>
+
+                    {{-- Company --}}
+                    <li class="sub-header">
+                        <span>Company</span>
+                    </li>
+                    <li>
+                        <a href="{{ url('/admin/company/all') }}">
+                            <div class="icon-w">
+                                <i class="icon-docs"></i>
+                            </div>
+                            <span>All companies</span>
+                        </a>
+                        <a href="{{ url('/admin/company/new') }}">
+                            <div class="icon-w">
+                                <i class="icon-note"></i>
+                            </div>
+                            <span>New company</span>
+                        </a>
+                    </li>
+                    {{-- Feedback --}}
+                    <li class="sub-header">
+                        <span>Feedback</span>
+                    </li>
+                    <li>
+                        <a href="{{ url('/admin/feedback/all') }}">
+                            <div class="icon-w">
+                                <i class="icon-docs"></i>
+                            </div>
+                            <span>Feedback</span>
                         </a>
                     </li>
                 </ul>

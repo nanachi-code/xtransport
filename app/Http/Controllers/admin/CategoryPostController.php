@@ -41,7 +41,7 @@ class CategoryPostController extends Controller
             "category" => [
                 "name" => $category->name,
                 "id" => $category->id,
-                "url" => url("/admin/category-post/{$category->id}"),
+                "categoryUrl" => url("/admin/category-post/{$category->id}"),
                 "deleteUrl" => url("/admin/category-post/{$category->id}/delete")
             ]
         ], 200);

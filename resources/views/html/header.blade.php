@@ -194,7 +194,7 @@
                                 <ul>
                                     <li><a href="{{url('/blogs/all')}}">All blogs</a></li>
                                     @php
-                                    $post_cate = \App\PostCategory::all();
+                                    $post_cate = \App\CategoryPost::all();
                                     @endphp
                                     @isset($post_cate)
                                     @foreach($post_cate as $c)
@@ -207,7 +207,7 @@
                                 <ul>
                                     <li><a href="{{url('/catalog/all')}}">All items</a></li>
                                     @php
-                                    $product_cate = \App\ProductCategory::all();
+                                    $product_cate = \App\CategoryProduct::all();
                                     @endphp
                                     @isset($product_cate)
                                     @foreach ($product_cate as $c)
@@ -216,7 +216,7 @@
                                     @endisset
                                 </ul>
                             </li>
-                            <li><a href="page-contact.html">Contacts</a></li>
+                            <li><a href="{{url('/contact')}}">Contacts</a></li>
                         </ul>
                     </nav>
                     <!-- kopa header mainMenu-->
