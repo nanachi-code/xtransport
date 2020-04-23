@@ -24,7 +24,14 @@ class CompanyController extends Controller
     {
         $p = [
             'company' => Company::where('id', $id)->first(),
-            'select_post' => \App\Post::where('status','publish')->where('category_post_id',null)->get()
+            'select_post' => \App\Post::where('status','publish')->where('category_post_id',null)->get(),
+            'gallery' => collect(File::allFiles(public_path('uploads')))
+                ->filter(function ($file) {
+                    return in_array($file->getExtension(), ['png', 'gif', 'jpg']);
+                })
+                ->sortBy(function ($file) {
+                    return $file->getCTime();
+                })
         ];
 
         return view('admin/single-company')->with($p);
@@ -32,10 +39,18 @@ class CompanyController extends Controller
 
     public function renderNewCompany()
     {
-        $select_post = DB::table('post')->leftJoin('company','post.id','=','company.post_id')
-        ->where('company.post_id',null)->select('post.id','post.title')->get();
-        //dd($select_post);
-        return view('admin/new-company')->with(compact('select_post'));
+        $p = [
+            'select_post' => DB::table('post')->leftJoin('company','post.id','=','company.post_id')
+            ->where('company.post_id',null)->select('post.id','post.title')->get(),
+            'gallery' => collect(File::allFiles(public_path('uploads')))
+            ->filter(function ($file) {
+                return in_array($file->getExtension(), ['png', 'gif', 'jpg']);
+            })
+            ->sortBy(function ($file) {
+                return $file->getCTime();
+            })
+        ];
+        return view('admin/new-company')->with($p);
     }
 
     public function createCompany(Request $request)
