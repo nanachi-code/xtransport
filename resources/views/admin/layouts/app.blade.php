@@ -278,7 +278,7 @@
 
                     {{-- Gallery --}}
                     <li>
-                        <a href="{{ url('/admin/galery') }}">
+                        <a href="{{ url('/admin/gallery') }}">
                             <div class="icon-w">
                                 <i class="icon-picture"></i>
                             </div>
