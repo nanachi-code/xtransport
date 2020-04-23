@@ -41,7 +41,14 @@ class PostController extends Controller
     public function renderNewPost()
     {
         $p = [
-            'allCategories' => CategoryPost::all()
+            'allCategories' => CategoryPost::all(),
+            'gallery' => collect(File::allFiles(public_path('uploads')))
+                ->filter(function ($file) {
+                    return in_array($file->getExtension(), ['png', 'gif', 'jpg']);
+                })
+                ->sortBy(function ($file) {
+                    return $file->getCTime();
+                })
         ];
 
         return view('admin/new-post')->with($p);

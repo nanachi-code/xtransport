@@ -46,8 +46,8 @@
                                     <div class="form-group">
                                         <label>Content</label>
                                         <div class="pb-3">
-                                            <button class="btn btn-outline-secondary" id="add-content-media">
-                                                <i class="icon-picture"></i> (Not Working)
+                                            <button class="btn btn-outline-secondary" id="add-content-image">
+                                                <i class="icon-picture"></i>
                                             </button>
                                             <button class="btn btn-outline-secondary ml-1" id="add-content-i">
                                                 <i>i</i>
@@ -102,17 +102,124 @@
                                     {{-- product thumbnail --}}
                                     <div class="form-group">
                                         <label for="form-post-thumbnail">Thumbnail</label>
-                                        <img src="{{ asset('images/default/no-image.jpg') }}"
-                                            class="input-preview img-responsive">
+                                        <img src="{{ asset('images/default/no-image.jpg') }}" class="img-responsive"
+                                            id="thumbnail-preview">
 
                                         <div class="form-buttons-w">
-                                            <input type="file" class="form-control-file" data-title="Upload"
-                                                name="thumbnail">
+                                            <button class="btn btn-primary" id="set-thumbnail">Set thumbnail</button>
+                                            <input type="hidden" name="thumbnail">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </form>
+
+                        {{-- START - Add Image Modal --}}
+                        <div id="add-image-modal" aria-hidden="true" aria-labelledby="add-image-modal-title"
+                            class="modal fade" role="dialog" tabindex="-1">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="add-image-modal-title">
+                                            Add image
+                                        </h5>
+                                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{-- START - Upload Attachment --}}
+                                        <div class="element-box">
+                                            <h5>Upload new attachment</h5>
+                                            <hr>
+                                            <form id="upload-gallery" action="{{ url("admin/gallery/upload") }}"
+                                                method="post" enctype="multipart/form-data">
+                                                <input type="file" data-title="Upload" name="image">
+                                            </form>
+                                        </div>
+                                        {{-- END - Upload Attachment --}}
+
+                                        {{-- START - Attachment Library --}}
+                                        <div class="element-box" id="attachment-library">
+                                            <h5>Attachment Library</h5>
+                                            <hr>
+                                            @if (count($gallery) == 0)
+                                            No attachments found.
+                                            @else
+                                            <div class="row" id="gallery-list">
+                                                @foreach ($gallery as $image)
+                                                <div class="col-sm-2 gallery-item">
+                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
+                                                        data-size="{{ $image->getSize() }} B"
+                                                        data-filename="{{ $image->getFilename() }}"
+                                                        class="img-responsive">
+                                                </div>
+                                                @endforeach
+                                            </div>
+                                            @endif
+                                        </div>
+                                        {{-- END - Attachment Library --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- END - Add Image Modal --}}
+
+                        {{-- START - Set Thumbnail Modal --}}
+                        <div id="set-thumbnail-modal" aria-hidden="true" aria-labelledby="set-thumbnail-modal-title"
+                            class="modal fade" role="dialog" tabindex="-1">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="set-thumbnail-modal-title">
+                                            Set thumbnail
+                                        </h5>
+                                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{-- START - Upload Attachment --}}
+                                        <div class="element-box">
+                                            <h5>Upload new attachment</h5>
+                                            <hr>
+                                            <form id="upload-gallery" action="{{ url("admin/gallery/upload") }}"
+                                                method="post" enctype="multipart/form-data">
+                                                <input type="file" data-title="Upload" name="image">
+                                            </form>
+                                        </div>
+                                        {{-- END - Upload Attachment --}}
+
+                                        {{-- START - Attachment Library --}}
+                                        <div class="element-box" id="attachment-library">
+                                            <h5>Attachment Library</h5>
+                                            <hr>
+                                            @if (count($gallery) == 0)
+                                            No attachments found.
+                                            @else
+                                            <div class="row" id="gallery-list">
+                                                @foreach ($gallery as $image)
+                                                <div class="col-sm-2 gallery-item">
+                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
+                                                        data-size="{{ $image->getSize() }} B"
+                                                        data-filename="{{ $image->getFilename() }}"
+                                                        class="img-responsive">
+                                                </div>
+                                                @endforeach
+                                            </div>
+                                            @endif
+                                        </div>
+                                        {{-- END - Attachment Library --}}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button id="remove-thumbnail" class="btn btn-danger text-white">
+                                            Remove thumbnail
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- END - Set Thumbnail Modal --}}
                     </div>
                 </div>
             </div>
