@@ -62,7 +62,7 @@ input[type="file"]:focus::before {
     box-shadow: 0 0 0 0.2rem rgba(42, 143, 249, 0.5);
 }
 
-#gallery-list .gallery-item:hover {
+.gallery-list .gallery-item:hover {
     cursor: pointer;
 }
 

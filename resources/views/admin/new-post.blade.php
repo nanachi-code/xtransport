@@ -132,7 +132,7 @@
                                         <div class="element-box">
                                             <h5>Upload new attachment</h5>
                                             <hr>
-                                            <form id="upload-gallery" action="{{ url("admin/gallery/upload") }}"
+                                            <form class="upload-gallery" action="{{ url("admin/gallery/upload") }}"
                                                 method="post" enctype="multipart/form-data">
                                                 <input type="file" data-title="Upload" name="image">
                                             </form>
@@ -140,13 +140,13 @@
                                         {{-- END - Upload Attachment --}}
 
                                         {{-- START - Attachment Library --}}
-                                        <div class="element-box" id="attachment-library">
+                                        <div class="element-box attachment-library">
                                             <h5>Attachment Library</h5>
                                             <hr>
                                             @if (count($gallery) == 0)
                                             No attachments found.
                                             @else
-                                            <div class="row" id="gallery-list">
+                                            <div class="row" class="gallery-list">
                                                 @foreach ($gallery as $image)
                                                 <div class="col-sm-2 gallery-item">
                                                     <img src="{{ asset("uploads/{$image->getFilename()}") }}"
@@ -183,7 +183,7 @@
                                         <div class="element-box">
                                             <h5>Upload new attachment</h5>
                                             <hr>
-                                            <form id="upload-gallery" action="{{ url("admin/gallery/upload") }}"
+                                            <form class="upload-gallery" action="{{ url("admin/gallery/upload") }}"
                                                 method="post" enctype="multipart/form-data">
                                                 <input type="file" data-title="Upload" name="image">
                                             </form>
@@ -191,13 +191,13 @@
                                         {{-- END - Upload Attachment --}}
 
                                         {{-- START - Attachment Library --}}
-                                        <div class="element-box" id="attachment-library">
+                                        <div class="element-box attachment-library">
                                             <h5>Attachment Library</h5>
                                             <hr>
                                             @if (count($gallery) == 0)
                                             No attachments found.
                                             @else
-                                            <div class="row" id="gallery-list">
+                                            <div class="row gallery-list">
                                                 @foreach ($gallery as $image)
                                                 <div class="col-sm-2 gallery-item">
                                                     <img src="{{ asset("uploads/{$image->getFilename()}") }}"

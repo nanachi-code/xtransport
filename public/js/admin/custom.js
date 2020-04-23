@@ -542,11 +542,12 @@ $(function () {
         $("#add-image-modal").modal("toggle");
     });
 
-    $("#add-image-modal #gallery-list").on("click", ".gallery-item", function (
+    $("#add-image-modal .gallery-list").on("click", ".gallery-item", function (
         e
     ) {
         e.preventDefault();
         let imgURL = $(this).find("img").attr("src");
+        console.log("clicked");
 
         $("#content-editor").val(
             `${$(
@@ -602,7 +603,7 @@ $(function () {
         console.log(_p);
     });
 
-    $("#gallery-list").on("click", ".gallery-item", function (e) {
+    $(".gallery-list").on("click", ".gallery-item", function (e) {
         e.preventDefault();
         let imgURL = $(this).find("img").attr("src"),
             imgFilename = $(this).find("img").attr("data-filename"),
@@ -617,10 +618,10 @@ $(function () {
         $("#attachment-delete").attr("href", imgDeleteURL);
     });
 
-    $("#upload-gallery input[type=file]").change(function (e) {
+    $(".upload-gallery input[type=file]").change(function (e) {
         e.preventDefault();
 
-        let form = $("#upload-gallery");
+        let form = $(this).parents(".upload-gallery");
 
         $.ajax({
             type: form.attr("method"),
@@ -643,16 +644,16 @@ $(function () {
                 }, 3000);
                 console.log(res);
 
-                if ($("#gallery-list").length) {
-                    $("#gallery-list").append(`
+                if ($(".gallery-list").length) {
+                    $(".gallery-list").append(`
                         <div class="col-sm-2 gallery-item">
                             <img src="${res.image.src}" data-size="${res.image.size} B" data-filename="${res.image.filename}"
                                 class="img-responsive">
                         </div>
                         `);
                 } else {
-                    $("#attachment-library").html(`
-                        <div class="row" id="gallery-list">
+                    $(".attachment-library").html(`
+                        <div class="row" class="gallery-list">
                             <div class="col-sm-2 gallery-item">
                                 <img src="${res.image.src}" data-size="${res.image.size} B" data-filename="${res.image.filename}"
                                     class="img-responsive">
@@ -684,7 +685,7 @@ $(function () {
         $("#set-thumbnail-modal").modal("toggle");
     });
 
-    $("#set-thumbnail-modal #gallery-list").on(
+    $("#set-thumbnail-modal .gallery-list").on(
         "click",
         ".gallery-item",
         function (e) {
