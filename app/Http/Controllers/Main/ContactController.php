@@ -29,7 +29,9 @@ class ContactController extends Controller
         }catch (\Exception $e){
             return redirect()->back();
         }
-        return redirect("/contact");
+        return response()->json([
+            "message" => "Contact feedback successfully."
+        ], 200);
 
     }
 }
