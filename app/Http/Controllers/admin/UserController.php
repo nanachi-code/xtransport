@@ -54,7 +54,7 @@ class UserController extends Controller
 
         if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
-            Storage::disk('public')->put($avatar->getClientOriginalName(),  File::get($avatar));
+            Storage::disk('uploads')->put($avatar->getClientOriginalName(),  File::get($avatar));
             $user->avatar = $avatar->getClientOriginalName();
         } else {
             $user->avatar = null;
@@ -86,7 +86,7 @@ class UserController extends Controller
 
         if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
-            Storage::disk('public')->put($avatar->getClientOriginalName(),  File::get($avatar));
+            Storage::disk('uploads')->put($avatar->getClientOriginalName(),  File::get($avatar));
             $user->avatar = $avatar->getClientOriginalName();
         }
 

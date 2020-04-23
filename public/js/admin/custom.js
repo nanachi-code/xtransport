@@ -214,7 +214,18 @@ $(function () {
             processData: false,
             contentType: false,
             success: (res) => {
-                window.location.href = res.redirect;
+                form.find(".alert-dismissible").remove();
+                form.prepend(`
+                    <div class="alert alert-success alert-dismissible fade" role="alert">
+                        <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        ${res.message}
+                    </div>`);
+
+                setTimeout(() => {
+                    form.find(".alert-dismissible").remove();
+                }, 3000);
             },
             error: (e) => {
                 form.find(".alert-dismissible");
@@ -381,6 +392,8 @@ $(function () {
             );
     });
 
+    $("textarea").trigger("input");
+
     $("#add-content-i").click(function (e) {
         e.preventDefault();
 
@@ -449,6 +462,27 @@ $(function () {
         $("#content-editor").trigger("input");
     });
 
+    $("#add-content-image").click(function (e) {
+        e.preventDefault();
+
+        $("#add-image-modal").modal("toggle");
+    });
+
+    $("#add-image-modal #gallery-list .gallery-item").click(function (e) {
+        e.preventDefault();
+        let imgURL = $(this).find("img").attr("src");
+
+        $("#content-editor").val(
+            `${$(
+                "#content-editor"
+            ).val()}\n<br>\n<img class="img-responsive" src="${imgURL}" alt=""></img>`
+        );
+        $("#add-image-modal").modal("hide");
+        $("#content-editor").trigger("keyup");
+        let content = $("#content-editor").val();
+        $("#preview-post").html(content);
+    });
+
     $(".delete-post-comment").click(function (e) {
         e.preventDefault();
         let wrapper = $(this).closest(".comment-wrapper"),
@@ -490,5 +524,105 @@ $(function () {
             description: row.find(".product-description").html().trim(),
         };
         console.log(_p);
+    });
+
+    $("#gallery-list .gallery-item").click(function (e) {
+        e.preventDefault();
+        let imgURL = $(this).find("img").attr("src"),
+            imgFilename = $(this).find("img").attr("data-filename"),
+            imgSize = $(this).find("img").attr("data-size"),
+            imgDeleteURL =
+                $("#attachment-delete").attr("href") + "/" + imgFilename;
+
+        $("#attachment-info-modal").modal("toggle");
+        $("#attachment-image").attr("src", imgURL);
+        $("#attachment-filename").text(imgFilename);
+        $("#attachment-size").text(imgSize);
+        $("#attachment-delete").attr("href", imgDeleteURL);
+    });
+
+    $("#upload-gallery input[type=file]").change(function (e) {
+        e.preventDefault();
+
+        let form = $("#upload-gallery");
+
+        $.ajax({
+            type: form.attr("method"),
+            url: form.attr("action"),
+            data: new FormData(form[0]),
+            processData: false,
+            contentType: false,
+            success: (res) => {
+                form.find(".alert-dismissible").remove();
+                form.prepend(`
+                    <div class="alert alert-success alert-dismissible fade" role="alert">
+                        <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        ${res.message}
+                    </div>`);
+
+                setTimeout(() => {
+                    form.find(".alert-dismissible").remove();
+                }, 3000);
+                console.log(res);
+
+                if ($("#gallery-list").length) {
+                    $("#gallery-list").append(`
+                        <div class="col-sm-2 gallery-item">
+                            <img src="${res.image.src}" data-size="${res.image.size} B" data-filename="${res.image.filename}"
+                                class="img-responsive">
+                        </div>
+                        `);
+                } else {
+                    $("#attachment-library").html(`
+                        <div class="row" id="gallery-list">
+                            <div class="col-sm-2 gallery-item">
+                                <img src="${res.image.src}" data-size="${res.image.size} B" data-filename="${res.image.filename}"
+                                    class="img-responsive">
+                            </div>
+                        </div>
+                    `);
+                }
+            },
+            error: (e) => {
+                form.find(".alert-dismissible");
+                form.prepend(`
+                    <div class="alert alert-danger alert-dismissible fade" role="alert">
+                        <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        ${e.responseJSON.message}
+                    </div>`);
+                setTimeout(() => {
+                    form.find(".alert-dismissible").remove();
+                }, 3000);
+                console.log(e.responseJSON);
+            },
+        });
+    });
+
+    $("#set-thumbnail").click(function (e) {
+        e.preventDefault();
+
+        $("#set-thumbnail-modal").modal("toggle");
+    });
+
+    $("#set-thumbnail-modal #gallery-list .gallery-item").click(function (e) {
+        e.preventDefault();
+        let filename = $(this).find("img").attr("data-filename"),
+            imgURL = $(this).find("img").attr("src");
+
+        $("#thumbnail-preview").attr("src", imgURL);
+        $("input[name='thumbnail']").val(filename);
+        $("#set-thumbnail-modal").modal("hide");
+    });
+
+    $("#remove-thumbnail").click(function (e) {
+        e.preventDefault();
+
+        $("#thumbnail-preview").attr("src", "/images/default/no-image.jpg");
+        $("input[name='thumbnail']").val("");
+        $("#set-thumbnail-modal").modal("hide");
     });
 });

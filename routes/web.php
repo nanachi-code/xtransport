@@ -28,12 +28,10 @@ Route::prefix('/blogs')->group(function () {
     Route::get('/{id}', 'Main\CategoryController@catePosts');
 });
 
-Route::prefix('/user')->group(function ()
-{
+Route::prefix('/user')->group(function () {
     Route::get('/profile', "UserController@userProfile")->middleware('auth');
     Route::post('/profile/update/{id}', "UserController@userProfileUpdate")->middleware("auth");;
     Route::post("/changePassword", "UserController@changePassword")->middleware("auth");;
-
 });
 
 
@@ -55,6 +53,11 @@ Route::group([
     });
 
     Route::get('/dashboard', 'Admin\DashboardController@renderDashboard');
+
+    //* Gallery
+    Route::get('/gallery', 'Admin\GalleryController@renderGallery');
+    Route::get('/gallery/delete/{attachmentName}', 'Admin\GalleryController@deleteAttachment');
+    Route::post('/gallery/upload', 'Admin\GalleryController@uploadAttachment');
 
     //* Post
     Route::prefix('post')->group(function () {

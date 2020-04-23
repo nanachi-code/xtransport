@@ -25,7 +25,14 @@ class PostController extends Controller
     {
         $p = [
             'post' => Post::find($id),
-            'allCategories' => CategoryPost::all()
+            'allCategories' => CategoryPost::all(),
+            'gallery' => collect(File::allFiles(public_path('uploads')))
+                ->filter(function ($file) {
+                    return in_array($file->getExtension(), ['png', 'gif', 'jpg']);
+                })
+                ->sortBy(function ($file) {
+                    return $file->getCTime();
+                })
         ];
 
         return view('admin/single-post')->with($p);
@@ -50,15 +57,9 @@ class PostController extends Controller
         $post->title = $request->get('title');
         $post->content = $request->get('content');
         $post->status = "publish";
-        $post->user_id = Auth::check() ? Auth::user()->id : 1;
+        $post->user_id = Auth::user()->id;
         $post->category_post_id = $request->get('category_post_id');
-        if ($request->hasFile('thumbnail')) {
-            $thumbnail = $request->file('thumbnail');
-            Storage::disk('public')->put($thumbnail->getClientOriginalName(),  File::get($thumbnail));
-            $post->thumbnail = $thumbnail->getClientOriginalName();
-        } else {
-            $post->thumbnail = null;
-        }
+        $post->thumbnail = $request->get('thumbnail');
 
         try {
             $post->save();
@@ -81,12 +82,7 @@ class PostController extends Controller
         $post->title = $request->get('title');
         $post->content = $request->get('content');
         $post->category_post_id = $request->get('category_post_id');
-
-        if ($request->hasFile('thumbnail')) {
-            $thumbnail = $request->file('thumbnail');
-            Storage::disk('public')->put($thumbnail->getClientOriginalName(),  File::get($thumbnail));
-            $post->thumbnail = $thumbnail->getClientOriginalName();
-        }
+        $post->thumbnail = $request->get('thumbnail');
 
         try {
             $post->save();
@@ -95,7 +91,6 @@ class PostController extends Controller
         }
 
         return response()->json([
-            "redirect" => url("admin/post/{$post->id}"),
             "message" => "Post info updated successfully."
         ], 200);
     }

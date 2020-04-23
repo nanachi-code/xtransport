@@ -14,6 +14,7 @@
     </li>
 </ul>
 {{-- END - Breadcrumbs --}}
+
 <div class="content-i">
     <div class="content-box">
         <div class="row pt-4">
