@@ -161,7 +161,7 @@
                                 @if (Auth::User())
                                 <li><a href="#">My Account<i class="fa fa-chevron-down"></i></a>
                                     <ul>
-                                        <li><a href="{{url('/profile')}}">My Profile</a></li>
+                                        <li><a href="{{url('user/profile')}}">My Profile</a></li>
                                         <li><a href="{{url('/logout')}}">Logout</a></li>
                                     </ul>
                                 </li>
