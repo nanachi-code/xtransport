@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'extransport';
+    src:    url('../fonts/ex-font/extransport.eot?nz3epr');
+    src:    url('../fonts/ex-font/extransport.eot?nz3epr#iefix') format('embedded-opentype'),
+        url('../fonts/ex-font/extransport.ttf?nz3epr') format('truetype'),
+        url('../fonts/ex-font/extransport.woff?nz3epr') format('woff'),
+        url('../fonts/ex-font/extransport.svg?nz3epr#extransport') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ex {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'extransport' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.ex-hours-support:before {
+    content: "\e900";
+}
+.ex-archive:before {
+    content: "\e901";
+}
+.ex-folder:before {
+    content: "\e902";
+}
+.ex-loaded-truck-side-view:before {
+    content: "\e903";
+}
+.ex-loader:before {
+    content: "\e904";
+}
+.ex-logistics-delivery-truck-and-clock:before {
+    content: "\e905";
+}
+.ex-map:before {
+    content: "\e906";
+}
+.ex-minivan-facing-right:before {
+    content: "\e907";
+}
+.ex-packages-transportation-on-a-truck:before {
+    content: "\e908";
+}
+.ex-technical-support:before {
+    content: "\e909";
+}
+.ex-trolley:before {
+    content: "\e90a";
+}
+.ex-truck:before {
+    content: "\e90b";
+}
+.ex-truck-facing-right:before {
+    content: "\e90c";
+}
+.ex-truck-home:before {
+    content: "\e90d";
+}
+.ex-worker-loading-boxes:before {
+    content: "\e90e";
+}
+

@@ -1,0 +1,128 @@
+
+/* fix - all - device index */
+
+/* max-width 320  (320x480 screen)*/
+@media (max-width:320px){
+	
+}
+/* -- end -*/
+
+/* min-width 480 (480x320 screen)*/
+
+@media (min-width:361px) and (max-width:480px){
+	/*------ =============== responsive home 1 ================== ------*/
+			/*--- header --*/
+			.kopa-page-header-1{
+				background:#009cdc;
+			}
+			/*--- logo ---*/
+				.text-left{
+					float:left;
+					padding:20px 10px;
+				}
+				.logo{
+					display:none;
+				}
+				.logo-responsive{
+					display:block;
+				}
+			/*--- info bar --*/
+			.info-bar{
+				display:none;
+			}
+			/*------ menu main -------- */
+				.menu-main{
+					padding:20px 0px 0px 0px;
+				}
+				.navbar-toggle{
+					width: 40px;
+					height: 40px;
+					padding:0;
+					border-radius:50%;
+				}
+				.navbar-toggle .icon-bar {
+					margin-left: 8px;
+					background-color: #fff !important;
+				}
+	/*----- ================= end responsive home 1 =============-------*/
+}
+
+/* end */
+
+/* 360x640 */
+
+@media (min-width:321px) and (max-width:360px){
+	
+}
+/* -- end -*/
+
+
+@media (min-width:601px) and (max-width:640px){
+	
+}
+
+/* end */
+
+/* 760 -- fix rieng */
+
+@media (min-width:641px) and (max-width:760px){
+	
+}
+
+/* end*/
+
+/* 768x1024 */
+@media (min-width:761px) and (max-width:767px){
+	
+}
+
+@media (min-width:981px) and (max-width:1024px){
+
+}
+
+/* end */
+
+/* 800x1280 */
+
+@media (min-width:768px) and (max-width:800px){
+
+}
+
+@media (min-width:1025px) and (max-width:1280px){
+	
+}
+
+/* end */
+
+/* 980x1280 */
+
+@media (min-width:801px) and (max-width:980px){
+	
+}
+
+@media (min-width:1025px) and (max-width:1280px){
+	
+}
+
+/* end */
+
+/* 1280x600 */
+
+@media (min-width:1025px) and (max-width:1280px){
+
+}
+
+@media (min-width:481px) and (max-width:600px){
+	
+}
+/* end */
+/* >1280 */
+@media (min-width:1281px){
+	
+}
+/* >1280 */
+@media (min-width:1599px){
+	
+}
+/* end */
+/* end fix -all - device index */
