@@ -143,6 +143,7 @@
                         </li>
 
                         {{-- User --}}
+                        @if (\Auth::user()->role == "super_admin")
                         <li class="sub-header">
                             <span>User</span>
                         </li>
@@ -160,6 +161,39 @@
                                 <span>New user</span>
                             </a>
                         </li>
+
+                        {{-- Event --}}
+                        <li class="sub-header">
+                            <span>Event</span>
+                        </li>
+                        <li>
+                            <a href="{{ url('/admin/event/all') }}">
+                                <div class="icon-w">
+                                    <i class="icon-calendar"></i>
+                                </div>
+                                <span>All events</span>
+                            </a>
+                            <a href="{{ url('/admin/event/new') }}">
+                                <div class="icon-w">
+                                    <i class="icon-note"></i>
+                                </div>
+                                <span>New event</span>
+                            </a>
+                        </li>
+
+                        {{-- Feedback --}}
+                        <li class="sub-header">
+                            <span>Feedback</span>
+                        </li>
+                        <li>
+                            <a href="{{ url('/admin/feedback/all') }}">
+                                <div class="icon-w">
+                                    <i class="icon-envelope-letter"></i>
+                                </div>
+                                <span>Feedback</span>
+                            </a>
+                        </li>
+                        @endif
                     </ul>
                     {{-- END - Mobile Menu List --}}
                 </div>
@@ -329,6 +363,25 @@
                         </a>
                     </li>
 
+                    {{-- Company --}}
+                    <li class="sub-header">
+                        <span>Company</span>
+                    </li>
+                    <li>
+                        <a href="{{ url('/admin/company/all') }}">
+                            <div class="icon-w">
+                                <i class="icon-briefcase"></i>
+                            </div>
+                            <span>All companies</span>
+                        </a>
+                        <a href="{{ url('/admin/company/new') }}">
+                            <div class="icon-w">
+                                <i class="icon-note"></i>
+                            </div>
+                            <span>New company</span>
+                        </a>
+                    </li>
+
                     {{-- Product --}}
                     <li class="sub-header">
                         <span>Product</span>
@@ -359,6 +412,7 @@
                     </li>
 
                     {{-- User --}}
+                    @if (\Auth::user()->role == "super_admin")
                     <li class="sub-header">
                         <span>User</span>
                     </li>
@@ -376,25 +430,7 @@
                             <span>New user</span>
                         </a>
                     </li>
-
-                    {{-- Company --}}
-                    <li class="sub-header">
-                        <span>Company</span>
-                    </li>
-                    <li>
-                        <a href="{{ url('/admin/company/all') }}">
-                            <div class="icon-w">
-                                <i class="icon-docs"></i>
-                            </div>
-                            <span>All companies</span>
-                        </a>
-                        <a href="{{ url('/admin/company/new') }}">
-                            <div class="icon-w">
-                                <i class="icon-note"></i>
-                            </div>
-                            <span>New company</span>
-                        </a>
-                    </li>
+                    @endif
 
                     {{-- Event --}}
                     <li class="sub-header">
@@ -403,7 +439,7 @@
                     <li>
                         <a href="{{ url('/admin/event/all') }}">
                             <div class="icon-w">
-                                <i class="icon-docs"></i>
+                                <i class="icon-calendar"></i>
                             </div>
                             <span>All events</span>
                         </a>
@@ -422,7 +458,7 @@
                     <li>
                         <a href="{{ url('/admin/feedback/all') }}">
                             <div class="icon-w">
-                                <i class="icon-docs"></i>
+                                <i class="icon-envelope-letter"></i>
                             </div>
                             <span>Feedback</span>
                         </a>
@@ -744,8 +780,8 @@
     </div>
     <div class="display-type"></div>
     </div>
-    @yield('addition-scripts')
     @include('admin.enqueue.scripts')
+    @yield('additional-scripts')
 </body>
 
 </html>

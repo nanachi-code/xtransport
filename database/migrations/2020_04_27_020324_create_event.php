@@ -14,14 +14,13 @@ class CreateEvent extends Migration
     public function up()
     {
         Schema::create('event', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('address');
             $table->date('date');
             $table->string('thumbnail')->nullable();
             $table->string('status', 20)->default('active');
-            $table->bigInteger('post_id')->unsigned()->nullable();
-            $table->foreign('post_id')->references('id')->on('post');
+            $table->longText('introduction')->nullable();
             $table->timestamps();
         });
     }

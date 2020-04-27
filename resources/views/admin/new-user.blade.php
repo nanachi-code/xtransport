@@ -14,6 +14,8 @@
     </li>
 </ul>
 {{-- END - Breadcrumbs --}}
+
+{{-- START - Content --}}
 <div class="content-i">
     <div class="content-box">
         <div class="row pt-4">
@@ -93,22 +95,83 @@
 
                                     {{-- user avatar --}}
                                     <div class="form-group">
-                                        <label for="form-user-thumbnail">Avatar</label>
-                                        <img src="{{ asset('images/default/no-image.jpg') }}"
-                                            class="input-preview img-responsive">
+                                        <label for="form-user-avatar">Avatar</label>
+                                        <img src="{{ asset('images/default/no-image.jpg') }}" class="img-responsive"
+                                            id="avatar-preview">
 
                                         <div class="form-buttons-w">
-                                            <input type="file" class="form-control-file" data-title="Upload"
-                                                name="avatar">
+                                            <button class="btn btn-primary" id="set-avatar">Set avatar</button>
+                                            <input type="hidden" name="avatar">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </form>
+
+                        {{-- START - Set Avatar Modal --}}
+                        <div id="set-avatar-modal" aria-hidden="true" aria-labelledby="set-avatar-modal-title"
+                            class="modal fade" role="dialog" tabindex="-1">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="set-avatar-modal-title">
+                                            Set avatar
+                                        </h5>
+                                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{-- START - Upload Attachment --}}
+                                        <div class="element-box">
+                                            <h5>Upload new attachment</h5>
+                                            <hr>
+                                            <form class="upload-gallery" action="{{ url("admin/gallery/upload") }}"
+                                                method="post" enctype="multipart/form-data">
+                                                <input type="file" data-title="Upload" name="image">
+                                            </form>
+                                        </div>
+                                        {{-- END - Upload Attachment --}}
+
+                                        {{-- START - Attachment Library --}}
+                                        <div class="element-box attachment-library">
+                                            <h5>Attachment Library</h5>
+                                            <hr>
+                                            @if (count($gallery) == 0)
+                                            No attachments found.
+                                            @else
+                                            <div class="row gallery-list">
+                                                @foreach ($gallery as $image)
+                                                <div class="col-sm-2 gallery-item">
+                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
+                                                        data-size="{{ $image->getSize() }} B"
+                                                        data-filename="{{ $image->getFilename() }}"
+                                                        class="img-responsive">
+                                                </div>
+                                                @endforeach
+                                            </div>
+                                            @endif
+                                        </div>
+                                        {{-- END - Attachment Library --}}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button id="remove-avatar" class="btn btn-danger text-white">
+                                            Remove avatar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- END - Set Avatar Modal --}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+{{-- END - Content --}}
+@endsection
+
+@section('additional-scripts')
+<script src="{{ asset("js/admin/custom/user.js") }}"></script>
 @endsection

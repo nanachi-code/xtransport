@@ -23,7 +23,7 @@ class EventController extends Controller
     {
         $p = [
             'event' => Event::where('id', $id)->first(),
-            'select_post' => \App\Post::where('status','publish')->where('category_post_id',null)->get(),
+            'select_post' => \App\Post::where('status', 'publish')->where('category_post_id', null)->get(),
             'gallery' => collect(File::allFiles(public_path('uploads')))
                 ->filter(function ($file) {
                     return in_array($file->getExtension(), ['png', 'gif', 'jpg']);
@@ -39,15 +39,13 @@ class EventController extends Controller
     public function renderNewEvent()
     {
         $p = [
-            'select_post' => DB::table('post')->leftJoin('event','post.id','=','event.post_id')
-            ->where('event.post_id',null)->select('post.id','post.title')->get(),
             'gallery' => collect(File::allFiles(public_path('uploads')))
-            ->filter(function ($file) {
-                return in_array($file->getExtension(), ['png', 'gif', 'jpg']);
-            })
-            ->sortBy(function ($file) {
-                return $file->getCTime();
-            })
+                ->filter(function ($file) {
+                    return in_array($file->getExtension(), ['png', 'gif', 'jpg']);
+                })
+                ->sortBy(function ($file) {
+                    return $file->getCTime();
+                })
         ];
         return view('admin/new-event')->with($p);
     }
@@ -63,7 +61,7 @@ class EventController extends Controller
         $event->address = $request->get('address');
         $event->date = $request->get('date');
         $event->status = "active";
-        $event->post_id = $request->get('post_id');
+        $event->introduction = $request->get('introduction');
         $event->thumbnail = $request->get('thumbnail');
 
         try {
@@ -82,13 +80,13 @@ class EventController extends Controller
         $request->validate([
             'name' => ['required', 'string'],
             'address' => ['required', 'string']
-            ]);
+        ]);
 
         $event = Event::find($id);
         $event->name = $request->get('name');
         $event->address = $request->get('address');
         $event->date = $request->get('date');
-        $event->post_id = $request->get('post_id');
+        $event->introduction = $request->get('introduction');
         $event->thumbnail = $request->get('thumbnail');
 
         try {
@@ -98,7 +96,7 @@ class EventController extends Controller
         }
 
         return response()->json([
-            "message" => "event info updated successfully."
+            "message" => "Event info updated successfully."
         ], 200);
     }
 

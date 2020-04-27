@@ -14,6 +14,8 @@
     </li>
 </ul>
 {{-- END - Breadcrumbs --}}
+
+{{-- START - Content --}}
 <div class="content-i">
     <div class="content-box">
         <div class="row pt-4">
@@ -50,34 +52,57 @@
                                         <div class="help-block form-text with-errors form-control-feedback"></div>
                                     </div>
 
-                                    {{-- company post --}}
-                                    <div class="form-group">
-                                        <label for="form-company-post">Company Information Post</label>
-                                        <select class="form-control" id="form-company-post" name="post_id">
-                                            <option value="">
-                                                None
-                                            </option>
-                                            @foreach ($select_post as $post)
-                                            <option value="{{$post->id}}">
-                                                {{$post->title}}
-                                            </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
                                     {{-- company phone --}}
                                     <div class="form-group">
                                         <label for="form-company-price">Phone</label>
-                                        <input class="form-control" placeholder="Enter company phone" type="text"
-                                            name="phone" id="form-company-phone" />
+                                        <input class="form-control" data-error="company phone is required"
+                                            placeholder="Enter company phone" type="text" name="phone"
+                                            id="form-company-phone" />
                                         <div class="help-block form-text with-errors form-control-feedback"></div>
                                     </div>
 
                                     {{-- company address --}}
                                     <div class="form-group">
                                         <label for="form-company-address">Address</label>
-                                        <textarea class="form-control" rows="5" id="form-company-address" name="address"
-                                            placeholder="Enter company address"></textarea>
+                                        <input class="form-control" data-error="company address is required"
+                                            placeholder="Enter company address" type="text" name="address"
+                                            id="form-company-address" />
+                                        <div class="help-block form-text with-errors form-control-feedback"></div>
+                                    </div>
+
+                                    {{-- company introduction --}}
+                                    <div class="form-group">
+                                        <label>Introduction</label>
+                                        <div class="pb-3">
+                                            <button class="btn btn-outline-secondary" id="add-content-image">
+                                                <i class="icon-picture"></i>
+                                            </button>
+                                            <button class="btn btn-outline-secondary ml-1" id="add-content-i">
+                                                <i>i</i>
+                                            </button>
+                                            <button class="btn btn-outline-secondary ml-1" id="add-content-b">
+                                                <span class="font-weight-bold">b</span>
+                                            </button>
+                                            <button class="btn btn-outline-secondary ml-1" id="add-content-link">
+                                                <u>link</u>
+                                            </button>
+                                            <button class="btn btn-outline-secondary ml-1" id="add-content-ul">
+                                                ul
+                                            </button>
+                                            <button class="btn btn-outline-secondary ml-1" id="add-content-ol">
+                                                ol
+                                            </button>
+                                            <button class="btn btn-outline-secondary ml-1" id="add-content-li">
+                                                li
+                                            </button>
+                                        </div>
+                                        <textarea class="form-control" rows="5" id="content-editor" name="introduction"
+                                            placeholder="Enter company introduction"></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Preview</label>
+                                        <div id="preview-content"></div>
                                     </div>
 
                                     <div class="form-buttons-w">
@@ -87,27 +112,78 @@
                                 <div class="col-sm-3">
                                     {{-- company logo --}}
                                     <div class="form-group">
-                                        <label for="form-company-thumbnail">Logo</label>
+                                        <label for="form-company-logo">Logo</label>
                                         <img src="{{ asset('images/default/no-image.jpg') }}" class="img-responsive"
-                                            id="thumbnail-preview">
+                                            id="logo-preview">
 
                                         <div class="form-buttons-w">
-                                            <button class="btn btn-primary" id="set-thumbnail">Set Logo</button>
-                                            <input type="hidden" name="thumbnail">
+                                            <button class="btn btn-primary" id="set-logo">Set Logo</button>
+                                            <input type="hidden" name="logo">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </form>
 
-                        {{-- START - Set Thumbnail Modal --}}
-                        <div id="set-thumbnail-modal" aria-hidden="true" aria-labelledby="set-thumbnail-modal-title"
+                        {{-- START - Add Image Modal --}}
+                        <div id="add-image-modal" aria-hidden="true" aria-labelledby="add-image-modal-title"
                             class="modal fade" role="dialog" tabindex="-1">
                             <div class="modal-dialog modal-xl">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="set-thumbnail-modal-title">
-                                            Set Logo
+                                        <h5 class="modal-title" id="add-image-modal-title">
+                                            Add image
+                                        </h5>
+                                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{-- START - Upload Attachment --}}
+                                        <div class="element-box">
+                                            <h5>Upload new attachment</h5>
+                                            <hr>
+                                            <form class="upload-gallery" action="{{ url("admin/gallery/upload") }}"
+                                                method="post" enctype="multipart/form-data">
+                                                <input type="file" data-title="Upload" name="image">
+                                            </form>
+                                        </div>
+                                        {{-- END - Upload Attachment --}}
+
+                                        {{-- START - Attachment Library --}}
+                                        <div class="element-box attachment-library">
+                                            <h5>Attachment Library</h5>
+                                            <hr>
+                                            @if (count($gallery) == 0)
+                                            No attachments found.
+                                            @else
+                                            <div class="row gallery-list">
+                                                @foreach ($gallery as $image)
+                                                <div class="col-sm-2 gallery-item">
+                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
+                                                        data-size="{{ $image->getSize() }} B"
+                                                        data-filename="{{ $image->getFilename() }}"
+                                                        class="img-responsive">
+                                                </div>
+                                                @endforeach
+                                            </div>
+                                            @endif
+                                        </div>
+                                        {{-- END - Attachment Library --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- END - Add Image Modal --}}
+
+                        {{-- START - Set Logo Modal --}}
+                        <div id="set-logo-modal" aria-hidden="true" aria-labelledby="set-logo-modal-title"
+                            class="modal fade" role="dialog" tabindex="-1">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="set-logo-modal-title">
+                                            Set logo
                                         </h5>
                                         <button aria-label="Close" class="close" data-dismiss="modal" type="button">
                                             <span aria-hidden="true">&times;</span>
@@ -147,19 +223,23 @@
                                         {{-- END - Attachment Library --}}
                                     </div>
                                     <div class="modal-footer">
-                                        <button id="remove-thumbnail" class="btn btn-danger text-white">
-                                            Remove Logo
+                                        <button id="remove-logo" class="btn btn-danger text-white">
+                                            Remove logo
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        {{-- END - Set Thumbnail Modal --}}
-
+                        {{-- END - Set Logo Modal --}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+{{-- END - Content --}}
+@endsection
+
+@section('additional-scripts')
+<script src="{{ asset("js/admin/custom/company.js") }}"></script>
 @endsection

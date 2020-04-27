@@ -17,6 +17,8 @@
     </li>
 </ul>
 {{-- END - Breadcrumbs --}}
+
+{{-- START - Content --}}
 <div class="content-i">
     <div class="content-box">
         <div class="row pt-4">
@@ -57,4 +59,9 @@
         </div>
     </div>
 </div>
+{{-- END - Content --}}
+@endsection
+
+@section('additional-scripts')
+<script src="{{ asset("js/admin/custom/post.js") }}"></script>
 @endsection

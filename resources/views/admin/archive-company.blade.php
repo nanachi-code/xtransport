@@ -37,6 +37,7 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Phone</th>
+                                        <th>Address</th>
                                         <th>Status</th>
                                         <th class="text-center">Action</th>
                                     </tr>
@@ -48,6 +49,7 @@
                                         <td>{{ $company->name }}</td>
                                         <td>{{ $company->email }}</td>
                                         <td>{{ $company->phone }}</td>
+                                        <td>{{ $company->address }}</td>
                                         <td>
                                             @if ($company->status == "active")
                                             Active
@@ -69,6 +71,7 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Phone</th>
+                                        <th>Address</th>
                                         <th>Status</th>
                                         <th class="text-center">Action</th>
                                     </tr>
@@ -82,4 +85,8 @@
     </div>
 </div>
 {{-- END - Content --}}
+@endsection
+
+@section('additional-scripts')
+<script src="{{ asset("js/admin/custom/company.js") }}"></script>
 @endsection

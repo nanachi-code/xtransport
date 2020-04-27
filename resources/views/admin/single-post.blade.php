@@ -14,6 +14,8 @@
     </li>
 </ul>
 {{-- END - Breadcrumbs --}}
+
+{{-- START - Content --}}
 <div class="content-i">
     <div class="content-box">
         <div class="row pt-4">
@@ -74,7 +76,7 @@
 
                                     <div class="form-group">
                                         <label>Preview</label>
-                                        <div id="preview-post">
+                                        <div id="preview-content">
                                             {!! $post->content !!}
                                         </div>
                                     </div>
@@ -137,7 +139,7 @@
 
                                         <div class="form-buttons-w">
                                             <button class="btn btn-primary" id="set-thumbnail">Set thumbnail</button>
-                                            <input type="hidden" name="thumbnail">
+                                            <input type="hidden" name="thumbnail" value="{{$post->thumbnail}}">
                                         </div>
                                     </div>
                                 </div>
@@ -301,4 +303,9 @@
         </div>
     </div>
 </div>
+{{-- END - Content --}}
+@endsection
+
+@section('additional-scripts')
+<script src="{{ asset("js/admin/custom/post.js") }}"></script>
 @endsection

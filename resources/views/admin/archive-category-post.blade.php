@@ -94,3 +94,7 @@
 </div>
 {{-- END - Content --}}
 @endsection
+
+@section('additional-scripts')
+<script src="{{ asset("js/admin/custom/post.js") }}"></script>
+@endsection

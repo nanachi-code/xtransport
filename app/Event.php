@@ -8,7 +8,7 @@ class Event extends Model
 {
     protected $table = 'event';
 
-    protected $fillable = ['name', 'date', 'address', 'thumbnail', 'status', 'post_id'];
+    protected $fillable = ['name', 'date', 'address', 'thumbnail', 'status', 'introduction'];
 
     public function users()
     {

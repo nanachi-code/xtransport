@@ -14,6 +14,8 @@
     </li>
 </ul>
 {{-- END - Breadcrumbs --}}
+
+{{-- START - Content --}}
 <div class="content-i">
     <div class="content-box">
         <div class="row pt-4">
@@ -74,9 +76,7 @@
 
                                     <div class="form-group">
                                         <label>Preview</label>
-                                        <div id="preview-post">
-
-                                        </div>
+                                        <div id="preview-content"></div>
                                     </div>
 
                                     <div class="form-buttons-w">
@@ -84,9 +84,9 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
-                                    {{-- product category --}}
+                                    {{-- pót category --}}
                                     <div class="form-group">
-                                        <label for="form-product-category">Category</label>
+                                        <label for="form-post-category">Category</label>
                                         <select class="form-control" id="form-post-category" name="category_post_id">
                                             <option value="">
                                                 Uncategorized
@@ -99,7 +99,7 @@
                                         </select>
                                     </div>
 
-                                    {{-- product thumbnail --}}
+                                    {{-- post thumbnail --}}
                                     <div class="form-group">
                                         <label for="form-post-thumbnail">Thumbnail</label>
                                         <img src="{{ asset('images/default/no-image.jpg') }}" class="img-responsive"
@@ -226,4 +226,9 @@
         </div>
     </div>
 </div>
+{{-- END - Content --}}
+@endsection
+
+@section('additional-scripts')
+<script src="{{ asset("js/admin/custom/post.js") }}"></script>
 @endsection

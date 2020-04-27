@@ -83,3 +83,7 @@
 </div>
 {{-- END - Content --}}
 @endsection
+
+@section('additional-scripts')
+<script src="{{ asset("js/admin/custom/event.js") }}"></script>
+@endsection

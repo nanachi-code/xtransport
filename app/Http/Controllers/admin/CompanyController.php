@@ -23,7 +23,7 @@ class CompanyController extends Controller
     {
         $p = [
             'company' => Company::where('id', $id)->first(),
-            'select_post' => \App\Post::where('status','publish')->where('category_post_id',null)->get(),
+            'select_post' => \App\Post::where('status', 'publish')->where('category_post_id', null)->get(),
             'gallery' => collect(File::allFiles(public_path('uploads')))
                 ->filter(function ($file) {
                     return in_array($file->getExtension(), ['png', 'gif', 'jpg']);
@@ -39,15 +39,13 @@ class CompanyController extends Controller
     public function renderNewCompany()
     {
         $p = [
-            'select_post' => DB::table('post')->leftJoin('company','post.id','=','company.post_id')
-            ->where('company.post_id',null)->select('post.id','post.title')->get(),
             'gallery' => collect(File::allFiles(public_path('uploads')))
-            ->filter(function ($file) {
-                return in_array($file->getExtension(), ['png', 'gif', 'jpg']);
-            })
-            ->sortBy(function ($file) {
-                return $file->getCTime();
-            })
+                ->filter(function ($file) {
+                    return in_array($file->getExtension(), ['png', 'gif', 'jpg']);
+                })
+                ->sortBy(function ($file) {
+                    return $file->getCTime();
+                })
         ];
         return view('admin/new-company')->with($p);
     }
@@ -67,9 +65,8 @@ class CompanyController extends Controller
         $company->phone = $request->get('phone');
         $company->address = $request->get('address');
         $company->status = "active";
-        $company->post_id = $request->get('post_id');
-        $company->logo = $request->get('thumbnail');
-
+        $company->logo = $request->get('logo');
+        $company->introduction = $request->get('introduction');
         try {
             $company->save();
         } catch (\Throwable $th) {
@@ -84,17 +81,17 @@ class CompanyController extends Controller
     public function updateCompany(Request $request, $id)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:191','unique:company,name,'.$id],
+            'name' => ['required', 'string', 'max:191', 'unique:company,name,' . $id],
             'phone' => ['required', 'string', 'min:8'],
             'address' => ['required', 'string']
-            ]);
+        ]);
 
         $company = Company::find($id);
         $company->name = $request->get('name');
         $company->phone = $request->get('phone');
         $company->address = $request->get('address');
-        $company->post_id = $request->get('post_id');
-        $company->logo = $request->get('thumbnail');
+        $company->logo = $request->get('logo');
+        $company->introduction = $request->get('introduction');
 
         try {
             $company->save();
@@ -103,7 +100,7 @@ class CompanyController extends Controller
         }
 
         return response()->json([
-            "message" => "company info updated successfully."
+            "message" => "Company info updated successfully."
         ], 200);
     }
 

@@ -14,6 +14,8 @@
     </li>
 </ul>
 {{-- END - Breadcrumbs --}}
+
+{{-- START - Content --}}
 <div class="content-i">
     <div class="content-box">
         <div class="row pt-4">
@@ -29,7 +31,7 @@
                     <div class="element-box">
                         <h5>Edit product</h5>
                         <hr>
-                        <form id="form-product" action="{{ url("admin/product/{$product->id}/update")}}"
+                        <form id="form-single-product" action="{{ url("admin/product/{$product->id}/update")}}"
                             method="product" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-sm-9">
@@ -54,15 +56,15 @@
                                     <div class="form-group">
                                         <label for="form-product-category">Category</label>
                                         <select class="form-control" id="form-product-category"
-                                                name="category_product_id">
+                                            name="category_product_id">
                                             <option value="" @if (!$product->category_product_id) selected @endif>
                                                 Uncategorized
                                             </option>
                                             @foreach ($allCategories as $category)
-                                                <option value="{{ $category->id }}" @if ($product->category_product_id ==
+                                            <option value="{{ $category->id }}" @if ($product->category_product_id ==
                                                 $category->id) selected @endif>
-                                                    {{ $category->name }}
-                                                </option>
+                                                {{ $category->name }}
+                                            </option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -70,16 +72,17 @@
                                     {{-- product company --}}
                                     <div class="form-group">
                                         <label for="form-product-category">Company</label>
-                                        <select class="form-control" id="form-product-company"
-                                                name="company_id">
-                                            <option value="" @if (!$product->company_id) selected @endif>
-                                                Uncategorized
+                                        <select class="form-control" id="form-product-company" name="company_id">
+                                            @if (count($allCompany)==0)
+                                            <option value="" selected>
+                                                Select company
                                             </option>
+                                            @endif
                                             @foreach ($allCompany as $company)
-                                                <option value="{{ $company->id }}" @if ($product->company_id ==
+                                            <option value="{{ $company->id }}" @if ($product->company_id ==
                                                 $company->id) selected @endif>
-                                                    {{ $company->name }}
-                                                </option>
+                                                {{ $company->name }}
+                                            </option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -119,25 +122,86 @@
                                     <div class="form-group">
                                         <label for="form-product-thumbnail">Thumbnail</label>
                                         @if ($product->thumbnail)
-                                        <img src="{{ asset("uploads/{$product->thumbnail}") }}"
-                                            class="input-preview img-responsive">
+                                        <img src="{{ asset("uploads/{$product->thumbnail}") }}" class="img-responsive"
+                                            id="thumbnail-preview">
                                         @else
-                                        <img src="{{ asset('images/default/no-image.jpg') }}"
-                                            class="input-preview img-responsive">
+                                        <img src="{{ asset('images/default/no-image.jpg') }}" class="img-responsive"
+                                            id="thumbnail-preview">
                                         @endif
 
                                         <div class="form-buttons-w">
-                                            <input type="file" class="form-control-file" data-title="Upload"
-                                                name="thumbnail">
+                                            <button class="btn btn-primary" id="set-thumbnail">Set thumbnail</button>
+                                            <input type="hidden" name="thumbnail" value="{{$product->thumbnail}}">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </form>
+
+                        {{-- START - Set Thumbnail Modal --}}
+                        <div id="set-thumbnail-modal" aria-hidden="true" aria-labelledby="set-thumbnail-modal-title"
+                            class="modal fade" role="dialog" tabindex="-1">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="set-thumbnail-modal-title">
+                                            Set thumbnail
+                                        </h5>
+                                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{-- START - Upload Attachment --}}
+                                        <div class="element-box">
+                                            <h5>Upload new attachment</h5>
+                                            <hr>
+                                            <form class="upload-gallery" action="{{ url("admin/gallery/upload") }}"
+                                                method="post" enctype="multipart/form-data">
+                                                <input type="file" data-title="Upload" name="image">
+                                            </form>
+                                        </div>
+                                        {{-- END - Upload Attachment --}}
+
+                                        {{-- START - Attachment Library --}}
+                                        <div class="element-box attachment-library">
+                                            <h5>Attachment Library</h5>
+                                            <hr>
+                                            @if (count($gallery) == 0)
+                                            No attachments found.
+                                            @else
+                                            <div class="row gallery-list">
+                                                @foreach ($gallery as $image)
+                                                <div class="col-sm-2 gallery-item">
+                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
+                                                        data-size="{{ $image->getSize() }} B"
+                                                        data-filename="{{ $image->getFilename() }}"
+                                                        class="img-responsive">
+                                                </div>
+                                                @endforeach
+                                            </div>
+                                            @endif
+                                        </div>
+                                        {{-- END - Attachment Library --}}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button id="remove-thumbnail" class="btn btn-danger text-white">
+                                            Remove thumbnail
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- END - Set Thumbnail Modal --}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+{{-- END - Content --}}
+@endsection
+
+@section('additional-scripts')
+<script src="{{ asset("js/admin/custom/product.js") }}"></script>
 @endsection

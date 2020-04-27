@@ -56,9 +56,9 @@
                                         <td>{{ $product->description }}</td>
                                         <td>
                                             @if (!$product->company)
-                                                Uncategorized
+                                            Uncategorized
                                             @else
-                                                {{ $product->company->name }}
+                                            {{ $product->company->name }}
                                             @endif
                                         </td>
                                         <td class="row-actions">
@@ -92,4 +92,8 @@
     </div>
 </div>
 {{-- END - Content --}}
+@endsection
+
+@section('additional-scripts')
+<script src="{{ asset("js/admin/custom/product.js") }}"></script>
 @endsection

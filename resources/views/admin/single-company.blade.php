@@ -14,6 +14,8 @@
     </li>
 </ul>
 {{-- END - Breadcrumbs --}}
+
+{{-- START - Content --}}
 <div class="content-i">
     <div class="content-box">
         <div class="row pt-4">
@@ -29,8 +31,8 @@
                     <div class="element-box">
                         <h5>Edit company</h5>
                         <hr>
-                        <form id="form-company" action="{{ url("admin/company/{$company->id}/update")}}" method="post"
-                            enctype="multipart/form-data">
+                        <form id="form-single-company" action="{{ url("admin/company/{$company->id}/update")}}"
+                            method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-sm-9">
                                     {{-- company name --}}
@@ -46,42 +48,64 @@
                                     <div class="form-group">
                                         <label for="form-company-email">Email</label>
                                         <input class="form-control" data-error="company email is required" type="email"
-                                            name="email" value="{{ $company->email }}" id="form-company-email"
-                                            disabled />
+                                            name="email" value="{{ $company->email }}" id="form-company-email" />
                                         <div class="help-block form-text with-errors form-control-feedback"></div>
-                                    </div>
-
-                                    {{-- company post --}}
-                                    <div class="form-group">
-                                        <label for="form-company-post">Company Information Post</label>
-                                        <select class="form-control" id="form-company-post" name="post_id">
-                                            <option value="">
-                                                None
-                                            </option>
-                                            @foreach ($select_post as $post)
-                                            <option value="{{$post->id}}" @if($post->id == $company->post_id) selected
-                                                @endif>
-                                                {{$post->title}}
-                                            </option>
-                                            @endforeach
-                                        </select>
                                     </div>
 
                                     {{-- company phone --}}
                                     <div class="form-group">
                                         <label for="form-company-price">Phone</label>
-                                        <input class="form-control" placeholder="Enter company phone" type="text"
-                                            name="phone" value="{{ $company->phone }}" id="form-company-phone" />
+                                        <input class="form-control" data-error="company phone is required"
+                                            placeholder="Enter company phone" type="text" name="phone"
+                                            value="{{ $company->phone }}" id="form-company-phone" />
                                         <div class="help-block form-text with-errors form-control-feedback"></div>
                                     </div>
 
                                     {{-- company address --}}
                                     <div class="form-group">
                                         <label for="form-company-address">Address</label>
-                                        <textarea class="form-control" rows="5" id="form-company-address" name="address"
-                                            placeholder="Enter company address">{{$company->address}}</textarea>
+                                        <input class="form-control" data-error="company address is required"
+                                            placeholder="Enter company address" type="text" name="address"
+                                            value="{{ $company->address }}" id="form-company-address" />
+                                        <div class="help-block form-text with-errors form-control-feedback"></div>
                                     </div>
 
+                                    {{-- company introduction --}}
+                                    <div class="form-group">
+                                        <label>Introduction</label>
+                                        <div class="pb-3">
+                                            <button class="btn btn-outline-secondary" id="add-content-image">
+                                                <i class="icon-picture"></i>
+                                            </button>
+                                            <button class="btn btn-outline-secondary ml-1" id="add-content-i">
+                                                <i>i</i>
+                                            </button>
+                                            <button class="btn btn-outline-secondary ml-1" id="add-content-b">
+                                                <span class="font-weight-bold">b</span>
+                                            </button>
+                                            <button class="btn btn-outline-secondary ml-1" id="add-content-link">
+                                                <u>link</u>
+                                            </button>
+                                            <button class="btn btn-outline-secondary ml-1" id="add-content-ul">
+                                                ul
+                                            </button>
+                                            <button class="btn btn-outline-secondary ml-1" id="add-content-ol">
+                                                ol
+                                            </button>
+                                            <button class="btn btn-outline-secondary ml-1" id="add-content-li">
+                                                li
+                                            </button>
+                                        </div>
+                                        <textarea class="form-control" rows="5" id="content-editor" name="introduction"
+                                            placeholder="Enter company introduction">{{ $company->introduction }}</textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Preview</label>
+                                        <div id="preview-content">
+                                            {!! $company->introduction !!}
+                                        </div>
+                                    </div>
 
                                     <div class="form-buttons-w">
                                         <button class="btn btn-primary" type="submit">Save</button>
@@ -111,34 +135,85 @@
                                         </div>
                                     </div>
 
-                                    {{-- product thumbnail --}}
+                                    {{-- company logo --}}
                                     <div class="form-group">
-                                        <label for="form-company-thumbnail">Thumbnail</label>
+                                        <label for="form-company-logo">Logo</label>
                                         @if ($company->logo)
                                         <img src="{{ asset("uploads/{$company->logo}") }}" class="img-responsive"
-                                            id="thumbnail-preview">
+                                            id="logo-preview">
                                         @else
                                         <img src="{{ asset('images/default/no-image.jpg') }}" class="img-responsive"
-                                            id="thumbnail-preview">
+                                            id="logo-preview">
                                         @endif
+                                    </div>
 
-                                        <div class="form-buttons-w">
-                                            <button class="btn btn-primary" id="set-thumbnail">Set Logo</button>
-                                            <input type="hidden" name="thumbnail">
-                                        </div>
+                                    <div class="form-buttons-w">
+                                        <button class="btn btn-primary" id="set-logo">Set Logo</button>
+                                        <input type="hidden" name="logo">
                                     </div>
                                 </div>
                             </div>
                         </form>
 
-                        {{-- START - Set Thumbnail Modal --}}
-                        <div id="set-thumbnail-modal" aria-hidden="true" aria-labelledby="set-thumbnail-modal-title"
+                        {{-- START - Add Image Modal --}}
+                        <div id="add-image-modal" aria-hidden="true" aria-labelledby="add-image-modal-title"
                             class="modal fade" role="dialog" tabindex="-1">
                             <div class="modal-dialog modal-xl">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="set-thumbnail-modal-title">
-                                            Set thumbnail
+                                        <h5 class="modal-title" id="add-image-modal-title">
+                                            Add image
+                                        </h5>
+                                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{-- START - Upload Attachment --}}
+                                        <div class="element-box">
+                                            <h5>Upload new attachment</h5>
+                                            <hr>
+                                            <form class="upload-gallery" action="{{ url("admin/gallery/upload") }}"
+                                                method="post" enctype="multipart/form-data">
+                                                <input type="file" data-title="Upload" name="image">
+                                            </form>
+                                        </div>
+                                        {{-- END - Upload Attachment --}}
+
+                                        {{-- START - Attachment Library --}}
+                                        <div class="element-box attachment-library">
+                                            <h5>Attachment Library</h5>
+                                            <hr>
+                                            @if (count($gallery) == 0)
+                                            No attachments found.
+                                            @else
+                                            <div class="row gallery-list">
+                                                @foreach ($gallery as $image)
+                                                <div class="col-sm-2 gallery-item">
+                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
+                                                        data-size="{{ $image->getSize() }} B"
+                                                        data-filename="{{ $image->getFilename() }}"
+                                                        class="img-responsive">
+                                                </div>
+                                                @endforeach
+                                            </div>
+                                            @endif
+                                        </div>
+                                        {{-- END - Attachment Library --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- END - Add Image Modal --}}
+
+                        {{-- START - Set Logo Modal --}}
+                        <div id="set-logo-modal" aria-hidden="true" aria-labelledby="set-logo-modal-title"
+                            class="modal fade" role="dialog" tabindex="-1">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="set-logo-modal-title">
+                                            Set logo
                                         </h5>
                                         <button aria-label="Close" class="close" data-dismiss="modal" type="button">
                                             <span aria-hidden="true">&times;</span>
@@ -178,19 +253,23 @@
                                         {{-- END - Attachment Library --}}
                                     </div>
                                     <div class="modal-footer">
-                                        <button id="remove-thumbnail" class="btn btn-danger text-white">
-                                            Remove thumbnail
+                                        <button id="remove-logo" class="btn btn-danger text-white">
+                                            Remove logo
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        {{-- END - Set Thumbnail Modal --}}
+                        {{-- END - Set Logo Modal --}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</div>
+{{-- END - Content --}}
+@endsection
+
+@section('additional-scripts')
+<script src="{{ asset("js/admin/custom/company.js") }}"></script>
 @endsection

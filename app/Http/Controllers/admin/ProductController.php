@@ -24,9 +24,16 @@ class ProductController extends Controller
     public function renderSingleProduct($id)
     {
         $p = [
+            'gallery' => collect(File::allFiles(public_path('uploads')))
+                ->filter(function ($file) {
+                    return in_array($file->getExtension(), ['png', 'gif', 'jpg']);
+                })
+                ->sortBy(function ($file) {
+                    return $file->getCTime();
+                }),
             'product' => Product::where('id', $id)->first(),
             'allCategories' => CategoryProduct::all(),
-             'allCompany' => Company::all()
+            'allCompany' => Company::all()
         ];
 
         return view('admin/single-product')->with($p);
@@ -36,7 +43,14 @@ class ProductController extends Controller
     {
         $p = [
             'allCategories' => CategoryProduct::all(),
-            'allCompany' => Company::all()
+            'allCompany' => Company::all(),
+            'gallery' => collect(File::allFiles(public_path('uploads')))
+                ->filter(function ($file) {
+                    return in_array($file->getExtension(), ['png', 'gif', 'jpg']);
+                })
+                ->sortBy(function ($file) {
+                    return $file->getCTime();
+                })
         ];
 
         return view('admin/new-product')->with($p);
@@ -47,6 +61,9 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required',
             'description' => 'required',
+            'company_id' => 'required'
+        ], [
+            'company_id.required' => "The company field is required."
         ]);
 
         $product = new Product;
@@ -54,13 +71,8 @@ class ProductController extends Controller
         $product->description = $request->get('description');
         $product->category_product_id = $request->get('category_product_id');
         $product->company_id = $request->get('company_id');
-        if ($request->hasFile('thumbnail')) {
-            $thumbnail = $request->file('thumbnail');
-            Storage::disk('public')->put($thumbnail->getClientOriginalName(),  File::get($thumbnail));
-            $product->thumbnail = $thumbnail->getClientOriginalName();
-        } else {
-            $product->thumbnail = null;
-        }
+        $product->thumbnail = $request->get('thumbnail');
+
         try {
             $product->save();
         } catch (\Throwable $th) {
@@ -77,6 +89,9 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required',
             'description' => 'required',
+            'company_id' => 'required'
+        ], [
+            'company_id.required' => "The company field is required."
         ]);
 
         $product = Product::find($id);
@@ -84,12 +99,7 @@ class ProductController extends Controller
         $product->description = $request->get('description');
         $product->category_product_id = $request->get('category_product_id');
         $product->company_id = $request->get('company_id');
-
-        if ($request->hasFile('thumbnail')) {
-            $thumbnail = $request->file('thumbnail');
-            Storage::disk('public')->put($thumbnail->getClientOriginalName(),  File::get($thumbnail));
-            $product->thumbnail = $thumbnail->getClientOriginalName();
-        }
+        $product->thumbnail = $request->get('thumbnail');
 
         try {
             $product->save();

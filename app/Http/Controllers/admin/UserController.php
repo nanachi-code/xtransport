@@ -23,6 +23,13 @@ class UserController extends Controller
     public function renderSingleUser($id)
     {
         $p = [
+            'gallery' => collect(File::allFiles(public_path('uploads')))
+                ->filter(function ($file) {
+                    return in_array($file->getExtension(), ['png', 'gif', 'jpg']);
+                })
+                ->sortBy(function ($file) {
+                    return $file->getCTime();
+                }),
             'user' => User::where('id', $id)->first()
         ];
 
@@ -31,7 +38,16 @@ class UserController extends Controller
 
     public function renderNewUser()
     {
-        return view('admin/new-user');
+        $p = [
+            'gallery' => collect(File::allFiles(public_path('uploads')))
+                ->filter(function ($file) {
+                    return in_array($file->getExtension(), ['png', 'gif', 'jpg']);
+                })
+                ->sortBy(function ($file) {
+                    return $file->getCTime();
+                }),
+        ];
+        return view('admin/new-user')->with($p);
     }
 
     public function createUser(Request $request)
@@ -51,14 +67,7 @@ class UserController extends Controller
         $user->address = $request->get('address');
         $user->status = "active";
         $user->role = $request->get('role');
-
-        if ($request->hasFile('avatar')) {
-            $avatar = $request->file('avatar');
-            Storage::disk('uploads')->put($avatar->getClientOriginalName(),  File::get($avatar));
-            $user->avatar = $avatar->getClientOriginalName();
-        } else {
-            $user->avatar = null;
-        }
+        $user->avatar = $request->get('avatar');
 
         try {
             $user->save();
@@ -83,12 +92,7 @@ class UserController extends Controller
         $user->phone = $request->get('phone');
         $user->address = $request->get('address');
         $user->role = $request->get('role');
-
-        if ($request->hasFile('avatar')) {
-            $avatar = $request->file('avatar');
-            Storage::disk('uploads')->put($avatar->getClientOriginalName(),  File::get($avatar));
-            $user->avatar = $avatar->getClientOriginalName();
-        }
+        $user->avatar = $request->get('avatar');
 
         try {
             $user->save();
