@@ -21,8 +21,8 @@ class CreateProduct extends Migration
             $table->longText('description');
             $table->string('thumbnail')->nullable();
             $table->string('status', 20)->default('publish');
-            $table->bigInteger("category_product_id")->unsigned();
-            $table->bigInteger("company_id")->unsigned()->nullable();
+            $table->bigInteger("category_product_id")->unsigned()->nullable();
+            $table->bigInteger("company_id")->unsigned();
             $table->foreign('category_product_id')->references('id')->on('category_product');
             $table->foreign('company_id')->references('id')->on('company');
         });

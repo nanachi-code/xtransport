@@ -12,8 +12,6 @@ $(function () {
     $("#table-admin-post").DataTable();
     $("#table-admin-comment").DataTable();
     $("#table-admin-user").DataTable();
-    $("#table-admin-order").DataTable();
-    $("#table-admin-product-order").DataTable();
     $("#table-admin-company").DataTable();
     $("#table-admin-event").DataTable();
 
@@ -615,9 +613,7 @@ $(function () {
         $("#add-image-modal").modal("toggle");
     });
 
-    $("#add-image-modal .gallery-list").on("click", ".gallery-item", function (
-        e
-    ) {
+    $("#add-image-modal").on("click", ".gallery-item", function (e) {
         e.preventDefault();
         let imgURL = $(this).find("img").attr("src");
         console.log("clicked");
@@ -656,10 +652,6 @@ $(function () {
         }
     });
 
-    $("#btn-add-product").click(function () {
-        $("#table-admin-add-product-order").DataTable();
-    });
-
     $("a.add-product").click(function (e) {
         e.preventDefault();
 
@@ -678,6 +670,7 @@ $(function () {
 
     $(".gallery-list").on("click", ".gallery-item", function (e) {
         e.preventDefault();
+
         let imgURL = $(this).find("img").attr("src"),
             imgFilename = $(this).find("img").attr("data-filename"),
             imgSize = $(this).find("img").attr("data-size"),
@@ -726,7 +719,7 @@ $(function () {
                         `);
                 } else {
                     $(".attachment-library").html(`
-                        <div class="row" class="gallery-list">
+                        <div class="row gallery-list">
                             <div class="col-sm-2 gallery-item">
                                 <img src="${res.image.src}" data-size="${res.image.size} B" data-filename="${res.image.filename}"
                                     class="img-responsive">
@@ -758,19 +751,15 @@ $(function () {
         $("#set-thumbnail-modal").modal("toggle");
     });
 
-    $("#set-thumbnail-modal .gallery-list").on(
-        "click",
-        ".gallery-item",
-        function (e) {
-            e.preventDefault();
-            let filename = $(this).find("img").attr("data-filename"),
-                imgURL = $(this).find("img").attr("src");
+    $("#set-thumbnail-modal").on("click", ".gallery-item", function (e) {
+        e.preventDefault();
+        let filename = $(this).find("img").attr("data-filename"),
+            imgURL = $(this).find("img").attr("src");
 
-            $("#thumbnail-preview").attr("src", imgURL);
-            $("input[name='thumbnail']").val(filename);
-            $("#set-thumbnail-modal").modal("hide");
-        }
-    );
+        $("#thumbnail-preview").attr("src", imgURL);
+        $("input[name='thumbnail']").val(filename);
+        $("#set-thumbnail-modal").modal("hide");
+    });
 
     $("#remove-thumbnail").click(function (e) {
         e.preventDefault();

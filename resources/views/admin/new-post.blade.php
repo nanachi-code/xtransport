@@ -146,7 +146,7 @@
                                             @if (count($gallery) == 0)
                                             No attachments found.
                                             @else
-                                            <div class="row" class="gallery-list">
+                                            <div class="row gallery-list">
                                                 @foreach ($gallery as $image)
                                                 <div class="col-sm-2 gallery-item">
                                                     <img src="{{ asset("uploads/{$image->getFilename()}") }}"

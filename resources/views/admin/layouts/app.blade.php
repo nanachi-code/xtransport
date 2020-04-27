@@ -230,7 +230,13 @@
                                     @endif
                                     @if (Auth::check())
                                     <div class="logged-user-role">
-                                        {{ \Auth::user()->role }}
+                                        @if (Auth::check())
+                                        @if (\Auth::user()->role == "admin")
+                                        Admin
+                                        @elseif (\Auth::user()->role == "super_admin")
+                                        Super Admin
+                                        @endif
+                                        @endif
                                     </div>
                                     @endif
                                 </div>
@@ -465,12 +471,20 @@
                                         <div class="logged-user-info-w">
                                             @if (Auth::check())
                                             <div class="logged-user-name">
+                                                @if (Auth::check())
                                                 {{ \Auth::user()->name }}
+                                                @endif
                                             </div>
                                             @endif
                                             @if (Auth::check())
                                             <div class="logged-user-role">
-                                                {{ \Auth::user()->role }}
+                                                @if (Auth::check())
+                                                @if (\Auth::user()->role == "admin")
+                                                Admin
+                                                @elseif (\Auth::user()->role == "super_admin")
+                                                Super Admin
+                                                @endif
+                                                @endif
                                             </div>
                                             @endif
                                         </div>

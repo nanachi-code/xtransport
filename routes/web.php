@@ -103,6 +103,15 @@ Route::group([
         Route::post('/{id}/update', 'Admin\CategoryPostController@updateCategory');
     });
 
+    //* Comment
+    Route::prefix('comment')->group(function () {
+        Route::get('/', 'Admin\CommentController@renderArchiveComment');
+
+        Route::get('/{id}/delete', 'Admin\CommentController@deleteComment');
+
+        Route::post('/{id}/delete', 'Admin\CommentController@deletePostComment');
+    });
+
     //* Category Product
     Route::prefix('category-product')->group(function () {
         Route::get('/', function () {

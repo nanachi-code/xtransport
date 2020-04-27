@@ -36,13 +36,13 @@
                     {{-- END - Upload Attachment --}}
 
                     {{-- START - Attachment Library --}}
-                    <div class="element-box" id="attachment-library">
+                    <div class="element-box attachment-library">
                         <h5>Attachment Library</h5>
                         <hr>
                         @if (count($gallery) == 0)
                         No attachments found.
                         @else
-                        <div class="row" class="gallery-list">
+                        <div class="row gallery-list">
                             @foreach ($gallery as $image)
                             <div class="col-sm-2 gallery-item">
                                 <img src="{{ asset("uploads/{$image->getFilename()}") }}"

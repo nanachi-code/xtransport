@@ -8,10 +8,10 @@ class Event extends Model
 {
     protected $table = 'event';
 
-    protected $fillable = ['name', 'date', 'address', 'thumbnail','status','post_id'];
+    protected $fillable = ['name', 'date', 'address', 'thumbnail', 'status', 'post_id'];
 
-    public function Users()
+    public function users()
     {
-        return $this->belongsToMany('App\User','events_users','event_id','users_id');
+        return $this->belongsToMany(User::class, 'events_users', 'event_id', 'users_id');
     }
 }
