@@ -389,6 +389,26 @@
                             <span>New company</span>
                         </a>
                     </li>
+
+                    {{-- Event --}}
+                    <li class="sub-header">
+                        <span>Event</span>
+                    </li>
+                    <li>
+                        <a href="{{ url('/admin/event/all') }}">
+                            <div class="icon-w">
+                                <i class="icon-docs"></i>
+                            </div>
+                            <span>All events</span>
+                        </a>
+                        <a href="{{ url('/admin/event/new') }}">
+                            <div class="icon-w">
+                                <i class="icon-note"></i>
+                            </div>
+                            <span>New event</span>
+                        </a>
+                    </li>
+
                     {{-- Feedback --}}
                     <li class="sub-header">
                         <span>Feedback</span>

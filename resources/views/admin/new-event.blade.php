@@ -7,10 +7,10 @@
         <a href="{{ url('admin') }}">Home</a>
     </li>
     <li class="breadcrumb-item">
-        <a href="{{ url('admin/company/all') }}">All Companies</a>
+        <a href="{{ url('admin/event/all') }}">All events</a>
     </li>
     <li class="breadcrumb-item">
-        <a href="{{ url("admin/company/new") }}">New Company</a>
+        <a href="{{ url("admin/event/new") }}">New Event</a>
     </li>
 </ul>
 {{-- END - Breadcrumbs --}}
@@ -22,38 +22,39 @@
                     <div class="element-header">
                         <div class="clearfix">
                             <div class="float-left">
-                                <h3>Company</h3>
+                                <h3>Event</h3>
                             </div>
                         </div>
                     </div>
                     <div class="element-box">
-                        <h5>New Company</h5>
+                        <h5>New event</h5>
                         <hr>
-                        <form id="form-create-company" action="{{ url("admin/company/new")}}" method="post"
+                        <form id="form-create-event" action="{{ url("admin/event/new")}}" method="post"
                             enctype="multipart/form-data">
+
                             <div class="row">
                                 <div class="col-sm-9">
-                                    {{-- company name --}}
+                                    {{-- event name --}}
                                     <div class="form-group">
-                                        <label for="form-company-name">Name</label>
-                                        <input class="form-control" data-error="company name is required"
-                                            placeholder="Enter company name" required="required" type="text" name="name"
-                                            id="form-company-name" />
+                                        <label for="form-event-name">Name</label>
+                                        <input class="form-control" data-error="event name is required"
+                                            placeholder="Enter event name" type="text" name="name"
+                                            id="form-event-name" />
                                         <div class="help-block form-text with-errors form-control-feedback"></div>
                                     </div>
 
-                                    {{-- company email --}}
+                                    {{-- event date --}}
                                     <div class="form-group">
-                                        <label for="form-company-email">Email</label>
-                                        <input class="form-control" data-error="company email is required" type="email"
-                                            name="email" id="form-company-email" required />
+                                        <label for="form-event-date">Date</label>
+                                        <input class="form-control" data-error="event date is required" type="date"
+                                            name="date" id="form-event-date" />
                                         <div class="help-block form-text with-errors form-control-feedback"></div>
                                     </div>
 
-                                    {{-- company post --}}
+                                    {{-- event post --}}
                                     <div class="form-group">
-                                        <label for="form-company-post">Company Information Post</label>
-                                        <select class="form-control" id="form-company-post" name="post_id">
+                                        <label for="form-event-post">Event Information Post</label>
+                                        <select class="form-control" id="form-event-post" name="post_id">
                                             <option value="">
                                                 None
                                             </option>
@@ -65,19 +66,11 @@
                                         </select>
                                     </div>
 
-                                    {{-- company phone --}}
+                                    {{-- event address --}}
                                     <div class="form-group">
-                                        <label for="form-company-price">Phone</label>
-                                        <input class="form-control" placeholder="Enter company phone" type="text"
-                                            name="phone" id="form-company-phone" />
-                                        <div class="help-block form-text with-errors form-control-feedback"></div>
-                                    </div>
-
-                                    {{-- company address --}}
-                                    <div class="form-group">
-                                        <label for="form-company-address">Address</label>
-                                        <textarea class="form-control" rows="5" id="form-company-address" name="address"
-                                            placeholder="Enter company address"></textarea>
+                                        <label for="form-event-address">Address</label>
+                                        <textarea class="form-control" rows="5" id="form-event-address" name="address"
+                                            placeholder="Enter event address"></textarea>
                                     </div>
 
                                     <div class="form-buttons-w">
@@ -85,14 +78,14 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
-                                    {{-- company logo --}}
+                                    {{-- event thumbnail --}}
                                     <div class="form-group">
-                                        <label for="form-company-thumbnail">Logo</label>
+                                        <label for="form-event-thumbnail">Thumbnail</label>
                                         <img src="{{ asset('images/default/no-image.jpg') }}" class="img-responsive"
                                             id="thumbnail-preview">
 
                                         <div class="form-buttons-w">
-                                            <button class="btn btn-primary" id="set-thumbnail">Set Logo</button>
+                                            <button class="btn btn-primary" id="set-thumbnail">Set thumbnail</button>
                                             <input type="hidden" name="thumbnail">
                                         </div>
                                     </div>
@@ -107,7 +100,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="set-thumbnail-modal-title">
-                                            Set Logo
+                                            Set Thumbnail
                                         </h5>
                                         <button aria-label="Close" class="close" data-dismiss="modal" type="button">
                                             <span aria-hidden="true">&times;</span>
@@ -148,7 +141,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button id="remove-thumbnail" class="btn btn-danger text-white">
-                                            Remove Logo
+                                            Remove Thumbnail
                                         </button>
                                     </div>
                                 </div>

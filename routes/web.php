@@ -182,6 +182,28 @@ Route::group([
 
         Route::get('/{id}/restore', 'Admin\CompanyController@restoreCompany');
     });
+
+    // Event
+    Route::prefix('event')->group(function () {
+        Route::get('/', function () {
+            return redirect('/admin/event/all');
+        });
+
+        Route::get('/all', 'Admin\EventController@renderArchiveEvent');
+
+        Route::get('/new', 'Admin\EventController@renderNewEvent');
+
+        Route::post('/new', 'Admin\EventController@createEvent');
+
+        Route::get('/{id}', 'Admin\EventController@renderSingleEvent');
+
+        Route::post('/{id}/update', 'Admin\EventController@updateEvent');
+
+        Route::get('/{id}/disable', 'Admin\EventController@disableEvent');
+
+        Route::get('/{id}/restore', 'Admin\EventController@restoreEvent');
+    });
+
     //* Feedback Post
     Route::prefix('feedback')->group(function () {
         Route::get('/', function () {

@@ -6,7 +6,6 @@ use App\Company;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 class CompanyController extends Controller
@@ -69,13 +68,7 @@ class CompanyController extends Controller
         $company->address = $request->get('address');
         $company->status = "active";
         $company->post_id = $request->get('post_id');
-        if ($request->hasFile('logo')) {
-            $logo = $request->file('logo');
-            Storage::disk('public')->put($logo->getClientOriginalName(),  File::get($logo));
-            $company->logo = $logo->getClientOriginalName();
-        } else {
-            $company->logo = null;
-        }
+        $company->logo = $request->get('thumbnail');
 
         try {
             $company->save();
@@ -101,11 +94,7 @@ class CompanyController extends Controller
         $company->phone = $request->get('phone');
         $company->address = $request->get('address');
         $company->post_id = $request->get('post_id');
-        if ($request->hasFile('logo')) {
-            $logo = $request->file('logo');
-            Storage::disk('public')->put($logo->getClientOriginalName(),  File::get($logo));
-            $company->logo = $logo->getClientOriginalName();
-        }
+        $company->logo = $request->get('thumbnail');
 
         try {
             $company->save();
