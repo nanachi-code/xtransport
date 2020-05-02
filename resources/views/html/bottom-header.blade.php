@@ -18,17 +18,17 @@
 
                 <ul class="main-menu sf-menu sf-js-enabled sf-arrows">
                     <li class="curent-menu-item">
-                        <a href="index-1.html" class="sf-with-ul">home</a>
+                        <a href="{{url('/')}}" class="sf-with-ul">home</a>
                         <!-- ==== sub menu ==== -->
                         <ul class="sub-menu">
                             <li>
-                                <i class="fa fa-home"></i><a href="index-1.html" class="sf-with-ul">Home 1</a>
+                                <i class="fa fa-home"></i><a href="{{url('/')}}" class="sf-with-ul">Home 1</a>
                             </li>
                             <li>
-                                <i class="fa fa-home"></i><a href="index-2.html" class="sf-with-ul">Home 2</a>
+                                <i class="fa fa-home"></i><a href="{{url('/')}}" class="sf-with-ul">Home 2</a>
                             </li>
                             <li>
-                                <i class="fa fa-home"></i><a href="index-3.html" class="sf-with-ul">Home 3</a>
+                                <i class="fa fa-home"></i><a href="{{url('/')}}" class="sf-with-ul">Home 3</a>
                             </li>
                         </ul>
                         <!-- ==== end submenu ==== -->
@@ -93,25 +93,20 @@
                         <!-- ==== end submenu ==== -->
                     </li>
                     <li>
-                        <a href="blog-center.html">blog</a>
+                        <a href="{{url('/blogs/all')}}">blog</a>
                         <!-- ==== sub menu ==== -->
                         <ul class="sub-menu">
+                            @php
+                            $post_category = App\CategoryPost::all();
+                            @endphp
+                            @isset($post_category)
+                            @foreach ($post_category as $p)
                             <li>
-                                <i class="fa fa-star-o"></i><a href="blog-center.html" class="sf-with-ul">blog
-                                    center</a>
+                                <i class="fa fa-star-o"></i><a href="{{url('blogs/'.$p->id)}}"
+                                    class="sf-with-ul">{{$p->name}}</a>
                             </li>
-                            <li>
-                                <i class="fa fa-star-o"></i><a href="blog-large.html" class="sf-with-ul">blog
-                                    large</a>
-                            </li>
-                            <li>
-                                <i class="fa fa-star-o"></i><a href="blog-masonry.html" class="sf-with-ul">blog
-                                    masonry</a>
-                            </li>
-                            <li>
-                                <i class="fa fa-star-o"></i><a href="single-blog.html" class="sf-with-ul">single
-                                    blog</a>
-                            </li>
+                            @endforeach
+                            @endisset
                         </ul>
                         <!-- ==== end submenu ==== -->
                     </li>
