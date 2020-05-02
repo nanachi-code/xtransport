@@ -9842,21 +9842,21 @@ button {
   						.sp-slide{
   							&.kopa-before-01{
   								&:before{
-  									
+
   								}
   								.sp-image-container{
   									img{
-  										
+
   									}
   								}
   							}
   							&:before{
-  			
+
   							}
   						}
   						.sp-image-container{
   							img{
-  								
+
   							}
   						}
   						p{
@@ -9864,13 +9864,13 @@ button {
   								display: none;
   							}
   							&.kopa-sp-layer-line{
-  								
+
   								left: 305px !important;
   							}
   							&.kopa-sp-layer-img{
   								top: 150px !important;
   								left: 1200px !important;
-  								
+
   							}
   							&.kopa-txt-style-04{
   								left: 395px !important;
@@ -9878,7 +9878,7 @@ button {
   							&.kopa-txt-style-03{
   								left: 325px !important;
   								a{
-  								
+
   								}
   							}
   							&.kopa-txt-style-05{
@@ -9888,16 +9888,16 @@ button {
   								left: 320px !important;
   							}
   							&.kopa-title-7{
-  								
-  								
+
+
   							}
   							&.h4{
-  								
-  								
-  								
+
+
+
   							}
   							&.kopa-sp-layer-btn-04{
-  								
+
   							}
   							&.kopa-sp-layer-btn-01{
   								left: 300px !important;
@@ -9907,10 +9907,10 @@ button {
   							}
   						}
   						a{
-  							
+
   						}
   					}
-  
+
   				}--*/ }
 @media screen and (max-width: 1279px) {
   /*--- ==================== --*/
@@ -14829,10 +14829,10 @@ button {
   								&.text-right{
   									text-align: left;
   								}
-  
-  								.entry-content{ 
+
+  								.entry-content{
   									.wrap-btn{
-  										
+
   										a {
      											 padding: 15px 44px;
   											}
@@ -16636,3 +16636,7 @@ button {
 
   /*----============= END ================ ----*/ }
 /*--------------========================= end responsive =====================----------------------*/
+.page-disabled {
+    pointer-events:none;
+    opacity:0.6;
+}

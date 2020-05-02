@@ -39,6 +39,7 @@ Route::prefix('/contact')->group(function () {
     Route::post('/feedback', "Main\ContactController@contactFeedback");
 });
 
+Route::get('/post/{id}', 'Main\PostController@singlePost');
 
 Auth::routes();
 Route::get('logout', function () {
