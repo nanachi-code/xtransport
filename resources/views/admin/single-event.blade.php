@@ -31,7 +31,7 @@
                     <div class="element-box">
                         <h5>Edit Event</h5>
                         <hr>
-                        <form id="form-event" action="{{ url("admin/event/{$event->id}/update")}}" method="post"
+                        <form id="form-single-event" action="{{ url("admin/event/{$event->id}/update")}}" method="post"
                             enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-sm-9">

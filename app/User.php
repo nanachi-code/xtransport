@@ -37,8 +37,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function Events()
+    public function events()
     {
-        return $this->belongsToMany('App\Event','events_users','event_id','users_id');
+        return $this->belongsToMany(Event::class, 'events_users', 'event_id', 'users_id');
     }
 }

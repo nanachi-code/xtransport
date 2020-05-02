@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContactFeedback extends Migration
+class CreateFeedback extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateContactFeedback extends Migration
      */
     public function up()
     {
-        Schema::create('contact_feedback', function (Blueprint $table) {
+        Schema::create('feedback', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email', 191);
@@ -30,6 +30,6 @@ class CreateContactFeedback extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contact_feedback');
+        Schema::dropIfExists('feedback');
     }
 }
