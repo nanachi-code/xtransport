@@ -3,237 +3,212 @@
 @section('title',"Catalogs")
 
 @section('location')
-<section class="kopa__area kopa__area--noSpace">
+<section class="kopa-area kopa-area-44 white-text-style">
     <div class="container">
-        <div class="widget kopa__topPage style--01">
-            <div class="kopa__topPage--left">
-                <div class="widget-title style--07 text--white">
-                    <h3 class="primary__title">Shop 1
-                    </h3>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="kopa-breadcrumb">
+                    <h3>{{$location}}</h3>
+                    <div class="breadcrumb-content">
+                        <p>We offer a big storage space, heated and with air condition, to store
+                            <br> your good’s safe and organized even for longer period of time.</p>
+                        <span itemtype="" itemscope="">
+                            <a itemprop="url" href="{{url('/')}}">
+                                <span itemprop="title">Home</span>
+                            </a>
+                        </span>
+                        <span>&nbsp; &nbsp; / &nbsp; &nbsp;</span>
+                        <span itemtype="" itemscope="">
+                            <a itemprop="url" class="current-page">
+                                <span itemprop="title">{{$location}}</span>
+                            </a>
+                        </span>
+                    </div>
                 </div>
-                <!-- widget title-->
-                <div class="kopa__breadcrumb style--01"><span>You are here:</span><i
-                        class="fa fa-angle-double-right"></i><a href="#">Pages</a><i
-                        class="fa fa-angle-double-right"></i><span>Shop 1</span></div>
-                <!-- breadcrumb-->
-                <div class="kopa__topPage__back text--white"><a href="#"><i class="fa fa-long-arrow-right"></i>back</a>
-                </div>
-                <!-- kopa topPage back-->
             </div>
-            <!-- kopa topPage left-->
-            <div class="kopa__topPage--right"><img src="http://placehold.it/870x380" alt="">
-            </div>
-            <!-- kopa topPage right-->
         </div>
-        <!-- kopa topPage-->
     </div>
-    <!-- container-->
 </section>
 @endsection
 
 @section('content')
-<section class="kopa__area kopa__area--08">
+<!-- kopa area 45 -->
+<section class="kopa-area-45">
     <div class="container">
-        <div class="kopa__shopFilter">
-            <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <form action="/" method="get" class="woocommerce-ordering">
-                        <select name="orderby" class="orderby">
-                            <option value="menu_order" selected="selected">Default sorting</option>
-                            <option value="popularity">Sort by popularity</option>
-                            <option value="rating">Sort by average rating</option>
-                            <option value="date">Sort by newness</option>
-                            <option value="price">Sort by price: low to high</option>
-                            <option value="price-desc">Sort by price: high to low</option>
-                        </select>
-                    </form>
-                    <!-- woocommerce ordering-->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="masonry-gallery">
+                    <header class="kopa-tab kopa-tab-2 masonry-header">
+                        <ul class="nav masonry-filter-2">
+                            <li role="presentation" class="active"><a href="#" data-val="*">All</a>
+                            </li>
+                            <li role="presentation"><a href="#" data-val="1">Short trucks </a>
+                            </li>
+                            <li role="presentation"><a href="#" data-val="2">Prime trucks </a>
+                            </li>
+                            <li role="presentation"><a href="#" data-val="3">Big load trucks</a>
+                            </li>
+                        </ul>
+                    </header>
+                    <div class="kopa-gallery kopa-gallery-2">
+                        <div class="gallery-content clearfix">
+                            <ul class="ul-mh row ct-row-01 masonry-container-2"
+                                style="position: relative; height: 860px;">
+                                <!-- mansory item -->
+                                @foreach ($items as $item)
+                                <li class="ms-item-01 col-xs-6 col-sm-6 col-md-3 show" data-val="2"
+                                    style="height: 264px; position: absolute; left: 870px; top: 573px;">
+                                    <!-- ** -->
+                                    <article class="entry-item">
+                                        <figure class="entry-thumb">
+                                            <a href="{{url('/item/'.$item->id)}}"><img src="http://placehold.it/282x275"
+                                                    alt="">
+                                            </a>
+
+                                        </figure>
+                                        <div class="entry-content">
+                                            <h4 class="entry-title"><a
+                                                    href="{{url('/item/'.$item->id)}}">{{$item->name}}</a></h4>
+                                            <a href="{{url('/item/'.$item->id)}}" class="kopa-btn btn-01">view
+                                                detail</a>
+
+                                        </div>
+                                    </article>
+                                    <!-- * -->
+
+                                </li>
+                                @endforeach
+                                <!-- end -->
+                            </ul>
+                        </div>
+                    </div>
+                    {{ $items->links('html.paginate') }}
                 </div>
-                <!-- col-->
-                <div class="col-xs-12 col-sm-6 col-md-3 pull-right">
-                    <p class="woocommerce-result-count">Showing all 1 results</p>
-                </div>
-                <!-- col-->
             </div>
-            <!-- row-->
         </div>
-        <!-- kopa shop filter-->
-        <div class="kopa__shopItem">
-            <div class="row">
-                <div class="col-xs-12 col-sm-3">
-                    <article class="entry-item">
-                        <div class="entry-thumb"><a href="#"><img src="http://placehold.it/270x340" alt=""></a>
-                            <div class="kopa__shopItem__icon new"><span>new</span></div>
-                            <!-- kopa shop item icon-->
-                        </div>
-                        <!-- entry thumb-->
-                        <div class="entry-content">
-                            <h5><a href="#">This is product name</a></h5>
-                            <div class="kopa__shopItem__rating"><i class="fa fa-star-o"></i><i
-                                    class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i
-                                    class="fa fa-star-o"></i>
-                            </div>
-                            <!-- kopa shop item raing-->
-                            <del>£32</del><ins>£22</ins><a href="#"
-                                class="btn btn--md btn--curve btn__color--primary">buy Know</a>
-                        </div>
-                        <!-- entry content-->
-                    </article>
-                    <!-- entry item-->
-                </div>
-                <!-- col-->
-                <div class="col-xs-12 col-sm-3">
-                    <article class="entry-item">
-                        <div class="entry-thumb"><a href="#"><img src="http://placehold.it/270x340" alt=""></a>
-                            <div class="kopa__shopItem__icon sale"><span>sale</span></div>
-                            <!-- kopa shop item icon-->
-                        </div>
-                        <!-- entry thumb-->
-                        <div class="entry-content">
-                            <h5><a href="#">This is product name</a></h5>
-                            <div class="kopa__shopItem__rating"><i class="fa fa-star-o"></i><i
-                                    class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i
-                                    class="fa fa-star-o"></i>
-                            </div>
-                            <!-- kopa shop item raing-->
-                            <del>£32</del><ins>£22</ins><a href="#"
-                                class="btn btn--md btn--curve btn__color--primary">buy Know</a>
-                        </div>
-                        <!-- entry content-->
-                    </article>
-                    <!-- entry item-->
-                </div>
-                <!-- col-->
-                <div class="col-xs-12 col-sm-3">
-                    <article class="entry-item">
-                        <div class="entry-thumb"><a href="#"><img src="http://placehold.it/270x340" alt=""></a></div>
-                        <!-- entry thumb-->
-                        <div class="entry-content">
-                            <h5><a href="#">This is product name</a></h5>
-                            <div class="kopa__shopItem__rating"><i class="fa fa-star-o"></i><i
-                                    class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i
-                                    class="fa fa-star-o"></i>
-                            </div>
-                            <!-- kopa shop item raing-->
-                            <del>£32</del><ins>£22</ins><a href="#"
-                                class="btn btn--md btn--curve btn__color--primary">buy Know</a>
-                        </div>
-                        <!-- entry content-->
-                    </article>
-                    <!-- entry item-->
-                </div>
-                <!-- col-->
-                <div class="col-xs-12 col-sm-3">
-                    <article class="entry-item">
-                        <div class="entry-thumb"><a href="#"><img src="http://placehold.it/270x340" alt=""></a></div>
-                        <!-- entry thumb-->
-                        <div class="entry-content">
-                            <h5><a href="#">This is product name</a></h5>
-                            <div class="kopa__shopItem__rating"><i class="fa fa-star-o"></i><i
-                                    class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i
-                                    class="fa fa-star-o"></i>
-                            </div>
-                            <!-- kopa shop item raing-->
-                            <del>£32</del><ins>£22</ins><a href="#"
-                                class="btn btn--md btn--curve btn__color--primary">buy Know</a>
-                        </div>
-                        <!-- entry content-->
-                    </article>
-                    <!-- entry item-->
-                </div>
-                <!-- col-->
-                <div class="col-xs-12 col-sm-3">
-                    <article class="entry-item">
-                        <div class="entry-thumb"><a href="#"><img src="http://placehold.it/270x340" alt=""></a></div>
-                        <!-- entry thumb-->
-                        <div class="entry-content">
-                            <h5><a href="#">This is product name</a></h5>
-                            <div class="kopa__shopItem__rating"><i class="fa fa-star-o"></i><i
-                                    class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i
-                                    class="fa fa-star-o"></i>
-                            </div>
-                            <!-- kopa shop item raing-->
-                            <del>£32</del><ins>£22</ins><a href="#"
-                                class="btn btn--md btn--curve btn__color--primary">buy Know</a>
-                        </div>
-                        <!-- entry content-->
-                    </article>
-                    <!-- entry item-->
-                </div>
-                <!-- col-->
-                <div class="col-xs-12 col-sm-3">
-                    <article class="entry-item">
-                        <div class="entry-thumb"><a href="#"><img src="http://placehold.it/270x340" alt=""></a></div>
-                        <!-- entry thumb-->
-                        <div class="entry-content">
-                            <h5><a href="#">This is product name</a></h5>
-                            <div class="kopa__shopItem__rating"><i class="fa fa-star-o"></i><i
-                                    class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i
-                                    class="fa fa-star-o"></i>
-                            </div>
-                            <!-- kopa shop item raing-->
-                            <del>£32</del><ins>£22</ins><a href="#"
-                                class="btn btn--md btn--curve btn__color--primary">buy Know</a>
-                        </div>
-                        <!-- entry content-->
-                    </article>
-                    <!-- entry item-->
-                </div>
-                <!-- col-->
-                <div class="col-xs-12 col-sm-3">
-                    <article class="entry-item">
-                        <div class="entry-thumb"><a href="#"><img src="http://placehold.it/270x340" alt=""></a></div>
-                        <!-- entry thumb-->
-                        <div class="entry-content">
-                            <h5><a href="#">This is product name</a></h5>
-                            <div class="kopa__shopItem__rating"><i class="fa fa-star-o"></i><i
-                                    class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i
-                                    class="fa fa-star-o"></i>
-                            </div>
-                            <!-- kopa shop item raing-->
-                            <del>£32</del><ins>£22</ins><a href="#"
-                                class="btn btn--md btn--curve btn__color--primary">buy Know</a>
-                        </div>
-                        <!-- entry content-->
-                    </article>
-                    <!-- entry item-->
-                </div>
-                <!-- col-->
-                <div class="col-xs-12 col-sm-3">
-                    <article class="entry-item">
-                        <div class="entry-thumb"><a href="#"><img src="http://placehold.it/270x340" alt=""></a></div>
-                        <!-- entry thumb-->
-                        <div class="entry-content">
-                            <h5><a href="#">This is product name</a></h5>
-                            <div class="kopa__shopItem__rating"><i class="fa fa-star-o"></i><i
-                                    class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i
-                                    class="fa fa-star-o"></i>
-                            </div>
-                            <!-- kopa shop item raing-->
-                            <del>£32</del><ins>£22</ins><a href="#"
-                                class="btn btn--md btn--curve btn__color--primary">buy Know</a>
-                        </div>
-                        <!-- entry content-->
-                    </article>
-                    <!-- entry item-->
-                </div>
-                <!-- col-->
-            </div>
-            <!-- row-->
-            <div class="kopa__pagination style--01"><span class="kopa__navAll">Page 1 of 3</span>
-                <nav role="navigation" class="navigation pagination">
-                    <h2 class="screen-reader-text">Posts navigation</h2>
-                    <div class="nav-links"><a href="#" class="prev page-numbers"><i class="fa fa-angle-left"></i></a><a
-                            href="#" class="page-numbers">1</a><span class="page-numbers current">2</span><a href="#"
-                            class="page-numbers">3</a><a href="#" class="next page-numbers"><i
-                                class="fa fa-angle-right"></i></a></div>
-                    <!-- nav links-->
-                </nav>
-            </div>
-            <!-- kopa pagination-->
-        </div>
-        <!-- kopa shop item-->
     </div>
-    <!-- container-->
 </section>
+
+<!-- logo partner -->
+<section class="kopa-area kopa-area-8">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- widget -->
+            <div class="col-xs-12">
+                <div class="widget ex-module-slider-2">
+                    <div class="widget-content">
+                        <ul class="owl-carousel owl-theme  clearfix slider-partner">
+                            <!-- ** -->
+                            <li>
+                                <article class="entry-item">
+                                    <div class="entry-content">
+                                        <figure class="entry-thumb">
+                                            <a href="#"><img src="http://placehold.it/238x66" alt="">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </article>
+                            </li>
+                            <!-- ** -->
+                            <li>
+                                <article class="entry-item">
+                                    <div class="entry-content">
+                                        <figure class="entry-thumb">
+                                            <a href="#"><img src="http://placehold.it/238x66" alt="">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </article>
+                            </li>
+                            <!-- ** -->
+                            <li>
+                                <article class="entry-item">
+                                    <div class="entry-content">
+                                        <figure class="entry-thumb">
+                                            <a href="#"><img src="http://placehold.it/238x66" alt="">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </article>
+                            </li>
+                            <!-- ** -->
+                            <li>
+                                <article class="entry-item">
+                                    <div class="entry-content">
+                                        <figure class="entry-thumb">
+                                            <a href="#"><img src="http://placehold.it/238x66" alt="">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </article>
+                            </li>
+                            <!-- ** -->
+                            <li>
+                                <article class="entry-item">
+                                    <div class="entry-content">
+                                        <figure class="entry-thumb">
+                                            <a href="#"><img src="http://placehold.it/238x66" alt="">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </article>
+                            </li>
+                            <!-- ** -->
+                            <li>
+                                <article class="entry-item">
+                                    <div class="entry-content">
+                                        <figure class="entry-thumb">
+                                            <a href="#"><img src="http://placehold.it/238x66" alt="">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </article>
+                            </li>
+                            <!-- ** -->
+                            <li>
+                                <article class="entry-item">
+                                    <div class="entry-content">
+                                        <figure class="entry-thumb">
+                                            <a href="#"><img src="http://placehold.it/238x66" alt="">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </article>
+                            </li>
+                            <!-- ** -->
+                            <li>
+                                <article class="entry-item">
+                                    <div class="entry-content">
+                                        <figure class="entry-thumb">
+                                            <a href="#"><img src="http://placehold.it/238x66" alt="">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </article>
+                            </li>
+                            <!-- ** -->
+                            <li>
+                                <article class="entry-item">
+                                    <div class="entry-content">
+                                        <figure class="entry-thumb">
+                                            <a href="#"><img src="http://placehold.it/238x66" alt="">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </article>
+                            </li>
+                        </ul>
+                        <!-- navigation btn slisder -->
+                        <div class="customNavigation">
+                            <a class="btn prev"><span class="ti-arrow-left"></span></a>
+                            <a class="btn next"><span class="ti-arrow-right"></span></a>
+                        </div>
+                        <!-- end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end logo partner -->
 @endsection
