@@ -156,6 +156,9 @@
                                             Comment
                                         </th>
                                         <th>
+                                            Post
+                                        </th>
+                                        <th>
                                             Last update
                                         </th>
                                         <th class="text-center">
@@ -167,12 +170,17 @@
                                     @foreach ($todayComments as $comment)
                                     <tr>
                                         <td>
-                                            {{ $comment->user }}
+                                            {{ $comment->user->name }}
                                         </td>
-                                        <td class="text-center">
+                                        <td>
                                             {{ $comment->content }}
                                         </td>
-                                        <td class="text-center">
+                                        <td>
+                                            <a href="{{ url("/admin/post/{$comment->post->id}") }}">
+                                                {{ $comment->post->title }}
+                                            </a>
+                                        </td>
+                                        <td>
                                             {{ $comment->updated_at }}
                                         </td>
                                         <td class="row-actions">
@@ -191,6 +199,9 @@
                                         </th>
                                         <th>
                                             Comment
+                                        </th>
+                                        <th>
+                                            Post
                                         </th>
                                         <th>
                                             Last update

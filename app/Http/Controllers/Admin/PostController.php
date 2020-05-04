@@ -63,6 +63,7 @@ class PostController extends Controller
         $post = new Post;
         $post->title = $request->get('title');
         $post->content = $request->get('content');
+        $post->excerpt = $request->get('excerpt');
         $post->status = "publish";
         $post->user_id = Auth::user()->id;
         $post->category_post_id = $request->get('category_post_id');
@@ -88,6 +89,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->title = $request->get('title');
         $post->content = $request->get('content');
+        $post->excerpt = $request->get('excerpt');
         $post->category_post_id = $request->get('category_post_id');
         $post->thumbnail = $request->get('thumbnail');
 
@@ -98,7 +100,8 @@ class PostController extends Controller
         }
 
         return response()->json([
-            "message" => "Post info updated successfully."
+            "message" => "Post info updated successfully.",
+            "id" => $request->get('category_post_id')
         ], 200);
     }
 

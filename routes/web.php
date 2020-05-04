@@ -45,16 +45,27 @@ Route::prefix('/contact')->group(function () {
     Route::get('/', 'Main\ContactController@contact');
     Route::post('/feedback', "Main\ContactController@contactFeedback");
 });
+<<<<<<< HEAD
 Route::get('/about-us', 'Main\AboutUsController@aboutUs');
+=======
 
+//* Post
+Route::get('/post/{id}', 'Main\PostController@singlePost');
+Route::post('/post/{id}/comment', 'Main\PostController@saveComment');
+>>>>>>> 7f68f5bc9c74f43d3e823d75df690e22c3559143
+
+//* Auth
 Auth::routes();
 Route::get('logout', function () {
     Auth::logout();
     return redirect('/login');
 });
 
+<<<<<<< HEAD
 Route::get('/', 'HomeController@index')->name('home');
 
+=======
+>>>>>>> 7f68f5bc9c74f43d3e823d75df690e22c3559143
 //* Admin
 Route::group([
     'prefix' => 'admin',
@@ -69,7 +80,9 @@ Route::group([
 
     //* Gallery
     Route::get('/gallery', 'Admin\GalleryController@renderGallery');
+
     Route::get('/gallery/delete/{attachmentName}', 'Admin\GalleryController@deleteAttachment');
+
     Route::post('/gallery/upload', 'Admin\GalleryController@uploadAttachment');
 
     //* Post

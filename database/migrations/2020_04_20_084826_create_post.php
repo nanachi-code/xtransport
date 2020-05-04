@@ -23,6 +23,7 @@ class CreatePost extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->longText('content')->nullable();
+            $table->string('excerpt', 255)->nullable();
             $table->string('thumbnail')->nullable();
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('category_post_id')->unsigned()->nullable();

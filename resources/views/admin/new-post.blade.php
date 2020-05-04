@@ -44,6 +44,15 @@
                                         <div class="help-block form-text with-errors form-control-feedback"></div>
                                     </div>
 
+                                    {{-- post excerpt --}}
+                                    <div class="form-group">
+                                        <label for="form-post-excerpt">Excerpt</label>
+                                        <input class="form-control" data-error="Post excerpt is required"
+                                            placeholder="Enter Post excerpt" required="required" type="text"
+                                            name="excerpt" id="form-post-excerpt" />
+                                        <div class="help-block form-text with-errors form-control-feedback"></div>
+                                    </div>
+
                                     {{-- post content --}}
                                     <div class="form-group">
                                         <label>Content</label>
@@ -84,7 +93,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
-                                    {{-- pót category --}}
+                                    {{-- postt category --}}
                                     <div class="form-group">
                                         <label for="form-post-category">Category</label>
                                         <select class="form-control" id="form-post-category" name="category_post_id">

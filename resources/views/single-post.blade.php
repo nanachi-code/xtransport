@@ -7,10 +7,9 @@
     <div class="container">
         <div class="row">
             <div class="kopa-breadcrumb">
-                <h3>Post</h3>
+                <h3>{{$post->title}}</h3>
                 <div class="breadcrumb-content">
-                    <p>We offer a big storage space, heated and with air condition, to store
-                        <br> your good’s safe and organized even for longer period of time.</p>
+                    <p>{{ $post->excerpt }}}</p>
                     <span itemtype="" itemscope="">
                         <a itemprop="url" href="{{url('/')}}">
                             <span itemprop="title">Home</span>
@@ -18,8 +17,14 @@
                     </span>
                     <span>&nbsp; &nbsp; / &nbsp; &nbsp;</span>
                     <span itemtype="" itemscope="">
+                        <a itemprop="url" href="{{url('/blog')}}">
+                            <span itemprop="title">Blog</span>
+                        </a>
+                    </span>
+                    <span>&nbsp; &nbsp; / &nbsp; &nbsp;</span>
+                    <span itemtype="" itemscope="">
                         <a itemprop="url" class="current-page">
-                            <span itemprop="title">Post</span>
+                            <span itemprop="title">{{$post->title}}</span>
                         </a>
                     </span>
                 </div>
@@ -40,13 +45,16 @@
                         <header class="entry-header">
                             <h4 class="entry-title">{{$post->title}}</h4>
                             <div class="entry-meta">
-                                <p>
-                                    <i class="fa fa-user"></i>&nbsp;&nbsp; by <span class="entry-author"><a href="#">Aly
-                                            Banana</a></span> <span class="enry-date">Friday , August , 7 ,
-                                        2015</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>3 <i
-                                            class="fa fa-comment-o"></i></span>&nbsp;&nbsp;&nbsp;&nbsp;<span>250
-                                        Views</span>
-                                </p>
+                                <div class="d-inline mr-3">
+                                    <i class="fa fa-user"></i>
+                                    by <span class="entry-author">{{ $post->user->name }}</span>
+                                </div>
+                                <div class="d-inline mr-3">
+                                    <span class="enry-date">{{ $post->updated_at }}</span>
+                                </div>
+                                <div class="d-inline mr-3">
+                                    <span>{{ count($post->comments) }} <i class="fa fa-comment-o"></i></span>
+                                </div>
                             </div>
                         </header>
                         <div class="entry-thumb">
@@ -60,7 +68,7 @@
                         <footer class="entry-footer clearfix">
                             <div class="wrap-social-link alignright">
                                 Share:
-                                <ul class=" ">
+                                <ul class="">
                                     <li>
                                         <a href="#"><i class="fa fa-facebook"></i></a>
                                     </li>
@@ -78,102 +86,100 @@
                 <!-- comment list -->
                 <div class="kopa-comment-list kopa-comment-list-1">
                     <div class="comments">
-                        <h5 class="item-title style-01 bold-txt">2 comment on “Latest Technologies”</h5>
+                        <h5 class="item-title style-01 bold-txt">
+                            {{ count($post->comments) }} comment on “{{ $post->title }}”
+                        </h5>
                         <ol class="comments-list">
+                            @if ($post->hasComments())
+                            @foreach ($post->comments as $comment)
+                            @if (!$comment->hasParents())
                             <li class="comment">
                                 <article>
                                     <header class="comment-header clearfix">
                                         <div class="comment-avatar alignleft">
-                                            <a href="#"><img alt="" src="http://placehold.it/50x50">
+                                            <a href="#">
+                                                <img alt="" src="{{ url("uploads/{$comment->user->avatar}") }}">
                                             </a>
                                         </div>
                                         <div class="comment-info clearfix">
                                             <div class="alignleft">
-                                                <h6><a href="#">Lori Rogers</a></h6>
+                                                <h6><a href="#">{{ $comment->user->name }}</a></h6>
                                                 <div class="entry-meta style-02">
-                                                    <p class="entry-date"><i class="fa fa-pencil"></i> March 13, 2016
+                                                    <p class="entry-date">
+                                                        <i class="fa fa-pencil"></i> {{ $comment->updated_at }}
                                                     </p>
                                                 </div>
                                             </div>
                                             <div class="alignright">
                                                 <div class="comment-button">
-                                                    <a class="" href="#">Reply</a>
+                                                    <a href="#" data-id="{{ $comment->id }}">Reply</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </header>
                                     <div class="comment-content">
-                                        <p>Sed rutrum, nisi non interdum rhoncus, massa nunc porttitor purus, sed
-                                            sagittis lectus diam ornare justo. Pellentesque a urna urna. Nam vulputate
-                                            rutrum odio, at accumsan tortor dapibus sit amet. Sed posuere tincidunt
-                                            consequat.Donec tempus rhoncus sem, et feugiat ligula hendrerit pretium.</p>
+                                        <p>{{ $comment->content }}</p>
                                     </div>
                                 </article>
                                 <ul class="children">
+                                    @if ($comment->hasChildren())
+                                    @foreach ($comment->children as $childComment)
                                     <li class="comment">
                                         <article>
                                             <header class="comment-header clearfix">
                                                 <div class="comment-avatar alignleft">
-                                                    <a href="#"><img alt="" src="http://placehold.it/50x50">
+                                                    <a href="#">
+                                                        <img alt=""
+                                                            src="{{ url("uploads/{$childComment->user->avatar}") }}">
                                                     </a>
                                                 </div>
                                                 <div class="comment-info clearfix">
                                                     <div class="alignleft">
-                                                        <h6><a href="#">Lori Rogers</a></h6>
+                                                        <h6><a href="#">{{ $childComment->user->name }}</a></h6>
                                                         <div class="entry-meta style-02">
-                                                            <p class="entry-date"><i class="fa fa-pencil"></i> March 13,
-                                                                2016</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="alignright">
-                                                        <div class="comment-button">
-                                                            <a class="" href="#">Reply</a>
+                                                            <p class="entry-date">
+                                                                <i class="fa fa-pencil"></i>
+                                                                {{ $childComment->updated_at }}
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </header>
                                             <div class="comment-content">
-                                                <p>Sed rutrum, nisi non interdum rhoncus, massa nunc porttitor purus,
-                                                    sed sagittis lectus diam ornare justo. Pellentesque a urna urna. Nam
-                                                    vulputate rutrum odio, at accumsan tortor dapibus sit amet. Sed
-                                                    posuere tincidunt consequat.Donec tempus rhoncus sem, et feugiat
-                                                    ligula hendrerit pretium.</p>
+                                                <p>{{ $childComment->content }}</p>
                                             </div>
                                         </article>
                                     </li>
+                                    @endforeach
+                                    @endif
+
+                                    <li class="comment reply-comment d-none" data-id="{{ $comment->id }}">
+                                        @if (Auth::check())
+                                        <!-- ================= form ==================== -->
+                                        <form class="form-comment" action="{{ url("post/{$post->id}/comment") }}"
+                                            method="post" novalidate="novalidate">
+                                            @csrf
+                                            <div class="form-group">
+                                                <textarea name="content" placeholder="Add your comment here..." rows="3"
+                                                    class="form-control"></textarea>
+                                            </div>
+                                            <input type="hidden" name="parent_id" value="{{ $comment->id }}">
+                                            <input type="submit" value="Post comment" class="btn btn-black">
+                                        </form>
+
+                                        <!-- ================= end form ================= -->
+                                        @else
+                                        <p>You need to <a href="{{ url("login") }}">login</a> before posting comments.
+                                        </p>
+                                        @endif
+                                    </li>
                                 </ul>
                             </li>
-                            <li class="comment">
-                                <article>
-                                    <header class="comment-header clearfix">
-                                        <div class="comment-avatar alignleft">
-                                            <a href="#"><img alt="" src="http://placehold.it/50x50">
-                                            </a>
-                                        </div>
-                                        <div class="comment-info clearfix">
-                                            <div class="alignleft">
-                                                <h6><a href="#">Lori Rogers</a></h6>
-                                                <div class="entry-meta style-02">
-                                                    <p class="entry-date"><i class="fa fa-pencil"></i> March 13, 2016
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="alignright">
-                                                <div class="comment-button">
-                                                    <a class="" href="#">Reply</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </header>
-                                    <div class="comment-content">
-                                        <p>Sed rutrum, nisi non interdum rhoncus, massa nunc porttitor purus, sed
-                                            sagittis lectus diam ornare justo. Pellentesque a urna urna. Nam vulputate
-                                            rutrum odio, at accumsan tortor dapibus sit amet. Sed posuere tincidunt
-                                            consequat.Donec tempus rhoncus sem, et feugiat ligula hendrerit pretium.</p>
-                                    </div>
-                                </article>
-                            </li>
-
+                            @endif
+                            @endforeach
+                            @else
+                            No comments found.
+                            @endif
                         </ol>
                         <!--comments-list-->
                     </div>
@@ -183,40 +189,15 @@
                 <div class="widget ex-module-contact-14">
                     <h3 class="widget-title kopa-title-9 bold-txt">Leave a reply</h3>
                     <div class="widget-content">
-                        <p>Your email address will not be published. Required fields are marked *</p>
+                        @if (Auth::check())
                         <!-- ================= form ==================== -->
-
-                        <form class="ct-form-1 clearfix form-style-5" action="processForm.php" method="post"
-                            novalidate="novalidate">
-
+                        <form class="form-comment ct-form-1 clearfix form-style-5"
+                            action="{{ url("post/{$post->id}/comment") }}" method="post" novalidate="novalidate">
+                            @csrf
                             <div class="row">
-
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                    <p class="input-block">
-                                        <input type="text" value="Name" onfocus="if(this.value=='Name')this.value='';"
-                                            onblur="if(this.value=='')this.value='Name';" name="Name" class="valid"
-                                            required="" aria-required="true">
-                                    </p>
-
-                                </div>
-                                <!-- col-md-5 -->
-
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                    <p class="input-block">
-                                        <input type="text" value="Email Required"
-                                            onfocus="if(this.value=='Email Required')this.value='';"
-                                            onblur="if(this.value=='')this.value='Email Required';" name="emailReuired"
-                                            class="valid" required="" aria-required="true">
-                                    </p>
-
-                                </div>
-                                <!-- col-md-5 -->
-
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <p class="textarea-block">
-                                        <textarea name="message" placeholder="Add your comment here..." cols="88"
+                                        <textarea name="content" placeholder="Add your comment here..." cols="88"
                                             rows="5"></textarea>
                                     </p>
                                 </div>
@@ -226,12 +207,15 @@
                             <!-- row -->
 
                             <p class="input-block btn-block clearfix">
-                                <input type="submit" value="Subcribe" class="ct-submit-1">
+                                <input type="submit" value="Post comment" class="ct-submit-1">
                             </p>
 
                         </form>
 
                         <!-- ================= end form ================= -->
+                        @else
+                        <p>You need to <a href="{{ url("login") }}">login</a> before posting comments.</p>
+                        @endif
                     </div>
                 </div>
                 <!-- end form -->
@@ -455,4 +439,129 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('additional-scripts')
+<script>
+    $(function(){
+        $(".form-comment").on("submit", function (e) {
+            e.preventDefault();
+
+            let form = $(this);
+            $.ajax({
+                type: form.attr("method"),
+                url: form.attr("action"),
+                data: form.serialize(),
+                dataType: "JSON",
+                success: (res)=> {
+                    form.find(".alert-dismissible").remove();
+                    form.prepend(`
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        ${res.message}
+                    </div>`);
+                    setTimeout(() => {
+                        form.find(".alert-dismissible").remove();
+                    }, 3000);
+                    form.trigger("reset");
+
+                    if (form.parent().hasClass("reply-comment")) {
+                        $(`
+                            <li class="comment">
+                                <article>
+                                    <header class="comment-header clearfix">
+                                        <div class="comment-avatar alignleft">
+                                            <a href="#">
+                                                <img alt="" src="${res.comment.user.avatar}">
+                                            </a>
+                                        </div>
+                                        <div class="comment-info clearfix">
+                                            <div class="alignleft">
+                                                <h6><a href="#">${res.comment.user.name}</a></h6>
+                                                <div class="entry-meta style-02">
+                                                    <p class="entry-date">
+                                                        <i class="fa fa-pencil"></i>
+                                                        ${res.comment.updated_at}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </header>
+                                    <div class="comment-content">
+                                        <p>${res.comment.content}</p>
+                                    </div>
+                                </article>
+                            </li>
+                        `).insertBefore(form.parent())
+                    } else {
+                        if (!$("li.comment").length) {
+                            $(".comments-list").html("");
+                        }
+                        $(".comments-list").append(`
+                            <li class="comment">
+                                <article>
+                                    <header class="comment-header clearfix">
+                                        <div class="comment-avatar alignleft">
+                                            <a href="#">
+                                                <img alt="" src="${res.comment.user.avatar}">
+                                            </a>
+                                        </div>
+                                        <div class="comment-info clearfix">
+                                            <div class="alignleft">
+                                                <h6><a href="#">${res.comment.user.name}</a></h6>
+                                                <div class="entry-meta style-02">
+                                                    <p class="entry-date">
+                                                        <i class="fa fa-pencil"></i>
+                                                        ${res.comment.updated_at}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="alignright">
+                                                <div class="comment-button">
+                                                    <a href="#" data-id="${res.comment.id}">Reply</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </header>
+                                    <div class="comment-content">
+                                        <p>${res.comment.content}</p>
+                                    </div>
+                                </article>
+                                <ul class="children">
+                                    <li class="comment reply-comment d-none" data-id="${res.comment.id}">
+                                        <form class="form-comment" action="${res.comment.action}" method="post" novalidate="novalidate">
+                                            <div class="form-group">
+                                                <textarea name="content" placeholder="Add your comment here..." rows="3"
+                                                    class="form-control"></textarea>
+                                            </div>
+                                            <input type="hidden" name="parent_id" value="${res.comment.id}">
+                                            <input type="submit" value="Post comment" class="btn btn-black">
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        `)
+                    }
+
+                    console.log(res);
+                }
+            });
+        })
+
+        $(document).on("click", ".comment-button a", function (e) {
+            e.preventDefault();
+            let id = $(this).attr("data-id"),
+                target = $(`.reply-comment[data-id=${id}]`);
+
+            if (target.hasClass("d-none")) {
+                target.removeClass("d-none");
+            } else {
+                target.addClass("d-none");
+            }
+        });
+    })
+</script>
+
 @endsection
