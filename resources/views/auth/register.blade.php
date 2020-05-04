@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('auth.layout')
 
 @section('content')
     <div class="all-wrapper menu-side with-pattern">

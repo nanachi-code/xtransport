@@ -18,7 +18,7 @@ class CreateFeedback extends Migration
             $table->string('name');
             $table->string('email', 191);
             $table->string('website_url')->nullable()->default(null);
-            $table->string('comment', 191)->nullable()->default(null);
+            $table->longText('message');
             $table->timestamps();
         });
     }

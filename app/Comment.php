@@ -31,7 +31,7 @@ class Comment extends Model
         return $this::where('parent_id', $this->id)->get();
     }
 
-    public function hasParent()
+    public function hasParents()
     {
         return $this::where('id', $this->parent_id)->first() ? true : false;
     }

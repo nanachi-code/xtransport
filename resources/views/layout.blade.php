@@ -1,16 +1,18 @@
 @includeIf('html.head')
+
 <body>
-@includeIf('html.header')
+    @includeIf('html.header')
 
-@yield('location')
+    @yield('location')
 
-@yield('content')
+    @yield('content')
 
-@includeIf('html.footer')
+    @includeIf('html.footer')
 
-@includeIf('html.js')
+    @includeIf('html.js')
 
-@yield('script')
-
+    @yield('script')
+    @yield('additional-scripts')
 </body>
+
 </html>

@@ -31,7 +31,7 @@
                     <div class="element-box">
                         <h5>Edit post</h5>
                         <hr>
-                        <form id="form-post" action="{{ url("admin/post/{$post->id}/update")}}" method="POST"
+                        <form id="form-single-post" action="{{ url("admin/post/{$post->id}/update")}}" method="POST"
                             enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-sm-9">
@@ -41,6 +41,15 @@
                                         <input class="form-control" data-error="Post title is required"
                                             placeholder="Enter Post title" required="required" type="text" name="title"
                                             value="{{ $post->title }}" id="form-post-title" />
+                                        <div class="help-block form-text with-errors form-control-feedback"></div>
+                                    </div>
+
+                                    {{-- post excerpt --}}
+                                    <div class="form-group">
+                                        <label for="form-post-excerpt">Excerpt</label>
+                                        <input class="form-control" data-error="Post excerpt is required"
+                                            placeholder="Enter Post excerpt" required="required" type="text"
+                                            name="excerpt" value="{{ $post->excerpt }}" id="form-post-excerpt" />
                                         <div class="help-block form-text with-errors form-control-feedback"></div>
                                     </div>
 
@@ -108,18 +117,19 @@
                                                 style="font-weight: 800">{{ $post->updated_at }}</span>
                                             @endif
                                         </div>
+                                        <a href="{{ url("post/{$post->id}") }}">View post</a>
                                     </div>
                                     {{-- post category --}}
                                     <div class="form-group">
                                         <label for="form-product-category">Category</label>
                                         <select class="form-control" id="form-post-category" name="category_post_id">
                                             <option value="" @if ($post->category_post_id ==
-                                                null) checked @endif>
+                                                null) selected @endif>
                                                 Uncategorized
                                             </option>
                                             @foreach ($allCategories as $category)
                                             <option value="{{ $category->id }}" @if ($post->category_post_id ==
-                                                $category->id) checked @endif>
+                                                $category->id) selected @endif>
                                                 {{ $category->name }}
                                             </option>
                                             @endforeach
@@ -267,14 +277,14 @@
                                     <div class="col-sm-1">
                                         <div class="comment-avatar">
                                             <img src="http://0.gravatar.com/avatar/682d4b43d822c9f69d565d5d37929540?s=120&d=mm&r=g"
-                                                alt="" srcset="" class="image-responsize">
+                                                alt="" srcset="" class="img-responsive">
                                             <div class="text-center mt-3">
                                                 {{ $comment->user->name }}
                                             </div>
                                         </div>
                                     </div>
                                     <div class="offset-sm-1 col-sm-9">
-                                        @if ($comment->parent)
+                                        @if ($comment->hasParents())
                                         <div class="comment-reply-user mb-3">
                                             Reply to {{ $comment->parent->user->name }}
                                         </div>

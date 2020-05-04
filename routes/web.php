@@ -39,15 +39,16 @@ Route::prefix('/contact')->group(function () {
     Route::post('/feedback', "Main\ContactController@contactFeedback");
 });
 
+//* Post
 Route::get('/post/{id}', 'Main\PostController@singlePost');
+Route::post('/post/{id}/comment', 'Main\PostController@saveComment');
 
+//* Auth
 Auth::routes();
 Route::get('logout', function () {
     Auth::logout();
     return redirect('/login');
 });
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 //* Admin
 Route::group([
@@ -63,7 +64,9 @@ Route::group([
 
     //* Gallery
     Route::get('/gallery', 'Admin\GalleryController@renderGallery');
+
     Route::get('/gallery/delete/{attachmentName}', 'Admin\GalleryController@deleteAttachment');
+
     Route::post('/gallery/upload', 'Admin\GalleryController@uploadAttachment');
 
     //* Post

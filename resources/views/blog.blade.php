@@ -7,19 +7,19 @@
     <div class="container">
         <div class="row">
             <div class="kopa-breadcrumb">
-                <h3>{{$location}}</h3>
+                <h3>{{ $location }}</h3>
                 <div class="breadcrumb-content">
                     <p>We offer a big storage space, heated and with air condition, to store
                         <br> your good’s safe and organized even for longer period of time.</p>
                     <span itemtype="" itemscope="">
-                        <a itemprop="url" href="{{url('/')}}">
+                        <a itemprop="url" href="{{ url('/') }}">
                             <span itemprop="title">Home</span>
                         </a>
                     </span>
                     <span>&nbsp; &nbsp; / &nbsp; &nbsp;</span>
                     <span itemtype="" itemscope="">
                         <a itemprop="url" class="current-page">
-                            <span itemprop="title">{{$location}}</span>
+                            <span itemprop="title">{{ $location }}</span>
                         </a>
                     </span>
                 </div>
@@ -35,6 +35,7 @@
         <div class="row">
             <div class="col-xs-12 col-lg-10 col-lg-offset-1">
                 <ul class="blog-article-list-1">
+                    @if (count($post) >0)
                     @foreach ($post as $p)
                     <li>
                         <article class="entry-item">
@@ -84,8 +85,10 @@
                             </footer>
                         </article>
                     </li>
-
                     @endforeach
+                    @else
+                    No posts found.
+                    @endif
                 </ul>
                 <!-- nav pagination -->
                 {{ $post->links('html.paginate') }}
