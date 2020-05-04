@@ -3,30 +3,39 @@
 @section('title',"User Profile")
 
 @section('location')
+    <!-- kopa area 24-->
+    <section class="kopa-area kopa-area-24 white-text-style">
         <div class="container">
-            <div class="widget kopa__topPage style--01">
-                <div class="kopa__topPage--left">
-                    <div class="widget-title style--07 text--white">
-                        <h3 class="primary__title">User Profile
-                        </h3>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="kopa-breadcrumb">
+                        <h3>User Profile</h3>
+                        <div class="breadcrumb-content">
+                            <p>We offer a big storage space, heated and with air condition, to store
+                                <br> your good’s safe and organized even for longer period of time.</p>
+                            <span itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="">
+					                                <a itemprop="url" href="{{url('/')}}">
+					                                    <span itemprop="title">Home</span>
+                                    </a>
+                                    </span>
+                            <span>&nbsp; &nbsp; / &nbsp; &nbsp;</span>
+                            <span itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="">
+					                                <a itemprop="url" class="current-page">
+					                                    <span itemprop="title">user profile</span>
+                                    </a>
+                                    </span>
+                        </div>
                     </div>
-                    <!-- widget title-->
-                    <div class="kopa__breadcrumb style--01"><span>You are here:</span><i class="fa fa-angle-double-right"></i><a href="#">Home</a><i class="fa fa-angle-double-right"></i><span>User Profile</span></div>
-                    <!-- breadcrumb-->
-                    <div class="kopa__topPage__back text--white"><a href="#"><i class="fa fa-long-arrow-right"></i>back</a></div>
-                    <!-- kopa topPage back-->
                 </div>
-                <!-- kopa topPage left-->
-                <div class="kopa__topPage--right"><img src="{{asset('images/placeholder/slider/03.png')}}" alt=""></div>
-                <!-- kopa topPage right-->
             </div>
-            <!-- kopa topPage-->
         </div>
-        <!-- container-->
+    </section>
+    <!-- end -->
+    <!-- kopa-area-->
 @endsection
 
 @section('content')
-    <section class="kopa__area kopa__area--08">
+    <section class="kopa-area kopa-area-40">
         <div class="container">
             <form class="billing-form ftco-bg-dark p-3 p-md-5"
                   action="{{url("/user/profile/update",['id'=>$user->id])}}" method="post"

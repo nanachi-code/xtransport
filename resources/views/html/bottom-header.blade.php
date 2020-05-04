@@ -59,7 +59,7 @@
                     </li>
 
                     <li>
-                        <a href="contact.html">CONTACT</a>
+                        <a href="{{url('/contact')}}">CONTACT</a>
                     </li>
                 </ul>
 
@@ -71,11 +71,20 @@
                 <i class="fa fa-bars"></i>
             </div>
             <div class="kopa-wrap-hidden-content-header">
-                <button class="btn-header active-support-number style-01" data-target="number-contact-header-1"><i
-                        class="fa fa-phone"></i>
-                </button>
-                <div class="wrap-support-number style-01" data-contact="number-contact-header-1">
-                    <a href="callto:">call support: 0800.123.9876</a>
+                <div class="dropdown">
+                    <button class="btn-header active-support-number style-01" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            @if (Auth::User())
+                                    <ul>
+                                        <li><a href="{{url('user/profile')}}" class="dropdown-item">My Profile</a></li>
+                                        <hr>
+                                        <li><a href="{{url('/logout')}}" class="dropdown-item">Logout</a></li>
+                                    </ul>
+                            @else <li><a href="{{url('/login')}}" class="dropdown-item">Login</a></li>
+                            @endif
+                    </div>
                 </div>
             </div>
             <div class="kopa-wrap-hidden-content-header">

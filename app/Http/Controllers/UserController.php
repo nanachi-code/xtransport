@@ -29,12 +29,14 @@ class UserController extends Controller
         $user->phone = $request->get('phone');
         $user->dateOfBirth = $request->get('dateOfBirth');
         $user->address = $request->get('address');
+        $avatar = $request->file('avatar');
 
-        if ($request->hasFile('avatar')) {
-            $avatar = $request->file('avatar');
-            Storage::disk('public')->put($avatar->getClientOriginalName(),  File::get($avatar));
-            $user->avatar = $avatar->getClientOriginalName();
+        if (Storage::disk('uploads')->exists($avatar->getClientOriginalName())) {
+            $name = pathinfo($avatar->getClientOriginalName(), PATHINFO_FILENAME) . "_1." . $avatar->getClientOriginalExtension();
+        } else {
+            $name = $avatar->getClientOriginalName();
         }
+        Storage::disk('uploads')->put($name,  File::get($avatar));
 
         try {
             $user->save();
