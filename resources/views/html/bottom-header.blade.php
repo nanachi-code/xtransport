@@ -5,7 +5,7 @@
         <div class="alignleft">
 
             <figure class="kopa-logo">
-                <a href="#"><img src="http://placehold.it/297x62" alt="logo">
+                <a href="{{url('/')}}"><img src="{{asset("/images/default/cropped-logo.png")}}" alt="logo">
                 </a>
             </figure>
 
@@ -57,7 +57,9 @@
                         </ul>
                         <!-- ==== end submenu ==== -->
                     </li>
-
+                    <li>
+                        <a href="{{url('/about-us')}}">About Us</a>
+                    </li>
                     <li>
                         <a href="{{url('/contact')}}">CONTACT</a>
                     </li>
@@ -78,7 +80,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             @if (Auth::User())
                                     <ul>
-                                        <li><a href="{{url('user/profile')}}" class="dropdown-item">My Profile</a></li>
+                                        <li><a href="{{url('user/profile')}}" class="dropdown-item pl-2">My Profile</a></li>
                                         <hr>
                                         <li><a href="{{url('/logout')}}" class="dropdown-item">Logout</a></li>
                                     </ul>

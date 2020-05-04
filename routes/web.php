@@ -45,7 +45,7 @@ Route::prefix('/contact')->group(function () {
     Route::get('/', 'Main\ContactController@contact');
     Route::post('/feedback', "Main\ContactController@contactFeedback");
 });
-
+Route::get('/about-us', 'Main\AboutUsController@aboutUs');
 
 Auth::routes();
 Route::get('logout', function () {
@@ -53,7 +53,7 @@ Route::get('logout', function () {
     return redirect('/login');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 //* Admin
 Route::group([

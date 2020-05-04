@@ -1941,14 +1941,12 @@ button {
 /*------- end kopa area 14-1 ------*/
 /*---------- kopa area 15 ------------*/
 .kopa-area-15 {
-  background: url(http://placehold.it/1349x651) top center no-repeat;
   background-attachment: fixed; }
 
 /*---------- end kopa area 15 ---------*/
 /*--------- kopa area 16 --------------*/
 .kopa-area-16 {
   padding: 115px 0px 0px 0px;
-  background: url(http://placehold.it/1349x1130) top center no-repeat;
   background-size: cover;
   background-attachment: fixed;
   overflow: hidden; }
@@ -2020,7 +2018,6 @@ button {
 /*------------ end kopa area 17 ---------*/
 /*----------- kopa area 18 ------------*/
 .kopa-area-18 {
-  background: url(http://placehold.it/1349x602) top center no-repeat;
   background-attachment: fixed;
   padding: 115px 0px; }
 
@@ -2028,7 +2025,6 @@ button {
 /*------------ kopa area 19 ---------------*/
 .kopa-area-19 {
   padding: 115px 0px;
-  background: url(http://placehold.it/1349x951);
   background-size: cover;
   background-attachment: fixed;
   z-index: 9; }
