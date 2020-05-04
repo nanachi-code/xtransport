@@ -11,7 +11,7 @@ class PostController extends Controller
     {
         $p = [
             'post' => $post = \App\Post::find($id),
-            'related_post' => \App\Post::take(2)->where('category_post_id',$post->category_post_id)->get()
+            'related_post' => $related_post = \App\Post::where('status','publish')->where('id','!=',$id)->take(2)->get()
         ];
         return view('single-blog')->with($p);
     }

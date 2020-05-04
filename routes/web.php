@@ -24,10 +24,17 @@ Route::prefix('/catalog')->group(function () {
     Route::get('/{id}', 'Main\CategoryController@cateItems');
 });
 
-Route::prefix('/blogs')->group(function () {
+Route::prefix('/blog')->group(function () {
     Route::get('/all', 'Main\CategoryController@allPosts');
     Route::get('/{id}', 'Main\CategoryController@catePosts');
 });
+Route::get('/post/{id}', 'Main\PostController@singlePost');
+
+Route::prefix('/catalog')->group(function () {
+    Route::get('/all', 'Main\CategoryController@allItems');
+    Route::get('/{id}', 'Main\CategoryController@cateItems');
+});
+Route::get('/item/{id}', 'Main\ProductController@singleProduct');
 
 Route::prefix('/user')->group(function () {
     Route::get('/profile', "UserController@userProfile")->middleware('auth');
@@ -39,7 +46,6 @@ Route::prefix('/contact')->group(function () {
     Route::post('/feedback', "Main\ContactController@contactFeedback");
 });
 
-Route::get('/post/{id}', 'Main\PostController@singlePost');
 
 Auth::routes();
 Route::get('logout', function () {

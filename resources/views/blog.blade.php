@@ -43,10 +43,11 @@
                                     <a href="{{url('post/'.$p->id)}}">{{$p->title}}</a>
                                 </h4>
                                 <p>
-                                    <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp; by <a href="#">Aly
-                                        Banana</a> <span>Friday</span>, <span>August</span>, <span>7</span>,
-                                    <span>2015</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>3 <i class="fa fa-comment-o"
-                                            aria-hidden="true"></i></span>&nbsp;&nbsp;&nbsp;&nbsp;<span>250 Views</span>
+                                    <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp; by <a
+                                        href="#">{{$p->user->name}}</a>
+                                    <span>{{$p->updated_at->toDateString()}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>3 <i
+                                            class="fa fa-comment-o"
+                                            aria-hidden="true"></i></span>&nbsp;&nbsp;&nbsp;&nbsp;
                                 </p>
                             </header>
                             <div class="entry-thumb">
@@ -57,11 +58,7 @@
                                 </div>
                             </div>
                             <div class="entry-content">
-                                <p>s a sponsor of the Aprilia Racing team competing in the World Superbike Championship,
-                                    one of the top three global motorsport series alongside Formula 1 and MotoGP we have
-                                    got the pleasure of offering our customers a unique paddock grandstands and Aprilia
-                                    box experience during several rounds.</p>
-
+                                <p>{!!$p->content!!}</p>
                             </div>
                             <footer class="entry-footer clearfix">
 

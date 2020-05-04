@@ -9,21 +9,23 @@ class CategoryController extends Controller
 {
     public function allItems(){
         $p = [
-            //$item = \App\Product::paginate(12)
+            'items' => \App\Product::where('status','publish')->paginate(12),
+            'location' => 'catalog'
         ];
         return view('catalog')->with($p);
     }
 
     public function cateItems($id){
         $p = [
-            //$item = \App\Product::where()->paginate(12)
+            'items' => \App\Product::where('status','publish')->where('category_product_id',$id)->paginate(12),
+            'location' => \App\CategoryProduct::find($id)->name
         ];
         return view('catalog')->with($p);
     }
 
     public function allPosts(){
         $p = [
-            'post' => \App\Post::paginate(1),
+            'post' => \App\Post::where('status','publish')->paginate(1),
             'location' => 'Blog'
         ];
         return view('blog')->with($p);
