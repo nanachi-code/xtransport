@@ -98,105 +98,20 @@
                 <div class="widget ex-module-slider-2">
                     <div class="widget-content">
                         <ul class="owl-carousel owl-theme  clearfix slider-partner">
-                            <!-- ** -->
+                            @foreach(\App\Company::all() as $company)
                             <li>
                                 <article class="entry-item">
                                     <div class="entry-content">
                                         <figure class="entry-thumb">
-                                            <a href="#"><img src="http://placehold.it/238x66" alt="">
+                                            <a href="{{url('/company/'.$company->id)}}"><img
+                                                    src="{{ asset("uploads/{$company->logo}") }}"
+                                                    alt="{{$company->name}}">
                                             </a>
                                         </figure>
                                     </div>
                                 </article>
                             </li>
-                            <!-- ** -->
-                            <li>
-                                <article class="entry-item">
-                                    <div class="entry-content">
-                                        <figure class="entry-thumb">
-                                            <a href="#"><img src="http://placehold.it/238x66" alt="">
-                                            </a>
-                                        </figure>
-                                    </div>
-                                </article>
-                            </li>
-                            <!-- ** -->
-                            <li>
-                                <article class="entry-item">
-                                    <div class="entry-content">
-                                        <figure class="entry-thumb">
-                                            <a href="#"><img src="http://placehold.it/238x66" alt="">
-                                            </a>
-                                        </figure>
-                                    </div>
-                                </article>
-                            </li>
-                            <!-- ** -->
-                            <li>
-                                <article class="entry-item">
-                                    <div class="entry-content">
-                                        <figure class="entry-thumb">
-                                            <a href="#"><img src="http://placehold.it/238x66" alt="">
-                                            </a>
-                                        </figure>
-                                    </div>
-                                </article>
-                            </li>
-                            <!-- ** -->
-                            <li>
-                                <article class="entry-item">
-                                    <div class="entry-content">
-                                        <figure class="entry-thumb">
-                                            <a href="#"><img src="http://placehold.it/238x66" alt="">
-                                            </a>
-                                        </figure>
-                                    </div>
-                                </article>
-                            </li>
-                            <!-- ** -->
-                            <li>
-                                <article class="entry-item">
-                                    <div class="entry-content">
-                                        <figure class="entry-thumb">
-                                            <a href="#"><img src="http://placehold.it/238x66" alt="">
-                                            </a>
-                                        </figure>
-                                    </div>
-                                </article>
-                            </li>
-                            <!-- ** -->
-                            <li>
-                                <article class="entry-item">
-                                    <div class="entry-content">
-                                        <figure class="entry-thumb">
-                                            <a href="#"><img src="http://placehold.it/238x66" alt="">
-                                            </a>
-                                        </figure>
-                                    </div>
-                                </article>
-                            </li>
-                            <!-- ** -->
-                            <li>
-                                <article class="entry-item">
-                                    <div class="entry-content">
-                                        <figure class="entry-thumb">
-                                            <a href="#"><img src="http://placehold.it/238x66" alt="">
-                                            </a>
-                                        </figure>
-                                    </div>
-                                </article>
-                            </li>
-                            <!-- ** -->
-                            <li>
-                                <article class="entry-item">
-                                    <div class="entry-content">
-                                        <figure class="entry-thumb">
-                                            <a href="#"><img src="http://placehold.it/238x66" alt="">
-                                            </a>
-                                        </figure>
-                                    </div>
-                                </article>
-                            </li>
+                            @endforeach
                         </ul>
                         <!-- navigation btn slisder -->
                         <div class="customNavigation">

@@ -12,7 +12,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-3">
                                 <div class="widget-content">
-                                    <a href="#" class="kopa-btn btn-02">CONTACT US</a>
+                                    <a href="{{url('/contact')}}" class="kopa-btn btn-02">CONTACT US</a>
                                 </div>
                             </div>
                         </div>

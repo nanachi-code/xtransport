@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layout');
+    return view('home');
 });
 
 Route::prefix('/catalog')->group(function () {
@@ -35,6 +35,8 @@ Route::prefix('/catalog')->group(function () {
     Route::get('/{id}', 'Main\CategoryController@cateItems');
 });
 Route::get('/item/{id}', 'Main\ProductController@singleProduct');
+
+Route::get('/company/{id}', 'Main\CompanyController@companyDetail');
 
 Route::prefix('/user')->group(function () {
     Route::get('/profile', "UserController@userProfile")->middleware('auth');
