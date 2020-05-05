@@ -22,6 +22,8 @@ Route::prefix('/catalog')->group(function () {
 });
 Route::get('/item/{id}', 'Main\ProductController@singleProduct');
 
+Route::get('/company/{id}', 'Main\CompanyController@companyDetail');
+
 Route::prefix('/user')->group(function () {
     Route::get('/profile', "UserController@userProfile")->middleware('auth');
     Route::post('/profile/update/{id}', "UserController@userProfileUpdate")->middleware("auth");;
