@@ -20,6 +20,7 @@ class CreateProduct extends Migration
             $table->string('name');
             $table->longText('description');
             $table->string('thumbnail')->nullable();
+            $table->json('gallery')->nullable();
             $table->string('status', 20)->default('publish');
             $table->bigInteger("category_product_id")->unsigned()->nullable();
             $table->bigInteger("company_id")->unsigned();

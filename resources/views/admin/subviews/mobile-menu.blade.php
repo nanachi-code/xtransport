@@ -122,7 +122,7 @@
             </li>
 
             {{-- User --}}
-            @if (\Auth::user()->role == "super_admin")
+            @if (Auth::user()->role == "super_admin")
             <li class="sub-header">
                 <span>User</span>
             </li>

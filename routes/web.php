@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Middleware\CheckAdmin;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'Main\HomeController@renderHome');
+Route::get('/home', 'Main\HomeController@renderHome');
 
 Route::prefix('/catalog')->group(function () {
     Route::get('/all', 'Main\CategoryController@allItems');
@@ -44,4 +45,8 @@ Auth::routes();
 Route::get('logout', function () {
     Auth::logout();
     return redirect('/login');
+});
+
+Route::get('/', function () {
+    return redirect("/home");
 });
