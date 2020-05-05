@@ -98,7 +98,11 @@
                                     <header class="comment-header clearfix">
                                         <div class="comment-avatar alignleft">
                                             <a href="#">
-                                                <img alt="" src="{{ url("uploads/{$comment->user->avatar}") }}">
+                                                @if ($comment->user->avatar)
+                                                <img src="{{ url("uploads/{$comment->user->avatar}") }}">
+                                                @else
+                                                <img src="{{ asset('images/default/no-image.jpg') }}">
+                                                @endif
                                             </a>
                                         </div>
                                         <div class="comment-info clearfix">
@@ -129,8 +133,11 @@
                                             <header class="comment-header clearfix">
                                                 <div class="comment-avatar alignleft">
                                                     <a href="#">
-                                                        <img alt=""
-                                                            src="{{ url("uploads/{$childComment->user->avatar}") }}">
+                                                        @if ($childComment->user->avatar)
+                                                        <img src="{{ url("uploads/{$childComment->user->avatar}") }}">
+                                                        @else
+                                                        <img src="{{ asset('images/default/no-image.jpg') }}">
+                                                        @endif
                                                     </a>
                                                 </div>
                                                 <div class="comment-info clearfix">
@@ -225,11 +232,12 @@
                     <h3 class="widget-title kopa-title-9 bold-txt">related blogs</h3>
                     <div class="widget-content clearfix">
                         <ul class=" ul-mh row">
-                            @foreach ($related_post as $r)
+                            @if (count($relatedPost) >0 )
+                            @foreach ($relatedPost as $post)
                             <li class="col-xs-12 col-sm-6" style="height: 577px;">
                                 <article class="entry-item">
                                     <figure class="entry-thumb">
-                                        <a href="#"><img src="{{asset('uploads/'.$r->thumbnail)}}" alt="">
+                                        <a href="#"><img src="{{ asset('uploads/'.$post->thumbnail) }}" alt="">
                                         </a>
                                     </figure>
                                     <div class="entry-content">
@@ -238,24 +246,29 @@
                                                 <img src="http://placehold.it/47x47" alt="">
                                             </figure>
                                             <div class="entry-info">
-                                                <p class="auth-name"><a href="#">Peter Hofstee</a>
+                                                <p class="auth-name"><a href="#">{{ $post->user->name }}</a>
                                                 </p>
-                                                <p class="entry-date">Friday, August 7, 2015</p>
+                                                <p class="entry-date">{{ $post->updated_at }}</p>
                                             </div>
                                         </div>
-                                        <h4 class="entry-title"><a href="{{url('post/'.$r->id)}}">{{$r->title}}</a></h4>
-                                        <p>Integer ac massa vehicula, viverra augue et, auctor urna. Morbi nec enim et
-                                            odio blandit tempor vitae sit amet est. Aenean non fringilla lacus, vitae
-                                            acumsan risus. Fusce lectus nibh,dapibus in consequat...</p>
+                                        <h4 class="entry-title">
+                                            <a href="{{url('post/'.$post->id)}}">
+                                                {{ $post->title }}
+                                            </a>
+                                        </h4>
+                                        <p>{{ $post->excerpt }}</p>
                                         <footer class="entry-footer clearfix">
                                             <div class="alignleft">
-                                                <p><span>35<i class="fa fa-comment-o"></i></span>
+                                                <p>
+                                                    <span>{{ count($post->comments) }}<i
+                                                            class="fa fa-comment-o"></i></span>
                                                 </p>
                                             </div>
                                             <div class="alignright">
                                                 <div class="wrap-btn">
-                                                    <a href="{{url('post/'.$r->id)}}"><i class="fa fa-file-text-o"></i>
-                                                        Read more</a>
+                                                    <a href="{{url('post/'.$r->id)}}">
+                                                        <i class="fa fa-file-text-o"></i> Read more
+                                                    </a>
                                                 </div>
                                             </div>
                                         </footer>
@@ -263,6 +276,9 @@
                                 </article>
                             </li>
                             @endforeach
+                            @else
+                            <h6>No posts found.</h6>
+                            @endif
                         </ul>
                     </div>
                 </div>

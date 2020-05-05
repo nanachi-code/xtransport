@@ -13,10 +13,13 @@ class PostController extends Controller
     public function singlePost($id)
     {
         $p = [
-            'post' => Post::find($id),
-            'related_post' => Post::where('status', 'publish')->where('id', '!=', $id)->take(2)->get()
+            'post' => $post = Post::find($id),
+            'relatedPost' => Post::where('status', 'publish')
+                ->where('id', '!=', $id)
+                ->where('category_post_id', '!=', $post->category_post_id)
+                ->take(2)
+                ->get()
         ];
-        // return dd($p);
         return view('single-post')->with($p);
     }
 

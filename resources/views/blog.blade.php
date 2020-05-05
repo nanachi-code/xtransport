@@ -59,7 +59,7 @@
                                 </div>
                             </div>
                             <div class="entry-content">
-                                <p>{!!$p->content!!}</p>
+                                <p>{!!$p->excerpt!!}</p>
                             </div>
                             <footer class="entry-footer clearfix">
 
