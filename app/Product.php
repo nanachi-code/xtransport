@@ -23,9 +23,4 @@ class Product extends Model
     {
         return $this->belongsTo(Company::class);
     }
-
-    // public function getGalleryAttribute()
-    // {
-    //     return explode(',', $this->gallery);
-    // }
 }

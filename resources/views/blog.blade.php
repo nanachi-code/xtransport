@@ -51,15 +51,17 @@
                                             aria-hidden="true"></i></span>&nbsp;&nbsp;&nbsp;&nbsp;
                                 </p>
                             </header>
+                            @if ($p->thumbnail)
                             <div class="entry-thumb">
                                 <div class="entry-thumb embed-responsive embed-responsive-16by9">
-                                    <a href="{{url('post/'.$p->id)}}"><img src="{{asset('uploads/'.$p->thumbnail)}}"
-                                            alt="">
+                                    <a href="{{url('post/'.$p->id)}}">
+                                        <img src="{{ asset('uploads/'.$p->thumbnail) }}">
                                     </a>
                                 </div>
                             </div>
+                            @endif
                             <div class="entry-content">
-                                <p>{!!$p->excerpt!!}</p>
+                                <p>{!! $p->excerpt !!}</p>
                             </div>
                             <footer class="entry-footer clearfix">
 

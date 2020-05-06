@@ -36,6 +36,7 @@ class ProductController extends Controller
             'allCompany' => Company::all()
         ];
 
+        // dd($p["product"]->gallery[1]);
         return view('admin/single-product')->with($p);
     }
 

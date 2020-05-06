@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Post;
-use Facade\FlareClient\View;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class ViewServiceProvider extends ServiceProvider
@@ -25,11 +25,10 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer(['layout'], function ($view) {
+        View::composer('subviews.sidebar', function ($view) {
             $p = [
                 "latestPosts" => Post::take(3)->get()
             ];
-
             $view->with($p);
         });
     }
