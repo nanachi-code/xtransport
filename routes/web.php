@@ -3,6 +3,11 @@
 use App\Http\Middleware\CheckAdmin;
 use Illuminate\Support\Facades\Route;
 
+//* Homepage
+Route::get('/', function () {
+    return redirect("/home");
+});
+
 Route::get('/home', 'Main\HomeController@renderHome');
 
 Route::prefix('/catalog')->group(function () {
@@ -11,10 +16,18 @@ Route::prefix('/catalog')->group(function () {
     Route::get('/{id}', 'Main\CategoryController@cateItems');
 });
 
-Route::prefix('/blog')->group(function () {
-    Route::get('/all', 'Main\CategoryController@allPosts');
-    Route::get('/{id}', 'Main\CategoryController@catePosts');
-});
+//* Blog
+Route::prefix('/blog')
+    ->group(function () {
+        Route::get('/', function () {
+            return redirect("/blog/all");
+        });
+
+        Route::get('/all', 'Main\CategoryController@allPosts');
+
+        Route::get('/{id}', 'Main\CategoryController@catePosts');
+    });
+
 Route::get('/post/{id}', 'Main\PostController@singlePost');
 
 Route::prefix('/catalog')->group(function () {
@@ -45,8 +58,4 @@ Auth::routes();
 Route::get('logout', function () {
     Auth::logout();
     return redirect('/login');
-});
-
-Route::get('/', function () {
-    return redirect("/home");
 });
