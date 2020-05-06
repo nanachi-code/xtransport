@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="kopa-breadcrumb">
-                <h3>{{$post->title}}</h3>
+                <h3>{{ $post->title }}</h3>
                 <div class="breadcrumb-content">
                     <p>{{ $post->excerpt }}}</p>
                     <span itemtype="" itemscope="">
@@ -57,11 +57,13 @@
                                 </div>
                             </div>
                         </header>
+                        @if ($post->thumbnail)
                         <div class="entry-thumb">
                             <div class="entry-thumb embed-responsive embed-responsive-16by9">
                                 <img src="{{asset('uploads/'.$post->thumbnail)}}" alt="">
                             </div>
                         </div>
+                        @endif
                         <div class="entry-content">
                             {!! $post->content !!}
                         </div>
@@ -185,7 +187,7 @@
                             @endif
                             @endforeach
                             @else
-                            No comments found.
+                            <h6>No comments found.</h6>
                             @endif
                         </ol>
                         <!--comments-list-->

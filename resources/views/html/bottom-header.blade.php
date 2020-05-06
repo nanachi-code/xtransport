@@ -5,7 +5,7 @@
         <div class="alignleft">
 
             <figure class="kopa-logo">
-                <a href="{{url('/')}}"><img src="{{asset("/images/default/cropped-logo.png")}}" alt="logo">
+                <a href="{{url('/')}}"><img src="{{asset("/images/default/logo.png")}}" alt="logo">
                 </a>
             </figure>
 
@@ -74,18 +74,19 @@
             </div>
             <div class="kopa-wrap-hidden-content-header">
                 <div class="dropdown">
-                    <button class="btn-header active-support-number style-01" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn-header active-support-number style-01" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-user"></i>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            @if (Auth::User())
-                                    <ul>
-                                        <li><a href="{{url('user/profile')}}" class="dropdown-item pl-2">My Profile</a></li>
-                                        <hr>
-                                        <li><a href="{{url('/logout')}}" class="dropdown-item">Logout</a></li>
-                                    </ul>
-                            @else <li><a href="{{url('/login')}}" class="dropdown-item">Login</a></li>
-                            @endif
+                        @if (Auth::User())
+                        <ul>
+                            <li><a href="{{url('user/profile')}}" class="dropdown-item pl-2">My Profile</a></li>
+                            <hr>
+                            <li><a href="{{url('/logout')}}" class="dropdown-item">Logout</a></li>
+                        </ul>
+                        @else <li><a href="{{url('/login')}}" class="dropdown-item">Login</a></li>
+                        @endif
                     </div>
                 </div>
             </div>

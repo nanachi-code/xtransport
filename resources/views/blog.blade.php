@@ -84,7 +84,7 @@
                     </li>
                     @endforeach
                     @else
-                    No posts found.
+                    <h6>No posts found.</h6>
                     @endif
                 </ul>
                 <!-- nav pagination -->
