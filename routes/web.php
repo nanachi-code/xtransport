@@ -5,6 +5,29 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/home', 'Main\HomeController@renderHome');
 
+Route::prefix('/library')->group(function () {
+    Route::get('/', function () {
+        return redirect('/library/all');
+    });
+    Route::get('/all', 'Main\LibraryController@archiveDocument');
+
+    Route::get('/user', 'Main\LibraryController@userDocument')->middleware('auth');
+    Route::get('/bookmark', 'Main\LibraryController@bookmarkDocument')->middleware('auth');
+    Route::get('/add-bookmark/{id}', 'Main\LibraryController@addBookmark')->middleware('auth');
+    Route::get('/un-bookmark/{id}', 'Main\LibraryController@unBookmark')->middleware('auth');
+    Route::get('/detail/{id}','Main\LibraryController@detailDocument');
+    Route::get('/new','Main\LibraryController@createDocument')->middleware('auth');
+    Route::post('/new','Main\LibraryController@newDocument')->middleware('auth');
+    Route::get('/download/{id}','Main\LibraryController@downloadDocument')->middleware('auth');
+});
+Route::prefix('/event')->group(function () {
+    Route::get('/', function () {
+        return redirect('/event/all');
+    });
+    Route::get('/all', 'Main\EventController@archiveEvent');
+    Route::get('/detail/{id}','Main\EventController@eventDetail');
+});
+
 Route::prefix('/catalog')->group(function () {
     Route::get('/all', 'Main\CategoryController@allItems');
 
@@ -50,3 +73,5 @@ Route::get('logout', function () {
 Route::get('/', function () {
     return redirect("/home");
 });
+
+
