@@ -6,6 +6,7 @@ use App\Document;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class LibraryController extends Controller
@@ -75,10 +76,15 @@ class LibraryController extends Controller
 
     public function detailDocument($id)
     {
+        $rate_flag = \willvincent\Rateable\Rating::where('rateable_id',$id)->get();
+        if ($rate_flag->contains('user_id',Auth::user()->id)) {
+            $rate_flag = false;
+        }
+        else $rate_flag = true;
         $p = [
             'doc' => $document = Document::find($id),
-            'pathToFile' => asset("uploads/documents/".$document->user_id.'/'.$document->file)
-
+            'pathToFile' => asset("uploads/documents/".$document->user_id.'/'.$document->file),
+            'rate_flag' => $rate_flag
         ];
         return view('document')->with($p);
     }
@@ -103,8 +109,7 @@ class LibraryController extends Controller
         $rating->rating = $request->rate;
         $rating->user_id = auth()->user()->id;
         $document->ratings()->save($rating);
-
-        return redirect()->to("document")->with(compact($document));
+        return redirect()->back();
     }
 
 

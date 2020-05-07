@@ -77,9 +77,90 @@
                         </div>
                         <div class="tab-pane fade tab-content-11">
                             <article class="entry-item clearfix">
-
                                 <div class="entry-content">
-                                    <p></p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h3>Rating</h3>
+                                            <input id="rate-view" type="text" class="rating" data-size="lg"
+                                                value="{{ $doc->averageRating }}" name="rate" disabled>
+                                            <article class="entry-item">
+                                                <div class="entry-content">
+                                                    <div class="kopa-loading-bar kopa-loading-bar-2">
+                                                        <header class="kopa-loading-header clearfix">
+                                                            <h5 class="kopa-loading-title kopa-heading6">5
+                                                            </h5>
+                                                            <span class="data-load" style="display: inline;">90%</span>
+                                                        </header>
+                                                        <div class="kopa-loading-content">
+                                                            <div class="kopa-loading-body kopa-loading-body-2"
+                                                                data-load="90" style="width: 90%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="kopa-loading-bar kopa-loading-bar-2">
+                                                        <header class="kopa-loading-header clearfix">
+                                                            <h5 class="kopa-loading-title kopa-heading6">4</h5>
+                                                            <span class="data-load" style="display: inline;">70%</span>
+                                                        </header>
+                                                        <div class="kopa-loading-content">
+                                                            <div class="kopa-loading-body kopa-loading-body-2"
+                                                                data-load="70" style="width: 70%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="kopa-loading-bar kopa-loading-bar-2">
+                                                        <header class="kopa-loading-header clearfix">
+                                                            <h5 class="kopa-loading-title kopa-heading6">3</h5>
+                                                            <span class="data-load" style="display: inline;">95%</span>
+                                                        </header>
+                                                        <div class="kopa-loading-content">
+                                                            <div class="kopa-loading-body kopa-loading-body-2"
+                                                                data-load="95" style="width: 95%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="kopa-loading-bar kopa-loading-bar-2">
+                                                        <header class="kopa-loading-header clearfix">
+                                                            <h5 class="kopa-loading-title kopa-heading6">2</h5>
+                                                            <span class="data-load" style="display: inline;">80%</span>
+                                                        </header>
+                                                        <div class="kopa-loading-content">
+                                                            <div class="kopa-loading-body kopa-loading-body-2"
+                                                                data-load="80" style="width: 80%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="kopa-loading-bar kopa-loading-bar-2">
+                                                        <header class="kopa-loading-header clearfix">
+                                                            <h5 class="kopa-loading-title kopa-heading6">1</h5>
+                                                            <span class="data-load" style="display: inline;">80%</span>
+                                                        </header>
+                                                        <div class="kopa-loading-content">
+                                                            <div class="kopa-loading-body kopa-loading-body-2"
+                                                                data-load="80" style="width: 80%;"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h3>Your Rating</h3>
+                                            <form action="{{url('library/rate')}}" method="POST">
+                                                @csrf
+
+                                                <input id="input-id" type="text" class="rating" data-size="lg"
+                                                    value="{{ $doc->averageRating }}" name="rate"
+                                                    {{($rate_flag)? "":"disabled" }}>
+                                                <input type="hidden" name="id" required="" value="{{ $doc->id }}">
+
+                                                @if ($rate_flag)
+                                                <div class="py-4">
+                                                    <button class="btn btn-success">Submit Review</button>
+                                                </div>
+                                                @else
+                                                <div class="py-4">
+                                                    <button class="btn btn-success" disabled>Submit Review</button>
+                                                </div>
+                                                @endif
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </article>
                         </div>
@@ -89,4 +170,10 @@
         </div>
     </div>
 </div>
+@endsection
+@section('additional-scripts')
+<script type="text/javascript">
+    $("#input-id").rating();
+    $("#rate-view").rating();
+</script>
 @endsection
