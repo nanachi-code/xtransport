@@ -80,7 +80,7 @@
                     </li>
                     @endforeach
                     @else
-                    No posts found.
+                    <h6>No events found.</h6>
                     @endif
                 </ul>
                 <!-- nav pagination -->
