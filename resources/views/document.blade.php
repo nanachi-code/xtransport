@@ -42,9 +42,23 @@
     <div class="row">
         <div class="col-md-12">
             <h3 class="widget-title kopa-heading2 size-normal pt-5">{{$doc->title}}</h3>
-            {{-- <iframe src="https://view.officeapps.live.com/op/view.aspx?src={{$pathToFile}}" frameborder="0"
+            {{-- <iframe src="https://view.officeapps.live.com/op/view.aspx?src=https://drive.google.com/open?id=1FcEhk-_IphE8aKrTpr_aojg5KRiBHPuQrbJHNQ9kKPY" frameborder="0"
             style="width:100%;min-height:640px;"></iframe> --}}
+            @if (explode('.',$doc->file)[1] == 'pdf')
             <iframe src="{{$pathToFile}}" width="100%" height="100%"></iframe>
+            @else <div class="alert alert-danger style-02 fade in">
+                <div class="alert-body row">
+                    <div class="alert-thumb">
+                        <i class="fa fa-exclamation"></i>
+                    </div>
+                    <div class="alert-content">
+                        <h4 class="alert-title">Preview Error</h4>
+                        <p>Preview not support for this type of file</p>
+                    </div>
+                </div>
+                <a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="fa fa-times"></i></a>
+            </div>
+            @endif
             <div class="py-4"></div>
 
             <div class="widget-content pb-5">

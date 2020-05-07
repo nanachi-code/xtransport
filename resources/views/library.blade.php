@@ -122,7 +122,8 @@
                     <div class="entry-content">
                         <h3 class="widget-title kopa-heading2 size-normal">Highest rating</h3>
                         <ul class="ul-mh row">
-                            <li class="col-xs-12 col-sm-12 col-md-4 pb-2" style="height: 307px;">
+                            @foreach ($highest_rate as $d)
+                            <li class="col-xs-12 col-sm-12 col-md-4 pb-2" style="max-height: 450px;">
                                 <article class="entry-item">
                                     <div>
                                         <img src="{{asset('images/course.jpg')}}" alt="">
@@ -131,56 +132,39 @@
                                         <div class="kopa-intro-box kopa-intro-box-4">
                                             <div class="intro-box-content">
                                                 <h4 class="intro-box-title kopa-heading4">
-                                                    <a href="{{url('library/detail/')}}">Title</a>
+                                                    <a href="{{url('library/detail/'.$d->id)}}">{{$d->title}}</a>
                                                 </h4>
-                                                <p>Author</p>
-                                                <p>Rating</p>
-                                                <p>Download</p>
+                                                <p>Author: {{$d->author}}</p>
+                                                <p><input id="input-id" type="text" class="rating"
+                                                        value="{{ $d->averageRating }}" data-size="ex-sm" disabled>
+                                                </p>
+                                                <p>Download: {{$d->download_number}}</p>
                                                 <br>
-                                                <a href="#" class="style-btn-03 sm-btn">Bookmark</a>
+
+                                                @if (\Auth::check())
+                                                @if (\Auth::user()->id == $d->user_id)
+                                                <a href="{{url('library/detail/'.$d->id)}}"
+                                                    class="style-btn-03 sm-btn">View detail</a>
+                                                @else
+                                                @if (\Auth::user()->documents->contains('id',$d->id))
+                                                <a href="{{url('/library/un-bookmark/'.$d->id)}}"
+                                                    class="style-btn-03 sm-btn">Unbookmark</a>
+                                                @else
+                                                <a href="{{url('/library/add-bookmark/'.$d->id)}}"
+                                                    class="style-btn-03 sm-btn">Bookmark</a>
+                                                @endif
+                                                @endif
+                                                @else
+                                                <a href="{{url('library/detail/'.$d->id)}}"
+                                                    class="style-btn-03 sm-btn">View detail</a>
+                                                @endif
+
                                             </div>
                                         </div>
                                     </div>
                                 </article>
                             </li>
-                            <li class="col-xs-12 col-sm-12 col-md-4 pb-2" style="height: 307px;">
-                                <article class="entry-item">
-                                    <div>
-                                        <img src="{{asset('images/course.jpg')}}" alt="">
-                                    </div>
-                                    <div class="entry-content">
-                                        <div class="kopa-intro-box kopa-intro-box-4">
-                                            <div class="intro-box-content">
-                                                <h4 class="intro-box-title kopa-heading4">
-                                                    <a href="{{url('/detail/')}}">Title</a>
-                                                </h4>
-                                                <p>Author</p>
-                                                <p>Rating</p><br>
-                                                <a href="#" class="style-btn-03 sm-btn">Bookmark</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </li>
-                            <li class="col-xs-12 col-sm-12 col-md-4 pb-2" style="height: 307px;">
-                                <article class="entry-item">
-                                    <div>
-                                        <img src="{{asset('images/course.jpg')}}" alt="">
-                                    </div>
-                                    <div class="entry-content">
-                                        <div class="kopa-intro-box kopa-intro-box-4">
-                                            <div class="intro-box-content">
-                                                <h4 class="intro-box-title kopa-heading4">
-                                                    <a href="{{url('/detail/')}}">Title</a>
-                                                </h4>
-                                                <p>Author</p>
-                                                <p>Rating</p><br>
-                                                <a href="#" class="style-btn-03 sm-btn">Bookmark</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </li>
+                            @endforeach
                         </ul>
                         <div class="alignright"><a href="">
                                 <h4>See all document >></h4>
