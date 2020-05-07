@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Event;
 use App\Post;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -27,7 +28,8 @@ class ViewServiceProvider extends ServiceProvider
     {
         View::composer('subviews.sidebar', function ($view) {
             $p = [
-                "latestPosts" => Post::take(3)->get()
+                "latestPosts" => Post::take(3)->get(),
+                "latestEvents" => Event::take(3)->get(),
             ];
             $view->with($p);
         });

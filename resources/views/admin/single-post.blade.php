@@ -28,6 +28,7 @@
                             </div>
                         </div>
                     </div>
+                    {{-- START - Detail box --}}
                     <div class="element-box">
                         <h5>Edit post</h5>
                         <hr>
@@ -263,7 +264,9 @@
                         </div>
                         {{-- END - Set Thumbnail Modal --}}
                     </div>
+                    {{-- END - Detail box --}}
 
+                    {{-- START - Comment box --}}
                     <div class="element-box">
                         <h5>Comments</h5>
                         <hr>
@@ -308,6 +311,7 @@
                             @endif
                         </div>
                     </div>
+                    {{-- END - Comment box --}}
                 </div>
             </div>
         </div>

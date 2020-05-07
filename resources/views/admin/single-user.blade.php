@@ -70,6 +70,7 @@
 
                                     <div class="form-buttons-w">
                                         <button class="btn btn-primary" type="submit">Save</button>
+                                        @if ($user->role != "super_admin")
                                         @if ($user->status == "active")
                                         <a href="{{ url("admin/user/{$user->id}/disable")}}"
                                             class="btn btn-danger single-disable">
@@ -79,6 +80,7 @@
                                         <a href="{{ url("admin/user/{$user->id}/restore")}}" class="btn btn-primary">
                                             Restore
                                         </a>
+                                        @endif
                                         @endif
                                     </div>
                                 </div>
@@ -94,9 +96,11 @@
                                             @endif
                                         </div>
                                     </div>
+
                                     {{-- user role --}}
                                     <div class="form-group">
                                         <label for="form-user-role">Role</label>
+                                        @if ($user->role != "super_admin")
                                         <select class="form-control" id="form-user-role" name="role">
                                             <option value="user" @if ($user->role == "user") selected @endif>
                                                 User
@@ -105,6 +109,11 @@
                                                 Admin
                                             </option>
                                         </select>
+                                        @else
+                                        <div>
+                                            <span style="font-weight: 800">Super Admin</span>
+                                        </div>
+                                        @endif
                                     </div>
 
                                     {{-- user avatar --}}

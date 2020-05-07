@@ -20,18 +20,20 @@ Route::prefix('/library')->group(function () {
     Route::get('/bookmark', 'Main\LibraryController@bookmarkDocument')->middleware('auth');
     Route::get('/add-bookmark/{id}', 'Main\LibraryController@addBookmark')->middleware('auth');
     Route::get('/un-bookmark/{id}', 'Main\LibraryController@unBookmark')->middleware('auth');
-    Route::get('/detail/{id}','Main\LibraryController@detailDocument')->middleware('auth');
-    Route::get('/new','Main\LibraryController@createDocument')->middleware('auth');
-    Route::post('/new','Main\LibraryController@newDocument')->middleware('auth');
-    Route::post('/rate','Main\LibraryController@rating')->middleware('auth');
-    Route::get('/download/{id}','Main\LibraryController@downloadDocument')->middleware('auth');
+    Route::get('/detail/{id}', 'Main\LibraryController@detailDocument')->middleware('auth');
+    Route::get('/new', 'Main\LibraryController@createDocument')->middleware('auth');
+    Route::post('/new', 'Main\LibraryController@newDocument')->middleware('auth');
+    Route::post('/rate', 'Main\LibraryController@rating')->middleware('auth');
+    Route::get('/download/{id}', 'Main\LibraryController@downloadDocument')->middleware('auth');
 });
+
 Route::prefix('/event')->group(function () {
     Route::get('/', function () {
         return redirect('/event/all');
     });
     Route::get('/all', 'Main\EventController@archiveEvent');
-    Route::get('/detail/{id}','Main\EventController@eventDetail');
+    Route::get('/detail/{id}', 'Main\EventController@eventDetail');
+    Route::post('/detail/{id}', 'Main\EventController@registerEvent');
 });
 
 Route::prefix('/catalog')->group(function () {
@@ -83,4 +85,3 @@ Route::get('logout', function () {
     Auth::logout();
     return redirect('/login');
 });
-

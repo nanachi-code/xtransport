@@ -11,20 +11,20 @@
                 <div class="breadcrumb-content">
                     <p>{{ $post->excerpt }}}</p>
                     <span itemtype="" itemscope="">
-                        <a itemprop="url" href="{{url('/')}}">
+                        <a itemprop="url" href="{{ url('/') }}">
                             <span itemprop="title">Home</span>
                         </a>
                     </span>
                     <span>&nbsp; &nbsp; / &nbsp; &nbsp;</span>
                     <span itemtype="" itemscope="">
-                        <a itemprop="url" href="{{url('/blog')}}">
+                        <a itemprop="url" href="{{ url('/blog') }}">
                             <span itemprop="title">Blog</span>
                         </a>
                     </span>
                     <span>&nbsp; &nbsp; / &nbsp; &nbsp;</span>
                     <span itemtype="" itemscope="">
                         <a itemprop="url" class="current-page">
-                            <span itemprop="title">{{$post->title}}</span>
+                            <span itemprop="title">{{ $post->title }}</span>
                         </a>
                     </span>
                 </div>
@@ -239,7 +239,12 @@
                             <li class="col-xs-12 col-sm-6" style="height: 577px;">
                                 <article class="entry-item">
                                     <figure class="entry-thumb">
-                                        <a href="#"><img src="{{ asset('uploads/'.$post->thumbnail) }}" alt="">
+                                        <a href="#">
+                                            @if ($post->thumbnail)
+                                            <img src="{{ url("uploads/{$post->thumbnail}") }}" alt="">
+                                            @else
+                                            <img src="{{ asset("images/default/no-image.jpg") }}" alt="">
+                                            @endif
                                         </a>
                                     </figure>
                                     <div class="entry-content">
@@ -292,7 +297,7 @@
             </div>
             <!-- end main col -->
 
-            @include('subviews.sidebar')
+            @include('subviews.sidebar', ["page" => "single-event"])
         </div>
     </div>
 </section>

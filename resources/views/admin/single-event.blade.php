@@ -28,6 +28,7 @@
                             </div>
                         </div>
                     </div>
+                    {{-- START - Detail box --}}
                     <div class="element-box">
                         <h5>Edit Event</h5>
                         <hr>
@@ -250,6 +251,38 @@
                         </div>
                         {{-- END - Set Thumbnail Modal --}}
                     </div>
+                    {{-- END - Detail box --}}
+
+                    {{-- START - User box --}}
+                    <div class="element-box">
+                        <h5>Registered Users</h5>
+                        <hr>
+                        <div class="comment-box">
+                            {{-- <pre>{{ var_dump($event->users) }}</pre> --}}
+                            @if (count($event->users) == 0)
+                            No users registered.
+                            @else
+                            <div class="user-wrapper">
+                                @foreach ($event->users as $user)
+                                <div class="row mb-4">
+                                    <div class="col-sm-1">
+                                        <div class="comment-avatar">
+                                            <a href="{{ url("admin/user/{$user->id}") }}">
+                                                <img src="http://0.gravatar.com/avatar/682d4b43d822c9f69d565d5d37929540?s=120&d=mm&r=g"
+                                                    alt="" srcset="" class="img-responsive">
+                                            </a>
+                                            <div class="text-center mt-3">
+                                                {{ $user->name }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                            @endif
+                        </div>
+                    </div>
+                    {{-- END - User box --}}
                 </div>
             </div>
         </div>
