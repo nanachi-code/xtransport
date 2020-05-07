@@ -6,15 +6,24 @@ use App\Document;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 
 class LibraryController extends Controller
 {
     public function archiveDocument()
     {
+        $doc = Document::all()->sort(function ($a, $b) {
+            if ($a->averageRating == $b->averageRating) {
+                return 0;
+            }
+            return ($a->averageRating > $b->averageRating) ? -1 : 1;
+        });
         $p = [
             'location' => '',
-            'newest' => Document::orderBy('updated_at','desc')->take(3)->get()
+            'newest' => Document::orderBy('updated_at','desc')->take(3)->get(),
+            'highest_rate' => $doc->slice(0, 3)
         ];
         return view('library')->with($p);
     }
@@ -40,6 +49,7 @@ class LibraryController extends Controller
     public function addBookmark($id)
     {
         $document = Document::find($id);
+        $document->increment('bookmark_number');
         $document->users()->attach(Auth::user()->id);
         return redirect()->back();
     }
@@ -47,6 +57,7 @@ class LibraryController extends Controller
     public function unBookmark($id)
     {
         $document = Document::find($id);
+        $document->decrement('bookmark_number');
         $document->users()->detach(Auth::user()->id);
         return redirect()->back();
     }
@@ -75,25 +86,33 @@ class LibraryController extends Controller
 
     public function detailDocument($id)
     {
+        $rate_flag = \willvincent\Rateable\Rating::where('rateable_id',$id)->get();
+        if ($rate_flag->contains('user_id',Auth::user()->id)) {
+            $rate_flag = false;
+        }
+        else $rate_flag = true;
         $p = [
             'doc' => $document = Document::find($id),
-            'pathToFile' => asset("uploads/documents/".$document->user_id.'/'.$document->file)
-
+            'pathToFile' => asset("uploads/documents/".$document->user_id.'/'.$document->file),
+            'rate_flag' => $rate_flag
         ];
         return view('document')->with($p);
     }
     public function downloadDocument($id)
     {
-        $document = Document::find($id);
         try {
+            $document = Document::find($id);
             $document->increment('download_number');
-            //dd($document->increment('download_number'));
-            $pathToFile = public_path("uploads/documents/".$document->user_id.'/'.$document->file);
+            $path = public_path("uploads/documents/".$document->user_id.'/'.$document->file);
         } catch (\Throwable $th) {
-            //throw $th;
+            throw $th;
         }
-        return dd($document->increment('download_number'));
-        //return response()->download($pathToFile);
+        return response()->download($path);
+    }
+
+    public function download($path)
+    {
+        return response()->download($path);
     }
 
     public function rating(Request $request){
@@ -103,8 +122,7 @@ class LibraryController extends Controller
         $rating->rating = $request->rate;
         $rating->user_id = auth()->user()->id;
         $document->ratings()->save($rating);
-
-        return redirect()->to("document")->with(compact($document));
+        return redirect()->back();
     }
 
 
