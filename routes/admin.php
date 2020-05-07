@@ -122,7 +122,7 @@ Route::prefix('user')->group(function () {
     Route::get('/{id}/restore', 'Admin\UserController@restoreUser');
 });
 
-// Company
+//* Company
 Route::prefix('company')->group(function () {
     Route::get('/', function () {
         return redirect('/admin/company/all');
@@ -143,7 +143,7 @@ Route::prefix('company')->group(function () {
     Route::get('/{id}/restore', 'Admin\CompanyController@restoreCompany');
 });
 
-// Event
+//* Event
 Route::prefix('event')->group(function () {
     Route::get('/', function () {
         return redirect('/admin/event/all');

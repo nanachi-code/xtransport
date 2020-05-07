@@ -66,7 +66,15 @@ input[type="file"]:focus::before {
     cursor: pointer;
 }
 
+.gallery-list .gallery-item img {
+    padding: 3px;
+}
+
 #preview-post img {
     margin-top: 0.75rem;
     margin-bottom: 0.75rem;
+}
+
+.gallery-item .selected {
+    border: #035cb9 3px solid;
 }

@@ -172,6 +172,63 @@ $(function () {
         $("input[name='thumbnail']").val("");
         $("#set-thumbnail-modal").modal("hide");
     });
+
+    // Set gallery
+    $("#set-gallery").click(function (e) {
+        e.preventDefault();
+
+        $("#set-gallery-modal").modal("toggle");
+    });
+
+    $("#set-gallery-modal").on("click", ".gallery-item", function (e) {
+        e.preventDefault();
+        let item = $(this).find("img");
+
+        if (item.hasClass("selected")) {
+            item.removeClass("selected");
+        } else {
+            item.addClass("selected");
+        }
+    });
+
+    $("#confirm-gallery").click(function (e) {
+        e.preventDefault();
+
+        let items = $("#set-gallery-modal .gallery-item .selected"),
+            row = $("#gallery-preview .row"),
+            input = $(`input[name="gallery"]`),
+            _val = [];
+        row.html("");
+
+        for (const item of items) {
+            let src = $(item).attr("src"),
+                filename = $(item).attr("data-filename");
+
+            row.append(`
+            <div class="col-sm-3">
+                <img src="${src}" class="img-responsive">
+            </div>`);
+
+            _val.push(filename);
+        }
+        input.val(JSON.stringify(_val));
+
+        $("#set-gallery-modal").modal("hide");
+    });
+
+    $("#reset-gallery").on("click", function (e) {
+        e.preventDefault();
+
+        let items = $("#set-gallery-modal .gallery-item .selected"),
+            row = $("#gallery-preview .row"),
+            input = $(`input[name="gallery"]`);
+
+        items.removeClass("selected");
+        row.html("");
+        input.val("");
+
+        $("#set-gallery-modal").modal("hide");
+    });
     // ================================================================================================
     //* Category
     $("#table-admin-category").DataTable();

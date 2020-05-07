@@ -32,7 +32,7 @@
                         <h5>Edit product</h5>
                         <hr>
                         <form id="form-single-product" action="{{ url("admin/product/{$product->id}/update")}}"
-                            method="product" enctype="multipart/form-data">
+                            method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-sm-9">
                                     {{-- product name --}}
@@ -85,6 +85,22 @@
                                             </option>
                                             @endforeach
                                         </select>
+                                    </div>
+
+                                    {{-- product gallery --}}
+                                    <div class="form-group">
+                                        <label for="form-product-gallery">Gallery</label>
+                                        <div id="gallery-preview">
+                                            <button class="btn btn-primary" id="set-gallery">Select image</button>
+                                            <input type="hidden" name="gallery">
+                                            <div class="row pt-2">
+                                                @foreach ($product->gallery as $image)
+                                                <div class="col-sm-3">
+                                                    <img src="{{ url("uploads/{$image}") }}" class="img-responsive">
+                                                </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="form-buttons-w">
@@ -193,6 +209,72 @@
                             </div>
                         </div>
                         {{-- END - Set Thumbnail Modal --}}
+
+                        {{-- START - Set Gallery Modal --}}
+                        <div id="set-gallery-modal" aria-hidden="true" aria-labelledby="set-gallery-modal-title"
+                            class="modal fade" role="dialog" tabindex="-1">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="set-gallery-modal-title">
+                                            Set gallery
+                                        </h5>
+                                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{-- START - Upload Attachment --}}
+                                        <div class="element-box">
+                                            <h5>Upload new attachment</h5>
+                                            <hr>
+                                            <form class="upload-gallery" action="{{ url("admin/gallery/upload") }}"
+                                                method="post" enctype="multipart/form-data">
+                                                <input type="file" data-title="Upload" name="image">
+                                            </form>
+                                        </div>
+                                        {{-- END - Upload Attachment --}}
+
+                                        {{-- START - Attachment Library --}}
+                                        <div class="element-box attachment-library">
+                                            <h5>Attachment Library</h5>
+                                            <hr>
+                                            @if (count($gallery) == 0)
+                                            No attachments found.
+                                            @else
+                                            <div class="row gallery-list">
+                                                @foreach ($gallery as $image)
+                                                @if (in_array($image->getFilename(), $product->gallery))
+                                                <div class="col-sm-2 gallery-item">
+                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
+                                                        data-filename="{{ $image->getFilename() }}"
+                                                        class="img-responsive selected">
+                                                </div>
+                                                @else
+                                                <div class="col-sm-2 gallery-item">
+                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
+                                                        data-filename="{{ $image->getFilename() }}"
+                                                        class="img-responsive">
+                                                </div>
+                                                @endif
+                                                @endforeach
+                                            </div>
+                                            @endif
+                                        </div>
+                                        {{-- END - Attachment Library --}}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button id="confirm-gallery" class="btn btn-primary text-white">
+                                            Confirm
+                                        </button>
+                                        <button id="reset-gallery" class="btn btn-danger text-white">
+                                            Reset
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- END - Set Gallery Modal --}}
                     </div>
                 </div>
             </div>

@@ -36,6 +36,7 @@ class ProductController extends Controller
             'allCompany' => Company::all()
         ];
 
+        // dd($p["product"]->gallery[1]);
         return view('admin/single-product')->with($p);
     }
 
@@ -72,6 +73,7 @@ class ProductController extends Controller
         $product->category_product_id = $request->get('category_product_id');
         $product->company_id = $request->get('company_id');
         $product->thumbnail = $request->get('thumbnail');
+        $product->gallery = json_decode($request->get("gallery"));
 
         try {
             $product->save();
@@ -100,6 +102,7 @@ class ProductController extends Controller
         $product->category_product_id = $request->get('category_product_id');
         $product->company_id = $request->get('company_id');
         $product->thumbnail = $request->get('thumbnail');
+        $product->gallery = json_decode($request->get("gallery"));
 
         try {
             $product->save();

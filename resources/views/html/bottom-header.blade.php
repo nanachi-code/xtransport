@@ -5,7 +5,7 @@
         <div class="alignleft">
 
             <figure class="kopa-logo">
-                <a href="{{url('/')}}"><img src="{{asset("/images/default/cropped-logo.png")}}" alt="logo">
+                <a href="{{url('/')}}"><img src="{{asset("/images/default/logo.png")}}" alt="logo">
                 </a>
             </figure>
 
