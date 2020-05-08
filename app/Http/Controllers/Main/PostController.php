@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Main;
 
+use App\CategoryPost;
 use App\Comment;
 use App\Http\Controllers\Controller;
 use App\Post;
@@ -10,7 +11,18 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-    public function singlePost($id)
+    public function renderArchivePost($id = null)
+    {
+        $p = [
+            'post' => $id
+                ? Post::where('category_post_id', $id)->where('status', 'publish')->paginate(4)
+                : Post::where('status', 'publish')->paginate(4),
+            'location' => $id ? CategoryPost::find($id)->name : "Blog"
+        ];
+        return view('archive-post')->with($p);
+    }
+
+    public function renderSinglePost($id)
     {
         $p = [
             'post' => $post = Post::find($id),
@@ -43,9 +55,9 @@ class PostController extends Controller
                 "id" => $comment->id,
                 "user" => [
                     "name" => Auth::user()->name,
-                    "avatar" => url("uploads", Auth::user()->avatar)
+                    "avatar" => Auth::user()->avatar ? url("uploads", Auth::user()->avatar) : asset("images/default/no-image.jpg")
                 ],
-                "updated_at" => $comment->updated_at,
+                "updated_at" => $comment->updated_at->toDateTimeString(),
                 "content" => $comment->content,
                 "action" => url("post/{$id}/comment")
             ]

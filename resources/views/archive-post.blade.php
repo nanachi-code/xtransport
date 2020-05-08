@@ -41,12 +41,12 @@
                         <article class="entry-item">
                             <header class="entry-header">
                                 <h4 class="entry-title">
-                                    <a href="{{url('post/'.$p->id)}}">{{$p->title}}</a>
+                                    <a href="{{ url('/blog/post/'.$p->id) }}">{{ $p->title }}</a>
                                 </h4>
                                 <p>
                                     <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp; by <a
                                         href="#">{{$p->user->name}}</a>
-                                    <span>{{$p->updated_at->toDateString()}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>3 <i
+                                    <span>{{ $p->updated_at->toDateString() }}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>3 <i
                                             class="fa fa-comment-o"
                                             aria-hidden="true"></i></span>&nbsp;&nbsp;&nbsp;&nbsp;
                                 </p>
@@ -54,7 +54,7 @@
                             @if ($p->thumbnail)
                             <div class="entry-thumb">
                                 <div class="entry-thumb embed-responsive embed-responsive-16by9">
-                                    <a href="{{url('post/'.$p->id)}}">
+                                    <a href="{{ url('/blog/post/'.$p->id) }}">
                                         <img src="{{ asset('uploads/'.$p->thumbnail) }}">
                                     </a>
                                 </div>
@@ -65,7 +65,7 @@
                             </div>
                             <footer class="entry-footer clearfix">
 
-                                <a href="{{url('post/'.$p->id)}}" class="kopa-btn btn-02">read more</a>
+                                <a href="{{ url('/blog/post/'.$p->id) }}" class="kopa-btn btn-02">read more</a>
 
                                 <div class="wrap-social-link alignright">
                                     Share:

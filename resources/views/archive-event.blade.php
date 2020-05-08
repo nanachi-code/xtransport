@@ -82,6 +82,8 @@
                         <!-- end -->
                     </div>
                 </div>
+                @else
+                <h6>No upcoming events found.</h6>
                 @endif
             </div>
         </div>
