@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
-    public function archiveEvent()
+    public function renderArchiveEvent()
     {
         $p = [
             'events' => Event::where('status', 'active')
@@ -20,7 +20,7 @@ class EventController extends Controller
         return view('archive-event')->with($p);
     }
 
-    public function eventDetail($id)
+    public function renderSingleEvent($id)
     {
         $p = [
             'event' => Event::find($id)

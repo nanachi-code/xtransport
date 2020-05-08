@@ -38,6 +38,7 @@
                                         <th>Email</th>
                                         <th>Phone</th>
                                         <th>Address</th>
+                                        <th>Website</th>
                                         <th>Status</th>
                                         <th class="text-center">Action</th>
                                     </tr>
@@ -50,6 +51,7 @@
                                         <td>{{ $company->email }}</td>
                                         <td>{{ $company->phone }}</td>
                                         <td>{{ $company->address }}</td>
+                                        <td>{{ $company->website }}</td>
                                         <td>
                                             @if ($company->status == "active")
                                             Active
@@ -72,6 +74,7 @@
                                         <th>Email</th>
                                         <th>Phone</th>
                                         <th>Address</th>
+                                        <th>Website</th>
                                         <th>Status</th>
                                         <th class="text-center">Action</th>
                                     </tr>

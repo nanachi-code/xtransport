@@ -10,6 +10,7 @@ Route::get('/', function () {
 
 Route::get('/home', 'Main\HomeController@renderHome');
 
+//* Library
 Route::prefix('/library')->group(function () {
     Route::get('/', 'Main\LibraryController@archiveDocument');
     Route::get('/all', 'Main\LibraryController@allDocument');
@@ -24,19 +25,28 @@ Route::prefix('/library')->group(function () {
     Route::get('/download/{id}', 'Main\LibraryController@downloadDocument')->middleware('auth');
 });
 
+//* Event
 Route::prefix('/event')->group(function () {
     Route::get('/', function () {
         return redirect('/event/all');
     });
-    Route::get('/all', 'Main\EventController@archiveEvent');
-    Route::get('/detail/{id}', 'Main\EventController@eventDetail');
+
+    Route::get('/all', 'Main\EventController@renderArchiveEvent');
+
+    Route::get('/detail/{id}', 'Main\EventController@renderSingleEvent');
+
     Route::post('/detail/{id}', 'Main\EventController@registerEvent');
 });
 
-Route::prefix('/catalog')->group(function () {
-    Route::get('/all', 'Main\CategoryController@allItems');
+//* Product
+Route::prefix('/product')->group(function () {
+    Route::get('/', function () {
+        return redirect('/product/all');
+    });
 
-    Route::get('/{id}', 'Main\CategoryController@cateItems');
+    Route::get('/all', 'Main\ProductController@renderArchiveProduct');
+
+    Route::get('/detail/{id}', 'Main\ProductController@renderSingleProduct');
 });
 
 //* Blog
@@ -52,12 +62,6 @@ Route::prefix('/blog')
     });
 
 Route::get('/post/{id}', 'Main\PostController@singlePost');
-
-Route::prefix('/catalog')->group(function () {
-    Route::get('/all', 'Main\CategoryController@allItems');
-    Route::get('/{id}', 'Main\CategoryController@cateItems');
-});
-Route::get('/item/{id}', 'Main\ProductController@singleProduct');
 
 Route::get('/company/{id}', 'Main\CompanyController@companyDetail');
 

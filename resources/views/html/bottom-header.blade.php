@@ -28,34 +28,19 @@
                             @php
                             $post_category = App\CategoryPost::all();
                             @endphp
-                            @isset($post_category)
+                            @if (count($post_category))
                             @foreach ($post_category as $p)
                             <li>
                                 <i class="fa fa-star-o"></i><a href="{{url('blog/'.$p->id)}}"
                                     class="sf-with-ul">{{$p->name}}</a>
                             </li>
                             @endforeach
-                            @endisset
+                            @endif
                         </ul>
                         <!-- ==== end submenu ==== -->
                     </li>
                     <li>
-                        <a href="{{url('catalog/all')}}">Catalog</a>
-                        <!-- ==== sub menu ==== -->
-                        <ul class="sub-menu">
-                            @php
-                            $product_category = App\CategoryProduct::all();
-                            @endphp
-                            @isset($product_category)
-                            @foreach ($product_category as $p)
-                            <li>
-                                <i class="fa fa-star-o"></i><a href="{{url('catalog/'.$p->id)}}"
-                                    class="sf-with-ul">{{$p->name}}</a>
-                            </li>
-                            @endforeach
-                            @endisset
-                        </ul>
-                        <!-- ==== end submenu ==== -->
+                        <a href="{{url('product/all')}}">Products</a>
                     </li>
                     <li>
                         <a href="{{url('/event')}}">Event</a>
@@ -67,7 +52,7 @@
                         <a href="{{url('/about-us')}}">About Us</a>
                     </li>
                     <li>
-                        <a href="{{url('/contact')}}">CONTACT</a>
+                        <a href="{{url('/contact')}}">Contact</a>
                     </li>
                 </ul>
 

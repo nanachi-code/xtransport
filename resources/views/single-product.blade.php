@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title',"Item")
+@section('title', $product->name)
 
 @section('location')
 <section class="kopa-area kopa-area-44 white-text-style">
@@ -8,19 +8,23 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="kopa-breadcrumb">
-                    <h3>Item detail</h3>
+                    <h3>{{ $product->name }}</h3>
                     <div class="breadcrumb-content">
-                        <p>We offer a big storage space, heated and with air condition, to store
-                            <br> your good’s safe and organized even for longer period of time.</p>
                         <span itemtype="" itemscope="">
-                            <a itemprop="url" href="{{url('/')}}">
+                            <a itemprop="url" href="{{ url('/') }}">
                                 <span itemprop="title">Home</span>
                             </a>
                         </span>
                         <span>&nbsp; &nbsp; / &nbsp; &nbsp;</span>
                         <span itemtype="" itemscope="">
+                            <a itemprop="url" href="{{ url('/product/all') }}">
+                                <span itemprop="title">Product</span>
+                            </a>
+                        </span>
+                        <span>&nbsp; &nbsp; / &nbsp; &nbsp;</span>
+                        <span itemtype="" itemscope="">
                             <a itemprop="url" class="current-page">
-                                <span itemprop="title">Item detail</span>
+                                <span itemprop="title">{{ $product->name }}</span>
                             </a>
                         </span>
                     </div>
@@ -40,125 +44,24 @@
                 <div class="widget ex-module-slider-13">
                     <div class="widget-content">
                         <!-- ===================================== -->
-                        <div class="owl-carousel main-img-wrap owl-theme" style="opacity: 1; display: block;">
-                            <div class="owl-wrapper-outer">
-                                <div class="owl-wrapper" style="width: 18240px; left: 0px; display: block;">
-                                    <div class="owl-item" style="width: 1140px;">
-                                        <div class="item">
-                                            <a href="#"><img class="sp-image" src="http://placehold.it/1170x585" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="owl-item" style="width: 1140px;">
-                                        <div class="item">
-                                            <a href="#"><img class="sp-image" src="http://placehold.it/1170x585" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="owl-item" style="width: 1140px;">
-                                        <div class="item">
-                                            <a href="#"><img class="sp-image" src="http://placehold.it/1170x585" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="owl-item" style="width: 1140px;">
-                                        <div class="item">
-                                            <a href="#"><img class="sp-image" src="http://placehold.it/1170x585" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="owl-item" style="width: 1140px;">
-                                        <div class="item">
-                                            <a href="#"><img class="sp-image" src="http://placehold.it/1170x585" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="owl-item" style="width: 1140px;">
-                                        <div class="item">
-                                            <a href="#"><img class="sp-image" src="http://placehold.it/1170x585" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="owl-item" style="width: 1140px;">
-                                        <div class="item">
-                                            <a href="#"><img class="sp-image" src="http://placehold.it/1170x585" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="owl-item" style="width: 1140px;">
-                                        <div class="item">
-                                            <a href="#"><img class="sp-image" src="http://placehold.it/1170x585" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="owl-carousel main-img-wrap">
+                            @if (count($product->gallery))
+                            @foreach ($product->gallery as $image)
+                            <div class="item">
+                                <img class="sp-image" src="{{ url("uploads/{$image}") }}" alt="">
                             </div>
-                            <div class="owl-controls clickable">
-                                <div class="owl-buttons">
-                                    <div class="owl-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
-                                    <div class="owl-next"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
-                                </div>
-                            </div>
+                            @endforeach
+                            @endif
                         </div>
                         <div class="row-slider">
-                            <div class="owl-carousel thumb-img-wrap owl-theme" style="opacity: 1; display: block;">
-                                <div class="owl-wrapper-outer">
-                                    <div class="owl-wrapper" style="width: 2592px; left: 0px; display: block;">
-                                        <div class="owl-item synced" style="width: 144px;">
-                                            <div class="item">
-                                                <img class="sp-thumbnail" src="http://placehold.it/140x132" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="owl-item" style="width: 144px;">
-                                            <div class="item">
-                                                <img class="sp-thumbnail" src="http://placehold.it/139x132" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="owl-item" style="width: 144px;">
-                                            <div class="item">
-                                                <img class="sp-thumbnail" src="http://placehold.it/140x132" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="owl-item" style="width: 144px;">
-                                            <div class="item">
-                                                <img class="sp-thumbnail" src="http://placehold.it/139x132" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="owl-item" style="width: 144px;">
-                                            <div class="item">
-                                                <img class="sp-thumbnail" src="http://placehold.it/139x132" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="owl-item" style="width: 144px;">
-                                            <div class="item">
-                                                <img class="sp-thumbnail" src="http://placehold.it/140x132" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="owl-item" style="width: 144px;">
-                                            <div class="item">
-                                                <img class="sp-thumbnail" src="http://placehold.it/140x132" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="owl-item" style="width: 144px;">
-                                            <div class="item">
-                                                <img class="sp-thumbnail" src="http://placehold.it/139x132" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="owl-item" style="width: 144px;">
-                                            <div class="item">
-                                                <img class="sp-thumbnail" src="http://placehold.it/140x132" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="owl-carousel thumb-img-wrap">
+                                @foreach ($product->gallery as $image)
+                                <div class="item">
+                                    <a href="#">
+                                        <img class="sp-thumbnail" src="{{ url("uploads/{$image}") }}" alt="">
+                                    </a>
                                 </div>
-
-
-
-
-
-
-
-
+                                @endforeach
                             </div>
                         </div>
                         <!-- ===================================== -->
@@ -170,15 +73,9 @@
             <div class="col-xs-12 col-sm-6">
                 <!-- widget -->
                 <div class="widget ex-module-present-6">
-                    <h3 class="widget-title kopa-title-4">our vehicles</h3>
+                    <h3 class="widget-title kopa-title-4">Description</h3>
                     <div class="widget-content">
-                        <p>We have a modern, extensive fleet which can operate world wide. Our complete fleet consists
-                            of over 60 vehicles including Prime Movers, body trucks, tilt tray and various trailer
-                            types. All vehicles and equipment are on constant service and maintenance.
-                            <br>
-                            <br> We have all kind of trailers for any kind of cargo. We include drop deck trailers,
-                            container trailers. We set very high standards of professionalism and we continue to improve
-                            our vehicles and our capabilities.</p>
+                        <p>{{ $product->description }}</p>
                     </div>
                 </div>
                 <!-- end -->
@@ -186,28 +83,22 @@
             <div class="col-xs-12 col-sm-6">
                 <!-- widget -->
                 <div class="widget ex-module-present-7">
-                    <h3 class="widget-title kopa-title-4">types and options</h3>
+                    <h3 class="widget-title kopa-title-4">Seller info</h3>
                     <div class="widget-content">
-                        <p>Types on vehicles on our disposal. Constantly maintained and serviced and with on road
-                            assistance your cargo will never get stranded:</p>
+                        <p>{{ $product->company->name }}</p>
                         <ul class="ul-mh row">
-                            <li class="col-xs-12 col-sm-6" style="height: 20px;">
-                                <a href="#"><i class="fa fa-check"></i> 12 Prime movers </a>
+                            <li class="col-sm-12" style="height: 20px;">
+                                <a href="#"><i class="fa fa-envelope"></i> {{ $product->company->email }} </a>
                             </li>
-                            <li class="col-xs-12 col-sm-6" style="height: 20px;">
-                                <a href="#"><i class="fa fa-check"></i> 9 Buses </a>
+                            <li class=" col-sm-12" style="height: 20px;">
+                                <a href="#"><i class="fa fa-phone"></i> {{ $product->company->phone }} </a>
                             </li>
-                            <li class="col-xs-12 col-sm-6" style="height: 20px;">
-                                <a href="#"><i class="fa fa-check"></i> 8 Short trucks </a>
+                            <li class="col-sm-12" style="height: 20px;">
+                                <a href="#"><i class="fa fa-home"></i> {{ $product->company->address }} </a>
                             </li>
-                            <li class="col-xs-12 col-sm-6" style="height: 20px;">
-                                <a href="#"><i class="fa fa-check"></i> 20 Vans </a>
-                            </li>
-                            <li class="col-xs-12 col-sm-6" style="height: 20px;">
-                                <a href="#"><i class="fa fa-check"></i> 16 Body trucks </a>
-                            </li>
-                            <li class="col-xs-12 col-sm-6" style="height: 20px;">
-                                <a href="#"><i class="fa fa-check"></i> 15 Pick up trucks</a>
+                            <li class="col-sm-12" style="height: 20px;">
+                                <a href="{{ $product->company->website }}"><i class="fa fa-globe"></i>
+                                    {{ $product->company->website }} </a>
                             </li>
                         </ul>
                     </div>

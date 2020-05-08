@@ -15134,8 +15134,13 @@ button {
 .kopa-breadcrumb .breadcrumb-content span a:hover span {
     color: #0e8dc1;
 }
-.kopa-breadcrumb .breadcrumb-content span a.current-page span {
-    color: #ffd200;
+.white-text-style
+    .kopa-breadcrumb
+    .breadcrumb-content
+    span
+    a.current-page
+    span {
+    color: #ffd200 !important;
 }
 
 /*---______________________________ EX MODULE RECRUIMENT 1 ______________________________--*/

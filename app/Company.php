@@ -8,7 +8,7 @@ class Company extends Model
 {
     protected $table = 'company';
 
-    protected $fillable = ['name', 'phone', 'email', 'address', 'logo', 'status', 'introduction'];
+    protected $fillable = ['name', 'phone', 'email', 'address', 'website', 'logo', 'status', 'introduction'];
 
     protected function products()
     {

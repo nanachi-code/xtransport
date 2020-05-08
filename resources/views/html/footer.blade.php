@@ -82,41 +82,6 @@
                     </div>
                 </li>
                 <li class="col-xs-6 col-sm-6 col-md-3" style="height: 263px;">
-                    <div class="widget ex-module-article-3">
-
-                        <h3 class="widget-title kopa-title-11">TWITTER FEEDS</h3>
-
-                        <div class="widget-content">
-                            <ul class="">
-                                <li>
-                                    <article class="entry-item">
-                                        <figure class="entry-thumb">
-                                            <img src="http://placehold.it/270x286" alt="">
-                                        </figure>
-                                        <div class="entry-content">
-                                            <h4 class="entry-title">
-                                                <a href="#">face the<br>
-                                                    challenges<br>
-                                                    of chain<br>
-                                                    complexity</a>
-                                            </h4>
-                                            <p>friday, august 7, 2015</p>
-                                        </div>
-                                    </article>
-                                </li>
-                                <li>
-                                    <article class="entry-item">
-                                        <div class="entry-content">
-                                            <p><i class="fa fa-twitter"></i> RT @BBCWorld: Indonesians say
-                                                #KamiTidakTakut - "we are not afraid" - after #JakartaBlasts
-                                                <a href="#">https://t.co/MBr3CuDj59</a>
-                                            </p>
-                                        </div>
-                                    </article>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </li>
                 <li class="col-xs-6 col-sm-6 col-md-3" style="height: 263px;">
                     <div class="widget ex-module-introduce-1">
