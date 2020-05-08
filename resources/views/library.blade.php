@@ -113,7 +113,7 @@
                             </li>
                             @endforeach
                         </ul>
-                        <div class="alignright"><a href="">
+                        <div class="alignright"><a href="{{url('/library/all')}}">
                                 <h4>See all document >></h4>
                             </a></div>
                     </div>
@@ -166,9 +166,6 @@
                             </li>
                             @endforeach
                         </ul>
-                        <div class="alignright"><a href="">
-                                <h4>See all document >></h4>
-                            </a></div>
                     </div>
                 </article>
             </div>

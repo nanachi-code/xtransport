@@ -11,11 +11,8 @@ Route::get('/', function () {
 Route::get('/home', 'Main\HomeController@renderHome');
 
 Route::prefix('/library')->group(function () {
-    Route::get('/', function () {
-        return redirect('/library/all');
-    });
-    Route::get('/all', 'Main\LibraryController@archiveDocument');
-
+    Route::get('/', 'Main\LibraryController@archiveDocument');
+    Route::get('/all', 'Main\LibraryController@allDocument');
     Route::get('/user', 'Main\LibraryController@userDocument')->middleware('auth');
     Route::get('/bookmark', 'Main\LibraryController@bookmarkDocument')->middleware('auth');
     Route::get('/add-bookmark/{id}', 'Main\LibraryController@addBookmark')->middleware('auth');

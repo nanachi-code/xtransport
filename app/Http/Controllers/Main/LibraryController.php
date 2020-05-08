@@ -28,6 +28,14 @@ class LibraryController extends Controller
         return view('library')->with($p);
     }
 
+    public function allDocument()
+    {
+        $p = [
+            'doc' => Document::orderBy('updated_at','desc')->paginate(12)
+        ];
+        return view('doclist')->with($p);
+    }
+
     public function userDocument()
     {
         $p = [
