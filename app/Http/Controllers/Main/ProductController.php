@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Main;
 use App\CategoryProduct;
 use App\Http\Controllers\Controller;
 use App\Product;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -15,7 +14,7 @@ class ProductController extends Controller
             'products' => Product::where('status', 'publish')->paginate(12),
             'allCategories' => CategoryProduct::all()
         ];
-        return view('archive-product')->with($p);
+        return view('main.archive-product')->with($p);
     }
 
     public function renderSingleProduct($id)
@@ -24,6 +23,6 @@ class ProductController extends Controller
             'product' => Product::find($id)
         ];
 
-        return view('single-product')->with($p);
+        return view('main.single-product')->with($p);
     }
 }

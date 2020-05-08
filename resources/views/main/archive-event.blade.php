@@ -1,8 +1,8 @@
-@extends('layout')
+@extends('main.layouts.app')
 
-@section('title',"Events Archive")
+@section('title', "Events Archive")
 
-@section('location')
+@section('breadcrumb')
 <section class="kopa-area kopa-area-34 white-text-style">
     <div class="container">
         <div class="row">
@@ -78,7 +78,7 @@
                             @endforeach
                         </div>
                         <!-- nav pagination -->
-                        {{-- {{ $event->links('html.paginate') }} --}}
+                        {{ $events->links('main.subviews.paginate') }}
                         <!-- end -->
                     </div>
                 </div>

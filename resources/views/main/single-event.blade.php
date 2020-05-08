@@ -2,7 +2,7 @@
 
 @section('title', $event->name)
 
-@section('location')
+@section('breadcrumb')
 <section class="kopa-area kopa-area-34 white-text-style">
     <div class="container">
         <div class="row">

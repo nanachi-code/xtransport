@@ -1,8 +1,8 @@
-@extends('layout')
+@extends('main.layouts.app')
 
-@section('title',"Product Archives")
+@section('title', "Product Archives")
 
-@section('location')
+@section('breadcrumb')
 <section class="kopa-area kopa-area-44 white-text-style">
     <div class="container">
         <div class="row">
@@ -11,7 +11,7 @@
                     <h3>Products</h3>
                     <div class="breadcrumb-content">
                         <span itemtype="" itemscope="">
-                            <a itemprop="url" href="{{url('/')}}">
+                            <a itemprop="url" href="{{ url('/') }}">
                                 <span itemprop="title">Home</span>
                             </a>
                         </span>
@@ -82,7 +82,7 @@
                                                     {{ $product->name }}
                                                 </a>
                                             </h4>
-                                            <a href="{{url("/product/detail/{$product->id}") }}"
+                                            <a href="{{ url("/product/detail/{$product->id}") }}"
                                                 class="kopa-btn btn-01">
                                                 view detail
                                             </a>

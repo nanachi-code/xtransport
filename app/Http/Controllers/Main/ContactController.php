@@ -8,11 +8,13 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    public function contact(){
+    public function contact()
+    {
 
-        return view('contact');
+        return view('main.contact');
     }
-    public function contactFeedback(Request $request){
+    public function contactFeedback(Request $request)
+    {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
@@ -26,12 +28,11 @@ class ContactController extends Controller
                 "website_url" => $request->get('website_url'),
                 "comment" => $request->get('comment'),
             ]);
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             return redirect()->back();
         }
         return response()->json([
             "message" => "Contact feedback successfully."
         ], 200);
-
     }
 }

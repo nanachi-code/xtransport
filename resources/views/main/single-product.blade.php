@@ -1,8 +1,8 @@
-@extends('layout')
+@extends('main.layouts.app')
 
 @section('title', $product->name)
 
-@section('location')
+@section('breadcrumb')
 <section class="kopa-area kopa-area-44 white-text-style">
     <div class="container">
         <div class="row">
@@ -43,7 +43,6 @@
                 <!-- widget -->
                 <div class="widget ex-module-slider-13">
                     <div class="widget-content">
-                        <!-- ===================================== -->
                         <div class="owl-carousel main-img-wrap">
                             @if (count($product->gallery))
                             @foreach ($product->gallery as $image)
@@ -64,7 +63,6 @@
                                 @endforeach
                             </div>
                         </div>
-                        <!-- ===================================== -->
                     </div>
                 </div>
                 <!-- end -->
@@ -105,7 +103,6 @@
                 </div>
                 <!-- end -->
             </div>
-
         </div>
     </div>
 </section>

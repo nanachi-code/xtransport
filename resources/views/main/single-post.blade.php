@@ -1,15 +1,14 @@
-@extends('layout')
+@extends('main.layouts.app')
 
-@section('title',"Post")
+@section('title', $post->title)
 
-@section('location')
+@section('breadcrumb')
 <section class="kopa-area kopa-area-34 white-text-style">
     <div class="container">
         <div class="row">
             <div class="kopa-breadcrumb">
                 <h3>{{ $post->title }}</h3>
                 <div class="breadcrumb-content">
-                    <p>{{ $post->excerpt }}}</p>
                     <span itemtype="" itemscope="">
                         <a itemprop="url" href="{{ url('/') }}">
                             <span itemprop="title">Home</span>
@@ -43,7 +42,7 @@
                 <div class="kopa-wrap-entry-item">
                     <article class="entry-item">
                         <header class="entry-header">
-                            <h4 class="entry-title">{{$post->title}}</h4>
+                            <h4 class="entry-title">{{ $post->title }}</h4>
                             <div class="entry-meta">
                                 <div class="d-inline mr-3">
                                     <i class="fa fa-user"></i>
@@ -297,7 +296,10 @@
             </div>
             <!-- end main col -->
 
-            @include('subviews.sidebar', ["page" => "single-event"])
+
+            <!-- start sidebar -->
+            @include('main.subviews.sidebar', ["page" => "single-post"])
+            <!-- end sidebar -->
         </div>
     </div>
 </section>

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\CategoryPost;
 use App\Event;
 use App\Post;
 use Illuminate\Support\Facades\View;
@@ -26,10 +27,9 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('subviews.sidebar', function ($view) {
+        view()->composer('main.subviews.header', function ($view) {
             $p = [
-                "latestPosts" => Post::take(3)->get(),
-                "latestEvents" => Event::take(3)->get(),
+                "postCategory" => CategoryPost::all()
             ];
             $view->with($p);
         });

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Middleware\CheckAdmin;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 //* Homepage
@@ -71,19 +71,22 @@ Route::prefix('/blog')
 //* Company
 Route::get('/company/{id}', 'Main\CompanyController@companyDetail');
 
+//* User
 Route::prefix('/user')
     ->group(function () {
-        Route::get('/profile', "UserController@userProfile")->middleware('auth');
-        Route::post('/profile/update/{id}', "UserController@userProfileUpdate")->middleware("auth");;
+        Route::get('/profile', "UserController@renderUserProfile")->middleware('auth');
+        Route::post('/profile/update/{id}', "UserController@updateUserProfile")->middleware("auth");;
         Route::post("/changePassword", "UserController@changePassword")->middleware("auth");;
     });
 
+//* Contact
 Route::prefix('/contact')
     ->group(function () {
         Route::get('/', 'Main\ContactController@contact');
         Route::post('/feedback', "Main\ContactController@contactFeedback");
     });
 
+//* About
 Route::get('/about-us', 'Main\AboutUsController@aboutUs');
 
 //* Auth

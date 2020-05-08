@@ -14,25 +14,29 @@ class PostController extends Controller
     public function renderArchivePost($id = null)
     {
         $p = [
-            'post' => $id
+            'posts' => $id
                 ? Post::where('category_post_id', $id)->where('status', 'publish')->paginate(4)
                 : Post::where('status', 'publish')->paginate(4),
-            'location' => $id ? CategoryPost::find($id)->name : "Blog"
+            'pageName' => $id ? CategoryPost::find($id)->name : "Blog"
         ];
-        return view('archive-post')->with($p);
+        return view('main.archive-post')->with($p);
     }
 
     public function renderSinglePost($id)
     {
         $p = [
             'post' => $post = Post::find($id),
+            "latestPosts" => Post::where("status", "publish")
+                ->where('id', '!=', $id)
+                ->take(3)
+                ->get(),
             'relatedPost' => Post::where('status', 'publish')
                 ->where('id', '!=', $id)
-                ->where('category_post_id', '!=', $post->category_post_id)
+                ->where('category_post_id', '=', $post->category_post_id)
                 ->take(2)
                 ->get()
         ];
-        return view('single-post')->with($p);
+        return view('main.single-post')->with($p);
     }
 
     public function saveComment(Request $request, $id)
