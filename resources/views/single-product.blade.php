@@ -151,14 +151,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-
-
-
-
-
-
                             </div>
                         </div>
                         <!-- ===================================== -->
@@ -170,21 +162,14 @@
             <div class="col-xs-12 col-sm-6">
                 <!-- widget -->
                 <div class="widget ex-module-present-6">
-                    <h3 class="widget-title kopa-title-4">our vehicles</h3>
+                    <h3 class="widget-title kopa-title-4">{{$product->name}}</h3>
                     <div class="widget-content">
-                        <p>We have a modern, extensive fleet which can operate world wide. Our complete fleet consists
-                            of over 60 vehicles including Prime Movers, body trucks, tilt tray and various trailer
-                            types. All vehicles and equipment are on constant service and maintenance.
-                            <br>
-                            <br> We have all kind of trailers for any kind of cargo. We include drop deck trailers,
-                            container trailers. We set very high standards of professionalism and we continue to improve
-                            our vehicles and our capabilities.</p>
+                        <p>{{$product->description}}</p>
                     </div>
                 </div>
                 <!-- end -->
             </div>
             <div class="col-xs-12 col-sm-6">
-                <!-- widget -->
                 <div class="widget ex-module-present-7">
                     <h3 class="widget-title kopa-title-4">types and options</h3>
                     <div class="widget-content">

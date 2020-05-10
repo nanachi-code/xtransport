@@ -368,13 +368,13 @@
                             <ul class="owl-carousel owl-theme">
                                 <!-- ** -->
                                 @foreach(\App\Company::all() as $company)
-                                @if ($company->avatar)
+                                @if ($company->logo)
                                 <li>
                                     <article class="entry-item">
                                         <div class="entry-content">
                                             <figure class="entry-thumb">
-                                                <a href="#">
-                                                    <img src="{{ asset("uploads/{$company->avatar}") }}"
+                                                <a href="{{url('/company/'.$company->id)}}">
+                                                    <img src="{{ asset("uploads/{$company->logo}") }}"
                                                         alt="{{$company->name}}">
                                                 </a>
                                             </figure>

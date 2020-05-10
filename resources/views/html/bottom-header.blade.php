@@ -40,7 +40,7 @@
                         <!-- ==== end submenu ==== -->
                     </li>
                     <li>
-                        <a href="{{url('catalog/all')}}">Catalog</a>
+                        <a href="{{url('catalog/all')}}">Product</a>
                         <!-- ==== sub menu ==== -->
                         <ul class="sub-menu">
                             @php
@@ -86,11 +86,10 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         @if (Auth::User())
-                        <ul>
-                            <li><a href="{{url('user/profile')}}" class="dropdown-item pl-2">My Profile</a></li>
-                            <hr>
-                            <li><a href="{{url('/logout')}}" class="dropdown-item">Logout</a></li>
-                        </ul>
+
+                        <li><a href="{{url('user/profile')}}" class="dropdown-item">My Profile</a></li>
+                        <li><a href="{{url('/logout')}}" class="dropdown-item">Logout</a></li>
+
                         @else <li><a href="{{url('/login')}}" class="dropdown-item">Login</a></li>
                         @endif
                     </div>

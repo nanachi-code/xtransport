@@ -21,6 +21,7 @@ Route::prefix('/library')->group(function () {
     Route::get('/new', 'Main\LibraryController@createDocument')->middleware('auth');
     Route::post('/new', 'Main\LibraryController@newDocument')->middleware('auth');
     Route::post('/rate', 'Main\LibraryController@rating')->middleware('auth');
+
     Route::get('/download/{id}', 'Main\LibraryController@downloadDocument')->middleware('auth');
 });
 

@@ -61,8 +61,8 @@
                                     <!-- ** -->
                                     <article class="entry-item">
                                         <figure class="entry-thumb">
-                                            <a href="{{url('/item/'.$item->id)}}"><img src="http://placehold.it/282x275"
-                                                    alt="">
+                                            <a href="{{url('/item/'.$item->id)}}"><img
+                                                    src="{{asset('/uploads/'.$item->thumbnail)}}" alt="">
                                             </a>
 
                                         </figure>

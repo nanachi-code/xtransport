@@ -59,6 +59,7 @@
                                     <div class="intro-box-content">
                                         <h4 class="intro-box-title kopa-heading4">Thông tin liên hệ</h4>
                                         <p class="intro-box-sub-title kopa-heading5">Địa chỉ: {{$company->address}}</p>
+                                        <p>ĐT: {{$company->email}}</p>
                                         <p>Email: {{$company->email}}</p>
                                     </div>
                                 </div>

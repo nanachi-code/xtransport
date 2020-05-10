@@ -108,18 +108,16 @@ class LibraryController extends Controller
     }
     public function downloadDocument($id)
     {
+
         try {
             $document = Document::find($id);
             $document->increment('download_number');
+            $document->save();
             $path = public_path("uploads/documents/".$document->user_id.'/'.$document->file);
         } catch (\Throwable $th) {
             throw $th;
         }
-        return response()->download($path);
-    }
-
-    public function download($path)
-    {
+        //return 1;
         return response()->download($path);
     }
 
