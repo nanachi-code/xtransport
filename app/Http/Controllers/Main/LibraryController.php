@@ -14,7 +14,7 @@ class LibraryController extends Controller
 {
     public function archiveDocument()
     {
-        $doc = Document::all()->sort(function ($a, $b) {
+        $doc = Document::all()->where('status',Document::PUBLISH)->sort(function ($a, $b) {
             if ($a->averageRating == $b->averageRating) {
                 return 0;
             }
@@ -22,7 +22,7 @@ class LibraryController extends Controller
         });
         $p = [
             'location' => '',
-            'newest' => Document::orderBy('updated_at', 'desc')->take(3)->get(),
+            'newest' => Document::orderBy('updated_at', 'desc')->where('status',Document::PUBLISH)->take(3)->get(),
             'highest_rate' => $doc->slice(0, 3)
         ];
         return view('main.library')->with($p);
@@ -31,7 +31,7 @@ class LibraryController extends Controller
     public function allDocument()
     {
         $p = [
-            'doc' => Document::orderBy('updated_at', 'desc')->paginate(12)
+            'doc' => Document::orderBy('updated_at', 'desc')->where('status',Document::PUBLISH)->paginate(12)
         ];
         return view('main.doclist')->with($p);
     }
@@ -114,6 +114,7 @@ class LibraryController extends Controller
             $document->increment('download_number');
         } catch (\Throwable $th) {
             throw $th;
+        }
     }
 
     public function rating(Request $request)

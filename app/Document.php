@@ -10,7 +10,9 @@ class Document extends Model
     use Rateable;
 
     protected $table = 'document';
-
+    const PENDING = 0;
+    const PUBLISH = 1;
+    const DELETED = -1;
     protected $fillable = ['title', 'summary','author', 'file','user_id' , 'download_number', 'bookmark_number'];
     public function users()
     {

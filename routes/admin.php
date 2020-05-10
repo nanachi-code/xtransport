@@ -176,3 +176,21 @@ Route::prefix('feedback')->group(function () {
 
     Route::get('/{id}/delete', 'Admin\ContactFeedbackController@deleteFeedback');
 });
+
+
+//* Document
+Route::prefix('document')->group(function () {
+    Route::get('/', function () {
+        return redirect('/admin/document/all');
+    });
+
+    Route::get('/all', 'Admin\DocumentController@renderArchiveDocument');
+
+    Route::get('/{id}', 'Admin\DocumentController@renderSingleDocument');
+
+    Route::get('/{id}/delete', 'Admin\DocumentController@deleteDocument');
+
+    Route::get('/{id}/restore', 'Admin\DocumentController@restoreDocument');
+
+    Route::get('/{id}/publish', 'Admin\DocumentController@publishDocument');
+});

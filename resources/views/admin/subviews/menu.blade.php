@@ -245,6 +245,19 @@
             </a>
         </li>
 
+        {{-- Document --}}
+        <li class="sub-header">
+            <span>Document</span>
+        </li>
+        <li>
+            <a href="{{ url('/admin/document/all') }}">
+                <div class="icon-w">
+                    <i class="icon-docs"></i>
+                </div>
+                <span>All Documents</span>
+            </a>
+        </li>
+
         {{-- Feedback --}}
         <li class="sub-header">
             <span>Feedback</span>

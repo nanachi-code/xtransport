@@ -82,7 +82,9 @@
                                                     <a href="{{url('library/detail/'.$d->id)}}">{{$d->title}}</a>
                                                 </h4>
                                                 <p>Author: {{$d->author}}</p>
-                                                <p>Rating</p>
+                                                <p><input id="input-id" type="text" class="rating"
+                                                        value="{{ $d->averageRating }}" data-size="ex-sm" disabled>
+                                                </p>
                                                 <p>Download: {{$d->download_number}}</p>
 
                                             </div>
@@ -107,4 +109,9 @@
         </div>
     </div>
 </section>
+@endsection
+@section('additional-scripts')
+<script type="text/javascript">
+    $("#input-id").rating();
+</script>
 @endsection

@@ -22,6 +22,7 @@ class CreateDocument extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->unsignedInteger('download_number')->default(0);
             $table->unsignedInteger('bookmark_number')->default(0);
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });
