@@ -79,7 +79,7 @@
                                         <div class="kopa-intro-box kopa-intro-box-4">
                                             <div class="intro-box-content">
                                                 <h4 class="intro-box-title kopa-heading4">
-                                                    <a href="{{url('library/detail/')}}">{{$d->title}}</a>
+                                                    <a href="{{url("library/{$d->id}/detail")}}">{{$d->title}}</a>
                                                 </h4>
                                                 <p>Author: {{$d->author}}</p>
                                                 <p>Rating</p>

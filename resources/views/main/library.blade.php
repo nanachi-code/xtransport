@@ -67,7 +67,17 @@
             <div class="col-md-9">
                 <article class="entry-item clearfix widget">
                     <div class="entry-content">
-                        <h3 class="widget-title kopa-heading2 size-normal">Newest</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 class="widget-title kopa-heading2 size-normal">Newest</h3>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="alignright"><a href="{{url('/library/all')}}">
+                                        <h4>See all document >></h4>
+                                    </a></div>
+                            </div>
+
+                        </div>
                         <ul class="ul-mh row">
                             @foreach ($newest as $d)
                             <li class="col-xs-12 col-sm-12 col-md-4 pb-2" style="max-height: 450px;">
@@ -79,7 +89,7 @@
                                         <div class="kopa-intro-box kopa-intro-box-4">
                                             <div class="intro-box-content">
                                                 <h4 class="intro-box-title kopa-heading4">
-                                                    <a href="{{url('library/detail/'.$d->id)}}">{{$d->title}}</a>
+                                                    <a href="{{url("library/{$d->id}/detail")}}">{{$d->title}}</a>
                                                 </h4>
                                                 <p>Author: {{$d->author}}</p>
                                                 <p><input id="input-id" type="text" class="rating"
@@ -90,7 +100,7 @@
 
                                                 @if (\Auth::check())
                                                 @if (\Auth::user()->id == $d->user_id)
-                                                <a href="{{url('library/detail/'.$d->id)}}"
+                                                <a href="{{url("library/{$d->id}/detail")}}"
                                                     class="style-btn-03 sm-btn">View detail</a>
                                                 @else
                                                 @if (\Auth::user()->documents->contains('id',$d->id))
@@ -102,7 +112,7 @@
                                                 @endif
                                                 @endif
                                                 @else
-                                                <a href="{{url('library/detail/'.$d->id)}}"
+                                                <a href="{{url("library/{$d->id}/detail")}}"
                                                     class="style-btn-03 sm-btn">View detail</a>
                                                 @endif
 
@@ -113,9 +123,6 @@
                             </li>
                             @endforeach
                         </ul>
-                        <div class="alignright"><a href="{{url('/library/all')}}">
-                                <h4>See all document >></h4>
-                            </a></div>
                     </div>
                 </article>
                 <article class="entry-item clearfix">
@@ -132,7 +139,7 @@
                                         <div class="kopa-intro-box kopa-intro-box-4">
                                             <div class="intro-box-content">
                                                 <h4 class="intro-box-title kopa-heading4">
-                                                    <a href="{{url('library/detail/'.$d->id)}}">{{$d->title}}</a>
+                                                    <a href="{{url("library/{$d->id}/detail")}}">{{$d->title}}</a>
                                                 </h4>
                                                 <p>Author: {{$d->author}}</p>
                                                 <p><input id="input-id" type="text" class="rating"
@@ -143,7 +150,7 @@
 
                                                 @if (\Auth::check())
                                                 @if (\Auth::user()->id == $d->user_id)
-                                                <a href="{{url('library/detail/'.$d->id)}}"
+                                                <a href="{{url("library/{$d->id}/detail")}}"
                                                     class="style-btn-03 sm-btn">View detail</a>
                                                 @else
                                                 @if (\Auth::user()->documents->contains('id',$d->id))
@@ -155,7 +162,7 @@
                                                 @endif
                                                 @endif
                                                 @else
-                                                <a href="{{url('library/detail/'.$d->id)}}"
+                                                <a href="{{url("library/{$d->id}/detail")}}"
                                                     class="style-btn-03 sm-btn">View detail</a>
                                                 @endif
 

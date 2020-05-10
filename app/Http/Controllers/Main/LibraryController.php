@@ -89,7 +89,7 @@ class LibraryController extends Controller
             }
         }
         $document = Document::create($document);
-        return redirect()->to('library/detail/' . $document->id);
+        return redirect()->to('library/' . $document->id.'/detail/');
     }
 
     public function detailDocument($id)
@@ -101,6 +101,7 @@ class LibraryController extends Controller
         $p = [
             'doc' => $document = Document::find($id),
             'pathToFile' => asset("uploads/documents/" . $document->user_id . '/' . $document->file),
+            'review' => \willvincent\Rateable\Rating::where('rateable_id', $id)->get(),
             'rate_flag' => $rate_flag
         ];
         return view('main.document')->with($p);
@@ -119,11 +120,13 @@ class LibraryController extends Controller
 
     public function rating(Request $request)
     {
+
         request()->validate(['rate' => 'required']);
         $document = Document::find($request->id);
         $rating = new \willvincent\Rateable\Rating;
         $rating->rating = $request->rate;
         $rating->user_id = auth()->user()->id;
+        $rating->review = $request->review;
         $document->ratings()->save($rating);
         return redirect()->back();
     }

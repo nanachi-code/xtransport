@@ -74,7 +74,7 @@
                             <td>{{$d->author}}</td>
                             <td>{{$d->download_number}}</td>
                             <td>{{$d->updated_at}}</td>
-                            <td><a href="{{url('library/detail/'.$d->id)}}">View detail</a></td>
+                            <td><a href="{{url("library/{$d->id}/detail")}}">View detail</a></td>
                         </tr>
                         @endforeach
                     </tbody>

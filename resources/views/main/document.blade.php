@@ -97,18 +97,58 @@
                                             <h3>Rating</h3>
                                             <input id="rate-view" type="text" class="rating" data-size="lg"
                                                 value="{{ $doc->averageRating }}" name="rate" disabled>
-
+                                            <br>
+                                            <div class="widget ex-module-introbox-4">
+                                                <div class="widget-content">
+                                                    <h3>Reviews</h3>
+                                                    <ul class="ul-mh">
+                                                        <!-- ** -->
+                                                        @foreach ($review as $r)
+                                                        @php
+                                                        $user = \App\User::find($r->user_id);
+                                                        @endphp
+                                                        <li>
+                                                            <article class="entry-item">
+                                                                <div class="entry-content">
+                                                                    <div
+                                                                        class="kopa-intro-box kopa-intro-box-4 clearfix">
+                                                                        <div class="intro-box-thumb">
+                                                                            <span class="icon_profile"></span>
+                                                                        </div>
+                                                                        <div class="intro-box-content">
+                                                                            <h4> {{$user->name}}</h4> <input
+                                                                                id="rate-view" type="text"
+                                                                                class="rating" data-size="md"
+                                                                                value="{{ $r->rating }}" name="rate"
+                                                                                disabled>
+                                                                        </div>
+                                                                        <p>{{$r->review}}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </article>
+                                                        </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-6">
                                             <h3>Your Rating</h3>
                                             <form action="{{url('library/rate')}}" method="POST">
                                                 @csrf
-
                                                 <input id="input-id" type="text" class="rating" data-size="lg"
                                                     value="{{ $doc->userAverageRating }}" name="rate"
                                                     {{($rate_flag)? "":"disabled" }}>
                                                 <input type="hidden" name="id" required="" value="{{ $doc->id }}">
-
+                                                <div class="form-group">
+                                                    <label for="review">Review</label>
+                                                    <textarea class="form-control" id="review" rows="3" name="review"
+                                                        placeholder="Your review" {{($rate_flag)? "":"disabled" }}>@if(!$rate_flag){{
+                                                            $review->first(function($comment){
+                                                                return $comment->user_id == \Auth::user()->id;
+                                                            })->review
+                                                        }}@endif</textarea>
+                                                </div>
                                                 @if ($rate_flag)
                                                 <div class="py-4">
                                                     <button class="btn btn-success">Submit Review</button>
