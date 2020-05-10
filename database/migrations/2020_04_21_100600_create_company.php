@@ -18,6 +18,7 @@ class CreateCompany extends Migration
             $table->string('name', 191)->unique();
             $table->string('phone', 191)->unique();
             $table->string('email', 191)->unique();
+            $table->string('website');
             $table->string('address');
             $table->longText('introduction')->nullable();
             $table->string('logo')->nullable();

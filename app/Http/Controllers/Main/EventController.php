@@ -10,22 +10,26 @@ use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
-    public function archiveEvent()
+    public function renderArchiveEvent()
     {
         $p = [
             'events' => Event::where('status', 'active')
                 ->whereDate("date", ">=", Carbon::today())
                 ->paginate(9)
         ];
-        return view('archive-event')->with($p);
+        return view('main.archive-event')->with($p);
     }
 
-    public function eventDetail($id)
+    public function renderSingleEvent($id)
     {
         $p = [
-            'event' => Event::find($id)
+            'event' => Event::find($id),
+            "latestEvents" => Event::where("status", "active")
+                ->where("id", "!=", $id)
+                ->take(3)
+                ->get(),
         ];
-        return view('single-event')->with($p);
+        return view('main.single-event')->with($p);
     }
 
     public function registerEvent(Request $request, $id)

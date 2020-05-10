@@ -54,7 +54,7 @@
 
                                     {{-- company phone --}}
                                     <div class="form-group">
-                                        <label for="form-company-price">Phone</label>
+                                        <label for="form-company-phone">Phone</label>
                                         <input class="form-control" data-error="company phone is required"
                                             placeholder="Enter company phone" type="text" name="phone"
                                             id="form-company-phone" />
@@ -67,6 +67,15 @@
                                         <input class="form-control" data-error="company address is required"
                                             placeholder="Enter company address" type="text" name="address"
                                             id="form-company-address" />
+                                        <div class="help-block form-text with-errors form-control-feedback"></div>
+                                    </div>
+
+                                    {{-- company website --}}
+                                    <div class="form-group">
+                                        <label for="form-company-website">Website</label>
+                                        <input class="form-control" data-error="company website is required"
+                                            placeholder="Enter company website" type="text" name="website"
+                                            id="form-company-website" />
                                         <div class="help-block form-text with-errors form-control-feedback"></div>
                                     </div>
 

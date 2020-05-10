@@ -56,7 +56,8 @@ class CompanyController extends Controller
             'name' => ['required', 'string', 'max:191'],
             'email' => ['required', 'string', 'email', 'max:191', 'unique:company'],
             'phone' => ['required', 'string', 'min:8', 'unique:company'],
-            'address' => ['required', 'string']
+            'address' => ['required', 'string'],
+            'website' => ['required', 'string']
         ]);
 
         $company = new Company;
@@ -64,6 +65,7 @@ class CompanyController extends Controller
         $company->email = $request->get('email');
         $company->phone = $request->get('phone');
         $company->address = $request->get('address');
+        $company->website = $request->get('website');
         $company->status = "active";
         $company->logo = $request->get('logo');
         $company->introduction = $request->get('introduction');
@@ -90,6 +92,7 @@ class CompanyController extends Controller
         $company->name = $request->get('name');
         $company->phone = $request->get('phone');
         $company->address = $request->get('address');
+        $company->website = $request->get('website');
         $company->logo = $request->get('logo');
         $company->introduction = $request->get('introduction');
 

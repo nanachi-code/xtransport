@@ -1,8 +1,8 @@
-@extends('layout')
+@extends('main.layouts.app')
 
 @section('title',"Library")
 
-@section('location')
+@section('breadcrumb')
 <section class="kopa-area kopa-area-44 white-text-style">
     <div class="container">
         <div class="row">

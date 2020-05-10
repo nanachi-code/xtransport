@@ -70,6 +70,15 @@
                                         <div class="help-block form-text with-errors form-control-feedback"></div>
                                     </div>
 
+                                    {{-- company website --}}
+                                    <div class="form-group">
+                                        <label for="form-company-website">Website</label>
+                                        <input class="form-control" data-error="company website is required"
+                                            placeholder="Enter company website" type="text" name="website"
+                                            value="{{ $company->website }}" id="form-company-website" />
+                                        <div class="help-block form-text with-errors form-control-feedback"></div>
+                                    </div>
+
                                     {{-- company introduction --}}
                                     <div class="form-group">
                                         <label>Introduction</label>

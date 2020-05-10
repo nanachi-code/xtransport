@@ -22,27 +22,27 @@ class LibraryController extends Controller
         });
         $p = [
             'location' => '',
-            'newest' => Document::orderBy('updated_at','desc')->take(3)->get(),
+            'newest' => Document::orderBy('updated_at', 'desc')->take(3)->get(),
             'highest_rate' => $doc->slice(0, 3)
         ];
-        return view('library')->with($p);
+        return view('main.library')->with($p);
     }
 
     public function allDocument()
     {
         $p = [
-            'doc' => Document::orderBy('updated_at','desc')->paginate(12)
+            'doc' => Document::orderBy('updated_at', 'desc')->paginate(12)
         ];
-        return view('doclist')->with($p);
+        return view('main.doclist')->with($p);
     }
 
     public function userDocument()
     {
         $p = [
             'location' => 'user',
-            'documents' => Document::where('user_id',Auth::user()->id)->get()
+            'documents' => Document::where('user_id', Auth::user()->id)->get()
         ];
-        return view('mydocument')->with($p);
+        return view('main.mydocument')->with($p);
     }
 
     public function bookmarkDocument()
@@ -51,7 +51,7 @@ class LibraryController extends Controller
             'location' => 'bookmark',
             'bookmarked' => Auth::user()->documents
         ];
-        return view('bookmark')->with($p);
+        return view('main.bookmark')->with($p);
     }
 
     public function addBookmark($id)
@@ -72,56 +72,52 @@ class LibraryController extends Controller
 
     public function createDocument()
     {
-        return view('create-document');
+        return view('main.create-document');
     }
 
     public function newDocument(Request $request)
     {
-        $ext_allow = ['doc','docx','pdf'];
+        $ext_allow = ['doc', 'docx', 'pdf'];
         $document = $request->all();
         $document['user_id'] = Auth::user()->id;
         if ($request->hasFile('file')) {
             $document['file'] = $request->file->getClientOriginalName();
 
             $ext = $request->file->getClientOriginalExtension();
-            if(in_array($ext,$ext_allow)){
-                $request->file->storeAs('documents/'.Auth::user()->id,$document['file'],'uploads');
+            if (in_array($ext, $ext_allow)) {
+                $request->file->storeAs('documents/' . Auth::user()->id, $document['file'], 'uploads');
             }
         }
         $document = Document::create($document);
-        return redirect()->to('library/detail/'.$document->id);
+        return redirect()->to('library/detail/' . $document->id);
     }
 
     public function detailDocument($id)
     {
-        $rate_flag = \willvincent\Rateable\Rating::where('rateable_id',$id)->get();
-        if ($rate_flag->contains('user_id',Auth::user()->id)) {
+        $rate_flag = \willvincent\Rateable\Rating::where('rateable_id', $id)->get();
+        if ($rate_flag->contains('user_id', Auth::user()->id)) {
             $rate_flag = false;
-        }
-        else $rate_flag = true;
+        } else $rate_flag = true;
         $p = [
             'doc' => $document = Document::find($id),
-            'pathToFile' => asset("uploads/documents/".$document->user_id.'/'.$document->file),
+            'pathToFile' => asset("uploads/documents/" . $document->user_id . '/' . $document->file),
             'rate_flag' => $rate_flag
         ];
-        return view('document')->with($p);
+        return view('main.document')->with($p);
     }
+
     public function downloadDocument($id)
     {
 
         try {
             $document = Document::find($id);
             $document->increment('download_number');
-            $document->save();
-            $path = public_path("uploads/documents/".$document->user_id.'/'.$document->file);
         } catch (\Throwable $th) {
             throw $th;
-        }
-        //return 1;
-        return response()->download($path);
     }
 
-    public function rating(Request $request){
+    public function rating(Request $request)
+    {
         request()->validate(['rate' => 'required']);
         $document = Document::find($request->id);
         $rating = new \willvincent\Rateable\Rating;
@@ -130,6 +126,4 @@ class LibraryController extends Controller
         $document->ratings()->save($rating);
         return redirect()->back();
     }
-
-
 }

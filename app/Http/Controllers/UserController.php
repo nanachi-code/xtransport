@@ -13,12 +13,13 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function userProfile()
+    public function renderUserProfile()
     {
         $user = Auth::user();
-        return view('user.user-profile', ['user' => $user]);
+        return view('main.user-profile', ['user' => $user]);
     }
-    public function userProfileUpdate($id, Request $request)
+
+    public function updateUserProfile($id, Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255']
@@ -54,10 +55,10 @@ class UserController extends Controller
             'confirm_password' => ['same:new_password'],
         ]);
         if ($validator->fails()) {
-            return response()->json(["status" => false, "messenger" => $validator->errors()->first()]);
+            return response()->json(["status" => false, "message" => $validator->errors()->first()]);
         }
         if (!Hash::check($request->get('old_password'), Auth::user()->password)) {
-            return  response()->json(['status' => false, "messenger" => "Old Password False"]);
+            return  response()->json(['status' => false, "message" => "Old Password False"]);
         };
         $new_password = $request->get("new_password");
         $user = Auth::user();
@@ -65,6 +66,6 @@ class UserController extends Controller
             "password" => Hash::make($new_password),
         ]);
 
-        return response()->json(['status' => true, "messenger" => "Change Password Successfully"]);
+        return response()->json(['status' => true, "message" => "Change Password Successfully"]);
     }
 }

@@ -1,8 +1,8 @@
-@extends('layout')
+@extends('main.layouts.app')
 
-@section('title',"About Us")
+@section('title', "About Us")
 
-@section('location')
+@section('breadcrumb')
 <!-- kopa area 24-->
 <section class="kopa-area kopa-area-24 white-text-style">
     <div class="container">
@@ -11,17 +11,15 @@
                 <div class="kopa-breadcrumb">
                     <h3>about us</h3>
                     <div class="breadcrumb-content">
-                        <p>We offer a big storage space, heated and with air condition, to store
-                            <br> your good’s safe and organized even for longer period of time.</p>
-                        <span itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="">
+                        <span>
                             <a itemprop="url" href="{{url('/')}}">
                                 <span itemprop="title">Home</span>
                             </a>
                         </span>
                         <span>&nbsp; &nbsp; / &nbsp; &nbsp;</span>
-                        <span itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="">
+                        <span>
                             <a itemprop="url" class="current-page">
-                                <span itemprop="title">about us</span>
+                                <span itemprop="title">About us</span>
                             </a>
                         </span>
                     </div>

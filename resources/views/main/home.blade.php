@@ -1,9 +1,7 @@
-@extends('layout')
+@extends('main.layouts.app')
 
-@section('title',"Home")
+@section('title', "TransportX")
 
-@section('location')
-@endsection
 @section('content')
 <!-- main content -->
 <div class="main-content">
@@ -17,7 +15,7 @@
                 <div class="slider-pro">
                     <div class="sp-slides">
                         <div class="sp-slide">
-                            <img class="sp-image" src="{{asset("/images/default/img-slider-introduce-2.jpg")}}">
+                            <img class="sp-image" src="{{ asset("/images/default/img-slider-introduce-2.jpg") }}">
                             <p class="kopa-txt-style-04 sp-layer" data-horizontal="195" data-vertical="160"
                                 data-show-transition="left">
                                 open hours 7 days a week
@@ -26,25 +24,20 @@
                                 data-show-transition="left" data-show-delay="200">
                                 <a href="#">(018) 384-3866</a>
                             </p>
-                            <p class="sp-layer kopa-sp-layer-line" data-horizontal="105" data-vertical="280"><span
-                                    class="kopa-line-style-01"></span>
+                            <p class="sp-layer kopa-sp-layer-line" data-horizontal="105" data-vertical="280">
+                                <span class="kopa-line-style-01"></span>
                             </p>
                             <p class="kopa-txt-style-05 sp-layer" data-horizontal="230" data-vertical="310"
-                                data-show-transition="left" data-show-delay="400">exprienced</p>
+                                data-show-transition="left" data-show-delay="400">
+                                exprienced
+                            </p>
                             <p class="kopa-txt-style-06 sp-layer" data-horizontal="140" data-vertical="350"
-                                data-show-transition="left" data-show-delay="600">We have over fifty years of combined
-                                experience.</p>
-                            <p class="sp-layer kopa-sp-layer-btn-01" data-horizontal="100" data-vertical="430"
-                                data-show-transition="left" data-show-delay="800"><a href="#" class="btn-01">learn
-                                    more</a>
+                                data-show-transition="left" data-show-delay="600">
+                                We have over fifty years of combined experience.
                             </p>
-                            <p class="sp-layer kopa-sp-layer-btn-02" data-horizontal="330" data-vertical="430"
-                                data-show-transition="left" data-show-delay="800"><a href="#" class="btn-01">contact
-                                    us</a>
-                            </p>
-                            <p class="sp-layer kopa-sp-layer-img" data-horizontal="630" data-vertical="110"
+                            <p class="sp-layer kopa-sp-layer-btn-02" data-horizontal="220" data-vertical="430"
                                 data-show-transition="left" data-show-delay="800">
-                                <img src="{{asset("/images/default/part1.png")}}">
+                                <a href="{{ url("contact-us") }}" class="btn-01">contact us</a>
                             </p>
                         </div>
 
@@ -52,19 +45,18 @@
                             <img class="sp-image" src="{{asset("/images/default/img-slider-introduce-3.jpg")}}" alt="">
                             <p class="sp-layer kopa-title-7" data-horizontal="700" data-vertical="180"
                                 data-show-transition="left">
-                                REACH YOUR DESTINATION
-                                <br> 100% SURE AND SAFE
+                                BUILD AN ADVANCED TRANSPORTATION NETWORK,
+                                <br> IMPROVE TRAFFIC QUALITY.
                             </p>
 
                             <p class="sp-layer h4" data-horizontal="735" data-vertical="290" data-show-transition="left"
                                 data-show-delay="200">
-                                We will take care of your cargo or your passenger and
-                                <br> deliver them safe and on time
+                                We are a big, flexible group of experts dedicated to serving you and your traffic needs.
                             </p>
 
                             <p class="sp-layer kopa-sp-layer-btn-04" data-horizontal="735" data-vertical="380"
-                                data-show-transition="left" data-show-delay="800"><a href="#" class="btn-04">get your
-                                    quote</a>
+                                data-show-transition="left" data-show-delay="800">
+                                <a href="{{ url("blog/all") }}" class="btn-04">our blog</a>
                             </p>
 
                         </div>
@@ -91,12 +83,14 @@
                                 <li class="col-xs-12 col-sm-4 col-md-4">
                                     <article class="entry-item ">
                                         <div class="entry-thumb">
-                                            <a href="#"><span class="ex ex-map"></span></a>
+                                            <a href="{{ url("projects/all") }}"><span class="ex ex-archive"></span></a>
                                         </div>
                                         <div class="entry-content">
-                                            <h4 class="entry-title"><a href="#">Find Local Movers</a></h4>
-                                            <p>No matter where you're going, there's an
-                                                <br>award-winning Atlas moving company ready to serve you</p>
+                                            <h4 class="entry-title"><a href="#">Browse our works</a></h4>
+                                            <p>
+                                                We have done more than 100 projects for many clients around the
+                                                world and all of our works has recieved positive feedback!
+                                            </p>
 
                                             <a href="#" class="kopa-btn btn-09">LEARN MORE</a>
 
@@ -107,14 +101,19 @@
                                 <li class="col-xs-12 col-sm-4 col-md-4">
                                     <article class="entry-item">
                                         <div class="entry-thumb">
-                                            <a href="#"><span class="ex ex-truck-home"></span></a>
+                                            <a href="{{ url("event/all") }}"><span
+                                                    class="ex ex-hours-support"></span></a>
                                         </div>
                                         <div class="entry-content">
-                                            <h4 class="entry-title"><a href="#">Get an Instant Moving Quote</a></h4>
-                                            <p>No matter where you're going, there's an
-                                                <br>award-winning Atlas moving company ready to serve you</p>
+                                            <h4 class="entry-title">
+                                                <a href="{{ url("event/all") }}">Participate our events</a>
+                                            </h4>
+                                            <p>
+                                                Join our events hosted monthly with our experts to discuss about
+                                                the current and future state of transportation services.
+                                            </p>
 
-                                            <a href="#" class="kopa-btn btn-09">LEARN MORE</a>
+                                            <a href="{{ url("event/all") }}" class="kopa-btn btn-09">LEARN MORE</a>
 
                                         </div>
                                     </article>
@@ -123,14 +122,18 @@
                                 <li class="col-xs-12 col-sm-4 col-md-4">
                                     <article class="entry-item">
                                         <div class="entry-thumb">
-                                            <a href="#"><span class="ex ex-folder"></span></a>
+                                            <a href="{{ url("product/all") }}"><span class="ex ex-folder"></span></a>
                                         </div>
                                         <div class="entry-content">
-                                            <h4 class="entry-title"><a href="#">Getting Started With Atlas</a></h4>
-                                            <p>No matter where you're going, there's an
-                                                <br>award-winning Atlas moving company ready to serve you</p>
+                                            <h4 class="entry-title">
+                                                <a href="{{ url("product/all") }}">featured products</a>
+                                            </h4>
+                                            <p>
+                                                We feature many modern traffic equiptments from our partners. Contact us
+                                                if want your products to appear on our page.
+                                            </p>
 
-                                            <a href="#" class="kopa-btn btn-09">LEARN MORE</a>
+                                            <a href="{{ url("product/all") }}" class="kopa-btn btn-09">LEARN MORE</a>
 
                                         </div>
                                     </article>
@@ -143,6 +146,7 @@
         </div>
     </section>
     <!-- end thumbnail services -->
+
     <!-- Get an install Online Quote -->
     <section class="kopa-area kopa-area-16 white-text-style" id="kopa-get-online-quote">
         <div class="container-fluid">
@@ -259,6 +263,7 @@
         </div>
     </section>
     <!-- end Get an install online Quote -->
+
     <!-- our services 2 -->
     <section class="kopa-area kopa-area-18">
         <div class="container">
@@ -357,6 +362,64 @@
         </div>
     </section>
     <!-- end our services 2 -->
+
+    <!-- News lastest -->
+    <section class="kopa-area kopa-area-7">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <!-- widget -->
+                    <div class="widget ex-module-article-2">
+                        <div class="row">
+                            <div class="col-xs-4 col-md-3">
+
+                                <header class="widget-header style-07">
+                                    <span class="sub-title">news &amp; blog</span>
+                                    <h3 class="widget-title">
+                                        LATEST<br>NEWS
+                                    </h3>
+                                </header>
+                                <!-- navigation btn slisder -->
+                                <div class="customNavigation">
+                                    <a class="btn btn-prev-slider-news-lastest"><span class="ti-arrow-left"></span></a>
+                                    <a class="btn btn-next-slider-news-lastest"><span class="ti-arrow-right"></span></a>
+                                </div>
+                                <!-- end -->
+
+                            </div>
+                            <div class="col-xs-8 col-md-9">
+
+                                <div class="widget-content">
+                                    <ul class="owl-carousel owl-theme">
+                                        <li>
+                                            <!-- ** -->
+                                            <article class="entry-item">
+                                                <div class="entry-content">
+                                                    <h4 class="entry-title"><a href="#">Logistic leads the way on e-ABw
+                                                            implementation</a></h4>
+                                                    <p>Tex Trucking is one of the most trusted names in trucking, and an
+                                                        industry leader in home delivery. Whether its many </p>
+
+                                                    <a href="#" class="kopa-readmore">read more</a>
+
+                                                </div>
+                                            </article>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end News Lastet -->
+
+    @if ($allCompanies->count())
     <!-- logo partner -->
     <section class="kopa-area kopa-area-8 kopa-triangle-1">
         <div class="container-fluid">
@@ -367,15 +430,15 @@
                         <div class="widget-content">
                             <ul class="owl-carousel owl-theme">
                                 <!-- ** -->
-                                @foreach(\App\Company::all() as $company)
-                                @if ($company->logo)
+                                @foreach($allCompanies as $company)
+                                @if ($company->avatar)
                                 <li>
                                     <article class="entry-item">
                                         <div class="entry-content">
                                             <figure class="entry-thumb">
-                                                <a href="{{url('/company/'.$company->id)}}">
-                                                    <img src="{{ asset("uploads/{$company->logo}") }}"
-                                                        alt="{{$company->name}}">
+                                                <a href="#">
+                                                    <img src="{{ asset("uploads/{$company->avatar}") }}"
+                                                        alt="{{ $company->name }}">
                                                 </a>
                                             </figure>
                                         </div>
@@ -392,5 +455,6 @@
         </div>
     </section>
     <!-- end logo partner -->
+    @endif
     <!-- get started -->
     @endsection

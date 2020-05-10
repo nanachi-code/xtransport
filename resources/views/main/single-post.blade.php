@@ -1,15 +1,14 @@
-@extends('layout')
+@extends('main.layouts.app')
 
-@section('title',"Post")
+@section('title', $post->title)
 
-@section('location')
+@section('breadcrumb')
 <section class="kopa-area kopa-area-34 white-text-style">
     <div class="container">
         <div class="row">
             <div class="kopa-breadcrumb">
                 <h3>{{ $post->title }}</h3>
                 <div class="breadcrumb-content">
-                    <p>{{ $post->excerpt }}}</p>
                     <span itemtype="" itemscope="">
                         <a itemprop="url" href="{{ url('/') }}">
                             <span itemprop="title">Home</span>
@@ -43,7 +42,7 @@
                 <div class="kopa-wrap-entry-item">
                     <article class="entry-item">
                         <header class="entry-header">
-                            <h4 class="entry-title">{{$post->title}}</h4>
+                            <h4 class="entry-title">{{ $post->title }}</h4>
                             <div class="entry-meta">
                                 <div class="d-inline mr-3">
                                     <i class="fa fa-user"></i>
@@ -201,7 +200,7 @@
                         @if (Auth::check())
                         <!-- ================= form ==================== -->
                         <form class="form-comment ct-form-1 clearfix form-style-5"
-                            action="{{ url("post/{$post->id}/comment") }}" method="post" novalidate="novalidate">
+                            action="{{ url("/blog/post/{$post->id}/comment") }}" method="post" novalidate="novalidate">
                             @csrf
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -239,7 +238,7 @@
                             <li class="col-xs-12 col-sm-6" style="height: 577px;">
                                 <article class="entry-item">
                                     <figure class="entry-thumb">
-                                        <a href="#">
+                                        <a href="{{ url("/blog/post/{$post->id}") }}">
                                             @if ($post->thumbnail)
                                             <img src="{{ url("uploads/{$post->thumbnail}") }}" alt="">
                                             @else
@@ -263,7 +262,7 @@
                                             </div>
                                         </div>
                                         <h4 class="entry-title">
-                                            <a href="{{url('post/'.$post->id)}}">
+                                            <a href="{{ url("/blog/post/{$post->id}") }}">
                                                 {{ $post->title }}
                                             </a>
                                         </h4>
@@ -277,7 +276,7 @@
                                             </div>
                                             <div class="alignright">
                                                 <div class="wrap-btn">
-                                                    <a href="{{url('post/'.$r->id)}}">
+                                                    <a href="{{ url("/blog/post/{$post->id}") }}">
                                                         <i class="fa fa-file-text-o"></i> Read more
                                                     </a>
                                                 </div>
@@ -297,7 +296,10 @@
             </div>
             <!-- end main col -->
 
-            @include('subviews.sidebar', ["page" => "single-event"])
+
+            <!-- start sidebar -->
+            @include('main.subviews.sidebar', ["page" => "single-post"])
+            <!-- end sidebar -->
         </div>
     </div>
 </section>
