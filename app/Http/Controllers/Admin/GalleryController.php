@@ -22,7 +22,12 @@ class GalleryController extends Controller
                     })
             ];
         }
-        else mkdir(public_path('uploads'));
+        else {
+            mkdir(public_path('uploads'));
+            $p = [
+                'gallery' => []
+            ];
+        };
         return view('admin/gallery')->with($p);
     }
 
