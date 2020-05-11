@@ -62,9 +62,7 @@
                                         <p>We are a family owned company built upon the core values of steadfast
                                             reliability and an unwavering level of service. Our team of knowledgeable,
                                             friendly load planners have the experience needed to find the ideal
-                                            solutions for our clients.Sed ut perspiciatis unde omnis iste natus error
-                                            sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
-                                            ipsa quae. </p>
+                                            solutions for our clients.</p>
                                         <ul>
                                             <li><i class="fa fa-check"></i><a href="#">Tailored to your needs.</a>
                                             </li>
@@ -105,9 +103,8 @@
                                         </h4>
                                         <p>
                                             Fully insured and licensed, we are an asset-based bonded carrier
-                                            specializing in shipments between Canada and the United States. Centrally
-                                            located just north of the HWY 401 corridor in Guelph, Ontario sit amet
-                                            mauris. Benean sollicitudin, lorem quis bibendum auctor
+                                            specializing in shipments between Canada and the United States.
+                                            Centrally located just north of the HWY 401 corridor in Guelph, Ontario, Canada
                                         </p>
                                     </div>
                                 </article>
@@ -120,13 +117,14 @@
                                             quality policy
                                         </h4>
                                         <p>
-                                            Benean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum
+                                            We always provide you with the best quality, meet international standards
+                                            with hundreds of tests around the world and gain high praise from professionals.
                                         </p>
                                         <ul>
                                             <li><i class="fa fa-angle-right"></i><a href="#">Great logistic service
                                                     transport</a>
                                             </li>
-                                            <li><i class="fa fa-angle-right"></i><a href="#">torage group safety</a>
+                                            <li><i class="fa fa-angle-right"></i><a href="#">Storage group safety</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -143,10 +141,10 @@
                                             <li><i class="fa fa-angle-right"></i><a href="#">Great logistic service
                                                     transport</a>
                                             </li>
-                                            <li><i class="fa fa-angle-right"></i><a href="#">torage group safety</a>
+                                            <li><i class="fa fa-angle-right"></i><a href="#">Storage group safety</a>
                                             </li>
                                             <li><i class="fa fa-angle-right"></i><a href="#">International Shipping for
-                                                    50 contries</a>
+                                                    50 countries</a>
                                             </li>
                                             <li><i class="fa fa-angle-right"></i><a href="#">Lead with humility and
                                                     respect.</a>
@@ -195,10 +193,10 @@
                                 <li class="item">
                                     <article class="entry-item">
                                         <figure class="entry-thumb">
-                                            <img src="{{asset("/images/default/ava-ceo1.png")}}" alt="img-slider8-1">
+                                            <img src="{{asset("/images/default/33216426_594674690900836_5519126249164767232_o.jpg")}}" alt="img-slider8-1">
                                             <figcaption>
-                                                <h3 class="entry-title">Đinh Vũ</h3>
-                                                <span>regional director</span>
+                                                <h3 class="entry-title">Dinh Vu</h3>
+                                                <span>Managing director</span>
                                             </figcaption>
                                         </figure>
                                         <div class="entry-content">
@@ -213,10 +211,10 @@
                                 <li class="item active">
                                     <article class="entry-item">
                                         <figure class="entry-thumb">
-                                            <img src="{{asset("/images/default/ava-ceo1.png")}}" alt="img-slider8-1">
+                                            <img src="{{asset("/images/default/91569815_2617477821822988_4414869026124070912_o.jpg")}}" alt="img-slider8-1">
                                             <figcaption>
-                                                <h3 class="entry-title">Hồ Lý Thái</h3>
-                                                <span>regional director</span>
+                                                <h3 class="entry-title">Ho Ly Thai</h3>
+                                                <span>Technical professional</span>
                                             </figcaption>
                                         </figure>
                                         <div class="entry-content">
@@ -231,10 +229,10 @@
                                 <li class="item">
                                     <article class="entry-item">
                                         <figure class="entry-thumb">
-                                            <img src="{{asset("/images/default/ava-ceo1.png")}}" alt="img-slider8-1">
+                                            <img src="{{asset("/images/default/28061489_2000714236835283_8996934319964566339_o.jpg")}}" alt="img-slider8-1">
                                             <figcaption>
-                                                <h3 class="entry-title">Đào Ngọc Long</h3>
-                                                <span>regional director</span>
+                                                <h3 class="entry-title">Dao Ngọc Long</h3>
+                                                <span>Solutions consultant</span>
                                             </figcaption>
                                         </figure>
                                         <div class="entry-content">
