@@ -98,7 +98,7 @@
                             </ul>
                         </div>
                     </div>
-                    {{ $products->links('html.paginate') }}
+                    {{ $products->links('main.subviews.paginate') }}
                 </div>
             </div>
         </div>

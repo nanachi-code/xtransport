@@ -10,8 +10,6 @@
                 <div class="kopa-breadcrumb">
                     <h3>Library</h3>
                     <div class="breadcrumb-content">
-                        <p>We offer a big storage space, heated and with air condition, to store
-                            <br> your good’s safe and organized even for longer period of time.</p>
                         <span itemtype="" itemscope="">
                             <a itemprop="url" href="{{url('/')}}">
                                 <span itemprop="title">Home</span>
@@ -67,7 +65,16 @@
             <div class="col-md-9">
                 <article class="entry-item clearfix widget">
                     <div class="entry-content">
-                        <h3 class="widget-title kopa-heading2 size-normal">Recent upload</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 class="widget-title kopa-heading2 size-normal">Recent upload</h3>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="alignright"><a href="{{url('library/new')}}">
+                                        <h4>Add new document</h4>
+                                    </a></div>
+                            </div>
+                        </div>
                         <ul class="ul-mh row">
                             @foreach ($documents as $d)
                             <li class="col-xs-12 col-sm-12 col-md-4 pb-2" style="max-height: 450px;">
@@ -86,7 +93,6 @@
                                                         value="{{ $d->averageRating }}" data-size="ex-sm" disabled>
                                                 </p>
                                                 <p>Download: {{$d->download_number}}</p>
-
                                             </div>
                                         </div>
                                     </div>
@@ -94,15 +100,6 @@
                             </li>
                             @endforeach
                         </ul>
-
-                        <div class="alignleft"><a href="{{url('library/new')}}">
-                                <h4>Add new document</h4>
-                            </a></div>
-
-                        <div class="alignright"><a href="">
-                                <h4>See all document >></h4>
-                            </a></div>
-
                     </div>
                 </article>
             </div>

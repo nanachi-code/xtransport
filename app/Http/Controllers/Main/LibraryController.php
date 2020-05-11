@@ -116,6 +116,7 @@ class LibraryController extends Controller
         } catch (\Throwable $th) {
             throw $th;
         }
+        return response()->download(public_path('uploads/documents/'.$document->user_id.'/'.$document->file));
     }
 
     public function rating(Request $request)

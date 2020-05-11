@@ -11,8 +11,6 @@
                 <div class="kopa-breadcrumb">
                     <h3>contact</h3>
                     <div class="breadcrumb-content">
-                        <p>We offer a big storage space, heated and with air condition, to store
-                            <br> your good’s safe and organized even for longer period of time.</p>
                         <span itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="">
                             <a itemprop="url" href="#">
                                 <span itemprop="title">Home</span>

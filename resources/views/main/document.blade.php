@@ -10,8 +10,6 @@
                 <div class="kopa-breadcrumb">
                     <h3>Document</h3>
                     <div class="breadcrumb-content">
-                        <p>We offer a big storage space, heated and with air condition, to store
-                            <br> your good’s safe and organized even for longer period of time.</p>
                         <span itemtype="" itemscope="">
                             <a itemprop="url" href="{{url('/')}}">
                                 <span itemprop="title">Home</span>
@@ -64,11 +62,11 @@
             <div class="widget-content pb-5">
                 <div class="kopa-tab kopa-tab-7">
                     <ul class="nav nav-pills">
-                        <li class="active"><a data-toggle="tab" href=".tab-content-9">Mô tả</a>
+                        <li class="active"><a data-toggle="tab" href=".tab-content-9">Summary</a>
                         </li>
-                        <li><a data-toggle="tab" href=".tab-content-10">Tải về</a>
+                        <li><a data-toggle="tab" href=".tab-content-10">Download</a>
                         </li>
-                        <li><a data-toggle="tab" href=".tab-content-11">Đánh giá</a>
+                        <li><a data-toggle="tab" href=".tab-content-11">Reviews</a>
                         </li>
                     </ul>
 

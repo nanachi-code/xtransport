@@ -10,8 +10,6 @@
                 <div class="kopa-breadcrumb">
                     <h3>Library</h3>
                     <div class="breadcrumb-content">
-                        <p>We offer a big storage space, heated and with air condition, to store
-                            <br> your good’s safe and organized even for longer period of time.</p>
                         <span itemtype="" itemscope="">
                             <a itemprop="url" href="{{url('/')}}">
                                 <span itemprop="title">Home</span>
