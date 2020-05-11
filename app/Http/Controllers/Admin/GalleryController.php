@@ -11,15 +11,18 @@ class GalleryController extends Controller
 {
     public function renderGallery()
     {
-        $p = [
-            'gallery' => collect(File::allFiles(public_path('uploads')))
-                ->filter(function ($file) {
-                    return in_array($file->getExtension(), ['png', 'gif', 'jpg']);
-                })
-                ->sortBy(function ($file) {
-                    return $file->getCTime();
-                })
-        ];
+        if (file_exists(public_path('uploads'))) {
+            $p = [
+                'gallery' => collect(File::allFiles(public_path('uploads')))
+                    ->filter(function ($file) {
+                        return in_array($file->getExtension(), ['png', 'gif', 'jpg']);
+                    })
+                    ->sortBy(function ($file) {
+                        return $file->getCTime();
+                    })
+            ];
+        }
+        else mkdir(public_path('uploads'));
         return view('admin/gallery')->with($p);
     }
 
