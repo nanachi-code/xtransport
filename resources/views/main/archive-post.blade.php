@@ -31,9 +31,9 @@
 <section class="kopa-area kopa-area-35">
     <div class="container">
         <div class="row">
+            @if (count($posts) >0)
             <div class="col-xs-12 col-lg-10 col-lg-offset-1">
                 <ul class="blog-article-list-1">
-                    @if (count($posts) >0)
                     @foreach ($posts as $post)
                     <li>
                         <article class="entry-item">
@@ -83,14 +83,16 @@
                         </article>
                     </li>
                     @endforeach
-                    @else
-                    <h6>No posts found.</h6>
-                    @endif
                 </ul>
                 <!-- nav pagination -->
                 {{ $posts->links('main.subviews.paginate') }}
                 <!-- end -->
             </div>
+            @else
+            <div class="col-xs-12 col-lg-12">
+                <h6>No posts found.</h6>
+            </div>
+            @endif
         </div>
     </div>
 </section>

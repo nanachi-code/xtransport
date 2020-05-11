@@ -389,26 +389,32 @@
 
                             </div>
                             <div class="col-xs-8 col-md-9">
-
+                                @if ($allPosts->count())
                                 <div class="widget-content">
                                     <ul class="owl-carousel owl-theme">
+                                        @foreach ($allPosts as $post)
                                         <li>
                                             <!-- ** -->
                                             <article class="entry-item">
                                                 <div class="entry-content">
-                                                    <h4 class="entry-title"><a href="#">Logistic leads the way on e-ABw
-                                                            implementation</a></h4>
-                                                    <p>Tex Trucking is one of the most trusted names in trucking, and an
-                                                        industry leader in home delivery. Whether its many </p>
+                                                    <h4 class="entry-title">
+                                                        <a href="{{ url("blog/post/{$post->id}") }}">
+                                                            {{ $post->title }}
+                                                        </a>
+                                                    </h4>
+                                                    <p>{{ $post->excerpt }}</p>
 
-                                                    <a href="#" class="kopa-readmore">read more</a>
-
+                                                    <a href="{{ url("blog/post/{$post->id}") }}"
+                                                        class="kopa-readmore">read more</a>
                                                 </div>
                                             </article>
                                         </li>
+                                        @endforeach
                                     </ul>
                                 </div>
-
+                                @else
+                                <h6>No posts found.</h6>
+                                @endif
                             </div>
                         </div>
                     </div>

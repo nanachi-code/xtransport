@@ -40,6 +40,18 @@ Route::prefix('/event')
         Route::post('/detail/{id}', 'Main\EventController@registerEvent');
     });
 
+//*
+Route::prefix('project')
+    ->group(function () {
+        Route::get('/', function () {
+            return redirect('/project/all');
+        });
+
+        Route::get('/all', 'Main\ProjectController@renderArchiveProject');
+
+        Route::get('/detail/{id}', 'Main\ProjectController@renderSingleProject');
+    });
+
 //* Product
 Route::prefix('/product')
     ->group(function () {
