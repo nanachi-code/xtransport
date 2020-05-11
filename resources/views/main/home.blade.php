@@ -22,7 +22,7 @@
                             </p>
                             <p class="kopa-txt-style-03 sp-layer" data-horizontal="145" data-vertical="200"
                                 data-show-transition="left" data-show-delay="200">
-                                <a href="#">(018) 384-3866</a>
+                                <a href="#">(+84) 398698695</a>
                             </p>
                             <p class="sp-layer kopa-sp-layer-line" data-horizontal="105" data-vertical="280">
                                 <span class="kopa-line-style-01"></span>
@@ -37,7 +37,7 @@
                             </p>
                             <p class="sp-layer kopa-sp-layer-btn-02" data-horizontal="220" data-vertical="430"
                                 data-show-transition="left" data-show-delay="800">
-                                <a href="{{ url("contact-us") }}" class="btn-01">contact us</a>
+                                <a href="{{ url("contact") }}" class="btn-01">contact us</a>
                             </p>
                         </div>
 
@@ -49,7 +49,7 @@
                                 <br> IMPROVE TRAFFIC QUALITY.
                             </p>
 
-                            <p class="sp-layer h4" data-horizontal="735" data-vertical="290" data-show-transition="left"
+                            <p class="sp-layer h4" data-horizontal="735" data-vertical="320" data-show-transition="left"
                                 data-show-delay="200">
                                 We are a big, flexible group of experts dedicated to serving you and your traffic needs.
                             </p>
