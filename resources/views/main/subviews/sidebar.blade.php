@@ -2,9 +2,34 @@
 <div class="col-xs-12 col-md-3 sidebar kopa-col-respon-2">
     <div class="row ct-row-06">
         <div class="col-xs-12">
-            @if ($page == " single-event")
+            @if ($page == "single-event")
             <!-- widget -->
+            <div class="widget ex-module-article-list-1">
+                <header class="widget-header style-09">
+                    <h3 class="widget-title"><span>Details</span></h3>
+                </header>
+                <div class="widget-content">
+                    <p class="intro-box-sub-title kopa-heading5">
+                        Date: {{ $event->date }}
+                        <br>
+                        Address: {{ $event->address }}
+                        <br>
+                        <br>
+                        {{ $event->users->count() }} users registered.
+                    </p>
 
+                    @if (Auth::check())
+                    <a href="{{ url("/event/detail/{$event->id}") }}" id="register-event"
+                        class="style-btn-01 md-btn mt-5">Register</a>
+                    @else
+                    <h6>You need to <a href="{{ url("login") }}">login</a> before register for
+                        this events.</h6>
+                    @endif
+                </div>
+            </div>
+            <!-- end -->
+
+            <!-- widget -->
             <div class="widget ex-module-article-list-1">
                 <header class="widget-header style-09">
                     <h3 class="widget-title"><span>latest events</span></h3>
