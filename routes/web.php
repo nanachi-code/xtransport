@@ -49,7 +49,7 @@ Route::prefix('/event')
         Route::post('/detail/{id}', 'Main\EventController@registerEvent');
     });
 
-//*
+//* Project
 Route::prefix('project')
     ->group(function () {
         Route::get('/', function () {
