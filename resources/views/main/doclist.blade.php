@@ -67,6 +67,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if($doc->isEmpty())
+                        <tr>
+                            <td colspan="6" class="text-center">No document available</td>
+                        </tr>
+                        @endif
+
                         @foreach ($doc as $d)
                         <tr>
                             <th scope="row">{{$d->id}}</th>

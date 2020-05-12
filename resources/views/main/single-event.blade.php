@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('main.layouts.app')
 
 @section('title', $event->name)
 
@@ -56,31 +56,7 @@
                         <div class="entry-content">
                             {!! $event->introduction !!}
                         </div>
-                        <article id="event-info" class="entry-item py-4">
-                            <div class="row">
-                                <div class="entry-content col-md-12">
-                                    <div class="kopa-intro-box kopa-intro-box-4 clearfix">
-                                        <div class="intro-box-content ">
-                                            <h4 class="intro-box-title kopa-heading4">Details</h4>
-                                            <p class="intro-box-sub-title kopa-heading5">
-                                                Date: {{ $event->date }}
-                                            </p>
-                                            <p>
-                                                Address: {{ $event->address }}
-                                            </p>
 
-                                            @if (Auth::check())
-                                            <a href="{{ url("/event/detail/{$event->id}") }}" id="register-event"
-                                                class="style-btn-01 md-btn">Register</a>
-                                            @else
-                                            <p>You need to <a href="{{ url("login") }}">login</a> before register for
-                                                this events.</p>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
                         <footer class="entry-footer clearfix">
                             <div class="wrap-social-link alignright">
                                 Share:
@@ -99,10 +75,35 @@
                         </footer>
                     </article>
                 </div>
+                <article id="event-info" class="entry-item py-4">
+                    <div class="row">
+                        <div class="entry-content col-md-12">
+                            <div class="kopa-intro-box kopa-intro-box-4 clearfix">
+                                <div class="intro-box-content ">
+                                    <h4 class="intro-box-title kopa-heading4">Details</h4>
+                                    <p class="intro-box-sub-title kopa-heading5">
+                                        Date: {{ $event->date }}
+                                    </p>
+                                    <p>
+                                        Address: {{ $event->address }}
+                                    </p>
+
+                                    @if (Auth::check())
+                                    <a href="{{ url("/event/detail/{$event->id}") }}" id="register-event"
+                                        class="style-btn-01 md-btn">Register</a>
+                                    @else
+                                    <p>You need to <a href="{{ url("login") }}">login</a> before register for
+                                        this events.</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
             </div>
             <!-- end main col -->
 
-            @include('subviews.sidebar', ["page" => "single-event"])
+            @include('main.subviews.sidebar', ["page" => "single-event"])
         </div>
     </div>
 </section>
