@@ -53,9 +53,9 @@
                     </header>
                     <div class="kopa-gallery kopa-gallery-2">
                         <div class="gallery-content clearfix">
+                            @if ($products->count())
                             <ul class="ul-mh row ct-row-01 masonry-container-2"
                                 style="position: relative; height: 860px;">
-                                @if ($products->count())
                                 @foreach ($products as $product)
                                 <!-- mansory item -->
                                 <li class="ms-item-01 col-xs-6 col-sm-6 col-md-3 show" @if ($product->category)
@@ -92,10 +92,10 @@
                                 </li>
                                 <!-- end -->
                                 @endforeach
-                                @else
-                                <h6>No products found.</h6>
-                                @endif
                             </ul>
+                            @else
+                            <h6>No products found.</h6>
+                            @endif
                         </div>
                     </div>
                     {{ $products->links('main.subviews.paginate') }}
