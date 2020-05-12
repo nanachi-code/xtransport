@@ -74,8 +74,10 @@
                                         <h4>See all document >></h4>
                                     </a></div>
                             </div>
-
                         </div>
+                        @if($newest->isEmpty())
+                        <h4>No document available</h4>
+                        @endif
                         <ul class="ul-mh row">
                             @foreach ($newest as $d)
                             <li class="col-xs-12 col-sm-12 col-md-4 pb-2" style="max-height: 450px;">
@@ -126,6 +128,9 @@
                 <article class="entry-item clearfix">
                     <div class="entry-content">
                         <h3 class="widget-title kopa-heading2 size-normal">Highest rating</h3>
+                        @if($highest_rate->isEmpty())
+                        <h4>No document available</h4>
+                        @endif
                         <ul class="ul-mh row">
                             @foreach ($highest_rate as $d)
                             <li class="col-xs-12 col-sm-12 col-md-4 pb-2" style="max-height: 450px;">

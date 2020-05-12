@@ -75,6 +75,9 @@
                                     </a></div>
                             </div>
                         </div>
+                        @if($documents->isEmpty())
+                        <h4>No document available</h4>
+                        @endif
                         <ul class="ul-mh row">
                             @foreach ($documents as $d)
                             <li class="col-xs-12 col-sm-12 col-md-4 pb-2" style="max-height: 450px;">

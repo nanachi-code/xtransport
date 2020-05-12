@@ -2,8 +2,9 @@
 <div class="col-xs-12 col-md-3 sidebar kopa-col-respon-2">
     <div class="row ct-row-06">
         <div class="col-xs-12">
-            @if ($page == "single-event")
+            @if ($page == " single-event")
             <!-- widget -->
+
             <div class="widget ex-module-article-list-1">
                 <header class="widget-header style-09">
                     <h3 class="widget-title"><span>latest events</span></h3>
