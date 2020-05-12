@@ -45,7 +45,7 @@
                                 <img src="{{ asset("/uploads/{$project->thumbnail}") }}" alt="" class="img-responsive">
                             </a>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-9">
                             <div class="project-title">
                                 <h4>
                                     <a href="">{{ $project->name }}</a>
@@ -54,11 +54,9 @@
                             <div class="project-excerpt">
                                 <p>{{ $project->excerpt }}</p>
                             </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="project-read-more pt-4 alignright">
-                                <a href="{{ url("project/detail/{$project->id}") }}">
-                                    <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp; &nbsp;Read more
+                            <div class="project-read-more mt-4">
+                                <a href="{{ url("project/detail/{$project->id}") }}" class="kopa-btn btn-02">
+                                    Read more
                                 </a>
                             </div>
                         </div>

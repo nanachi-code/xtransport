@@ -7,10 +7,10 @@
         <a href="{{ url('admin') }}">Home</a>
     </li>
     <li class="breadcrumb-item">
-        <a href="{{ url('admin/product/all') }}">All Posts</a>
+        <a href="{{ url('admin/project/all') }}">All projects</a>
     </li>
     <li class="breadcrumb-item">
-        <a href="{{ url("admin/product/{$product->id}") }}">{{ $product->name }}</a>
+        <a href="{{ url("admin/project/new") }}">New project</a>
     </li>
 </ul>
 {{-- END - Breadcrumbs --}}
@@ -24,131 +24,94 @@
                     <div class="element-header">
                         <div class="clearfix">
                             <div class="float-left">
-                                <h3>Product</h3>
+                                <h3>Project</h3>
                             </div>
                         </div>
                     </div>
                     <div class="element-box">
-                        <h5>Edit product</h5>
+                        <h5>Create new project</h5>
                         <hr>
-                        <form id="form-single-product" action="{{ url("admin/product/{$product->id}/update")}}"
-                            method="post" enctype="multipart/form-data">
+                        <form id="form-create-project" action="{{ url("admin/project/new")}}" method="POST">
                             <div class="row">
                                 <div class="col-sm-9">
-                                    {{-- product name --}}
+                                    {{-- project name --}}
                                     <div class="form-group">
-                                        <label for="form-product-name">Name</label>
-                                        <input class="form-control" data-error="product name is required"
-                                            placeholder="Enter product name" required="required" type="text" name="name"
-                                            value="{{ $product->name }}" id="form-product-name" />
+                                        <label for="form-project-name">Name</label>
+                                        <input class="form-control" data-error="Project name is required"
+                                            placeholder="Enter project name" required="required" type="text" name="name"
+                                            id="form-project-name" />
                                         <div class="help-block form-text with-errors form-control-feedback"></div>
                                     </div>
 
-                                    {{-- product desc --}}
+                                    {{-- project excerpt --}}
                                     <div class="form-group">
-                                        <label for="form-product-desc">Description</label>
-                                        <textarea class="form-control" rows="3" id="form-product-desc"
-                                            name="description"
-                                            placeholder="Enter product description">{{$product->description}}</textarea>
+                                        <label for="form-project-excerpt">Excerpt</label>
+                                        <input class="form-control" data-error="Project excerpt is required"
+                                            placeholder="Enter project excerpt" required="required" type="text"
+                                            name="excerpt" id="form-project-excerpt" />
+                                        <div class="help-block form-text with-errors form-control-feedback"></div>
                                     </div>
 
-                                    {{-- product category --}}
+                                    {{-- project content --}}
                                     <div class="form-group">
-                                        <label for="form-product-category">Category</label>
-                                        <select class="form-control" id="form-product-category"
-                                            name="category_product_id">
-                                            <option value="" @if (!$product->category_product_id) selected @endif>
-                                                Uncategorized
-                                            </option>
-                                            @foreach ($allCategories as $category)
-                                            <option value="{{ $category->id }}" @if ($product->category_product_id ==
-                                                $category->id) selected @endif>
-                                                {{ $category->name }}
-                                            </option>
-                                            @endforeach
-                                        </select>
+                                        <label>Content</label>
+                                        <div class="pb-3">
+                                            <button class="btn btn-outline-secondary" id="add-content-image">
+                                                <i class="icon-picture"></i>
+                                            </button>
+                                            <button class="btn btn-outline-secondary ml-1" id="add-content-i">
+                                                <i>i</i>
+                                            </button>
+                                            <button class="btn btn-outline-secondary ml-1" id="add-content-b">
+                                                <span class="font-weight-bold">b</span>
+                                            </button>
+                                            <button class="btn btn-outline-secondary ml-1" id="add-content-link">
+                                                <u>link</u>
+                                            </button>
+                                            <button class="btn btn-outline-secondary ml-1" id="add-content-ul">
+                                                ul
+                                            </button>
+                                            <button class="btn btn-outline-secondary ml-1" id="add-content-ol">
+                                                ol
+                                            </button>
+                                            <button class="btn btn-outline-secondary ml-1" id="add-content-li">
+                                                li
+                                            </button>
+                                        </div>
+                                        <textarea class="form-control" rows="5" id="content-editor" name="content"
+                                            placeholder="Enter project content"></textarea>
                                     </div>
 
-                                    {{-- product company --}}
                                     <div class="form-group">
-                                        <label for="form-product-category">Company</label>
-                                        <select class="form-control" id="form-product-company" name="company_id">
-                                            @if (count($allCompany)==0)
-                                            <option value="" selected>
-                                                Select company
-                                            </option>
-                                            @endif
-                                            @foreach ($allCompany as $company)
-                                            <option value="{{ $company->id }}" @if ($product->company_id ==
-                                                $company->id) selected @endif>
-                                                {{ $company->name }}
-                                            </option>
-                                            @endforeach
-                                        </select>
+                                        <label>Preview</label>
+                                        <div id="preview-content"></div>
                                     </div>
 
-                                    {{-- product gallery --}}
+                                    {{-- project gallery --}}
                                     <div class="form-group">
-                                        <label for="form-product-gallery">Gallery</label>
+                                        <label for="form-project-gallery">Gallery</label>
                                         <div id="gallery-preview">
                                             <button class="btn btn-primary" id="set-gallery">Select image</button>
-                                            <input type="hidden" name="gallery"
-                                                value="{{ json_encode($project->gallery) }}">
+                                            <input type="hidden" name="gallery">
                                             <div class="row pt-2">
-                                                @foreach ($product->gallery as $image)
-                                                <div class="col-sm-3">
-                                                    <img src="{{ url("uploads/{$image}") }}" class="img-responsive">
-                                                </div>
-                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="form-buttons-w">
-                                        <button class="btn btn-primary" type="submit">Save</button>
-                                        @if ($product->status == "publish")
-                                        <a href="{{ url("admin/product/{$product->id}/delete")}}"
-                                            class="btn btn-danger single-delete">
-                                            Delete
-                                        </a>
-                                        @else
-                                        <a href="{{ url("admin/product/{$product->id}/restore")}}"
-                                            class="btn btn-primary">
-                                            Restore
-                                        </a>
-                                        @endif
+                                        <button class="btn btn-primary" type="submit">Create</button>
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
-                                    {{-- product status --}}
+                                    {{-- project thumbnail --}}
                                     <div class="form-group">
-                                        <label for="">Status</label>
-                                        <div>
-                                            @if ($product->status == "trashed")
-                                            <span style="font-weight: 800">Trashed</span> at <span
-                                                style="font-weight: 800">{{ $product->updated_at }}</span>
-                                            @else
-                                            <span style="font-weight: 800">Published</span> at <span
-                                                style="font-weight: 800">{{ $product->updated_at }}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-
-
-                                    {{-- product thumbnail --}}
-                                    <div class="form-group">
-                                        <label for="form-product-thumbnail">Thumbnail</label>
-                                        @if ($product->thumbnail)
-                                        <img src="{{ asset("uploads/{$product->thumbnail}") }}" class="img-responsive"
-                                            id="thumbnail-preview">
-                                        @else
+                                        <label for="form-project-thumbnail">Thumbnail</label>
                                         <img src="{{ asset('images/default/no-image.jpg') }}" class="img-responsive"
                                             id="thumbnail-preview">
-                                        @endif
 
                                         <div class="form-buttons-w">
                                             <button class="btn btn-primary" id="set-thumbnail">Set thumbnail</button>
-                                            <input type="hidden" name="thumbnail" value="{{$product->thumbnail}}">
+                                            <input type="hidden" name="thumbnail">
                                         </div>
                                     </div>
                                 </div>
@@ -191,7 +154,6 @@
                                                 @foreach ($gallery as $image)
                                                 <div class="col-sm-2 gallery-item">
                                                     <img src="{{ asset("uploads/{$image->getFilename()}") }}"
-                                                        data-size="{{ $image->getSize() }} B"
                                                         data-filename="{{ $image->getFilename() }}"
                                                         class="img-responsive">
                                                 </div>
@@ -245,19 +207,11 @@
                                             @else
                                             <div class="row gallery-list">
                                                 @foreach ($gallery as $image)
-                                                @if (in_array($image->getFilename(), $product->gallery))
-                                                <div class="col-sm-2 gallery-item">
-                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
-                                                        data-filename="{{ $image->getFilename() }}"
-                                                        class="img-responsive selected">
-                                                </div>
-                                                @else
                                                 <div class="col-sm-2 gallery-item">
                                                     <img src="{{ asset("uploads/{$image->getFilename()}") }}"
                                                         data-filename="{{ $image->getFilename() }}"
                                                         class="img-responsive">
                                                 </div>
-                                                @endif
                                                 @endforeach
                                             </div>
                                             @endif
@@ -286,5 +240,5 @@
 @endsection
 
 @section('additional-scripts')
-<script src="{{ asset("js/admin/custom/product.js") }}"></script>
+<script src="{{ asset("js/admin/custom/project.js") }}"></script>
 @endsection

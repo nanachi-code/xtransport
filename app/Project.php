@@ -9,4 +9,8 @@ class Project extends Model
     protected $table = 'projects';
 
     protected $fillable = ['name', 'excerpt', 'content', 'thumbnail', 'status', 'gallery'];
+
+    protected $casts = [
+        'gallery' => 'array'
+    ];
 }

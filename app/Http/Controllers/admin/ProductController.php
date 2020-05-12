@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -36,7 +35,6 @@ class ProductController extends Controller
             'allCompany' => Company::all()
         ];
 
-        // dd($p["product"]->gallery[1]);
         return view('admin/single-product')->with($p);
     }
 

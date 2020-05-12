@@ -47,6 +47,7 @@
             </div>
             <!-- end -->
             @endif
+
             @if ($page == "single-post")
             <!-- widget -->
             <div class="widget ex-module-article-list-1">
@@ -62,7 +63,7 @@
                         <li style="">
                             <article class="entry-item">
                                 <figure class="entry-thumb">
-                                    <a href="#">
+                                    <a href="{{ url("blog/post/{$post->title}") }}">
                                         @if ($post->thumbnail)
                                         <img src="{{ url("uploads/{$post->thumbnail}") }}" alt="">
                                         @else
@@ -72,7 +73,7 @@
                                 </figure>
                                 <div class="entry-content">
                                     <h4 class="entry-title">
-                                        <a href="{{ url("/post/id/{$post->title}") }}">
+                                        <a href="{{ url("blog/post/{$post->title}") }}">
                                             {{ $post->title }}
                                         </a>
                                     </h4>
@@ -88,6 +89,52 @@
                     </ul>
                     @else
                     <h6>No posts found.</h6>
+                    @endif
+                </div>
+            </div>
+            <!-- end -->
+            @endif
+
+            @if ($page == "single-project")
+            <!-- widget -->
+            <div class="widget ex-module-article-list-1">
+                <header class="widget-header style-09">
+                    <h3 class="widget-title"><span>latest project</span></h3>
+                </header>
+                <div class="widget-content">
+                    @if (count($latestProjects))
+                    <ul class=" ul-mh">
+                        @foreach ($latestProjects as $project)
+                        <!-- ** -->
+                        <li style="">
+                            <article class="entry-item">
+                                <figure class="entry-thumb">
+                                    <a href="{{ url("/project/detail/{$project->name}") }}">
+                                        @if ($project->thumbnail)
+                                        <img src="{{ url("uploads/{$project->thumbnail}") }}" alt="">
+                                        @else
+                                        <img src="{{ asset("images/default/no-image.jpg") }}" alt="">
+                                        @endif
+                                    </a>
+                                </figure>
+                                <div class="entry-content">
+                                    <h4 class="entry-title">
+                                        <a href="{{ url("/project/detail/{$project->name}") }}">
+                                            {{ $project->name }}
+                                        </a>
+                                    </h4>
+                                    <div class="entry-meta">
+                                        <p class="entry-date">
+                                            {{ $project->updated_at }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </article>
+                        </li>
+                        @endforeach
+                    </ul>
+                    @else
+                    <h6>No projects found.</h6>
                     @endif
                 </div>
             </div>
