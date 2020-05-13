@@ -279,10 +279,8 @@
                         <div class="widget-content">
                             <article class="entry-item">
                                 <div class="entry-content">
-                                    <p>Recognizing everyone's need for speed, Atlas
-                                        <br> was the first to give an Instant Online Moving
-                                        <br> Quote. The Atlas online quote remains the
-                                        <br> fastest ballpark quote in moving</p>
+                                    <p>We provide clients with innovative and <br> practical traffic solutions while
+                                        delivering <br> superior technical expertise</p>
 
                                     <a href="#" class="kopa-btn btn-01">view all</a>
                                 </div>
@@ -299,27 +297,13 @@
                                 <!-- ** -->
                                 <li class="col-xs-12 col-lg-6">
                                     <article class="entry-item">
-                                        <figure class="entry-thumb">
-                                            <a class="ex ex-worker-loading-boxes" href="#"></a>
+                                        <figure class="entry-thumb ">
+                                            <a class="ex ex-map" href="#"></a>
                                         </figure>
                                         <div class="entry-content">
-                                            <h4 class="entry-title"><a href="#">Home Removals</a></h4>
-                                            <p>Tex Trucking is one of the most trusted names in trucking, and an
-                                                industry leader in home</p>
-                                        </div>
-                                    </article>
-                                </li>
-                                <!-- * -->
-                                <!-- ** -->
-                                <li class="col-xs-12 col-lg-6">
-                                    <article class="entry-item">
-                                        <figure class="entry-thumb">
-                                            <a class="ex ex-loaded-truck-side-view" href="#"></a>
-                                        </figure>
-                                        <div class="entry-content">
-                                            <h4 class="entry-title"><a href="#">international Removals</a></h4>
-                                            <p>Tex Trucking is one of the most trusted names in trucking, and an
-                                                industry leader in home</p>
+                                            <h4 class="entry-title"><a href="#">TRAFFIC ENGINEERING STUDIES</a></h4>
+                                            <p>We evaluate traffic patterns and offer
+                                                solutions that improve traffic flow and safety in our communities</p>
                                         </div>
                                     </article>
                                 </li>
@@ -331,9 +315,23 @@
                                             <a class="ex ex-logistics-delivery-truck-and-clock" href="#"></a>
                                         </figure>
                                         <div class="entry-content">
-                                            <h4 class="entry-title"><a href="#">moving materials</a></h4>
-                                            <p>Tex Trucking is one of the most trusted names in trucking, and an
-                                                industry leader in home</p>
+                                            <h4 class="entry-title"><a href="#">TRANSPORTATION PLANNING</a></h4>
+                                            <p>Our experts utilize the transportation planning process to guide
+                                                infrastructure investment decisions</p>
+                                        </div>
+                                    </article>
+                                </li>
+                                <!-- * -->
+                                <!-- ** -->
+                                <li class="col-xs-12 col-lg-6">
+                                    <article class="entry-item">
+                                        <figure class="entry-thumb">
+                                            <a class="ex ex-archive" href="#"></a>
+                                        </figure>
+                                        <div class="entry-content">
+                                            <h4 class="entry-title"><a href="#">TRAFFIC ENGINEERING DESIGN</a></h4>
+                                            <p>Our experienced traffic engineers develop design plans incorporating
+                                                traffic control devices and solutions to best fit each project.</p>
                                         </div>
                                     </article>
                                 </li>
@@ -345,9 +343,10 @@
                                             <a class="ex ex-packages-transportation-on-a-truck" href="#"></a>
                                         </figure>
                                         <div class="entry-content">
-                                            <h4 class="entry-title"><a href="#">store solutions</a></h4>
-                                            <p>Tex Trucking is one of the most trusted names in trucking, and an
-                                                industry leader in home</p>
+                                            <h4 class="entry-title"><a href="#">TOOLS & RESOURCES</a></h4>
+                                            <p>We have many partner with decades of knowledge and
+                                                experience encompassing software and hardware for the traffic and
+                                                transportation world.</p>
                                         </div>
                                     </article>
                                 </li>
