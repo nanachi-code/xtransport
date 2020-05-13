@@ -1,9 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 
-if (file_exists(public_path('uploads'))) {
+if (!file_exists(public_path('uploads'))) {
 
     mkdir(public_path('uploads'));
 }
