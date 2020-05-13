@@ -83,16 +83,19 @@
                                 <li class="col-xs-12 col-sm-4 col-md-4">
                                     <article class="entry-item ">
                                         <div class="entry-thumb">
-                                            <a href="{{ url("projects/all") }}"><span class="ex ex-archive"></span></a>
+                                            <a href="{{ url("project/all") }}"><span class="ex ex-archive"></span></a>
                                         </div>
                                         <div class="entry-content">
-                                            <h4 class="entry-title"><a href="#">Browse our works</a></h4>
+                                            <h4 class="entry-title">
+                                                <a href="{{ url("project/all") }}">
+                                                    Browse our works</a>
+                                            </h4>
                                             <p>
                                                 We have done more than 100 projects for many clients around the
                                                 world and all of our works has recieved positive feedback!
                                             </p>
 
-                                            <a href="#" class="kopa-btn btn-09">LEARN MORE</a>
+                                            <a href="{{ url("project/all") }}" class="kopa-btn btn-09">LEARN MORE</a>
 
                                         </div>
                                     </article>
@@ -147,220 +150,182 @@
     </section>
     <!-- end thumbnail services -->
 
-    <!-- Get an install Online Quote -->
-    <section class="kopa-area kopa-area-16 white-text-style" id="kopa-get-online-quote">
-        <div class="container-fluid">
-            <div class="row ul-mh">
-                <div class="col-xs-12 col-sm-6 ct-col-06">
-                    <div class="widget ex-module-slider-3">
-                        <div class="widget-content">
-                            <div class="carousel slide myCarousel" data-ride="carousel">
-                                <!-- Wrapper for slides -->
-                                <ul class="carousel-inner " role="listbox">
-                                    <!-- ** -->
-                                    <li class="item active">
-                                        <article class="entry-item">
-                                            <figure class="entry-thumb">
-                                                <a href="#"><img src="http://placehold.it/71x71" alt="ava-ceo1">
-                                                </a>
-                                            </figure>
-                                            <div class="entry-content">
-                                                <header class="entry-header">
-                                                    <h4 class="entry-title"><a href="#">john smith</a></h4>
-                                                    <p>CEO / Transport inc.</p>
-                                                </header>
-                                                <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor
-                                                    mauris sit amet orci. Aenean dignissim pellentesque felis. </p>
-                                            </div>
-                                        </article>
-                                        <article class="entry-item">
-                                            <figure class="entry-thumb">
-                                                <a href="#"><img src="http://placehold.it/71x71" alt="ava-ceo1">
-                                                </a>
-                                            </figure>
-                                            <div class="entry-content">
-                                                <header class="entry-header">
-                                                    <h4 class="entry-title"><a href="#">david alibaba</a></h4>
-                                                    <p>CEO / Transport inc.</p>
-                                                </header>
-                                                <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor
-                                                    mauris sit amet orci. Aenean dignissim pellentesque felis. </p>
-                                            </div>
-                                        </article>
-                                    </li>
-                                    <!-- ** -->
-                                    <li class="item">
-                                        <article class="entry-item">
-                                            <figure class="entry-thumb">
-                                                <a href="#"><img src="http://placehold.it/71x71" alt="ava-ceo1">
-                                                </a>
-                                            </figure>
-                                            <div class="entry-content">
-                                                <header class="entry-header">
-                                                    <h4 class="entry-title"><a href="#">john smith</a></h4>
-                                                    <p>CEO / Transport inc.</p>
-                                                </header>
-                                                <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor
-                                                    mauris sit amet orci. Aenean dignissim pellentesque felis. </p>
-                                            </div>
-                                        </article>
-                                        <article class="entry-item">
-                                            <figure class="entry-thumb">
-                                                <a href="#"><img src="http://placehold.it/71x71" alt="ava-ceo1">
-                                                </a>
-                                            </figure>
-                                            <div class="entry-content">
-                                                <header class="entry-header">
-                                                    <h4 class="entry-title"><a href="#">david alibaba</a></h4>
-                                                    <p>CEO / Transport inc.</p>
-                                                </header>
-                                                <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor
-                                                    mauris sit amet orci. Aenean dignissim pellentesque felis. </p>
-                                            </div>
-                                        </article>
-                                    </li>
-                                </ul>
-                                <!-- Left and right controls -->
-                                <a class="left carousel-control" href=".myCarousel" role="button" data-slide="prev">
-                                    <span class="ti-arrow-left"></span>
-                                </a>
-                                <a class="right carousel-control" href=".myCarousel" role="button" data-slide="next">
-                                    <span class="ti-arrow-right"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- * -->
-                <!-- ** -->
-                <div class="col-xs-12 col-sm-6 ct-col-08">
-                    <div class="widget ex-module-about-us-1">
-                        <header class="widget-header style-01">
-                            <span class="sub-title">about us</span>
-                            <h3 class="widget-title">
-                                we offer quick &amp; <br>powerful solution
-                            </h3>
-                        </header>
-                        <div class="widget-content">
-                            <article class="entry-item">
-                                <figure class="entry-thumb">
-                                    <img src="http://placehold.it/202x175" alt="img-get-quote-online">
-                                </figure>
-                                <div class="entry-content">
-                                    <p>On moving day, sit back and let Atlas carry the load. It's what we do best.
-                                        Experienced crews protect your home, load, and move your items all the way to
-                                        your new place, including placing the furniture where you want it. You've got it
-                                        in you to go new places.</p>
-                                </div>
-                                <div class="clearfix"></div>
-                                <a href="#" class="kopa-btn btn-01">read more</a>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-                <!-- * -->
-            </div>
-        </div>
-    </section>
-    <!-- end Get an install online Quote -->
+    <!-- Feature and our services -->
+    <section class="kopa-area kopa-area-5 white-text-style">
 
-    <!-- our services 2 -->
-    <section class="kopa-area kopa-area-18">
+        <div class="row ul-mh ct-row-05">
+            <!-- widget feature -->
+            <div class="col-xs-12 col-md-6 ct-col-03">
+
+                <div class="widget ex-module-list-product-1">
+                    <header class="widget-header style-05">
+                        <span class="sub-title">Partner</span>
+                        <h3 class="widget-title">
+                            featured products
+                        </h3>
+                    </header>
+                    <div class="widget-content">
+                        <ul class="row ct-row-05">
+                            @foreach ($featuredProducts as $product)
+                            <li class="col-xs-6 col-sm-6 col-md-6">
+                                <article class="entry-item">
+                                    <figure class="entry-thumb">
+                                        <a href="{{ url("product/detail/{$product->id}") }}">
+                                            <img class="" src="{{ url("uploads/{$product->thumbnail}") }}"
+                                                alt="img-feature1">
+                                        </a>
+                                        <figcaption>
+                                            <a href="{{ url("product/detail/{$product->id}") }}">
+                                                {{ $product->name }}
+                                            </a>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <!-- and widget feature -->
+            <!-- widget our services -->
+            <div class="col-xs-12 col-md-6 ct-col-05">
+
+                <div class="widget ex-module-our-services-1">
+                    <header class="widget-header style-06">
+                        <span class="sub-title">About us</span>
+                        <h3 class="widget-title">
+                            WE OFFER QUICK &amp;<br>
+                            POWERFUL SOLUTION<br>
+                            FOR TRANSPORT
+                        </h3>
+                    </header>
+                    <div class="widget-content">
+                        <ul>
+                            <!-- ** -->
+                            <li>
+                                <article class="entry-item our-service-item">
+                                    <figure class="entry-thumb">
+                                        <a class="ex ex-archive" href="{{ url("about-us") }}"></a>
+                                    </figure>
+                                    <div class="entry-content">
+                                        <h4 class="entry-title">
+                                            <a href="{{ url("about-us") }}">Specialized Expertise</a>
+                                        </h4>
+                                        <p>We live and breathe traffic. Our professionals are experts in the industry
+                                            giving us the knowledge and ability to focus
+                                            on the details that make projects excellent.</p>
+                                    </div>
+                                </article>
+                            </li>
+                            <!-- ** -->
+                            <li>
+                                <article class="entry-item our-service-item">
+                                    <figure class="entry-thumb">
+                                        <a class="ex ex-map" href="{{ url("about-us") }}"></a>
+                                    </figure>
+                                    <div class="entry-content">
+                                        <h4 class="entry-title">
+                                            <a href="{{ url("about-us") }}">Tailored Solutions</a>
+                                        </h4>
+                                        <p>No two projects are alike. We provide customized products tailored
+                                            specifically to your needs. Our philosophy of doing
+                                            the right thing - the right way - the first time saves our clients time and
+                                            money.</p>
+                                    </div>
+                                </article>
+                            </li>
+                            <!-- ** -->
+                            <li>
+                                <article class="entry-item our-service-item">
+                                    <figure class="entry-thumb">
+                                        <a class="ex ex-technical-support" href="{{ url("about-us") }}"></a>
+                                    </figure>
+                                    <div class="entry-content">
+                                        <h4 class="entry-title">
+                                            <a href="{{ url("about-us") }}">Responsive Client Services</a>
+                                        </h4>
+                                        <p>Our clients are our greatest priority. We operate based on the principle that
+                                            frequent and pro-active communication with
+                                            the client is paramount to the success of any project.</p>
+                                    </div>
+                                </article>
+                            </li>
+                            <!-- ** -->
+                        </ul>
+
+                        <a href="{{ url("about-us") }}" class="kopa-btn btn-014">Read more</a>
+                    </div>
+                </div>
+
+            </div>
+            <!-- end widget our services -->
+        </div>
+
+    </section>
+    <!-- end Feature and our services -->
+
+    <!-- total info -->
+    <section class="kopa-area kopa-area-6 white-text-style">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4">
-                    <div class="widget ex-module-introduce-3">
-                        <header class="widget-header style-07">
-                            <span class="sub-title">Our Services</span>
-                            <h3 class="widget-title">
-                                SERVICES WE PROVIDE
-                            </h3>
-                        </header>
-                        <div class="widget-content">
-                            <article class="entry-item">
-                                <div class="entry-content">
-                                    <p>We provide clients with innovative and <br> practical traffic solutions while
-                                        delivering <br> superior technical expertise</p>
-
-                                    <a href="#" class="kopa-btn btn-01">view all</a>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
-                    <!-- widget -->
-                    <div class="widget ex-module-our-services-3">
-
+                <div class="col-xs-12">
+                    <div class="widget ex-module-total-info-1">
                         <div class="widget-content">
                             <ul class="row ul-mh">
                                 <!-- ** -->
-                                <li class="col-xs-12 col-lg-6">
+                                <li class="col-xs-6 col-md-3">
                                     <article class="entry-item">
-                                        <figure class="entry-thumb ">
-                                            <a class="ex ex-map" href="#"></a>
-                                        </figure>
                                         <div class="entry-content">
-                                            <h4 class="entry-title"><a href="#">TRAFFIC ENGINEERING STUDIES</a></h4>
-                                            <p>We evaluate traffic patterns and offer
-                                                solutions that improve traffic flow and safety in our communities</p>
+                                            <h4 class="entry-title">
+                                                <span class="counter">50</span>
+                                            </h4>
+                                            <p>years of experience.</p>
                                         </div>
                                     </article>
                                 </li>
-                                <!-- * -->
                                 <!-- ** -->
-                                <li class="col-xs-12 col-lg-6">
+                                <li class="col-xs-6 col-md-3">
                                     <article class="entry-item">
-                                        <figure class="entry-thumb">
-                                            <a class="ex ex-logistics-delivery-truck-and-clock" href="#"></a>
-                                        </figure>
                                         <div class="entry-content">
-                                            <h4 class="entry-title"><a href="#">TRANSPORTATION PLANNING</a></h4>
-                                            <p>Our experts utilize the transportation planning process to guide
-                                                infrastructure investment decisions</p>
+                                            <h4 class="entry-title">
+                                                <span class="counter">{{ $allCompanies->count() }}</span>
+                                            </h4>
+                                            <p>partners.</p>
                                         </div>
                                     </article>
                                 </li>
-                                <!-- * -->
                                 <!-- ** -->
-                                <li class="col-xs-12 col-lg-6">
+                                <li class="col-xs-6 col-md-3">
                                     <article class="entry-item">
-                                        <figure class="entry-thumb">
-                                            <a class="ex ex-archive" href="#"></a>
-                                        </figure>
                                         <div class="entry-content">
-                                            <h4 class="entry-title"><a href="#">TRAFFIC ENGINEERING DESIGN</a></h4>
-                                            <p>Our experienced traffic engineers develop design plans incorporating
-                                                traffic control devices and solutions to best fit each project.</p>
+                                            <h4 class="entry-title">
+                                                <span class="counter">{{ $allProjects->count() }}</span>
+                                            </h4>
+                                            <p>projects done.</p>
                                         </div>
                                     </article>
                                 </li>
-                                <!-- * -->
                                 <!-- ** -->
-                                <li class="col-xs-12 col-lg-6">
+                                <li class="col-xs-6 col-md-3">
                                     <article class="entry-item">
-                                        <figure class="entry-thumb">
-                                            <a class="ex ex-packages-transportation-on-a-truck" href="#"></a>
-                                        </figure>
                                         <div class="entry-content">
-                                            <h4 class="entry-title"><a href="#">TOOLS & RESOURCES</a></h4>
-                                            <p>We have many partner with decades of knowledge and
-                                                experience encompassing software and hardware for the traffic and
-                                                transportation world.</p>
+                                            <h4 class="entry-title">
+                                                <span class="counter">{{ $allEvents->count() }}</span>
+                                            </h4>
+                                            <p>events hosted.</p>
                                         </div>
                                     </article>
                                 </li>
-                                <!-- * -->
                             </ul>
                         </div>
-
                     </div>
-                    <!-- end -->
                 </div>
             </div>
         </div>
     </section>
-    <!-- end our services 2 -->
+    <!-- end total info -->
 
     <!-- News lastest -->
     <section class="kopa-area kopa-area-7">

@@ -7,7 +7,7 @@
         <a href="{{ url('admin') }}">Home</a>
     </li>
     <li class="breadcrumb-item">
-        <a href="{{ url('admin/feedback') }}">Feedback</a>
+        <a href="{{ url('admin/project/all') }}">All projects</a>
     </li>
 </ul>
 {{-- END - Breadcrumbs --}}
@@ -21,33 +21,31 @@
                     <div class="element-header">
                         <div class="clearfix">
                             <div class="float-left">
-                                <h3>Feedback</h3>
+                                <h3>Projects</h3>
                             </div>
                         </div>
                     </div>
                     <div class="element-box">
                         <div class="table-responsive">
-                            <table id="table-admin-feedback" class="table table-striped table-lightfont">
+                            <table id="table-admin-project" class="table table-striped table-lightfont">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Website Url</th>
-                                        <th>Comment</th>
+                                        <th>Status</th>
+                                        <th>Last updated</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($feedbacks as $feedback)
+                                    @foreach ($projects as $project)
                                     <tr>
-                                        <td>{{ $feedback->id }}</td>
-                                        <td>{{ $feedback->name }}</td>
-                                        <td>{{ $feedback->email }}</td>
-                                        <td>{{ $feedback->website_url }}</td>
-                                        <td>{{ $feedback->comment }}</td>
+                                        <td>{{ $project->id }}</td>
+                                        <td>{{ $project->name }}</td>
+                                        <td>{{ $project->status }}</td>
+                                        <td>{{ $project->updated_at }}</td>
                                         <td class="row-actions">
-                                            <a href="{{ url("/admin/feedback/{$feedback->id}")}}">
+                                            <a href="{{ url("/admin/project/{$project->id}")}}">
                                                 <i class="os-icon os-icon-ui-49"></i>
                                             </a>
                                         </td>
@@ -58,9 +56,8 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
                                         <th>Status</th>
+                                        <th>Last updated</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </tfoot>
@@ -76,5 +73,5 @@
 @endsection
 
 @section('additional-scripts')
-<script src="{{ asset("js/admin/custom/feedback.js") }}"></script>
+<script src="{{ asset("js/admin/custom/project.js") }}"></script>
 @endsection

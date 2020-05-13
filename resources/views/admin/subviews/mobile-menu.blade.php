@@ -121,6 +121,28 @@
                 </a>
             </li>
 
+            {{-- Project --}}
+            <li class="sub-header">
+                <span>Project</span>
+            </li>
+            <li>
+                <a href="{{ url('/admin/project/all') }}">
+                    <div class="icon-w">
+                        <i class="icon-docs"></i>
+                    </div>
+                    <span>All projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('/admin/project/new') }}">
+                    <div class="icon-w">
+                        <i class="icon-note"></i>
+                    </div>
+                    <span>New project</span>
+                </a>
+            </li>
+            </li>
+
             {{-- User --}}
             @if (Auth::user()->role == "super_admin")
             <li class="sub-header">
@@ -157,6 +179,19 @@
                         <i class="icon-note"></i>
                     </div>
                     <span>New event</span>
+                </a>
+            </li>
+
+            {{-- Document --}}
+            <li class="sub-header">
+                <span>Document</span>
+            </li>
+            <li>
+                <a href="{{ url('/admin/document/all') }}">
+                    <div class="icon-w">
+                        <i class="icon-docs"></i>
+                    </div>
+                    <span>All Documents</span>
                 </a>
             </li>
 

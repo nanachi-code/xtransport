@@ -59,11 +59,15 @@
                                                 </a>
                                             </h4>
                                         </header>
+                                        <p>
+                                            Date: {{ $event->date }}
+                                            <br>
+                                            Address: {{ $event->address }}
+                                        </p>
                                         <footer class="entry-footer clearfix">
                                             <div class="alignleft">
-                                                <p>
-                                                    {{ $event->date }} <i class="fa fa-calendar-o"></i>
-                                                </p>
+                                                <i class="fa fa-users" aria-hidden="true"></i>
+                                                {{ $event->users->count() }} users registered.
                                             </div>
                                             <div class="alignright">
                                                 <i class="fa fa-file-text-o" aria-hidden="true"></i>

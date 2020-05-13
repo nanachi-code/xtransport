@@ -18,7 +18,11 @@ class ProjectController extends Controller
     public function renderSingleProject($id)
     {
         $p = [
-            'project' => Project::find($id)
+            'project' => Project::find($id),
+            "latestProjects" => Project::where("status", "publish")
+                ->where('id', '!=', $id)
+                ->take(3)
+                ->get(),
         ];
 
         return view('main.single-project')->with($p);

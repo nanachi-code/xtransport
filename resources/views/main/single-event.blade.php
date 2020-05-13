@@ -83,17 +83,18 @@
                                     <h4 class="intro-box-title kopa-heading4">Details</h4>
                                     <p class="intro-box-sub-title kopa-heading5">
                                         Date: {{ $event->date }}
-                                    </p>
-                                    <p>
+                                        <br>
                                         Address: {{ $event->address }}
+                                        <br>
+                                        <br>
+                                        {{ $event->users->count() }} users registered.
                                     </p>
-
                                     @if (Auth::check())
                                     <a href="{{ url("/event/detail/{$event->id}") }}" id="register-event"
-                                        class="style-btn-01 md-btn">Register</a>
+                                        class="style-btn-01 md-btn mt-5">Register</a>
                                     @else
-                                    <p>You need to <a href="{{ url("login") }}">login</a> before register for
-                                        this events.</p>
+                                    <h6>You need to <a href="{{ url("login") }}">login</a> before register for
+                                        this events.</h6>
                                     @endif
                                 </div>
                             </div>
