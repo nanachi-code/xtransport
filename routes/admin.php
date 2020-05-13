@@ -1,6 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
+
+if (!File::isDirectory($path)) {
+
+    File::makeDirectory($path, 0777, true, true);
+}
 
 //* Dashboard
 Route::get('/', function () {
