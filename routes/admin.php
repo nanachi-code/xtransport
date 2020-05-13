@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 
-if (!File::isDirectory($path)) {
+if (file_exists(public_path('uploads'))) {
 
-    File::makeDirectory($path, 0777, true, true);
+    mkdir(public_path('uploads'));
 }
 
 //* Dashboard
