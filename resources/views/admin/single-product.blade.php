@@ -7,7 +7,7 @@
         <a href="{{ url('admin') }}">Home</a>
     </li>
     <li class="breadcrumb-item">
-        <a href="{{ url('admin/product/all') }}">All Posts</a>
+        <a href="{{ url('admin/product/all') }}">All Products</a>
     </li>
     <li class="breadcrumb-item">
         <a href="{{ url("admin/product/{$product->id}") }}">{{ $product->name }}</a>
@@ -93,7 +93,7 @@
                                         <div id="gallery-preview">
                                             <button class="btn btn-primary" id="set-gallery">Select image</button>
                                             <input type="hidden" name="gallery"
-                                                value="{{ json_encode($project->gallery) }}">
+                                                value="{{ json_encode($product->gallery) }}">
                                             <div class="row pt-2">
                                                 @foreach ($product->gallery as $image)
                                                 <div class="col-sm-3">
