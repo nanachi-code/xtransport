@@ -1,5 +1,7 @@
 //* Datatable
 $(function () {
+    console.log("csrf" + $('meta[name="csrf-token"]').attr("content"));
+
     $.ajaxSetup({
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
@@ -77,6 +79,8 @@ $(function () {
                 }
             },
             error: (e) => {
+                console.log(e);
+
                 form.find(".alert-dismissible");
                 form.prepend(`
                     <div class="alert alert-danger alert-dismissible fade" role="alert">
