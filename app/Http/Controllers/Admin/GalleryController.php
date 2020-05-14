@@ -21,8 +21,7 @@ class GalleryController extends Controller
                         return $file->getCTime();
                     })
             ];
-        }
-        else {
+        } else {
             mkdir(public_path('uploads'));
             $p = [
                 'gallery' => []
