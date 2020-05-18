@@ -27,7 +27,7 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('main.subviews.header', function ($view) {
+        view()->composer(['main.subviews.header','main.subviews.mobile-menu'], function ($view) {
             $p = [
                 "postCategory" => CategoryPost::all()
             ];

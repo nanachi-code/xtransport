@@ -12,7 +12,7 @@
 <script type="text/javascript" src="{{asset('js/imagesloaded.pkgd.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/masonry.pkgd.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.easypiechart.min.js')}}"></script>
-<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script src="https://maps.google.com/maps/api/js?sensor=true"></script>
 <script type="text/javascript" src="{{asset('js/gmaps.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.sliderPro.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
