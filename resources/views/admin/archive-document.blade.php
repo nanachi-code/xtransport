@@ -40,7 +40,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if ($document->isEmpty())
+                                    @if ($documents->isEmpty())
                                     <tr class="odd">
                                         <td valign="top" colspan="7" class="dataTables_empty text-center">No data
                                             available in table
