@@ -149,7 +149,7 @@
     </div>
 </div>
 @endsection
-@section('script')
+@section('additional-scripts')
 <script type="text/javascript">
     $("#submit-password").on("click", function () {
             $.ajax({
