@@ -21,6 +21,7 @@ class CreateEvent extends Migration
             $table->string('thumbnail')->nullable();
             $table->string('status', 20)->default('active');
             $table->longText('introduction')->nullable();
+            $table->bigInteger('max_users');
             $table->timestamps();
         });
     }
