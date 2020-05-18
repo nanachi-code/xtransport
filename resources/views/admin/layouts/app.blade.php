@@ -18,9 +18,9 @@
 <body class="menu-position-side menu-side-left full-screen">
     <div class="all-wrapper solid-bg-all">
         <div class="layout-w">
-
+            {{-- START - Main Menu --}}
             @include('admin.subviews.mobile-menu')
-
+            {{-- END - Main Menu --}}
 
             {{-- START - Main Menu --}}
             @include('admin.subviews.menu')

@@ -30,6 +30,10 @@
     @include('main.subviews.footer')
     {{-- footer end --}}
 
+    {{-- mobile menu start --}}
+    @include('main.subviews.mobile-menu')
+    {{-- mobile menu end --}}
+
     {{-- scripts start --}}
     @include('main.enqueue.scripts')
     @yield('additional-scripts')
