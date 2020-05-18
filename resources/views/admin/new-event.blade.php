@@ -101,6 +101,14 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
+                                    {{-- event max users --}}
+                                    <div class="form-group">
+                                        <label for="form-event-user">Max guests</label>
+                                        <input class="form-control" data-error="max guests is required" type="number"
+                                            name="max_users" id="form-event-user" />
+                                        <div class="help-block form-text with-errors form-control-feedback"></div>
+                                    </div>
+
                                     {{-- event thumbnail --}}
                                     <div class="form-group">
                                         <label for="form-event-thumbnail">Thumbnail</label>

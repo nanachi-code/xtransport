@@ -62,6 +62,7 @@ class EventController extends Controller
         $event->date = $request->get('date');
         $event->status = "active";
         $event->introduction = $request->get('introduction');
+        $event->max_users = $request->get('max_users');
         $event->thumbnail = $request->get('thumbnail');
 
         try {
@@ -87,6 +88,7 @@ class EventController extends Controller
         $event->address = $request->get('address');
         $event->date = $request->get('date');
         $event->introduction = $request->get('introduction');
+        $event->max_users = $request->get('max_users');
         $event->thumbnail = $request->get('thumbnail');
 
         try {
