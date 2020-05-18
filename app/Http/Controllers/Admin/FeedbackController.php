@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\ContactFeedback;
+use App\Feedback;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ContactFeedbackController extends Controller
+class FeedbackController extends Controller
 {
     public function renderArchiveFeedback()
     {
         $p = [
-            'feedback' => ContactFeedback::all()
+            'feedbacks' => Feedback::all()
         ];
 
         return view('admin/archive-feedback')->with($p);
@@ -20,7 +20,7 @@ class ContactFeedbackController extends Controller
     public function renderSingleFeedback($id)
     {
         $p = [
-            'feedback' => ContactFeedback::where('id', $id)->first()
+            'feedback' => Feedback::where('id', $id)->first()
         ];
 
         return view('admin/single-feedback')->with($p);
@@ -29,7 +29,7 @@ class ContactFeedbackController extends Controller
 
     public function deleteFeedback($id)
     {
-        $category = ContactFeedback::find($id);
+        $category = Feedback::find($id);
         try {
             $category->delete();
         } catch (\Throwable $th) {

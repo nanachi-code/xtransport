@@ -40,10 +40,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if (!isset($documents))
+                                    @if ($documents->isEmpty())
                                     <tr class="odd">
-                                        <td valign="top" colspan="7" class="dataTables_empty"
-                                            style="text-align: center">No data available in table
+                                        <td valign="top" colspan="7" class="dataTables_empty text-center">No data
+                                            available in table
                                         </td>
                                     </tr>
                                     @else

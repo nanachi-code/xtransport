@@ -13,14 +13,23 @@ Route::get('/home', 'Main\HomeController@renderHome');
 //* Library
 Route::prefix('/library')->group(function () {
     Route::get('/', 'Main\LibraryController@archiveDocument');
+
     Route::get('/all', 'Main\LibraryController@allDocument');
+
     Route::get('/user', 'Main\LibraryController@userDocument')->middleware('auth');
+
     Route::get('/bookmark', 'Main\LibraryController@bookmarkDocument')->middleware('auth');
+
     Route::get('/add-bookmark/{id}', 'Main\LibraryController@addBookmark')->middleware('auth');
+
     Route::get('/un-bookmark/{id}', 'Main\LibraryController@unBookmark')->middleware('auth');
+
     Route::get('/{id}/detail', 'Main\LibraryController@detailDocument')->middleware('auth');
+
     Route::get('/new', 'Main\LibraryController@createDocument')->middleware('auth');
+
     Route::post('/new', 'Main\LibraryController@newDocument')->middleware('auth');
+
     Route::post('/rate', 'Main\LibraryController@rating')->middleware('auth');
 
     Route::get('/download/{id}', 'Main\LibraryController@downloadDocument')->middleware('auth');
@@ -38,6 +47,18 @@ Route::prefix('/event')
         Route::get('/detail/{id}', 'Main\EventController@renderSingleEvent');
 
         Route::post('/detail/{id}', 'Main\EventController@registerEvent');
+    });
+
+//* Project
+Route::prefix('project')
+    ->group(function () {
+        Route::get('/', function () {
+            return redirect('/project/all');
+        });
+
+        Route::get('/all', 'Main\ProjectController@renderArchiveProject');
+
+        Route::get('/detail/{id}', 'Main\ProjectController@renderSingleProject');
     });
 
 //* Product

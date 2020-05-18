@@ -66,6 +66,9 @@
                 <article class="entry-item clearfix widget">
                     <div class="entry-content">
                         <h3 class="widget-title kopa-heading2 size-normal">My bookmarked</h3>
+                        @if($bookmarked->isEmpty())
+                        <h4>No document available</h4>
+                        @endif
                         <ul class="ul-mh row">
                             @foreach ($bookmarked as $d)
                             <li class="col-xs-12 col-sm-12 col-md-4 pb-2" style="max-height: 450px;">

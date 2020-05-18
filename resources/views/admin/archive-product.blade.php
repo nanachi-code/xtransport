@@ -47,10 +47,10 @@
                                         <td>{{ $product->id }}</td>
                                         <td>{{ $product->name }}</td>
                                         <td>
-                                            @if (!$product->categoryProduct)
+                                            @if (!$product->category)
                                             Uncategorized
                                             @else
-                                            {{ $product->categoryProduct->name }}
+                                            {{ $product->category->name }}
                                             @endif
                                         </td>
                                         <td>{{ $product->description }}</td>

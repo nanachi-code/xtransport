@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+if (!file_exists(public_path('uploads'))) {
+
+    mkdir(public_path('uploads'));
+}
+
 //* Dashboard
 Route::get('/', function () {
     return redirect('/admin/dashboard');
@@ -98,7 +103,28 @@ Route::prefix('product')->group(function () {
 
     Route::post('/{id}/update', 'Admin\ProductController@updateProduct');
 
-    Route::post('/{id}/restore', 'Admin\ProductController@restoreProduct');
+    Route::get('/{id}/restore', 'Admin\ProductController@restoreProduct');
+});
+
+//* Project
+Route::prefix('project')->group(function () {
+    Route::get('/', function () {
+        return redirect('/admin/project/all');
+    });
+
+    Route::get('/all', 'Admin\ProjectController@renderArchiveProject');
+
+    Route::get('/new', 'Admin\ProjectController@renderNewProject');
+
+    Route::post('/new', 'Admin\ProjectController@createProject');
+
+    Route::get('/{id}', 'Admin\ProjectController@renderSingleProject');
+
+    Route::get('/{id}/delete', 'Admin\ProjectController@deleteProject');
+
+    Route::post('/{id}/update', 'Admin\ProjectController@updateProject');
+
+    Route::get('/{id}/restore', 'Admin\ProjectController@restoreProject');
 });
 
 //* User
@@ -164,17 +190,17 @@ Route::prefix('event')->group(function () {
     Route::get('/{id}/restore', 'Admin\EventController@restoreEvent');
 });
 
-//* Feedback Post
+//* Feedback
 Route::prefix('feedback')->group(function () {
     Route::get('/', function () {
         return redirect('/admin/feedback/all');
     });
 
-    Route::get('/all', 'Admin\ContactFeedbackController@renderArchiveFeedback');
+    Route::get('/all', 'Admin\FeedbackController@renderArchiveFeedback');
 
-    Route::get('/{id}', 'Admin\ContactFeedbackController@renderSingleFeedback');
+    Route::get('/{id}', 'Admin\FeedbackController@renderSingleFeedback');
 
-    Route::get('/{id}/delete', 'Admin\ContactFeedbackController@deleteFeedback');
+    Route::get('/{id}/delete', 'Admin\FeedbackController@deleteFeedback');
 });
 
 

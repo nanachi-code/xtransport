@@ -50,11 +50,11 @@
 
                     <ul class="main-menu sf-menu sf-js-enabled sf-arrows">
                         <li class="curent-menu-item">
-                            <a href="{{ url('/') }}" class="sf-with-ul">home</a>
+                            <a href="{{ url('/') }}" class="sf-with-ul">Home</a>
                             <!-- ==== end submenu ==== -->
                         </li>
                         <li>
-                            <a href="{{ url('/blog/all') }}">blog</a>
+                            <a href="{{ url('/blog/all') }}">Blog</a>
                             @if (count($postCategory))
                             <!-- ==== sub menu ==== -->
                             <ul class="sub-menu">
@@ -70,7 +70,10 @@
                             @endif
                         </li>
                         <li>
-                            <a href="{{ url('product/all') }}">Products</a>
+                            <a href="{{ url('product/all') }}">Product</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('project/all') }}">Project</a>
                         </li>
                         <li>
                             <a href="{{ url('/event') }}">Event</a>
