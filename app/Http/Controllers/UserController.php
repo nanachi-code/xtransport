@@ -22,24 +22,31 @@ class UserController extends Controller
     public function updateUserProfile($id, Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255']
+            'name' => ['required', 'string', 'max:255'],
+            'avatar'=>['required','mimes:png,jpg,jpeg']
         ]);
 
+//        return dd($request);
         $user = User::find($id);
         $user->name = $request->get('name');
         $user->phone = $request->get('phone');
         $user->dateOfBirth = $request->get('dateOfBirth');
         $user->address = $request->get('address');
-        $avatar = $request->file('avatar');
-
-        if (Storage::disk('uploads')->exists($avatar->getClientOriginalName())) {
-            $name = pathinfo($avatar->getClientOriginalName(), PATHINFO_FILENAME) . "_1." . $avatar->getClientOriginalExtension();
-        } else {
-            $name = $avatar->getClientOriginalName();
-        }
-        Storage::disk('uploads')->put($name,  File::get($avatar));
 
         try {
+            if($request->hasFile('avatar')){
+                $avatar = $request->file('avatar');
+                if (Storage::disk('uploads')->exists($avatar->getClientOriginalName())) {
+                    $name = pathinfo($avatar->getClientOriginalName(), PATHINFO_FILENAME) . "_1." . $avatar->getClientOriginalExtension();
+                    $name = $this->convertSpecialCharacters($name);
+                } else {
+                    $name = $avatar->getClientOriginalName();
+                    $name = $this->convertSpecialCharacters($name);
+                }
+                Storage::disk('uploads')->put($name,  File::get($avatar));
+                $user->avatar = $name;
+            }
+
             $user->save();
         } catch (\Exception $e) {
             throw $e;
@@ -67,5 +74,24 @@ class UserController extends Controller
         ]);
 
         return response()->json(['status' => true, "message" => "Change Password Successfully"]);
+    }
+    private function convertSpecialCharacters(string $str)
+    {
+        $str = preg_replace("/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/", "a", $str);
+        $str = preg_replace("/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/", "e", $str);
+        $str = preg_replace("/ì|í|ị|ỉ|ĩ/", "i", $str);
+        $str = preg_replace("/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/", "o", $str);
+        $str = preg_replace("/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/", "u", $str);
+        $str = preg_replace("/ỳ|ý|ỵ|ỷ|ỹ/", "y", $str);
+        $str = preg_replace("/đ/", "d", $str);
+        $str = preg_replace("/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/", "A", $str);
+        $str = preg_replace("/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/", "E", $str);
+        $str = preg_replace("/Ì|Í|Ị|Ỉ|Ĩ/", "I", $str);
+        $str = preg_replace("/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/", "O", $str);
+        $str = preg_replace("/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/", "U", $str);
+        $str = preg_replace("/Ỳ|Ý|Ỵ|Ỷ|Ỹ/", "Y", $str);
+        $str = preg_replace("/Đ/", "D", $str);
+        $str = preg_replace("/\s/", "-", $str);
+        return $str;
     }
 }
