@@ -1,8 +1,7 @@
 {{-- START - Mobile Menu --}}
 <div class="menu-mobile menu-activated-on-click color-scheme-dark">
     <div class="mm-logo-buttons-w">
-        <a class="mm-logo" href="index.html">
-            <img src="img/logo.png" />
+        <a class="mm-logo" href="{{ url("/")  }}">
             <span>XTransport</span>
         </a>
         <div class="mm-buttons">
@@ -17,7 +16,13 @@
     <div class="menu-and-user">
         <div class="logged-user-w">
             <div class="avatar-w">
-                <img alt="" src="img/avatar1.jpg" />
+                @if (Auth::check())
+                    @if (\Auth::user()->avatar)
+                        <img src="{{ asset("uploads/".\Auth::user()->avatar) }}" class="input-preview img-responsive">
+                    @else
+                        <img src="{{ asset('images/default/no-image.jpg') }}" class="input-preview img-responsive">
+                    @endif
+                @endif
             </div>
             <div class="logged-user-info-w">
                 <div class="logged-user-name">
