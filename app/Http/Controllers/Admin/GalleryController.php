@@ -15,7 +15,7 @@ class GalleryController extends Controller
             $p = [
                 'gallery' => collect(File::allFiles(public_path('uploads')))
                     ->filter(function ($file) {
-                        return in_array($file->getExtension(), ['png', 'gif', 'jpg']);
+                        return in_array($file->getExtension(), ['png', 'jpeg', 'jpg']);
                     })
                     ->sortBy(function ($file) {
                         return $file->getCTime();
@@ -52,6 +52,9 @@ class GalleryController extends Controller
 
     public function uploadAttachment(Request $request)
     {
+        $request->validate([
+            'image' => 'required|mimes:png,jpg,jpeg'
+        ]);
         if ($request->hasFile("image")) {
             $image = $request->file('image');
 
