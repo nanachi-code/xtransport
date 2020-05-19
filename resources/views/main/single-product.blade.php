@@ -47,7 +47,7 @@
                             @if (count($product->gallery))
                             @foreach ($product->gallery as $image)
                             <div class="item">
-                                <img class="sp-image" src="{{ url("uploads/{$image}") }}" alt="">
+                                <img class="sp-image" src="{{ $image }}" alt="">
                             </div>
                             @endforeach
                             @endif
@@ -57,7 +57,7 @@
                                 @foreach ($product->gallery as $image)
                                 <div class="item">
                                     <a href="#">
-                                        <img class="sp-thumbnail" src="{{ url("uploads/{$image}") }}" alt="">
+                                        <img class="sp-thumbnail" src="{{ $image }}" alt="">
                                     </a>
                                 </div>
                                 @endforeach

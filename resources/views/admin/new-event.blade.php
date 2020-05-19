@@ -159,8 +159,8 @@
                                             <div class="row gallery-list">
                                                 @foreach ($gallery as $image)
                                                 <div class="col-sm-2 gallery-item">
-                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
-                                                        data-size="{{ $image->getSize() }} B"
+                                                    <img src="{{ $image->getRelativePathname() }}"
+                                                        data-size="{{ $image->size }} B"
                                                         data-filename="{{ $image->getFilename() }}"
                                                         class="img-responsive">
                                                 </div>
@@ -210,8 +210,8 @@
                                             <div class="row gallery-list">
                                                 @foreach ($gallery as $image)
                                                 <div class="col-sm-2 gallery-item">
-                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
-                                                        data-size="{{ $image->getSize() }} B"
+                                                    <img src="{{ $image->getRelativePathname() }}"
+                                                        data-size="{{ $image->size }} B"
                                                         data-filename="{{ $image->getFilename() }}"
                                                         class="img-responsive">
                                                 </div>

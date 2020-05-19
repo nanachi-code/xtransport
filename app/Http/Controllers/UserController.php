@@ -23,10 +23,10 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'avatar'=>['required','mimes:png,jpg,jpeg']
+            'avatar' => ['required', 'mimes:png,jpg,jpeg']
         ]);
 
-//        return dd($request);
+        //        return dd($request);
         $user = User::find($id);
         $user->name = $request->get('name');
         $user->phone = $request->get('phone');
@@ -34,16 +34,16 @@ class UserController extends Controller
         $user->address = $request->get('address');
 
         try {
-            if($request->hasFile('avatar')){
+            if ($request->hasFile('avatar')) {
                 $avatar = $request->file('avatar');
-                if (Storage::disk('uploads')->exists($avatar->getClientOriginalName())) {
+                if (Storage::disk('s3')->exists($avatar->getClientOriginalName())) {
                     $name = pathinfo($avatar->getClientOriginalName(), PATHINFO_FILENAME) . "_1." . $avatar->getClientOriginalExtension();
                     $name = $this->convertSpecialCharacters($name);
                 } else {
                     $name = $avatar->getClientOriginalName();
                     $name = $this->convertSpecialCharacters($name);
                 }
-                Storage::disk('uploads')->put($name,  File::get($avatar));
+                Storage::disk('s3')->put($name,  File::get($avatar));
                 $user->avatar = $name;
             }
 

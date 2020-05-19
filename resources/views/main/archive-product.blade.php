@@ -69,7 +69,7 @@
                                         <figure class="entry-thumb">
                                             <a href="{{ url("/product/detail/{$product->id}") }}">
                                                 @if ($product->thumbnail)
-                                                <img src="{{ url("uploads/{$product->thumbnail}") }}" alt="">
+                                                <img src="{{ $product->thumbnail }}" alt="">
                                                 @else
                                                 <img src="{{ asset("images/default/no-image.jpg") }}" alt="">
                                                 @endif

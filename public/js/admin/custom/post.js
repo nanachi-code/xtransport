@@ -121,11 +121,10 @@ $(function () {
 
     $("#set-thumbnail-modal").on("click", ".gallery-item", function (e) {
         e.preventDefault();
-        let filename = $(this).find("img").attr("data-filename"),
-            imgURL = $(this).find("img").attr("src");
+        let imgURL = $(this).find("img").attr("src");
 
         $("#thumbnail-preview").attr("src", imgURL);
-        $("input[name='thumbnail']").val(filename);
+        $("input[name='thumbnail']").val(imgURL);
         $("#set-thumbnail-modal").modal("hide");
     });
 

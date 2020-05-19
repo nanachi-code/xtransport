@@ -95,11 +95,10 @@ $(function () {
 
     $("#set-avatar-modal").on("click", ".gallery-item", function (e) {
         e.preventDefault();
-        let filename = $(this).find("img").attr("data-filename"),
-            imgURL = $(this).find("img").attr("src");
+        let imgURL = $(this).find("img").attr("src");
 
         $("#avatar-preview").attr("src", imgURL);
-        $("input[name='avatar']").val(filename);
+        $("input[name='avatar']").val(imgURL);
         $("#set-avatar-modal").modal("hide");
     });
 

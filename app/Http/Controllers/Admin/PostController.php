@@ -7,8 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\Finder\SplFileInfo;
 
 class PostController extends Controller
 {
@@ -26,13 +27,18 @@ class PostController extends Controller
         $p = [
             'post' => Post::find($id),
             'allCategories' => CategoryPost::all(),
-            'gallery' => collect(File::allFiles(public_path('uploads')))
+            'gallery' => collect(Storage::disk('s3')->files("uploads"))
+                ->map(function ($name) {
+                    $file = new SplFileInfo($name, Storage::disk('s3')->url("uploads"), Storage::disk('s3')->url($name));
+                    $file->mTime = Carbon::createFromTimestamp(Storage::disk('s3')->lastModified($name))->format('Y-m-d H:i:s');
+                    $file->size = Storage::disk('s3')->size($name);
+                    return $file;
+                })
                 ->filter(function ($file) {
-                    return in_array($file->getExtension(), ['png', 'gif', 'jpg']);
-                })
-                ->sortBy(function ($file) {
-                    return $file->getCTime();
-                })
+                    return in_array($file->getExtension(), ['png', 'jpeg', 'jpg']);
+                })->sortBy(function ($file) {
+                    return $file->mTime;
+                }),
         ];
 
         return view('admin/single-post')->with($p);
@@ -42,13 +48,18 @@ class PostController extends Controller
     {
         $p = [
             'allCategories' => CategoryPost::all(),
-            'gallery' => collect(File::allFiles(public_path('uploads')))
+            'gallery' => collect(Storage::disk('s3')->files("uploads"))
+                ->map(function ($name) {
+                    $file = new SplFileInfo($name, Storage::disk('s3')->url("uploads"), Storage::disk('s3')->url($name));
+                    $file->mTime = Carbon::createFromTimestamp(Storage::disk('s3')->lastModified($name))->format('Y-m-d H:i:s');
+                    $file->size = Storage::disk('s3')->size($name);
+                    return $file;
+                })
                 ->filter(function ($file) {
-                    return in_array($file->getExtension(), ['png', 'gif', 'jpg']);
-                })
-                ->sortBy(function ($file) {
-                    return $file->getCTime();
-                })
+                    return in_array($file->getExtension(), ['png', 'jpeg', 'jpg']);
+                })->sortBy(function ($file) {
+                    return $file->mTime;
+                }),
         ];
 
         return view('admin/new-post')->with($p);

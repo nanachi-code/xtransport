@@ -171,8 +171,7 @@
                                 <article class="entry-item">
                                     <figure class="entry-thumb">
                                         <a href="{{ url("product/detail/{$product->id}") }}">
-                                            <img class="" src="{{ url("uploads/{$product->thumbnail}") }}"
-                                                alt="img-feature1">
+                                            <img class="" src="{{ $product->thumbnail }}" alt="img-feature1">
                                         </a>
                                         <figcaption>
                                             <a href="{{ url("product/detail/{$product->id}") }}">
@@ -401,14 +400,13 @@
                             <ul class="owl-carousel owl-theme">
                                 <!-- ** -->
                                 @foreach($allCompanies as $company)
-                                @if ($company->avatar)
+                                @if ($company->logo)
                                 <li>
                                     <article class="entry-item">
                                         <div class="entry-content">
                                             <figure class="entry-thumb">
                                                 <a href="#">
-                                                    <img src="{{ asset("uploads/{$company->avatar}") }}"
-                                                        alt="{{ $company->name }}">
+                                                    <img src="{{ $company->logo }}" alt="{{ $company->name }}">
                                                 </a>
                                             </figure>
                                         </div>

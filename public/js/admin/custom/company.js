@@ -95,11 +95,10 @@ $(function () {
 
     $("#set-logo-modal").on("click", ".gallery-item", function (e) {
         e.preventDefault();
-        let filename = $(this).find("img").attr("data-filename"),
-            imgURL = $(this).find("img").attr("src");
+        let imgURL = $(this).find("img").attr("src");
 
         $("#logo-preview").attr("src", imgURL);
-        $("input[name='logo']").val(filename);
+        $("input[name='logo']").val(imgURL);
         $("#set-logo-modal").modal("hide");
     });
 

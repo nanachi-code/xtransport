@@ -42,7 +42,7 @@
                     <div class="row p-5">
                         <div class="col-md-3">
                             <a href="{{ url("project/detail/{$project->id}") }}">
-                                <img src="{{ asset("/uploads/{$project->thumbnail}") }}" alt="" class="img-responsive">
+                                <img src="{{ $project->thumbnail }}" alt="" class="img-responsive">
                             </a>
                         </div>
                         <div class="col-md-9">
