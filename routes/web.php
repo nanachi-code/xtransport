@@ -44,6 +44,8 @@ Route::prefix('/event')
 
         Route::get('/all', 'Main\EventController@renderArchiveEvent');
 
+        Route::get('/old', 'Main\EventController@renderOldEvent');
+
         Route::get('/detail/{id}', 'Main\EventController@renderSingleEvent');
 
         Route::post('/detail/{id}', 'Main\EventController@registerEvent');

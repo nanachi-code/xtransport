@@ -15,7 +15,8 @@ class EventController extends Controller
         $p = [
             'events' => Event::where('status', 'active')
                 ->whereDate("date", ">=", Carbon::today())
-                ->paginate(9)
+                ->paginate(9),
+            'location' => 'upcoming event'
         ];
         return view('main.archive-event')->with($p);
     }
@@ -57,5 +58,15 @@ class EventController extends Controller
         return response()->json([
             "message" => "You have successfully registered for this event. An email with detailed instruction has been sent to you."
         ], 200);
+    }
+
+    public function renderOldEvent()
+    {
+        $p = [
+            'events' => Event::where('status', 'active')->whereDate("date", "<", Carbon::today())
+                ->paginate(9),
+                'location' => 'old event'
+        ];
+        return view('main.archive-event')->with($p);
     }
 }

@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="kopa-breadcrumb">
-                <h3>Upcoming Events</h3>
+                <h3>{{$location}}</h3>
                 <div class="breadcrumb-content">
                     <span>
                         <a href="{{ url('/') }}">
