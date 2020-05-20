@@ -65,7 +65,8 @@ class EventController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string'],
-            'address' => ['required', 'string']
+            'address' => ['required', 'string'],
+            'max_users' => ['required','integer']
         ]);
         $event = new Event;
         $event->name = $request->get('name');
@@ -91,7 +92,8 @@ class EventController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string'],
-            'address' => ['required', 'string']
+            'address' => ['required', 'string'],
+            'max_users' => ['required','integer']
         ]);
 
         $event = Event::find($id);

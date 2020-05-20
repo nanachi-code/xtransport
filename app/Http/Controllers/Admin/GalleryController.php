@@ -20,12 +20,13 @@ class GalleryController extends Controller
                     $file->size = Storage::disk('s3')->size($name);
                     return $file;
                 })
-                ->filter(function ($file) {
-                    return in_array($file->getExtension(), ['png', 'jpeg', 'jpg']);
-                })->sortBy(function ($file) {
-                    return $file->mTime;
-                }),
+                // ->filter(function ($file) {
+                //     return in_array($file->getExtension(), ['png', 'jpeg', 'jpg']);
+                // })->sortBy(function ($file) {
+                //     return $file->mTime;
+                // }),
         ];
+        return dd($p);
 
         return view('admin/gallery')->with($p);
     }
