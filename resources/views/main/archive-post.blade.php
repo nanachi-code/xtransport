@@ -51,7 +51,7 @@
                             </header>
                             @if ($post->thumbnail)
                             <div class="entry-thumb">
-                                <div class="entry-thumb embed-responsive embed-responsive-16by9">
+                                <div class="entry-thumb">
                                     <a href="{{ url("/blog/post/{$post->id}") }}">
                                         <img src="{{ asset("uploads/{$post->thumbnail}") }}">
                                     </a>
