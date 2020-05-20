@@ -4,37 +4,36 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\Finder\SplFileInfo;
 
 class GalleryController extends Controller
 {
     public function renderGallery()
     {
-        if (file_exists(public_path('uploads'))) {
-            $p = [
-                'gallery' => collect(File::allFiles(public_path('uploads')))
-                    ->filter(function ($file) {
-                        return in_array($file->getExtension(), ['png', 'jpeg', 'jpg']);
-                    })
-                    ->sortBy(function ($file) {
-                        return $file->getCTime();
-                    })
-            ];
-        } else {
-            mkdir(public_path('uploads'));
-            $p = [
-                'gallery' => []
-            ];
-        };
+        $p = [
+            'gallery' => collect(Storage::disk('s3')->files("uploads"))
+                ->map(function ($name) {
+                    $file = new SplFileInfo($name, Storage::disk('s3')->url("uploads"), Storage::disk('s3')->url($name));
+                    $file->mTime = Carbon::createFromTimestamp(Storage::disk('s3')->lastModified($name))->format('Y-m-d H:i:s');
+                    $file->size = Storage::disk('s3')->size($name);
+                    return $file;
+                })
+                ->filter(function ($file) {
+                    return in_array($file->getExtension(), ['png', 'jpeg', 'jpg']);
+                })->sortBy(function ($file) {
+                    return $file->mTime;
+                }),
+        ];
         return view('admin/gallery')->with($p);
     }
 
     public function deleteAttachment($attachmentName)
     {
-        if (Storage::disk("uploads")->exists($attachmentName)) {
+        if (Storage::disk("s3")->exists("uploads/{$attachmentName}")) {
             try {
-                Storage::disk("uploads")->delete($attachmentName);
+                Storage::disk("s3")->delete("uploads/{$attachmentName}");
             } catch (\Throwable $th) {
                 throw $th;
             }
@@ -57,25 +56,21 @@ class GalleryController extends Controller
         ]);
         if ($request->hasFile("image")) {
             $image = $request->file('image');
+            $name = Carbon::today()->format('Ymd') . "-" . $image->getClientOriginalName();
+            $name = $this->convertSpecialCharacters($name);
 
             try {
-                if (Storage::disk('uploads')->exists($image->getClientOriginalName())) {
-                    $name = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME) . "_1." . $image->getClientOriginalExtension();
-                    $name = $this->convertSpecialCharacters($name);
-                } else {
-                    $name = $image->getClientOriginalName();
-                    $name = $this->convertSpecialCharacters($name);
-                }
-                Storage::disk('uploads')->put($name,  File::get($image));
+                Storage::disk('s3')->put("uploads/{$name}",  file_get_contents($image->getRealPath()));
             } catch (\Throwable $th) {
                 throw $th;
             }
+
             return response()->json([
                 "message" => "Attachment uploaded successfully.",
                 "image" => [
-                    "src" => asset("uploads/{$image->getClientOriginalName()}"),
-                    "size" => Storage::disk('uploads')->size($image->getClientOriginalName()),
-                    "filename" => $image->getClientOriginalName()
+                    "src" => Storage::disk('s3')->url("uploads/{$name}"),
+                    "size" => Storage::disk('s3')->size("uploads/{$name}"),
+                    "filename" => $name
                 ]
             ], 200);
         }

@@ -118,7 +118,7 @@
                                                 style="font-weight: 800">{{ $post->updated_at }}</span>
                                             @endif
                                         </div>
-                                        <a href="{{ url("post/{$post->id}") }}">View post</a>
+                                        <a href="{{ url("blog/post/{$post->id}") }}">View post</a>
                                     </div>
                                     {{-- post category --}}
                                     <div class="form-group">
@@ -141,8 +141,7 @@
                                     <div class="form-group">
                                         <label for="form-post-thumbnail">Thumbnail</label>
                                         @if ($post->thumbnail)
-                                        <img src="{{ asset("uploads/{$post->thumbnail}") }}" class="img-responsive"
-                                            id="thumbnail-preview">
+                                        <img src="{{ $post->thumbnail }}" class="img-responsive" id="thumbnail-preview">
                                         @else
                                         <img src="{{ asset('images/default/no-image.jpg') }}" class="img-responsive"
                                             id="thumbnail-preview">
@@ -192,8 +191,8 @@
                                             <div class="row gallery-list">
                                                 @foreach ($gallery as $image)
                                                 <div class="col-sm-2 gallery-item">
-                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
-                                                        data-size="{{ $image->getSize() }} B"
+                                                    <img src="{{ $image->getRelativePathname() }}"
+                                                        data-size="{{ $image->size }} B"
                                                         data-filename="{{ $image->getFilename() }}"
                                                         class="img-responsive">
                                                 </div>
@@ -243,8 +242,8 @@
                                             <div class="row gallery-list">
                                                 @foreach ($gallery as $image)
                                                 <div class="col-sm-2 gallery-item">
-                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
-                                                        data-size="{{ $image->getSize() }} B"
+                                                    <img src="{{ $image->getRelativePathname() }}"
+                                                        data-size="{{ $image->size }} B"
                                                         data-filename="{{ $image->getFilename() }}"
                                                         class="img-responsive">
                                                 </div>

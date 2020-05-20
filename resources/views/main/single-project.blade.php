@@ -52,7 +52,7 @@
                         <article class="entry-item">
                             <figure class="entry-thumb">
                                 <a href="#">
-                                    <img src="{{ url("uploads/{$project->thumbnail}") }}" alt="">
+                                    <img src="{{ $project->thumbnail }}" alt="">
                                 </a>
                             </figure>
                             <div class="entry-content">
@@ -78,7 +78,7 @@
                                         <!-- ** -->
                                         <li class="col-xs-12 col-sm-4">
                                             <figure>
-                                                <img src="{{ url("uploads/{$image}") }}" alt="">
+                                                <img src="{{ $image }}" alt="">
                                             </figure>
                                         </li>
                                         @endforeach

@@ -47,7 +47,7 @@
                         <div class="entry-thumb">
                             <div class="entry-thumb embed-responsive embed-responsive-16by9">
                                 @if ($event->thumbnail)
-                                <img src="{{ url("uploads/{$event->thumbnail}") }}" alt="">
+                                <img src="{{ $event->thumbnail }}" alt="">
                                 @else
                                 <img src="{{ asset("images/default/no-image.jpg") }}" alt="">
                                 @endif

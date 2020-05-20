@@ -105,7 +105,7 @@
                                     <div class="form-group">
                                         <label for="form-event-user">Max guests</label>
                                         <input class="form-control" data-error="max guests is required" type="number"
-                                            name="max_users" id="form-event-user" />
+                                            name="max_users" id="form-event-user" min="1" max="500" />
                                         <div class="help-block form-text with-errors form-control-feedback"></div>
                                     </div>
 
@@ -159,8 +159,8 @@
                                             <div class="row gallery-list">
                                                 @foreach ($gallery as $image)
                                                 <div class="col-sm-2 gallery-item">
-                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
-                                                        data-size="{{ $image->getSize() }} B"
+                                                    <img src="{{ $image->getRelativePathname() }}"
+                                                        data-size="{{ $image->size }} B"
                                                         data-filename="{{ $image->getFilename() }}"
                                                         class="img-responsive">
                                                 </div>
@@ -210,8 +210,8 @@
                                             <div class="row gallery-list">
                                                 @foreach ($gallery as $image)
                                                 <div class="col-sm-2 gallery-item">
-                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
-                                                        data-size="{{ $image->getSize() }} B"
+                                                    <img src="{{ $image->getRelativePathname() }}"
+                                                        data-size="{{ $image->size }} B"
                                                         data-filename="{{ $image->getFilename() }}"
                                                         class="img-responsive">
                                                 </div>

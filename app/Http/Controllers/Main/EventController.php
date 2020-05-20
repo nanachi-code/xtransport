@@ -43,6 +43,13 @@ class EventController extends Controller
                     ]
                 ], 406);
             }
+            if ($event->users->count() == $event->max_users) {
+                return response()->json([
+                    "errors" => [
+                        "full" => ["This event already full."]
+                    ]
+                ], 406);
+            }
             $event->users()->sync(Auth::user()->id);
         } catch (\Throwable $th) {
             throw $th;

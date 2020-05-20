@@ -97,7 +97,7 @@
                                             <div class="row pt-2">
                                                 @foreach ($product->gallery as $image)
                                                 <div class="col-sm-3">
-                                                    <img src="{{ url("uploads/{$image}") }}" class="img-responsive">
+                                                    <img src="{{ $image }}" class="img-responsive">
                                                 </div>
                                                 @endforeach
                                             </div>
@@ -132,6 +132,7 @@
                                                 style="font-weight: 800">{{ $product->updated_at }}</span>
                                             @endif
                                         </div>
+                                        <a href="{{ url("product/detail/{$product->id}") }}">View product</a>
                                     </div>
 
 
@@ -139,7 +140,7 @@
                                     <div class="form-group">
                                         <label for="form-product-thumbnail">Thumbnail</label>
                                         @if ($product->thumbnail)
-                                        <img src="{{ asset("uploads/{$product->thumbnail}") }}" class="img-responsive"
+                                        <img src="{{ $product->thumbnail }}" class="img-responsive"
                                             id="thumbnail-preview">
                                         @else
                                         <img src="{{ asset('images/default/no-image.jpg') }}" class="img-responsive"
@@ -190,8 +191,8 @@
                                             <div class="row gallery-list">
                                                 @foreach ($gallery as $image)
                                                 <div class="col-sm-2 gallery-item">
-                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
-                                                        data-size="{{ $image->getSize() }} B"
+                                                    <img src="{{ $image->getRelativePathname() }}"
+                                                        data-size="{{ $image->size }} B"
                                                         data-filename="{{ $image->getFilename() }}"
                                                         class="img-responsive">
                                                 </div>
@@ -247,13 +248,15 @@
                                                 @foreach ($gallery as $image)
                                                 @if (in_array($image->getFilename(), $product->gallery))
                                                 <div class="col-sm-2 gallery-item">
-                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
+                                                    <img src="{{ $image->getRelativePathname() }}"
+                                                        data-size="{{ $image->size }} B"
                                                         data-filename="{{ $image->getFilename() }}"
                                                         class="img-responsive selected">
                                                 </div>
                                                 @else
                                                 <div class="col-sm-2 gallery-item">
-                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
+                                                    <img src="{{ $image->getRelativePathname() }}"
+                                                        data-size="{{ $image->size }} B"
                                                         data-filename="{{ $image->getFilename() }}"
                                                         class="img-responsive">
                                                 </div>

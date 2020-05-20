@@ -44,7 +44,7 @@
                                 <figure class="entry-thumb">
                                     <a href="#">
                                         @if ($event->thumbnail)
-                                        <img src="{{ url("uploads/{$event->thumbnail}") }}" alt="">
+                                        <img src="{{ $event->thumbnail }}" alt="">
                                         @else
                                         <img src="{{ asset("images/default/no-image.jpg") }}" alt="">
                                         @endif
@@ -91,7 +91,7 @@
                                 <figure class="entry-thumb">
                                     <a href="{{ url("blog/post/{$post->title}") }}">
                                         @if ($post->thumbnail)
-                                        <img src="{{ url("uploads/{$post->thumbnail}") }}" alt="">
+                                        <img src="{{ $post->thumbnail }}" alt="">
                                         @else
                                         <img src="{{ asset("images/default/no-image.jpg") }}" alt="">
                                         @endif
@@ -137,7 +137,7 @@
                                 <figure class="entry-thumb">
                                     <a href="{{ url("/project/detail/{$project->name}") }}">
                                         @if ($project->thumbnail)
-                                        <img src="{{ url("uploads/{$project->thumbnail}") }}" alt="">
+                                        <img src="{{ $project->thumbnail }}" alt="">
                                         @else
                                         <img src="{{ asset("images/default/no-image.jpg") }}" alt="">
                                         @endif

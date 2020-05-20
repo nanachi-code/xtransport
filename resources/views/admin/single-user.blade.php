@@ -120,8 +120,7 @@
                                     <div class="form-group">
                                         <label for="form-user-thumbnail">Avatar</label>
                                         @if ($user->avatar)
-                                        <img src="{{ asset("uploads/{$user->avatar}") }}" class="img-responsive"
-                                            id="avatar-preview">
+                                        <img src="{{ $user->avatar }}" class="img-responsive" id="avatar-preview">
                                         @else
                                         <img src="{{ asset('images/default/no-image.jpg') }}" class="img-responsive"
                                             id="avatar-preview">
@@ -171,8 +170,8 @@
                                             <div class="row gallery-list">
                                                 @foreach ($gallery as $image)
                                                 <div class="col-sm-2 gallery-item">
-                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
-                                                        data-size="{{ $image->getSize() }} B"
+                                                    <img src="{{ $image->getRelativePathname() }}"
+                                                        data-size="{{ $image->size }} B"
                                                         data-filename="{{ $image->getFilename() }}"
                                                         class="img-responsive">
                                                 </div>

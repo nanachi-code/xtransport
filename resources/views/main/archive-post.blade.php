@@ -53,7 +53,7 @@
                             <div class="entry-thumb">
                                 <div class="entry-thumb">
                                     <a href="{{ url("/blog/post/{$post->id}") }}">
-                                        <img src="{{ asset("uploads/{$post->thumbnail}") }}">
+                                        <img src="{{ $post->thumbnail }}">
                                     </a>
                                 </div>
                             </div>

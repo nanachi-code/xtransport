@@ -118,6 +118,57 @@
                             </div>
                         </form>
 
+                        {{-- START - Add Image Modal --}}
+                        <div id="add-image-modal" aria-hidden="true" aria-labelledby="add-image-modal-title"
+                            class="modal fade" role="dialog" tabindex="-1">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="add-image-modal-title">
+                                            Add image
+                                        </h5>
+                                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{-- START - Upload Attachment --}}
+                                        <div class="element-box">
+                                            <h5>Upload new attachment</h5>
+                                            <hr>
+                                            <form class="upload-gallery" action="{{ url("admin/gallery/upload") }}"
+                                                method="post" enctype="multipart/form-data">
+                                                <input type="file" data-title="Upload" name="image">
+                                            </form>
+                                        </div>
+                                        {{-- END - Upload Attachment --}}
+
+                                        {{-- START - Attachment Library --}}
+                                        <div class="element-box attachment-library">
+                                            <h5>Attachment Library</h5>
+                                            <hr>
+                                            @if (count($gallery) == 0)
+                                            No attachments found.
+                                            @else
+                                            <div class="row gallery-list">
+                                                @foreach ($gallery as $image)
+                                                <div class="col-sm-2 gallery-item">
+                                                    <img src="{{ $image->getRelativePathname() }}"
+                                                        data-size="{{ $image->size }} B"
+                                                        data-filename="{{ $image->getFilename() }}"
+                                                        class="img-responsive">
+                                                </div>
+                                                @endforeach
+                                            </div>
+                                            @endif
+                                        </div>
+                                        {{-- END - Attachment Library --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- END - Add Image Modal --}}
+
                         {{-- START - Set Thumbnail Modal --}}
                         <div id="set-thumbnail-modal" aria-hidden="true" aria-labelledby="set-thumbnail-modal-title"
                             class="modal fade" role="dialog" tabindex="-1">
@@ -153,7 +204,8 @@
                                             <div class="row gallery-list">
                                                 @foreach ($gallery as $image)
                                                 <div class="col-sm-2 gallery-item">
-                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
+                                                    <img src="{{ $image->getRelativePathname() }}"
+                                                        data-size="{{ $image->size }} B"
                                                         data-filename="{{ $image->getFilename() }}"
                                                         class="img-responsive">
                                                 </div>
@@ -208,7 +260,8 @@
                                             <div class="row gallery-list">
                                                 @foreach ($gallery as $image)
                                                 <div class="col-sm-2 gallery-item">
-                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
+                                                    <img src="{{ $image->getRelativePathname() }}"
+                                                        data-size="{{ $image->size }} B"
                                                         data-filename="{{ $image->getFilename() }}"
                                                         class="img-responsive">
                                                 </div>

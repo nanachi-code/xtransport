@@ -148,8 +148,7 @@
                                     <div class="form-group">
                                         <label for="form-company-logo">Logo</label>
                                         @if ($company->logo)
-                                        <img src="{{ asset("uploads/{$company->logo}") }}" class="img-responsive"
-                                            id="logo-preview">
+                                        <img src="{{ $company->logo }}" class="img-responsive" id="logo-preview">
                                         @else
                                         <img src="{{ asset('images/default/no-image.jpg') }}" class="img-responsive"
                                             id="logo-preview">
@@ -199,8 +198,8 @@
                                             <div class="row gallery-list">
                                                 @foreach ($gallery as $image)
                                                 <div class="col-sm-2 gallery-item">
-                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
-                                                        data-size="{{ $image->getSize() }} B"
+                                                    <img src="{{ $image->getRelativePathname() }}"
+                                                        data-size="{{ $image->size }} B"
                                                         data-filename="{{ $image->getFilename() }}"
                                                         class="img-responsive">
                                                 </div>
@@ -250,8 +249,8 @@
                                             <div class="row gallery-list">
                                                 @foreach ($gallery as $image)
                                                 <div class="col-sm-2 gallery-item">
-                                                    <img src="{{ asset("uploads/{$image->getFilename()}") }}"
-                                                        data-size="{{ $image->getSize() }} B"
+                                                    <img src="{{ $image->getRelativePathname() }}"
+                                                        data-size="{{ $image->size }} B"
                                                         data-filename="{{ $image->getFilename() }}"
                                                         class="img-responsive">
                                                 </div>

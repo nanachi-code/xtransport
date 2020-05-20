@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Project;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\Finder\SplFileInfo;
 
 class ProjectController extends Controller
 {
@@ -21,12 +23,17 @@ class ProjectController extends Controller
     public function renderSingleProject($id)
     {
         $p = [
-            'gallery' => collect(File::allFiles(public_path('uploads')))
-                ->filter(function ($file) {
-                    return in_array($file->getExtension(), ['png', 'gif', 'jpg']);
+            'gallery' => collect(Storage::disk('s3')->files("uploads"))
+                ->map(function ($name) {
+                    $file = new SplFileInfo($name, Storage::disk('s3')->url("uploads"), Storage::disk('s3')->url($name));
+                    $file->mTime = Carbon::createFromTimestamp(Storage::disk('s3')->lastModified($name))->format('Y-m-d H:i:s');
+                    $file->size = Storage::disk('s3')->size($name);
+                    return $file;
                 })
-                ->sortBy(function ($file) {
-                    return $file->getCTime();
+                ->filter(function ($file) {
+                    return in_array($file->getExtension(), ['png', 'jpeg', 'jpg']);
+                })->sortBy(function ($file) {
+                    return $file->mTime;
                 }),
             'project' => Project::find($id)
         ];
@@ -37,13 +44,18 @@ class ProjectController extends Controller
     public function renderNewProject()
     {
         $p = [
-            'gallery' => collect(File::allFiles(public_path('uploads')))
+            'gallery' => collect(Storage::disk('s3')->files("uploads"))
+                ->map(function ($name) {
+                    $file = new SplFileInfo($name, Storage::disk('s3')->url("uploads"), Storage::disk('s3')->url($name));
+                    $file->mTime = Carbon::createFromTimestamp(Storage::disk('s3')->lastModified($name))->format('Y-m-d H:i:s');
+                    $file->size = Storage::disk('s3')->size($name);
+                    return $file;
+                })
                 ->filter(function ($file) {
-                    return in_array($file->getExtension(), ['png', 'gif', 'jpg']);
-                })
-                ->sortBy(function ($file) {
-                    return $file->getCTime();
-                })
+                    return in_array($file->getExtension(), ['png', 'jpeg', 'jpg']);
+                })->sortBy(function ($file) {
+                    return $file->mTime;
+                }),
         ];
 
         return view('admin/new-project')->with($p);

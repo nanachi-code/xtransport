@@ -59,7 +59,7 @@
                         @if ($post->thumbnail)
                         <div class="entry-thumb">
                             <div class="entry-thumb embed-responsive embed-responsive-16by9">
-                                <img src="{{asset('uploads/'.$post->thumbnail)}}" alt="">
+                                <img src="{{ $post->thumbnail }}" alt="">
                             </div>
                         </div>
                         @endif

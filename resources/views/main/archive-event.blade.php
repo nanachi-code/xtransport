@@ -45,7 +45,7 @@
                                     <figure class="entry-thumb">
                                         <a href="{{url('/event/detail/'.$event->id)}}">
                                             @if ($event->thumbnail)
-                                            <img src="{{ url("uploads/{$event->thumbnail}") }}" alt="">
+                                            <img src="{{ $event->thumbnail }}" alt="">
                                             @else
                                             <img src="{{ asset("images/default/no-image.jpg") }}" alt="">
                                             @endif
