@@ -39,11 +39,11 @@
 <section class="kopa-area-47">
     <div class="container">
         <div class="row ct-row-06">
-            <div class="col-xs-12">
+            <div class="col-xs-12 col-md-6">
                 <!-- widget -->
                 <div class="widget ex-module-slider-13">
                     <div class="widget-content">
-                        <div class="owl-carousel main-img-wrap">
+                        <div class="owl-carousel main-img-wrap" style="text-align: -webkit-center">
                             @if (count($product->gallery))
                             @foreach ($product->gallery as $image)
                             <div class="item">
@@ -55,7 +55,7 @@
                         <div class="row-slider">
                             <div class="owl-carousel thumb-img-wrap">
                                 @foreach ($product->gallery as $image)
-                                <div class="item">
+                                <div class="item" style="width: 120px">
                                     <a href="#">
                                         <img class="sp-thumbnail" src="{{ $image }}" alt="">
                                     </a>
