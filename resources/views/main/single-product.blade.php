@@ -53,7 +53,7 @@
                             @endif
                         </div>
                         <div class="row-slider">
-                            <div class="owl-carousel thumb-img-wrap d-flex justify-content-center">
+                            <div class="owl-carousel thumb-img-wrap custom-image-slider">
                                 @foreach ($product->gallery as $image)
                                 <div class="item">
                                     <a href="#">
