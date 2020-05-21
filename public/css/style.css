@@ -25959,6 +25959,7 @@ button {
 }
 
 .custom-image-slider > .owl-wrapper-outer > .owl-wrapper {
-    display: flex;
+    display: flex !important;
+    width: auto !important;
     justify-content: center;
 }
