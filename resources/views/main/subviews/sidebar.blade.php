@@ -89,7 +89,7 @@
                         <li style="">
                             <article class="entry-item">
                                 <figure class="entry-thumb">
-                                    <a href="{{ url("blog/post/{$post->title}") }}">
+                                    <a href="{{ url("blog/post/{$post->id}") }}">
                                         @if ($post->thumbnail)
                                         <img src="{{ $post->thumbnail }}" alt="">
                                         @else
@@ -99,7 +99,7 @@
                                 </figure>
                                 <div class="entry-content">
                                     <h4 class="entry-title">
-                                        <a href="{{ url("blog/post/{$post->title}") }}">
+                                        <a href="{{ url("blog/post/{$post->id}") }}">
                                             {{ $post->title }}
                                         </a>
                                     </h4>
@@ -135,7 +135,7 @@
                         <li style="">
                             <article class="entry-item">
                                 <figure class="entry-thumb">
-                                    <a href="{{ url("/project/detail/{$project->name}") }}">
+                                    <a href="{{ url("/project/detail/{$project->id}") }}">
                                         @if ($project->thumbnail)
                                         <img src="{{ $project->thumbnail }}" alt="">
                                         @else
@@ -145,7 +145,7 @@
                                 </figure>
                                 <div class="entry-content">
                                     <h4 class="entry-title">
-                                        <a href="{{ url("/project/detail/{$project->name}") }}">
+                                        <a href="{{ url("/project/detail/{$project->id}") }}">
                                             {{ $project->name }}
                                         </a>
                                     </h4>
