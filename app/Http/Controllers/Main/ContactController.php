@@ -15,12 +15,15 @@ class ContactController extends Controller
     }
     public function contactFeedback(Request $request)
     {
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'website_url' => ['required', 'string', 'max:255'],
+            'website_url' => ['string', 'max:255'],
             'comment' => ['required', 'string', 'max:255'],
         ]);
+        dd($request);
+
         try {
             Feedback::create([
                 "name" => $request->get('name'),

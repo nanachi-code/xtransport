@@ -132,12 +132,17 @@
                                             <p class="input-block">
                                                 <label><span class="ti-user"></span>
                                                 </label>
-                                                <input type="text" placeholder="Name" name="name" class="valid">
+                                                <input type="text" placeholder="Name" name="name" class="valid" required>
                                             </p>
                                             <p class="input-block">
                                                 <label><span class="ti-email"></span>
                                                 </label>
-                                                <input type="text" placeholder="Email" name="email" class="valid">
+                                                <input type="text" placeholder="Email" name="email" class="valid" required>
+                                            </p>
+                                            <p class="input-block">
+                                                <label><span class="ti-map"></span>
+                                                </label>
+                                                <input type="text" placeholder="Website" name="website_url" class="valid">
                                             </p>
 
                                         </div>
@@ -147,7 +152,7 @@
 
                                             <p class="textarea-block">
                                                 <textarea name="comment" placeholder="Your message" cols="88"
-                                                    rows="5"></textarea>
+                                                    rows="6" required></textarea>
                                             </p>
 
                                         </div>
@@ -160,7 +165,6 @@
                                         <button type="submit" id="contact-feedback" class="style-btn-01 md-btn">Seed
                                             Message</button>
                                     </p>
-
                                 </form>
                                 <!-- ============================================ -->
                             </div>
@@ -173,7 +177,7 @@
 </section>
 <!-- end -->
 @endsection
-@section('script')
+@section('additional-scripts')
 <script type="text/javascript">
     $(document).ready(function () {
             $("#contact-feedback").submit(function (e) {
