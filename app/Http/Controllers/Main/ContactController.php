@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Main;
 
-use App\ContactFeedback;
+
+use App\Feedback;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -15,14 +16,17 @@ class ContactController extends Controller
     }
     public function contactFeedback(Request $request)
     {
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'website_url' => ['required', 'string', 'max:255'],
+            'website_url' => ['string', 'max:255'],
             'comment' => ['required', 'string', 'max:255'],
         ]);
+        dd($request);
+
         try {
-            ContactFeedback::create([
+            Feedback::create([
                 "name" => $request->get('name'),
                 "email" => $request->get('email'),
                 "website_url" => $request->get('website_url'),
