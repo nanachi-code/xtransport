@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Carbon;
 
 class LibraryController extends Controller
 {
@@ -81,12 +82,12 @@ class LibraryController extends Controller
         $document = $request->all();
         $document['user_id'] = Auth::user()->id;
         if ($request->hasFile('file')) {
-            $document['file'] = $request->file->getClientOriginalName();
-
+            $name = $request->file->getClientOriginalName();
             $ext = $request->file->getClientOriginalExtension();
             if (in_array($ext, $ext_allow)) {
-                $request->file->storeAs('documents/' . Auth::user()->id, $document['file'], 'uploads');
+                Storage::disk('s3')->put("uploads/documents/{$document['user_id']}/{$name}",  $request->file);
             }
+            $document['file'] = Storage::disk('s3')->url("uploads/documents/{$document['user_id']}/{$name}");
         }
         $document = Document::create($document);
         return redirect()->to('library/' . $document->id.'/detail/');
@@ -100,7 +101,6 @@ class LibraryController extends Controller
         } else $rate_flag = true;
         $p = [
             'doc' => $document = Document::find($id),
-            'pathToFile' => asset("uploads/documents/" . $document->user_id . '/' . $document->file),
             'review' => \willvincent\Rateable\Rating::where('rateable_id', $id)->get(),
             'rate_flag' => $rate_flag
         ];
@@ -116,7 +116,7 @@ class LibraryController extends Controller
         } catch (\Throwable $th) {
             throw $th;
         }
-        return response()->download(public_path('uploads/documents/'.$document->user_id.'/'.$document->file));
+        return response()->download($document->file);
     }
 
     public function rating(Request $request)

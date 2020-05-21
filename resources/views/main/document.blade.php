@@ -42,8 +42,8 @@
             <h3 class="widget-title kopa-heading2 size-normal pt-5">{{$doc->title}}</h3>
             {{-- <iframe src="https://view.officeapps.live.com/op/view.aspx?src=https://drive.google.com/open?id=1FcEhk-_IphE8aKrTpr_aojg5KRiBHPuQrbJHNQ9kKPY" frameborder="0"
             style="width:100%;min-height:640px;"></iframe> --}}
-            @if (explode('.',$doc->file)[1] == 'pdf')
-            <iframe src="{{$pathToFile}}" width="100%" height="100%"></iframe>
+            @if (true)
+            <iframe src="{{$doc->file}}" width="100%" height="100%"></iframe>
             @else <div class="alert alert-danger style-02 fade in">
                 <div class="alert-body row">
                     <div class="alert-thumb">
@@ -82,8 +82,8 @@
                             <article class="entry-item clearfix">
                                 <div class="entry-content">
                                     <a class="style-btn-01 lg-btn with-icon-style-01"
-                                        href="{{url('library/download/'.$doc->id)}}"><i class="fa fa-download"></i>Tải
-                                        về</a>
+                                        href="{{url('library/download/'.$doc->id)}}"><i
+                                            class="fa fa-download"></i>Download</a>
                                 </div>
                             </article>
                         </div>

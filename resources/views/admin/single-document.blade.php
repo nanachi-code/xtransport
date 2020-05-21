@@ -60,9 +60,8 @@
                                         <label for="form-document-file">File path</label>
                                         <input class="form-control" data-error="document file is required"
                                             placeholder="Upload document file" required="required" type="text"
-                                            name="file"
-                                            value="{{ asset("uploads/documents/" . $document->user_id . '/' . $document->file) }}"
-                                            id="form-document-author" disabled />
+                                            name="file" value="{{ $document->file }}" id="form-document-author"
+                                            disabled />
                                         <div class="help-block form-text with-errors form-control-feedback"></div>
                                     </div>
 
