@@ -10,16 +10,27 @@ use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
-    public function renderArchiveEvent()
+    public function renderUpcomingArchiveEvent()
     {
         $p = [
             'events' => Event::where('status', 'active')
                 ->whereDate("date", ">=", Carbon::today())
                 ->paginate(9),
-            'location' => 'upcoming event'
+            'page' => 'Upcoming Events'
         ];
         return view('main.archive-event')->with($p);
     }
+
+    public function renderArchiveAllEvent()
+    {
+        $p = [
+            'events' => Event::where('status', 'active')
+                ->paginate(9),
+            'page' => 'All Events'
+        ];
+        return view('main.archive-event')->with($p);
+    }
+
 
     public function renderSingleEvent($id)
     {
@@ -58,15 +69,5 @@ class EventController extends Controller
         return response()->json([
             "message" => "You have successfully registered for this event. An email with detailed instruction has been sent to you."
         ], 200);
-    }
-
-    public function renderOldEvent()
-    {
-        $p = [
-            'events' => Event::where('status', 'active')->whereDate("date", "<", Carbon::today())
-                ->paginate(9),
-                'location' => 'old event'
-        ];
-        return view('main.archive-event')->with($p);
     }
 }
