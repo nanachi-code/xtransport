@@ -58,16 +58,34 @@ class EventController extends Controller
             if ($event->users->count() == $event->max_users) {
                 return response()->json([
                     "errors" => [
-                        "full" => ["This event already full."]
+                        "full" => ["This event is already full."]
                     ]
                 ], 406);
             }
-            $event->users()->sync(Auth::user()->id);
+            $event->users()->attach(Auth::user()->id);
+            $event->load("users");
         } catch (\Throwable $th) {
             throw $th;
         }
         return response()->json([
-            "message" => "You have successfully registered for this event. An email with detailed instruction has been sent to you."
+            "message" => "You have successfully registered for this event. An email with detailed instruction has been sent to you.",
+            "registered_count" => $event->users->count(),
+            "is_full" => $event->users->count() == $event->max_users
+        ], 200);
+    }
+
+    public function unregisterEvent(Request $request, $id)
+    {
+        $event = Event::find($id);
+        try {
+            $event->users()->detach(Auth::user()->id);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+        return response()->json([
+            "message" => "You have successfully unregistered for this event.",
+            "registered_count" => $event->users->count(),
+            "is_full" => $event->users->count() == $event->max_users
         ], 200);
     }
 }

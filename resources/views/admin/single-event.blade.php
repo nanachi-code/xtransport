@@ -147,7 +147,7 @@
 
                                         <div class="form-buttons-w">
                                             <button class="btn btn-primary" id="set-thumbnail">Set Thumbnail</button>
-                                            <input type="hidden" name="thumbnail">
+                                            <input type="hidden" name="thumbnail" value="{{ $event->thumbnail }}">
                                         </div>
                                     </div>
                                 </div>

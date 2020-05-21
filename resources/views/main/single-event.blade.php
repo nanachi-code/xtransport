@@ -81,21 +81,57 @@
                             <div class="kopa-intro-box kopa-intro-box-4 clearfix">
                                 <div class="intro-box-content ">
                                     <h4 class="intro-box-title kopa-heading4">Details</h4>
-                                    <p class="intro-box-sub-title kopa-heading5">
+                                    <p class="intro-box-sub-title">
                                         Date: {{ $event->date }}
                                         <br>
                                         Address: {{ $event->address }}
                                         <br>
+                                        Max participants: {{ $event->max_users }}
                                         <br>
-                                        {{ $event->users->count() }} users registered.
+                                        <br>
+                                        <span id="registered-count">
+                                            @if ($event->users->count() == 1)
+                                            1 user registered.
+                                            @else
+                                            {{ $event->users->count() }} users registered.
+                                            @endif
+                                        </span>
+
                                     </p>
+                                    {{-- if logged in --}}
                                     @if (Auth::check())
-                                    <a href="{{ url("/event/detail/{$event->id}") }}" id="register-event"
-                                        class="style-btn-01 md-btn mt-5">Register</a>
+                                    {{-- if registered start --}}
+                                    @if ($event->users()->where("id", Auth::user()->id)->exists())
+                                    {{-- if full start --}}
+                                    @if (($event->users->count() == $event->max_users))
+                                    <h6 class="full">This event is already full.</h6>
+                                    @endif
+                                    {{-- if full end --}}
+                                    <h6 class="registered">You already registed for this event.</h6>
+                                    <a href="{{ url("/event/detail/{$event->id}/unregister") }}" id="unregister-event"
+                                        class="style-btn-01 md-btn mt-3">Unregister</a>
+                                    {{-- if registered end --}}
+
+                                    {{-- if not registered start --}}
+                                    @else
+                                    {{-- if full start --}}
+                                    @if (($event->users->count() == $event->max_users))
+                                    <h6 class="full">This event is already full.</h6>
+                                    @else
+                                    <a href="{{ url("/event/detail/{$event->id}/register") }}" id="register-event"
+                                        class="style-btn-01 md-btn mt-3">Register</a>
+                                    @endif
+                                    {{-- if full end --}}
+                                    @endif
+                                    {{-- if not registered end --}}
+                                    {{-- if logged in end --}}
+
+                                    {{-- if not logged in start --}}
                                     @else
                                     <h6>You need to <a href="{{ url("login") }}">login</a> before register for
                                         this events.</h6>
                                     @endif
+                                    {{-- if not logged in end --}}
                                 </div>
                             </div>
                         </div>
@@ -113,7 +149,7 @@
 @section('additional-scripts')
 <script>
     $(function () {
-        $("#register-event").on("click", function (e) {
+        $(document).on("click", "#register-event, #unregister-event", function (e) {
             e.preventDefault();
 
             let button = $(this),
@@ -134,7 +170,54 @@
                     </div>`);
                     setTimeout(() => {
                     target.find(".alert-dismissible").remove();
-                    }, 3000);
+                    }, 10000);
+
+                    let count = "";
+                    if (res.registered_count == 1) {
+                        count = "1 user registered."
+                    } else {
+                        count = `${res.registered_count} users registered.`;
+                    }
+                    console.log(res.registered_count);
+
+                    $("#registered-count").html(count);
+
+                    if (res.is_full) {
+                        if (!$("h6.full").length) {
+                            if ($("h6.registered").length) {
+                                $("h6.registered").after(`
+                                    <h6 class="full">This event is already full.</h6>
+                                `);
+                            } else {
+                                button.before(`
+                                    <h6 class="full">This event is already full.</h6>
+                                `);
+                            }
+                        }
+                    } else {
+                        if ($("h6.full").length) {
+                            $("h6.full").remove();
+                        }
+                    }
+
+                    if (button.is("#register-event")) {
+                        button.before(`
+                            <h6 class="registered">You already registed for this event.</h6>
+                        `);
+                        button.before(`
+                            <a href="{{ url("/event/detail/{$event->id}/unregister") }}" id="unregister-event"
+                                class="style-btn-01 md-btn mt-3">Unregister</a>
+                        `);
+                        button.remove();
+                    } else {
+                        $(`h6.registered`).remove();
+                        button.before(`
+                            <a href="{{ url("/event/detail/{$event->id}/register") }}" id="register-event"
+                                class="style-btn-01 md-btn mt-3">Register</a>
+                        `);
+                        button.remove();
+                    }
+
                     console.log(res);
                 },
                 error: function (e) {
