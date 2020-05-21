@@ -48,7 +48,9 @@ Route::prefix('/event')
 
         Route::get('/detail/{id}', 'Main\EventController@renderSingleEvent');
 
-        Route::post('/detail/{id}', 'Main\EventController@registerEvent');
+        Route::post('/detail/{id}/register', 'Main\EventController@registerEvent');
+
+        Route::post('/detail/{id}/unregister', 'Main\EventController@unregisterEvent');
     });
 
 //* Project

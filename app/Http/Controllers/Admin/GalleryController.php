@@ -65,10 +65,6 @@ class GalleryController extends Controller
             if ($width && $height) {
                 $croppedImage
                     ->resize($width, $height);
-                // ->resize($width, null, function ($constraint) {
-                //     $constraint->aspectRatio();
-                // })
-                // ->crop($width, $height, 0, 0);
                 $name = $name . "_" . $width . "x" . $height;
             }
             $name = $name . "." . $image->getClientOriginalExtension();
