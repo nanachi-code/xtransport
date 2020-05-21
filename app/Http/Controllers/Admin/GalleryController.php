@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Finder\SplFileInfo;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class GalleryController extends Controller
 {
@@ -56,11 +57,23 @@ class GalleryController extends Controller
         ]);
         if ($request->hasFile("image")) {
             $image = $request->file('image');
-            $name = Carbon::today()->format('Ymd') . "-" . $image->getClientOriginalName();
+            $height = $request->height;
+            $width = $request->width;
+            $name = Carbon::today()->format('Ymd') . "-" . pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
             $name = $this->convertSpecialCharacters($name);
-
+            $croppedImage = Image::make($image->getRealPath());
+            if ($width && $height) {
+                $croppedImage
+                    ->resize($width, $height);
+                // ->resize($width, null, function ($constraint) {
+                //     $constraint->aspectRatio();
+                // })
+                // ->crop($width, $height, 0, 0);
+                $name = $name . "_" . $width . "x" . $height;
+            }
+            $name = $name . "." . $image->getClientOriginalExtension();
             try {
-                Storage::disk('s3')->put("uploads/{$name}",  file_get_contents($image->getRealPath()));
+                Storage::disk('s3')->put("uploads/{$name}",  $croppedImage->encode());
             } catch (\Throwable $th) {
                 throw $th;
             }

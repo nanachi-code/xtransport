@@ -227,6 +227,8 @@
                                             <hr>
                                             <form class="upload-gallery" action="{{ url("admin/gallery/upload") }}"
                                                 method="post" enctype="multipart/form-data">
+                                                <input type="hidden" name="width" value="970">
+                                                <input type="hidden" name="height" value="517">
                                                 <input type="file" data-title="Upload" name="image">
                                             </form>
                                         </div>

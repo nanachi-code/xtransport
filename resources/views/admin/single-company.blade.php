@@ -109,13 +109,6 @@
                                             placeholder="Enter company introduction">{{ $company->introduction }}</textarea>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Preview</label>
-                                        <div id="preview-content">
-                                            {!! $company->introduction !!}
-                                        </div>
-                                    </div>
-
                                     <div class="form-buttons-w">
                                         <button class="btn btn-primary" type="submit">Save</button>
                                         @if ($company->status == "active")
@@ -234,6 +227,8 @@
                                             <hr>
                                             <form class="upload-gallery" action="{{ url("admin/gallery/upload") }}"
                                                 method="post" enctype="multipart/form-data">
+                                                <input type="hidden" name="width" value="238">
+                                                <input type="hidden" name="height" value="38">
                                                 <input type="file" data-title="Upload" name="image">
                                             </form>
                                         </div>

@@ -1,13 +1,13 @@
 @extends('main.layouts.app')
 
-@section('title', "Events Archive")
+@section('title', $page)
 
 @section('breadcrumb')
 <section class="kopa-area kopa-area-34 white-text-style">
     <div class="container">
         <div class="row">
             <div class="kopa-breadcrumb">
-                <h3>{{$location}}</h3>
+                <h3>{{ $page }}</h3>
                 <div class="breadcrumb-content">
                     <span>
                         <a href="{{ url('/') }}">
@@ -17,7 +17,7 @@
                     <span>&nbsp; &nbsp; / &nbsp; &nbsp;</span>
                     <span>
                         <a class="current-page">
-                            <span itemprop="title">Events Archive</span>
+                            <span itemprop="title">{{ $page }}</span>
                         </a>
                     </span>
                 </div>

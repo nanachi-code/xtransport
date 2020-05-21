@@ -76,15 +76,15 @@
                             <a href="{{ url('project/all') }}">Project</a>
                         </li>
                         <li>
-                            <a href="#">Event</a>
+                            <a href="{{ url('/event/all') }}">Event</a>
                             <ul class="sub-menu">
                                 <li>
                                     <i class="fa fa-star-o"></i>
-                                    <a href="{{ url('/event') }}">Upcoming Event</a>
+                                    <a href="{{ url('/event/all') }}">All Event</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-star-o"></i>
-                                    <a href="{{ url('/event/old') }}">Old Event</a>
+                                    <a href="{{ url('/event/upcoming') }}">Upcoming Event</a>
                                 </li>
                             </ul>
                         </li>

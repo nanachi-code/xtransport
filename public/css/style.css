@@ -25957,3 +25957,9 @@ button {
 .project-item {
     background-color: #e8e8e8;
 }
+
+.custom-image-slider > .owl-wrapper-outer > .owl-wrapper {
+    display: flex !important;
+    width: auto !important;
+    justify-content: center;
+}

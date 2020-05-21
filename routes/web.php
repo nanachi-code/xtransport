@@ -42,9 +42,9 @@ Route::prefix('/event')
             return redirect('/event/all');
         });
 
-        Route::get('/all', 'Main\EventController@renderArchiveEvent');
+        Route::get('/all', 'Main\EventController@renderArchiveAllEvent');
 
-        Route::get('/old', 'Main\EventController@renderOldEvent');
+        Route::get('/upcoming', 'Main\EventController@renderArchiveUpcomingEvent');
 
         Route::get('/detail/{id}', 'Main\EventController@renderSingleEvent');
 
