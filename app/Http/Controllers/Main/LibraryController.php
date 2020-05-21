@@ -85,7 +85,7 @@ class LibraryController extends Controller
             $name = $request->file->getClientOriginalName();
             $ext = $request->file->getClientOriginalExtension();
             if (in_array($ext, $ext_allow)) {
-                Storage::disk('s3')->put("uploads/documents/{$document['user_id']}/{$name}",  $request->file);
+                Storage::disk('s3')->putFile("uploads/documents/{$document['user_id']}/{$name}",  $request->file);
             }
             $document['file'] = Storage::disk('s3')->url("uploads/documents/{$document['user_id']}/{$name}");
         }
