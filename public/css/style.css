@@ -4280,7 +4280,6 @@ button {
 /*------------ kopa area 11 ---------------*/
 .kopa-area-11 {
     padding: 40px 0px;
-    background: url(http://placehold.it/1349x132) top center no-repeat;
     background-size: cover;
 }
 .kopa-area-11:before {
@@ -4289,7 +4288,7 @@ button {
     top: 0;
     left: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: lightgray;
     width: 100%;
 }
 
