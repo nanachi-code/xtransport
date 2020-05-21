@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Main;
 
-
 use App\Feedback;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -36,7 +35,7 @@ class ContactController extends Controller
             return redirect()->back();
         }
         return response()->json([
-            "message" => "Contact feedback successfully."
+            "message" => "Your feedback is successfully recorded."
         ], 200);
     }
 }
