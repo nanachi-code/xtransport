@@ -350,42 +350,6 @@
         </div>
     </section>
     <!-- end News Lastet -->
+</div>
 
-    @if ($allCompanies->count())
-    <!-- logo partner -->
-    <section class="kopa-area kopa-area-8 kopa-triangle-1">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-12">
-                    <!-- widget -->
-                    <div class="widget ex-module-slider-2">
-                        <div class="widget-content">
-                            <ul class="owl-carousel owl-theme">
-                                <!-- ** -->
-                                @foreach($allCompanies as $company)
-                                @if ($company->logo)
-                                <li>
-                                    <article class="entry-item">
-                                        <div class="entry-content">
-                                            <figure class="entry-thumb">
-                                                <a href="#">
-                                                    <img src="{{ $company->logo }}" alt="{{ $company->name }}">
-                                                </a>
-                                            </figure>
-                                        </div>
-                                    </article>
-                                </li>
-                                @endif
-                                @endforeach
-                                <!-- ** -->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end logo partner -->
-    @endif
-    <!-- get started -->
-    @endsection
+@endsection

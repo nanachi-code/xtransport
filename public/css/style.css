@@ -4244,7 +4244,6 @@ button {
 /*--------------- end kopa area 8 -----------*/
 /*--------------- kopa area 9 ------------*/
 .kopa-area-9 {
-    background: url(http://placehold.it/1349x674) top center no-repeat;
     background-size: cover;
     background-attachment: fixed;
     padding: 0;
@@ -4272,7 +4271,6 @@ button {
 /*------------- kopa area 10 -------------*/
 .kopa-area-10 {
     padding: 115px 0px;
-    background: url(http://placehold.it/1349x651) top center no-repeat;
     background-attachment: fixed;
 }
 
@@ -4498,7 +4496,6 @@ button {
 /*--------------- kopa area 20 --------------------*/
 .kopa-area-20 {
     padding-bottom: 0px;
-    background: url(http://placehold.it/1349x802) center center no-repeat;
     background-size: cover;
 }
 .kopa-area-20:before {
@@ -4543,7 +4540,6 @@ button {
 /*---------------------- end ------------------------*/
 /*----------------------- kopa area 23 -----------------*/
 .kopa-area-23 {
-    background: url(http://placehold.it/1349x616) top center no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }
