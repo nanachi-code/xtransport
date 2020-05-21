@@ -116,7 +116,6 @@ class LibraryController extends Controller
         try {
             $document = Document::find($id);
             $document->increment('download_number');
-            $file = last(explode('/', $document->file));
         } catch (\Throwable $th) {
             throw $th;
         }

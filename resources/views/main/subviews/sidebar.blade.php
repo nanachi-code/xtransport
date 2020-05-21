@@ -14,17 +14,16 @@
                         <br>
                         Address: {{ $event->address }}
                         <br>
+                        Max participants: {{ $event->max_users }}
                         <br>
-                        {{ $event->users->count() }} users registered.
+                        <span id="registered-count">
+                            @if ($event->users->count() == 1)
+                            1 user registered.
+                            @else
+                            {{ $event->users->count() }} users registered.
+                            @endif
+                        </span>
                     </p>
-
-                    @if (Auth::check())
-                    <a href="{{ url("/event/detail/{$event->id}") }}" id="register-event"
-                        class="style-btn-01 md-btn mt-5">Register</a>
-                    @else
-                    <h6>You need to <a href="{{ url("login") }}">login</a> before register for
-                        this events.</h6>
-                    @endif
                 </div>
             </div>
             <!-- end -->

@@ -178,7 +178,6 @@
                     } else {
                         count = `${res.registered_count} users registered.`;
                     }
-                    console.log(res.registered_count);
 
                     $("#registered-count").html(count);
 
