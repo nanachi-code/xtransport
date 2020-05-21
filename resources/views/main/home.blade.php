@@ -15,50 +15,13 @@
                 <div class="slider-pro">
                     <div class="sp-slides">
                         <div class="sp-slide">
-                            <img class="sp-image" src="{{ asset("/images/default/img-slider-introduce-2.jpg") }}">
-                            <p class="kopa-txt-style-04 sp-layer" data-horizontal="195" data-vertical="160"
-                                data-show-transition="left">
-                                open hours 7 days a week
-                            </p>
-                            <p class="kopa-txt-style-03 sp-layer" data-horizontal="145" data-vertical="200"
-                                data-show-transition="left" data-show-delay="200">
-                                <a href="#">(+84) 398698695</a>
-                            </p>
-                            <p class="sp-layer kopa-sp-layer-line" data-horizontal="105" data-vertical="280">
-                                <span class="kopa-line-style-01"></span>
-                            </p>
-                            <p class="kopa-txt-style-05 sp-layer" data-horizontal="230" data-vertical="310"
-                                data-show-transition="left" data-show-delay="400">
-                                exprienced
-                            </p>
-                            <p class="kopa-txt-style-06 sp-layer" data-horizontal="140" data-vertical="350"
-                                data-show-transition="left" data-show-delay="600">
-                                We have over fifty years of combined experience.
-                            </p>
-                            <p class="sp-layer kopa-sp-layer-btn-02" data-horizontal="220" data-vertical="430"
-                                data-show-transition="left" data-show-delay="800">
-                                <a href="{{ url("contact") }}" class="btn-01">contact us</a>
-                            </p>
+                            <img class="sp-image" style="object-fit: cover" src="{{asset("/images/default/photo_2020-05-21_21-16-06.jpg")}}">
                         </div>
-
                         <div class="sp-slide">
-                            <img class="sp-image" src="{{asset("/images/default/img-slider-introduce-3.jpg")}}" alt="">
-                            <p class="sp-layer kopa-title-7" data-horizontal="700" data-vertical="180"
-                                data-show-transition="left">
-                                BUILD AN ADVANCED TRANSPORTATION NETWORK,
-                                <br> IMPROVE TRAFFIC QUALITY.
-                            </p>
-
-                            <p class="sp-layer h4" data-horizontal="735" data-vertical="320" data-show-transition="left"
-                                data-show-delay="200">
-                                We are a big, flexible group of experts dedicated to serving you and your traffic needs.
-                            </p>
-
-                            <p class="sp-layer kopa-sp-layer-btn-04" data-horizontal="735" data-vertical="380"
-                                data-show-transition="left" data-show-delay="800">
-                                <a href="{{ url("blog/all") }}" class="btn-04">our blog</a>
-                            </p>
-
+                            <img class="sp-image" style="object-fit: cover" src="{{asset("/images/default/photo_2020-05-21_21-16-28.jpg")}}" >
+                        </div>
+                        <div class="sp-slide">
+                            <img class="sp-image" style="object-fit: cover" src="{{ asset("/images/default/photo_2020-05-21_21-16-33.jpg") }}">
                         </div>
                     </div>
                 </div>
