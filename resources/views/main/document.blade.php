@@ -42,7 +42,7 @@
             <h3 class="widget-title kopa-heading2 size-normal pt-5">{{$doc->title}}</h3>
             {{-- <iframe src="https://view.officeapps.live.com/op/view.aspx?src=https://drive.google.com/open?id=1FcEhk-_IphE8aKrTpr_aojg5KRiBHPuQrbJHNQ9kKPY" frameborder="0"
             style="width:100%;min-height:640px;"></iframe> --}}
-            @if (true)
+            @if (last(explode('.',$doc->file)) == 'pdf')
             <iframe src="{{$doc->file}}" width="100%" height="100%"></iframe>
             @else <div class="alert alert-danger style-02 fade in">
                 <div class="alert-body row">
