@@ -10,12 +10,13 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Carbon;
+use willvincent\Rateable\Rating;
 
 class LibraryController extends Controller
 {
     public function archiveDocument()
     {
-        $doc = Document::all()->where('status',Document::PUBLISH)->sort(function ($a, $b) {
+        $doc = Document::all()->where('status', Document::PUBLISH)->sort(function ($a, $b) {
             if ($a->averageRating == $b->averageRating) {
                 return 0;
             }
@@ -23,7 +24,7 @@ class LibraryController extends Controller
         });
         $p = [
             'location' => '',
-            'newest' => Document::orderBy('updated_at', 'desc')->where('status',Document::PUBLISH)->take(3)->get(),
+            'newest' => Document::orderBy('updated_at', 'desc')->where('status', Document::PUBLISH)->take(3)->get(),
             'highest_rate' => $doc->slice(0, 3)
         ];
         return view('main.library')->with($p);
@@ -32,7 +33,7 @@ class LibraryController extends Controller
     public function allDocument()
     {
         $p = [
-            'doc' => Document::orderBy('updated_at', 'desc')->where('status',Document::PUBLISH)->paginate(12)
+            'doc' => Document::orderBy('updated_at', 'desc')->where('status', Document::PUBLISH)->paginate(12)
         ];
         return view('main.doclist')->with($p);
     }
@@ -85,25 +86,28 @@ class LibraryController extends Controller
             $name = $request->file->getClientOriginalName();
             $ext = $request->file->getClientOriginalExtension();
             if (in_array($ext, $ext_allow)) {
-                $request->file->storeAs("uploads/documents/{$document['user_id']}/",$name,'s3');
+                $request->file->storeAs("uploads/documents/{$document['user_id']}/", $name, 's3');
             }
             $document['file'] = Storage::disk('s3')->url("uploads/documents/{$document['user_id']}/{$name}");
         }
         $document = Document::create($document);
-        return redirect()->to('library/' . $document->id.'/detail/');
+        return redirect()->to('library/' . $document->id . '/detail/');
     }
 
     public function detailDocument($id)
     {
-        $rate_flag = \willvincent\Rateable\Rating::where('rateable_id', $id)->get();
+        $rate_flag = Rating::where('rateable_id', $id)->get();
         if ($rate_flag->contains('user_id', Auth::user()->id)) {
             $rate_flag = false;
-        } else $rate_flag = true;
+        } else {
+            $rate_flag = true;
+        }
         $p = [
-            'doc' => $document = Document::find($id),
-            'review' => \willvincent\Rateable\Rating::where('rateable_id', $id)->get(),
+            'doc' =>  Document::find($id),
+            'review' => Rating::where('rateable_id', $id)->get(),
             'rate_flag' => $rate_flag
         ];
+        // return dd($p);
         return view('main.document')->with($p);
     }
 
@@ -116,7 +120,7 @@ class LibraryController extends Controller
         } catch (\Throwable $th) {
             throw $th;
         }
-        return response()->download($document->file);
+        return redirect($document->file);
     }
 
     public function rating(Request $request)
@@ -124,7 +128,7 @@ class LibraryController extends Controller
 
         request()->validate(['rate' => 'required']);
         $document = Document::find($request->id);
-        $rating = new \willvincent\Rateable\Rating;
+        $rating = new Rating;
         $rating->rating = $request->rate;
         $rating->user_id = auth()->user()->id;
         $rating->review = $request->review;
