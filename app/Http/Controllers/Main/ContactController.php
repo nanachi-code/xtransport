@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Main;
 
-use App\ContactFeedback;
+use App\Feedback;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -22,7 +22,7 @@ class ContactController extends Controller
             'comment' => ['required', 'string', 'max:255'],
         ]);
         try {
-            ContactFeedback::create([
+            Feedback::create([
                 "name" => $request->get('name'),
                 "email" => $request->get('email'),
                 "website_url" => $request->get('website_url'),
@@ -32,7 +32,7 @@ class ContactController extends Controller
             return redirect()->back();
         }
         return response()->json([
-            "message" => "Contact feedback successfully."
+            "message" => "Your feedback is successfully recorded."
         ], 200);
     }
 }
