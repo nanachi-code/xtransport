@@ -53,9 +53,9 @@
                             @endif
                         </div>
                         <div class="row-slider">
-                            <div class="owl-carousel thumb-img-wrap">
+                            <div class="owl-carousel thumb-img-wrap" style="width: 120px">
                                 @foreach ($product->gallery as $image)
-                                <div class="item" style="width: 120px">
+                                <div class="item">
                                     <a href="#">
                                         <img class="sp-thumbnail" src="{{ $image }}" alt="">
                                     </a>
