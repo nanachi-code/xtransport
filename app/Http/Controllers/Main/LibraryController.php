@@ -120,6 +120,7 @@ class LibraryController extends Controller
             throw $th;
         }
         return response()->streamDownload(function () {
+            $document = Document::find($id);
             echo file_get_contents($document->file);
         }, $document->name);
     }
