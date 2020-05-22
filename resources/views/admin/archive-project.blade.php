@@ -23,6 +23,9 @@
                             <div class="float-left">
                                 <h3>Projects</h3>
                             </div>
+                            <div class="float-right">
+                                <a class="btn-outline-primary btn" href="{{ url('admin/project/new') }}">New</a>
+                            </div>
                         </div>
                     </div>
                     <div class="element-box">
