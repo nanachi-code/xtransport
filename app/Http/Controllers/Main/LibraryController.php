@@ -113,15 +113,13 @@ class LibraryController extends Controller
 
     public function downloadDocument($id)
     {
-        $document = Document::find($id);
         try {
+            $document = Document::find($id);
             $document->increment('download_number');
         } catch (\Throwable $th) {
             throw $th;
         }
-        return response()->streamDownload(function ($document) {
-            echo file_get_contents($document->file);
-        }, $document->name);
+        return redirect($document->file);
     }
 
     public function rating(Request $request)
