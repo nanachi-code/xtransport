@@ -36,15 +36,11 @@ class UserController extends Controller
         try {
             if ($request->hasFile('avatar')) {
                 $avatar = $request->file('avatar');
-                if (Storage::disk('s3')->exists($avatar->getClientOriginalName())) {
-                    $name = pathinfo($avatar->getClientOriginalName(), PATHINFO_FILENAME) . "_1." . $avatar->getClientOriginalExtension();
-                    $name = $this->convertSpecialCharacters($name);
-                } else {
-                    $name = $avatar->getClientOriginalName();
-                    $name = $this->convertSpecialCharacters($name);
-                }
+                $name = Carbon::today()->format('Ymd') . "-" . pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $name = $this->convertSpecialCharacters($name);
+                $name = $name . "." . $image->getClientOriginalExtension();
                 Storage::disk('s3')->put($name,  File::get($avatar));
-                $user->avatar = $name;
+                $user->avatar = Storage::disk('s3')->url("uploads/{$name}");
             }
 
             $user->save();

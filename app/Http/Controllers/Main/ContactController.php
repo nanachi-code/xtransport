@@ -19,10 +19,10 @@ class ContactController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'website_url' => ['string', 'max:255'],
+            // 'website_url' => ['string', 'max:255'],
             'comment' => ['required', 'string', 'max:255'],
         ]);
-        dd($request);
+        // dd($request);
 
         try {
             Feedback::create([
