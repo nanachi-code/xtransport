@@ -273,8 +273,13 @@
                                 <div class="row mb-4">
                                     <div class="col-sm-1">
                                         <div class="comment-avatar">
+                                            @if (!empty($comment->user->avatar))
+                                            <img src="{{$comment->user->avatar}}" alt="" srcset=""
+                                                class="img-responsive">
+                                            @else
                                             <img src="http://0.gravatar.com/avatar/682d4b43d822c9f69d565d5d37929540?s=120&d=mm&r=g"
                                                 alt="" srcset="" class="img-responsive">
+                                            @endif
                                             <div class="text-center mt-3">
                                                 {{ $comment->user->name }}
                                             </div>

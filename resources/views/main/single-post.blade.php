@@ -100,7 +100,7 @@
                                         <div class="comment-avatar alignleft">
                                             <a href="#">
                                                 @if ($comment->user->avatar)
-                                                <img src="{{ url("uploads/{$comment->user->avatar}") }}">
+                                                <img src="{{ $comment->user->avatar }}">
                                                 @else
                                                 <img src="{{ asset('images/default/no-image.jpg') }}">
                                                 @endif
@@ -135,7 +135,7 @@
                                                 <div class="comment-avatar alignleft">
                                                     <a href="#">
                                                         @if ($childComment->user->avatar)
-                                                        <img src="{{ url("uploads/{$childComment->user->avatar}") }}">
+                                                        <img src="{{ $childComment->user->avatar }}">
                                                         @else
                                                         <img src="{{ asset('images/default/no-image.jpg') }}">
                                                         @endif
