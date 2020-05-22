@@ -43,7 +43,7 @@
                 <div class="form-group col-md-4">
                     <label>Avatar</label>
                     @if ($user->avatar)
-                    <img src="{{ asset("uploads/{$user->avatar}") }}" class="input-preview img-thumbnail">
+                    <img src="{{ $user->avatar }}" class="input-preview img-thumbnail">
                     @else
                     <img src="{{ asset('images/default/no-image.jpg') }}" class="input-preview img-thumbnail">
                     @endif

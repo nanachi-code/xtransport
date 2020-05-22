@@ -39,7 +39,7 @@ class UserController extends Controller
                 $name = Carbon::today()->format('Ymd') . "-" . pathinfo($avatar->getClientOriginalName(), PATHINFO_FILENAME);
                 $name = $this->convertSpecialCharacters($name);
                 $name = $name . "." . $avatar->getClientOriginalExtension();
-                Storage::disk('s3')->put($name,  File::get($avatar));
+                Storage::disk('s3')->putFile($name,  $avatar);
                 $user->avatar = Storage::disk('s3')->url("uploads/{$name}");
             }
 
