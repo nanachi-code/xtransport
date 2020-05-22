@@ -54,17 +54,20 @@
                         <i class="os-icon os-icon-wallet-loaded"></i>
                     </div>
                     <ul>
-                        <li>
-                            <a href="users_profile_big.html">
-                                <i class="os-icon os-icon-user-male-circle2"></i>
-                                <span>Profile</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/logout') }}">
-                                <i class="os-icon os-icon-signs-11"></i><span>Logout</span>
-                            </a>
-                        </li>
+                        @if (Auth::check())
+                            <li>
+                                @if (Auth::check())
+                                    <a href="{{url('admin/user',Auth::user()->id)}}">
+                                        <i class="os-icon os-icon-user-male-circle2"></i><span>Profile</span>
+                                    </a>
+                                @endif
+                            </li>
+                            <li>
+                                <a href="{{ url('/logout') }}">
+                                    <i class="os-icon os-icon-signs-11"></i><span>Logout</span>
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>
