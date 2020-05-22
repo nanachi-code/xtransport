@@ -119,7 +119,9 @@ class LibraryController extends Controller
         } catch (\Throwable $th) {
             throw $th;
         }
-        return redirect($document->file);
+        return response()->streamDownload(function () {
+            echo file_get_contents($document->file);
+        }, $document->name);
     }
 
     public function rating(Request $request)
