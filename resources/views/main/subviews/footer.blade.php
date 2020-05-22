@@ -92,7 +92,7 @@
                         <div class="widget-content">
                             <article class="entry-item">
                                 <figure class="entry-thumb">
-                                    <a href="#">
+                                    <a href="{{url("/")}}">
                                         <img src="{{ asset("images/default/logo-invert.png") }}" alt="logo-footer">
                                     </a>
                                 </figure>
@@ -102,10 +102,10 @@
                                         build an advanced transportation network, improve traffic quality.
                                     </p>
                                     <div class="social-icon-box">
-                                        <a href="#" class="fa fa-twitter"></a>
-                                        <a href="#" class="fa fa-facebook-official"></a>
-                                        <a href="#" class="fa fa-rss"></a>
-                                        <a href="#" class="fa fa-google-plus"></a>
+                                        <a href="https://twitter.com/" class="fa fa-twitter"></a>
+                                        <a href="https://www.facebook.com/" class="fa fa-facebook-official"></a>
+                                        <a href="https://rss.com/" class="fa fa-rss"></a>
+                                        <a href="https://www.google.com/" class="fa fa-google-plus"></a>
                                     </div>
                                 </div>
                             </article>

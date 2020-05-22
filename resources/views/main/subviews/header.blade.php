@@ -5,7 +5,7 @@
         <div class="container">
 
             <div class="alignleft">
-                <p>WORKING HOURS: Mon - Sat 0900 - 1900</p>
+                <p>WORKING HOURS: Mon - Sat 09.00 - 19.00</p>
             </div>
             <div class="alignright">
                 <div class="kopa-item-header">
@@ -14,16 +14,16 @@
                 <div class="kopa-item-header">
                     <ul class="kopa-social-links">
                         <li>
-                            <a href="#" class="fa fa-twitter"></a>
+                            <a href="https://twitter.com/" class="fa fa-twitter"></a>
                         </li>
                         <li>
-                            <a href="#" class="fa fa-facebook-official"></a>
+                            <a href="https://www.facebook.com/" class="fa fa-facebook-official"></a>
                         </li>
                         <li>
-                            <a href="#" class="fa fa-rss"></a>
+                            <a href="https://rss.com/" class="fa fa-rss"></a>
                         </li>
                         <li>
-                            <a href="#" class="fa fa-google-plus"></a>
+                            <a href="https://www.google.com/" class="fa fa-google-plus"></a>
                         </li>
                     </ul>
                 </div>

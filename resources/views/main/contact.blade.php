@@ -62,8 +62,7 @@
                                     </div>
                                     <div class="entry-content">
                                         <h4 class="entry-title">Office</h4>
-                                        <p>Số 8 Tôn Thất Thuyết,
-                                            <br> Mỹ Đình, Hà Nội</p>
+                                        <p> FPT APTECH, Ha Noi - Viet Nam</p>
                                     </div>
                                 </article>
                             </li>
@@ -75,7 +74,7 @@
                                     </div>
                                     <div class="entry-content">
                                         <h4 class="entry-title">email</h4>
-                                        <p>Kopasoft@support.com</p>
+                                        <p>contact@transportx.com</p>
                                     </div>
                                 </article>
                             </li>
@@ -87,7 +86,7 @@
                                     </div>
                                     <div class="entry-content">
                                         <h4 class="entry-title">phone</h4>
-                                        <p>+84398698695</p>
+                                        <p> 0123567890</p>
                                     </div>
                                 </article>
                             </li>

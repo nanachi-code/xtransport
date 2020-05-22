@@ -217,7 +217,7 @@
                             <!-- ** -->
                         </ul>
 
-                        <a href="{{ url("about-us") }}" class="kopa-btn btn-014">Read more</a>
+                        <a href="{{ url("about-us") }}" class="kopa-btn btn-014 pb-3">Read more</a>
                     </div>
                 </div>
 

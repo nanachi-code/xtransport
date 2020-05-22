@@ -231,7 +231,7 @@
                                         <figure class="entry-thumb">
                                             <img src="{{asset("/images/default/28061489_2000714236835283_8996934319964566339_o.jpg")}}" alt="img-slider8-1">
                                             <figcaption>
-                                                <h3 class="entry-title">Dao Ngọc Long</h3>
+                                                <h3 class="entry-title">Dao Ngoc Long</h3>
                                                 <span>Solutions consultant</span>
                                             </figcaption>
                                         </figure>
