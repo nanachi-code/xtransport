@@ -44,7 +44,7 @@
                                 <p>
                                     <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp; by <a
                                         href="#">{{ $post->user->name }}</a>
-                                    <span>{{ $post->updated_at->toDateString() }}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>3
+                                    <span>{{ $post->updated_at->toDateString() }}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ count($post->comments) }}
                                         <i class="fa fa-comment-o"
                                             aria-hidden="true"></i></span>&nbsp;&nbsp;&nbsp;&nbsp;
                                 </p>

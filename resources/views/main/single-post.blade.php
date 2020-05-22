@@ -164,7 +164,7 @@
                                     <li class="comment reply-comment d-none" data-id="{{ $comment->id }}">
                                         @if (Auth::check())
                                         <!-- ================= form ==================== -->
-                                        <form class="form-comment" action="{{ url("post/{$post->id}/comment") }}"
+                                        <form class="form-comment" action="{{ url("/blog/post/{$post->id}/comment") }}"
                                             method="post" novalidate="novalidate">
                                             @csrf
                                             <div class="form-group">
