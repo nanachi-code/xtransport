@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
-    public function renderUpcomingArchiveEvent()
+    public function renderArchiveUpcomingEvent()
     {
         $p = [
             'events' => Event::where('status', 'active')
