@@ -22,17 +22,16 @@ class ContactController extends Controller
             // 'website_url' => ['string', 'max:255'],
             'comment' => ['required', 'string', 'max:255'],
         ]);
-        // dd($request);
 
         try {
             Feedback::create([
                 "name" => $request->get('name'),
                 "email" => $request->get('email'),
                 "website_url" => $request->get('website_url'),
-                "comment" => $request->get('comment'),
+                "message" => $request->get('comment'),
             ]);
         } catch (\Exception $e) {
-            return redirect()->back();
+            throw $e;
         }
         return response()->json([
             "message" => "Your feedback is successfully recorded."
