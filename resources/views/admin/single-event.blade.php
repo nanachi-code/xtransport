@@ -90,13 +90,6 @@
                                             placeholder="Enter event introduction">{{ $event->introduction }}</textarea>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Preview</label>
-                                        <div id="preview-content">
-                                            {!! $event->introduction !!}
-                                        </div>
-                                    </div>
-
                                     <div class="form-buttons-w">
                                         <button class="btn btn-primary" type="submit">Save</button>
                                         @if ($event->status == "active")

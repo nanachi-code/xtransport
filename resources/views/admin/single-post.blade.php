@@ -84,13 +84,6 @@
                                             placeholder="Enter post content">{{$post->content}}</textarea>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Preview</label>
-                                        <div id="preview-content">
-                                            {!! $post->content !!}
-                                        </div>
-                                    </div>
-
                                     <div class="form-buttons-w">
                                         <button class="btn btn-primary" type="submit">Save</button>
                                         @if ($post->status == "publish")

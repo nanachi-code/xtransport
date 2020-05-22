@@ -38,7 +38,7 @@
             <div class="col-xs-12 col-md-12 main-col">
                 @if (count($projects) >0)
                 @foreach ($projects as $project)
-                <div class="project-item">
+                <div class="project-item mb-3">
                     <div class="row p-5">
                         <div class="col-md-3">
                             <a href="{{ url("project/detail/{$project->id}") }}">

@@ -83,13 +83,6 @@
                                             placeholder="Enter project content">{{ $project->content }}</textarea>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Preview</label>
-                                        <div id="preview-content">
-                                            {!! $project->content !!}
-                                        </div>
-                                    </div>
-
                                     {{-- project gallery --}}
                                     <div class="form-group">
                                         <label for="form-project-gallery">Gallery</label>

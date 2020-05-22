@@ -83,11 +83,6 @@
                                             placeholder="Enter post content"></textarea>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Preview</label>
-                                        <div id="preview-content"></div>
-                                    </div>
-
                                     <div class="form-buttons-w">
                                         <button class="btn btn-primary" type="submit">Create</button>
                                     </div>
