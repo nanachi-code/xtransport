@@ -42,7 +42,7 @@ class LibraryController extends Controller
     {
         $p = [
             'location' => 'user',
-            'documents' => Document::where('user_id', Auth::user()->id)->get()
+            'documents' => Document::where('user_id', Auth::user()->id)->where('status','!=', Document::DELETED)->get()
         ];
         return view('main.mydocument')->with($p);
     }
