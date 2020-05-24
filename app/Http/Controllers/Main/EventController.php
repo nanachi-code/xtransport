@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\RegisterEvent;
 use App\Mail\UnRegisterEvent;
+use Illuminate\Support\Facades\Mail;
 
 class EventController extends Controller
 {
