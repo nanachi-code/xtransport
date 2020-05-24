@@ -66,7 +66,7 @@ class EventController extends Controller
             }
             $event->users()->attach(Auth::user()->id);
             $event->load("users");
-            Mail::to($request->user())->send(new RegisterEvent);
+            Mail::to($request->user())->send(new RegisterEvent($event));
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -82,7 +82,7 @@ class EventController extends Controller
         $event = Event::find($id);
         try {
             $event->users()->detach(Auth::user()->id);
-            Mail::to($request->user())->send(new UnRegisterEvent);
+            Mail::to($request->user())->send(new UnRegisterEvent($event));
         } catch (\Throwable $th) {
             throw $th;
         }
