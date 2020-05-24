@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\RegisterEvent;
+use App\Mail\UnRegisterEvent;
 
 class EventController extends Controller
 {
@@ -64,6 +66,7 @@ class EventController extends Controller
             }
             $event->users()->attach(Auth::user()->id);
             $event->load("users");
+            Mail::to($request->user())->send(new RegisterEvent);
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -79,6 +82,7 @@ class EventController extends Controller
         $event = Event::find($id);
         try {
             $event->users()->detach(Auth::user()->id);
+            Mail::to($request->user())->send(new UnRegisterEvent);
         } catch (\Throwable $th) {
             throw $th;
         }
